@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио & Конструктор</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #1a1a1a; color: #fff; line-height: 1.6; overflow-x: hidden; }
+        .parallax-bg {
+            background-image: url('https://picsum.photos');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 10%;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .header-left { display: flex; align-items: center; gap: 20px; }
+        .avatar { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
+        .header-text h1 { font-size: 24px; font-weight: 600; }
+        .header-text p { font-size: 14px; color: #ccc; }
+        .social-icons { display: flex; gap: 15px; }
+        .social-icon {
+            width: 40px; height: 40px; background: rgba(255,255,255,0.1);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: #fff; text-decoration: none; font-weight: bold; transition: 0.3s;
+        }
+        .social-icon:hover { background: #fff; color: #1a1a1a; transform: translateY(-3px); }
+        .block { padding: 60px 10%; }
+        .block-title {
+            padding: 20px; text-align: center; font-size: 28px; letter-spacing: 2px;
+            text-transform: uppercase; border-radius: 8px; margin-bottom: 30px;
+            box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4);
+        }
+        .carousel-container {
+            max-width: 600px; margin: 0 auto; position: relative;
+            border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .carousel-slides { display: flex; transition: transform 0.5s ease-in-out; }
+        .carousel-slide { min-width: 100%; height: 400px; object-fit: cover; cursor: pointer; }
+        .constructor-section { background: #222; padding: 60px 10%; text-align: center; }
+        .constructor-card {
+            background: #2b2b2b; max-width: 500px; margin: 0 auto; border-radius: 16px;
+            overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.6); padding: 25px;
+        }
+        .preview-box { width: 100%; height: 250px; background: #3a3a3a; border-radius: 8px; margin-bottom: 20px; overflow: hidden; }
+        .preview-box img { width: 100%; height: 100%; object-fit: cover; }
+        .option-group { margin-bottom: 20px; text-align: left; }
+        .option-label { font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block;}
+        .buttons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .btn-opt {
+            background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 10px 5px;
+            border-radius: 8px; cursor: pointer; font-size: 13px; transition: 0.2s; font-weight: 500;
+        }
+        .btn-opt:hover { background: #4a4a4a; }
+        .btn-opt.active { background: #007bff; border-color: #00d2ff; }
+        .price-display { font-size: 28px; font-weight: bold; margin-top: 25px; color: #00d2ff; border-top: 1px solid #444; padding-top: 15px; }
+        .lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9);
+            display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none;
+            transition: opacity 0.4s ease; z-index: 1000;
+        }
+        .lightbox.active { opacity: 1; pointer-events: auto; }
+        .lightbox-img { max-width: 90%; max-height: 90%; border-radius: 4px; transform: scale(0.95); transition: transform 0.4s ease; }
+        .lightbox.active .lightbox-img { transform: scale(1); }
+    </style>
+</head>
+<body class="parallax-bg">
+
+    <header>
+        <div class="header-left">
+            <img class="avatar" src="https://picsum.photos" alt="Аватар">
+            <div class="header-text">
+                <h1>Ваше Имя / Никнейм</h1>
+                <p>Digital художник & Иллюстратор</p>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href="#" class="social-icon">TG</a>
+            <a href="#" class="social-icon">VK</a>
+            <a href="#" class="social-icon">DA</a>
+        </div>
+    </header>
+
+    <section class="block">
+        <div class="block-title parallax-bg">Мои Скетчи</div>
+        <div class="carousel-container" data-speed="3000">
+            <div class="carousel-slides">
+                <img class="carousel-slide" src="https://picsum.photos" alt="Скетч 1" onclick="openLightbox(this.src)">
+                <img class="carousel-slide" src="https://picsum.photos" alt="Скетч 2" onclick="openLightbox(this.src)">
+                <img class="carousel-slide" src="https://picsum.photos" alt="Скетч 3" onclick="openLightbox(this.src)">
+            </div>
+        </div>
+    </section>
+
+    <section class="block">
+        <div class="block-title parallax-bg">Сложный рендер</div>
+        <div class="carousel-container" data-speed="3000">
+            <div class="carousel-slides">
+                <img class="carousel-slide" src="https://picsum.photos" alt="Арт 1" onclick="openLightbox(this.src)">
+                <img class="carousel-slide" src="https://picsum.photos" alt="Арт 2" onclick="openLightbox(this.src)">
+                <img class="carousel-slide" src="https://picsum.photos" alt="Арт 3" onclick="openLightbox(this.src)">
+            </div>
+        </div>
+    </section>
+
+    <section class="constructor-section">
+        <h2 style="margin-bottom: 30px; font-size: 28px;">Калькулятор заказа (Коммишены)</h2>
+        <div class="constructor-card">
+            <div class="preview-box">
+                <img id="order-preview" src="https://picsum.photos" alt="Превью опции">
+            </div>
+            <div class="option-group">
+                <span class="option-label">Персонажи</span>
+                <div class="buttons-grid">
+                    <button class="btn-opt active" data-type="chars" data-value="1" onclick="selectOption(this)">1 Персонаж</button>
+                    <button class="btn-opt" data-type="chars" data-value="2" onclick="selectOption(this)">2 Персонажа</button>
+                    <button class="btn-opt" data-type="chars" data-value="3" onclick="selectOption(this)">3+ Несколько</button>
+                </div>
+            </div>
+            <div class="option-group">
+                <span class="option-label">Рендер</span>
+                <div class="buttons-grid">
+                    <button class="btn-opt active" data-type="render" data-value="sketch" onclick="selectOption(this)">Скетч</button>
+                    <button class="btn-opt" data-type="render" data-value="simple" onclick="selectOption(this)">Простой</button>
+                    <button class="btn-opt" data-type="render" data-value="hard" onclick="selectOption(this)">Сложный</button>
+                </div>
+            </div>
+            <div class="option-group">
+                <span class="option-label">Формат</span>
+                <div class="buttons-grid">
+                    <button class="btn-opt active" data-type="format" data-value="head" onclick="selectOption(this)">Хед (Портрет)</button>
+                    <button class="btn-opt" data-type="format" data-value="half" onclick="selectOption(this)">Халф (По пояс)</button>
+                    <button class="btn-opt" data-type="format" data-value="full" onclick="selectOption(this)">Полнорост</button>
+                </div>
+            </div>
+            <div class="option-group">
+                <span class="option-label">Фон</span>
+                <div class="buttons-grid">
+                    <button class="btn-opt active" data-type="bg" data-value="none" onclick="selectOption(this)">Без фона</button>
+                    <button class="btn-opt" data-type="bg" data-value="light" onclick="selectOption(this)">Лёгкий</button>
+                    <button class="btn-opt" data-type="bg" data-value="hard" onclick="selectOption(this)">Сложный</button>
+                </div>
+            </div>
+            <div class="price-display">Итого: <span id="total-price">1000</span> руб.</div>
+        </div>
+    </section>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" class="lightbox-img" src="" alt="Увеличенное изображение">
+    </div>
+
+    <script>
+        document.querySelectorAll('.carousel-container').forEach(carousel => {
+            const slidesContainer = carousel.querySelector('.carousel-slides');
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const speed = parseInt(carousel.getAttribute('data-speed')) || 3000;
+            let currentIndex = 0;
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }, speed);
+        });
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(src) {
+            lightboxImg.src = src;
+            lightbox.classList.add('active');
+        }
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        const basePrices = {
+            chars: { "1": 1000, "2": 1800, "3": 2500 },
+Используйте код с осторожностью.render: { "sketch": 0, "simple": 500, "hard": 1200 },format: { "head": 0, "half": 400, "full": 900 },bg: { "none": 0, "light": 300, "hard": 800 }};let currentSelection = { chars: "1", render: "sketch", format: "head", bg: "none" };function selectOption(button) {const parentGrid = button.parentElement;parentGrid.querySelectorAll('.btn-opt').forEach(btn => btn.classList.remove('active'));button.classList.add('active');const type = button.getAttribute('data-type');const value = button.getAttribute('data-value');currentSelection[type] = value;document.getElementById('order-preview').src = https://picsum.photos{value.length + Math.random()};calculatePrice();}function calculatePrice() {let total = 0;total += basePrices.chars[currentSelection.chars];total += basePrices.render[currentSelection.render];total += basePrices.format[currentSelection.format];total += basePrices.bg[currentSelection.bg];document.getElementById('total-price').innerText = total;}
