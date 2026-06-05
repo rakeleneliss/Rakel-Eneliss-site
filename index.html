@@ -441,18 +441,33 @@
         }
 
         function updateGrandTotal() {
-            let total = 0;
+            let minTotal = 0;
+            let maxTotal = 0;
+            let hasRange = false;
+            
             document.querySelectorAll('.block-price').forEach(el => {
                 const text = el.textContent;
-                // Если это диапазон (содержит "-"), берём минимальное значение
+                // Если это диапазон (содержит "-"), берём минимальное и максимальное значение
                 if (text.includes('-')) {
-                    const min = parseInt(text.split('-')[0]);
-                    total += min || 0;
+                    const parts = text.split('-');
+                    const min = parseInt(parts[0]);
+                    const max = parseInt(parts[1]);
+                    minTotal += min || 0;
+                    maxTotal += max || 0;
+                    hasRange = true;
                 } else {
-                    total += parseInt(text) || 0;
+                    const price = parseInt(text) || 0;
+                    minTotal += price;
+                    maxTotal += price;
                 }
             });
-            grandTotalSpan.textContent = total;
+            
+            // Отображаем диапазон, если есть хотя бы один, иначе просто число
+            if (hasRange && minTotal !== maxTotal) {
+                grandTotalSpan.textContent = minTotal + '-' + maxTotal;
+            } else {
+                grandTotalSpan.textContent = minTotal;
+            }
         }
 
         function openLightbox(src) {
