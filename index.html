@@ -487,41 +487,56 @@
         }
 
         document.getElementById('add-block-btn').addEventListener('click', function() {
-            createNewBlock();
-        });
+    
+        createNewBlock();
 
-        createNewBlock();// --- Автономный блок скидок (не меняет ваш исходный код) ---
-document.getElementById('discount-group').addEventListener('change', applyDiscountToTotal);
+        // --- Полностью изолированный блок скидок со сбросом клика ---
+        (function() {
+            let lastCheckedRadio = null;
 
-// Встраиваемся в ваш стандартный пересчет, чтобы скидка работала при кликах на калькулятор
-const originalUpdateGrandTotal = updateGrandTotal;
-updateGrandTotal = function() {
-    originalUpdateGrandTotal(); 
-    applyDiscountToTotal();     
-};
+            // Навешиваем событие клика на каждую радиокнопку для возможности отжатия
+            document.querySelectorAll('input[name="discount-option"]').forEach(radio => {
+                radio.addEventListener('click', function() {
+                    if (lastCheckedRadio === this) {
+                        this.checked = false;
+                        lastCheckedRadio = null;
+                    } else {
+                        lastCheckedRadio = this;
+                    }
+                    applyDiscountToTotal();
+                });
+            });
 
-function applyDiscountToTotal() {
-    // Получаем значение выбранной радио-кнопки
-    const selectedRadio = document.querySelector('input[name="discount-option"]:checked');
-    const discountValue = selectedRadio ? parseInt(selectedRadio.value) : 0;
+            // Перехватываем стандартное обновление суммы вашего калькулятора
+            const originalUpdateGrandTotal = updateGrandTotal;
+            updateGrandTotal = function() {
+                originalUpdateGrandTotal(); // Сначала выполняется ваш оригинальный подсчет
+                applyDiscountToTotal();     // Затем поверх накладывается скидка
+            };
 
-    if (discountValue === 0) return; // Если выбрано 0%, оставляем базовую цену
+            function applyDiscountToTotal() {
+                const selectedRadio = document.querySelector('input[name="discount-option"]:checked');
+                const discountValue = selectedRadio ? parseInt(selectedRadio.value) : 0;
 
-    const totalSpan = document.getElementById('grand-total');
-    const currentText = totalSpan.textContent;
+                if (discountValue === 0) return; // Если кнопка отжата, оставляем базовую сумму
 
-    if (currentText.includes('-')) {
-        // Исправленный расчет для сложного фона (диапазона цен)
-        const parts = currentText.split('-');
-        const min = Math.round(parseInt(parts[0]) * (1 - discountValue / 100));
-        const max = Math.round(parseInt(parts[1]) * (1 - discountValue / 100));
-        totalSpan.textContent = min + '-' + max;
-    } else {
-        // Расчет для обычной фиксированной цены
-        const normalPrice = parseInt(currentText) || 0;
-        totalSpan.textContent = Math.round(normalPrice * (1 - discountValue / 100));
-    }
-}
+                const totalSpan = document.getElementById('grand-total');
+                const currentText = totalSpan.textContent;
+
+                if (currentText.includes('-')) {
+                    // Корректно берем элементы массива по индексам [0] и [1] для диапазонов
+                    const parts = currentText.split('-');
+                    const min = Math.round(parseInt(parts[0]) * (1 - discountValue / 100));
+                    const max = Math.round(parseInt(parts[1]) * (1 - discountValue / 100));
+                    totalSpan.textContent = min + '-' + max;
+                } else {
+                    // Для обычной фиксированной стоимости
+                    const normalPrice = parseInt(currentText) || 0;
+                    totalSpan.textContent = Math.round(normalPrice * (1 - discountValue / 100));
+                }
+            }
+        })();
+
 // -----------------------------------------------------------
 
     </script>
