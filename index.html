@@ -179,6 +179,110 @@
             lightbox.classList.remove('active');
         }
 
+        <div class="constructor-card" style="background: #2b2b2b; color: #fff; max-width: 500px; margin: 0 auto; border-radius: 16px; padding: 25px; font-family: sans-serif;">
+    <div class="preview-box" style="width: 100%; height: 250px; background: #3a3a3a; border-radius: 8px; margin-bottom: 20px; overflow: hidden;">
+        <img id="order-preview" src="https://picsum.photos" alt="Превью" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+
+    <div class="option-group" style="margin-bottom: 20px;">
+        <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block;">Персонажи</span>
+        <div class="buttons-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+            <button class="btn-opt active" data-type="chars" data-value="1" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 10px 5px; border-radius: 8px; cursor: pointer; font-size: 13px;">1 Персонаж</button>
+            <button class="btn-opt" data-type="chars" data-value="2" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 10px 5px; border-radius: 8px; cursor: pointer; font-size: 13px;">2 Персонажа</button>
+            <button class="btn-opt" data-type="chars" data-value="3" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 10px 5px; border-radius: 8px; cursor: pointer; font-size: 13px;">3+ Несколько</button>
+        </div>
+    </div>
+
+    <div class="option-group" style="margin-bottom: 20px;">
+        <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block;">Рендер</span>
+        <div class="buttons-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+            <button class="btn-opt active" data-type="render" data-value="sketch" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 10px 5px; border-radius: 8px; cursor: pointer; font-size: 13px;">Скетч</button>
+            <button class="btn-opt" data-type="render" data-value="simple" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 10px 5px; border-radius: 8px; cursor: pointer; font-size: 13px;">Простой</button>
+            <button class="btn-opt" data-type="render" data-value="hard" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 10px 5px; border-radius: 8px; cursor: pointer; font-size: 13px;">Сложный</button>
+        </div>
+    </div>
+
+    <div class="option-group" style="margin-bottom: 20px;">
+        <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block;">Формат</span>
+        <div class="buttons-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+            <button class="btn-opt active" data-type="format" data-value="head" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 10px 5px; border-radius: 8px; cursor: pointer; font-size: 13px;">Хед (Портрет)</button>
+            <button class="btn-opt" data-type="format" data-value="half" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 10px 5px; border-radius: 8px; cursor: pointer; font-size: 13px;">Халф (По пояс)</button>
+            <button class="btn-opt" data-type="format" data-value="full" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 10px 5px; border-radius: 8px; cursor: pointer; font-size: 13px;">Полнорост</button>
+        </div>
+    </div>
+
+    <div class="option-group" style="margin-bottom: 20px;">
+        <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block;">Фон</span>
+        <div class="buttons-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+            <button class="btn-opt active" data-type="bg" data-value="none" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 10px 5px; border-radius: 8px; cursor: pointer; font-size: 13px;">Без фона</button>
+            <button class="btn-opt" data-type="bg" data-value="light" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 10px 5px; border-radius: 8px; cursor: pointer; font-size: 13px;">Лёгкий</button>
+            <button class="btn-opt" data-type="bg" data-value="hard" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 10px 5px; border-radius: 8px; cursor: pointer; font-size: 13px;">Сложный</button>
+        </div>
+    </div>
+
+    <div style="font-size: 28px; font-weight: bold; margin-top: 25px; color: #00d2ff; border-top: 1px solid #444; padding-top: 15px; text-align: center;">
+        Итого: <span id="total-price">1000</span> руб.
+    </div>
+</div>
+
+<script>
+    (function() {
         const basePrices = {
             chars: { "1": 1000, "2": 1800, "3": 2500 },
-Используйте код с осторожностью.render: { "sketch": 0, "simple": 500, "hard": 1200 }, format: { "head": 0, "half": 400, "full": 900 }, bg: { "none": 0, "light": 300, "hard": 800 } };let currentSelection = { chars: "1", render: "sketch", format: "head", bg: "none" };function selectOption(button { const parentGrid = button.parentElement; parentGrid.querySelectorAll('.btn-opt').forEach(btn => btn.classList.remove('active')); button.classList.add('active');const type = button.getAttribute('data-type'); const value = button.getAttribute('data-value'); currentSelection[type] = value;document.getElementById('order-preview').src = https://picsum.photos{value.length + Math.random()}; calculatePrice(); }function calculatePrice() { let total = 0; total += basePrices.chars[currentSelection.chars]; total += basePrices.render[currentSelection.render]; total += basePrices.format[currentSelection.format]; total += basePrices.bg[currentSelection.bg]; document.getElementById('total-price').innerText = total; }
+            render: { "sketch": 0, "simple": 500, "hard": 1200 },
+            format: { "head": 0, "half": 400, "full": 900 },
+            bg: { "none": 0, "light": 300, "hard": 800 }
+        };
+
+        let currentSelection = { chars: "1", render: "sketch", format: "head", bg: "none" };
+
+        function updateStyles() {
+            document.querySelectorAll('.btn-opt').forEach(btn => {
+                if (btn.classList.contains('active')) {
+                    btn.style.backgroundColor = '#007bff';
+                    btn.style.borderColor = '#00d2ff';
+                } else {
+                    btn.style.backgroundColor = '#3a3a3a';
+                    btn.style.borderColor = 'transparent';
+                }
+            });
+        }
+
+        function calculatePrice() {
+            let total = 0;
+            total += basePrices.chars[currentSelection.chars] || 0;
+            total += basePrices.render[currentSelection.render] || 0;
+            total += basePrices.format[currentSelection.format] || 0;
+            total += basePrices.bg[currentSelection.bg] || 0;
+            
+            const priceElement = document.getElementById('total-price');
+            if (priceElement) priceElement.innerText = total;
+        }
+
+        document.querySelectorAll('.btn-opt').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const parentGrid = this.parentElement;
+                parentGrid.querySelectorAll('.btn-opt').forEach(btn => btn.classList.remove('active'));
+                
+                this.classList.add('active');
+                
+                const type = this.getAttribute('data-type');
+                const value = this.getAttribute('data-value');
+                currentSelection[type] = value;
+                
+                const previewImg = document.getElementById('order-preview');
+                if (previewImg) {
+                    previewImg.src = `https://picsum.photos{value.length + Math.random()}`;
+                }
+                
+                updateStyles();
+                calculatePrice();
+            });
+        });
+
+        updateStyles();
+        calculatePrice();
+    })();
+</script>
