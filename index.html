@@ -452,3 +452,183 @@
     </script>
 </body>
 </html>
+
+третий калькулятор
+<section>
+     <div id="calculator-list"></div>
+     <div class="action-buttons">
+         <button class="btn" id="add-block-btn">+ Добавить еще</button>
+     </div>
+     <div class="final-summary">
+         Общая сумма: <span id="grand-total">0</span> руб.
+     </div>
+ </section>
+
+ <script>
+     const priceList = {
+         sketch: { head: 450, half: 900, full: 1200 },
+         simple: { head: 800, half: 2000, full: 2800 },
+         hard:   { head: 1300, half: 2800, full: 4200 }
+     };
+
+     const calculatorList = document.getElementById('calculator-list');
+     const grandTotalSpan = document.getElementById('grand-total');
+     let blockCounter = 0;
+
+     function createNewBlock() {
+         blockCounter++;
+         const blockId = blockCounter;
+         
+         const block = document.createElement('div');
+         block.className = 'calculator-block';
+         block.innerHTML = `
+             <button class="remove-btn" title="Удалить этот заказ" onclick="removeBlock(event)">&times;</button>
+             
+             <div class="section">
+                 <div class="section-title">Персонажи</div>
+                 <div class="options-grid">
+                     <label class="option-label"><input type="radio" name="chars-${blockId}" value="1" checked> 1</label>
+                     <label class="option-label"><input type="radio" name="chars-${blockId}" value="2"> 2 (x2 к цене)</label>
+                     <label class="option-label"><input type="radio" name="chars-${blockId}" value="custom"> Свой вариант</label>
+                 </div>
+                 <div class="custom-count-wrapper">
+                     <input type="number" class="custom-count-input" value="3" min="1" placeholder="Введите количество персонажей">
+                 </div>
+             </div>
+             <div class="section">
+                 <div class="section-title">Формат</div>
+                 <div class="options-grid">
+                     <label class="option-label"><input type="radio" name="format-${blockId}" value="head" checked> Хед</label>
+                     <label class="option-label"><input type="radio" name="format-${blockId}" value="half"> Халф</label>
+                     <label class="option-label"><input type="radio" name="format-${blockId}" value="full"> Полнорост</label>
+                 </div>
+             </div>
+             <div class="section">
+                 <div class="section-title">Рендер</div>
+                 <div class="options-grid">
+                     <label class="option-label"><input type="radio" name="render-${blockId}" value="sketch" checked> Скетч/МОНО цвет</label>
+                     <label class="option-label"><input type="radio" name="render-${blockId}" value="simple"> Простой рендер</label>
+                     <label class="option-label"><input type="radio" name="render-${blockId}" value="hard"> Сложный рендер</label>
+                 </div>
+             </div>
+             <div class="section">
+                 <div class="section-title">Фон</div>
+                 <div class="options-grid">
+                     <label class="option-label"><input type="radio" name="background-${blockId}" value="none" checked> Без фона</label>
+                     <label class="option-label"><input type="radio" name="background-${blockId}" value="abstract"> Абстрактный (бесплатно)</label>
+                     <label class="option-label"><input type="radio" name="background-${blockId}" value="simple"> Простой (+500р.)</label>
+                     <label class="option-label"><input type="radio" name="background-${blockId}" value="hard"> Сложный (+1000-3000р.)</label>
+                 </div>
+                 <div class="hard-bg-wrapper" style="display: none;">
+                     <label for="hard-bg-price-${blockId}">Стоимость фона:</label>
+                     <input type="range" id="hard-bg-price-${blockId}" class="hard-bg-price-input" min="1000" max="3000" value="1000" step="100">
+                     <span class="hard-bg-price-display">1000</span> руб.
+                 </div>
+             </div>
+             <div class="section">
+                 <div class="section-title">Другие опции</div>
+                 <div class="options-grid">
+                     <label class="option-label"><input type="checkbox" name="chibi-${blockId}" value="chibi"> Чиби (цена / 2)</label>
+                     <label class="option-label"><input type="checkbox" name="design-${blockId}" value="design"> Оформление (+200)</label>
+                 </div>
+             </div>
+
+             <div class="block-total">
+                 Стоимость: <span class="block-price">0</span> руб.
+             </div>
+         `;
+
+         block.addEventListener('change', () => calculateBlock(block, blockId));
+         
+         const charsRadios = block.querySelectorAll(`input[name="chars-${blockId}"]`);
+         const customWrapper = block.querySelector('.custom-count-wrapper');
+         charsRadios.forEach(radio => {
+             radio.addEventListener('change', (e) => {
+                 customWrapper.style.display = (e.target.value === 'custom') ? 'block' : 'none';
+                 calculateBlock(block, blockId);
+             });
+         });
+
+         const bgRadios = block.querySelectorAll(`input[name="background-${blockId}"]`);
+         const hardBgWrapper = block.querySelector('.hard-bg-wrapper');
+         const hardBgInput = block.querySelector(`#hard-bg-price-${blockId}`);
+         const hardBgDisplay = block.querySelector('.hard-bg-price-display');
+         
+         bgRadios.forEach(radio => {
+             radio.addEventListener('change', (e) => {
+                 const isHardBg = e.target.value === 'hard';
+                 hardBgWrapper.style.display = isHardBg ? 'block' : 'none';
+                 calculateBlock(block, blockId);
+             });
+         });
+
+         if (hardBgInput) {
+             hardBgInput.addEventListener('input', (e) => {
+                 hardBgDisplay.textContent = e.target.value;
+                 calculateBlock(block, blockId);
+             });
+         }
+
+         calculatorList.appendChild(block);
+         calculateBlock(block, blockId);
+     }
+
+     function removeBlock(event) {
+         event.preventDefault();
+         event.currentTarget.closest('.calculator-block').remove();
+         updateGrandTotal();
+     }
+
+     function calculateBlock(block, blockId) {
+         const renderType = block.querySelector(`input[name="render-${blockId}"]:checked`).value;
+         const format = block.querySelector(`input[name="format-${blockId}"]:checked`).value;
+         const chars = block.querySelector(`input[name="chars-${blockId}"]:checked`).value;
+         const background = block.querySelector(`input[name="background-${blockId}"]:checked`).value;
+         const chibi = block.querySelector(`input[name="chibi-${blockId}"]`).checked;
+         const design = block.querySelector(`input[name="design-${blockId}"]`).checked;
+
+         let basePrice = priceList[renderType][format];
+
+         if (chars === '2') {
+             basePrice *= 2;
+         } else if (chars === 'custom') {
+             const customCount = block.querySelector('.custom-count-input').value || 1;
+             basePrice *= parseInt(customCount);
+         }
+
+         let priceWithoutBg = basePrice;
+         if (chibi) {
+             priceWithoutBg /= 2;
+         }
+
+         if (design) {
+             priceWithoutBg += 200;
+         }
+
+         let bgPrice = 0;
+         if (background === 'simple') {
+             bgPrice = 500;
+         } else if (background === 'hard') {
+             const hardBgInput = block.querySelector(`#hard-bg-price-${blockId}`);
+             bgPrice = hardBgInput ? parseInt(hardBgInput.value) : 1000;
+         } 
+
+         const totalPrice = priceWithoutBg + bgPrice;
+         block.querySelector('.block-price').textContent = totalPrice;
+         updateGrandTotal();
+     }
+
+     function updateGrandTotal() {
+         let total = 0;
+         document.querySelectorAll('.block-price').forEach(el => {
+             total += parseInt(el.textContent) || 0;
+         });
+         grandTotalSpan.textContent = total;
+     }
+
+     document.getElementById('add-block-btn').addEventListener('click', function() {
+         createNewBlock();
+     });
+
+     createNewBlock();
+ </script>
