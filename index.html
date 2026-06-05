@@ -113,78 +113,71 @@
 ВТОРОЙ КАЛЬКУЛЯТОР
 <div id="art-multicalc-widget" style="background: #2b2b2b; color: #fff; max-width: 500px; margin: 20px auto; border-radius: 16px; padding: 25px; font-family: system-ui, -apple-system, sans-serif; box-sizing: border-box;">
     
-    <!-- Группа 1: Персонажи -->
-    <div style="margin-bottom: 20px;">
-        <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Персонажи</span>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-            <button type="button" id="btn-chars-1" onclick="setCalcOption('chars', '1')" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">1 Персонаж</button>
-            <button type="button" id="btn-chars-2" onclick="setCalcOption('chars', '2')" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">2 Персонажа (x2)</button>
-            <button type="button" id="btn-chars-3" onclick="setCalcOption('chars', '3')" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">3+ Персонажа (x3)</button>
+    <!-- Конструктор -->
+    <div id="calc-constructor-block">
+        <!-- Группа 1: Персонажи -->
+        <div class="calc-group" style="margin-bottom: 20px;">
+            <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Персонажи</span>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                <button type="button" class="calc-btn group-chars" data-group="chars" data-val="1" onclick="selectParam(this)" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">1 Персонаж</button>
+                <button type="button" class="calc-btn group-chars" data-group="chars" data-val="2" onclick="selectParam(this)" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">2 Персонажа (x2)</button>
+                <button type="button" class="calc-btn" data-group="chars" data-val="3" onclick="selectParam(this)" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">3+ Персонажа (x3)</button>
+            </div>
         </div>
-    </div>
 
-    <!-- Группа 2: Рендер -->
-    <div style="margin-bottom: 20px;">
-        <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Рендер</span>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-            <button type="button" id="btn-render-sketch" onclick="setCalcOption('render', 'sketch')" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Чб/Моно скетч</button>
-            <button type="button" id="btn-render-simple" onclick="setCalcOption('render', 'simple')" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Простой рендер</button>
-            <button type="button" id="btn-render-hard" onclick="setCalcOption('render', 'hard')" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Сложный рендер</button>
+        <!-- Группа 2: Рендер -->
+        <div class="calc-group" style="margin-bottom: 20px;">
+            <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Рендер</span>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                <button type="button" class="calc-btn group-render" data-group="render" data-val="sketch" onclick="selectParam(this)" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Чб/Моно скетч</button>
+                <button type="button" class="calc-btn group-render" data-group="render" data-val="simple" onclick="selectParam(this)" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Простой рендер</button>
+                <button type="button" class="calc-btn group-render" data-group="render" data-val="hard" onclick="selectParam(this)" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Сложный рендер</button>
+            </div>
         </div>
-    </div>
 
-    <!-- Группа 3: Формат -->
-    <div style="margin-bottom: 20px;">
-        <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Формат</span>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-            <button type="button" id="btn-format-head" onclick="setCalcOption('format', 'head')" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Хед</button>
-            <button type="button" id="btn-format-half" onclick="setCalcOption('format', 'half')" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Халф</button>
-            <button type="button" id="btn-format-full" onclick="setCalcOption('format', 'full')" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Фулл</button>
+        <!-- Группа 3: Формат -->
+        <div class="calc-group" style="margin-bottom: 20px;">
+            <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Формат</span>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                <button type="button" class="calc-btn group-format" data-group="format" data-val="head" onclick="selectParam(this)" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Хед</button>
+                <button type="button" class="calc-btn group-format" data-group="format" data-val="half" onclick="selectParam(this)" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Халф</button>
+                <button type="button" class="calc-btn group-format" data-group="format" data-val="full" onclick="selectParam(this)" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Фулл</button>
+            </div>
         </div>
-    </div>
 
-    <!-- Группа 4: Фон -->
-    <div style="margin-bottom: 20px;">
-        <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Фон</span>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-            <button type="button" id="btn-bg-none" onclick="setCalcOption('bg', 'none')" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Без фона</button>
-            <button type="button" id="btn-bg-light" onclick="setCalcOption('bg', 'light')" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Лёгкий (+500)</button>
-            <button type="button" id="btn-bg-hard" onclick="setCalcOption('bg', 'hard')" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Сложный</button>
+        <!-- Группа 4: Фон -->
+        <div class="calc-group" style="margin-bottom: 25px;">
+            <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Фон</span>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                <button type="button" class="calc-btn group-bg" data-group="bg" data-val="none" onclick="selectParam(this)" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Без фона</button>
+                <button type="button" class="calc-btn group-bg" data-group="bg" data-val="light" onclick="selectParam(this)" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Лёгкий (+500)</button>
+                <button type="button" class="calc-btn group-bg" data-group="bg" data-val="hard" onclick="selectParam(this)" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Сложный</button>
+            </div>
         </div>
-    </div>
 
-    <!-- Группа 5: Оформление в виде тумблера (вкл/выкл) -->
-    <div style="margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 15px; border-radius: 12px;">
-        <span style="font-size: 14px; color: #fff; font-weight: bold; text-transform: uppercase;">Добавить оформление (+200р)</span>
-        <!-- Кликабельная область переключателя -->
-        <div onclick="toggleDesignSwitch()" style="position: relative; width: 50px; height: 26px; background-color: #3a3a3a; border-radius: 13px; cursor: pointer; transition: background-color 0.2s;" id="design-toggle-bg">
-            <div id="design-toggle-circle" style="position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; background-color: #fff; border-radius: 50%; transition: left 0.2s;"></div>
-        </div>
+        <button type="button" onclick="addItemToOrder()" style="display: block; width: 100%; background: #007bff; border: none; color: #fff; padding: 12px; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; text-align: center; box-shadow: 0 4px 10px rgba(0,123,255,0.2); outline: none;">
+            ＋ Добавить эту работу к заказу
+        </button>
     </div>
-
-    <!-- Кнопка добавления иллюстрации в список -->
-    <button type="button" onclick="addItemToBasket()" style="display: block; width: 100%; background: #007bff; border: none; color: #fff; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; transition: background 0.2s; text-align: center; box-shadow: 0 4px 10px rgba(0,123,255,0.2); outline: none;">
-        ＋ Добавить эту работу к заказу
-    </button>
 
     <!-- Список добавленных позиций -->
-    <div id="selected-list-box" style="margin-top: 25px; border-top: 1px solid #444; padding-top: 15px; display: none;">
+    <div id="selected-items-container" style="margin-top: 25px; border-top: 1px solid #444; padding-top: 15px; display: none;">
         <span style="font-size: 12px; color: #aaa; text-transform: uppercase; display: block; margin-bottom: 10px; font-weight: bold;">Состав текущего заказа:</span>
-        <div id="html-items-container"></div>
+        <div id="items-list"></div>
     </div>
 
-    <!-- Финальный блок стоимости и отправки -->
+    <!-- Общий итог -->
     <div style="font-size: 26px; font-weight: bold; margin-top: 25px; border-top: 1px solid #444; padding-top: 15px; text-align: center; color: #00d2ff;">
-        Общий итог: <span id="summary-price-text">0</span> руб.
+        Общий итог: <span id="calc-total-price">0</span> руб.
     </div>
 
-    <button type="button" onclick="submitFullOrder()" style="display: block; width: 100%; background: #28a745; border: none; color: #fff; padding: 15px; margin-top: 20px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.2s; text-align: center; box-shadow: 0 4px 15px rgba(40,167,69,0.3); outline: none;">
+    <button type="button" onclick="sendOrderToGoogle()" style="display: block; width: 100%; background: #28a745; border: none; color: #fff; padding: 15px; margin-top: 20px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; text-align: center; box-shadow: 0 4px 15px rgba(40,167,69,0.3); outline: none;">
         Оформить заказ через Google Форму
     </button>
 </div>
 
 <script>
-    // Базовые глобальные данные, которые видны браузеру в любой момент времени
+    // Глобальные переменные и матрицы данных (вынесены из DOMContentLoaded для 100% доступности)
     var priceMatrix = {
         sketch: { head: 450, half: 900, full: 1200 },
         simple: { head: 800, half: 2000, full: 2800 },
@@ -195,57 +188,65 @@
         chars: { "1": "1 персонаж", "2": "2 персонажа", "3": "3+ персонажа" },
         render: { "sketch": "Чб/Моно скетч", "simple": "Простой рендер", "hard": "Сложный рендер" },
         format: { "head": "Хед", "half": "Халф", "full": "Фулл" },
-        bg: { "none": "Без фона", "light": "Лёгкий фон", "hard": "Сложный фон" },
-        design: { "no": "Без оформления", "yes": "С оформлением" }
+        bg: { "none": "Без фона", "light": "Лёгкий фон", "hard": "Сложный фон" }
     };
 
-    // Текущий выбор пользователя в конструкторе
-    var currentSelection = { chars: "1", render: "sketch", format: "head", bg: "none", design: "no" };
-    var basket = [];
+    var currentSelection = { chars: "1", render: "sketch", format: "head", bg: "none" };
+    var savedItemsList = [];
 
-    // Эта функция переключает кнопки ИГНОРИРУЯ Cloudflare кэш
-    function setCalcOption(group, value) {
+    // Функция переключения параметров при клике на кнопки (вызывается напрямую через onclick)
+    function selectParam(buttonElement) {
+        var group = buttonElement.getAttribute("data-group");
+        var value = buttonElement.getAttribute("data-val");
+
+        // Обновляем текущий выбор
         currentSelection[group] = value;
 
-        // Находим все кнопки этой группы и сбрасываем их стиль
-        var allIds = {
-            chars: ["1", "2", "3"],
-            render: ["sketch", "simple", "hard"],
-            format: ["head", "half", "full"],
-            bg: ["none", "light", "hard"]
-        };
-
-        var currentGroupIds = allIds[group];
-        for (var i = 0; i < currentGroupIds.length; i++) {
-            var btnId = "btn-" + group + "-" + currentGroupIds[i];
-            var btnEl = document.getElementById(btnId);
-            if (btnEl) {
-                if (currentGroupIds[i] === value) {
-                    btnEl.style.backgroundColor = "#007bff";
-                    btnEl.style.borderColor = "#00d2ff";
+        // Переключаем стили кнопок в этой группе
+        var allButtons = document.getElementsByClassName("calc-btn");
+        for (var i = 0; i < allButtons.length; i++) {
+            if (allButtons[i].getAttribute("data-group") === group) {
+                if (allButtons[i] === buttonElement) {
+                    allButtons[i].style.backgroundColor = "#007bff";
+                    allButtons[i].style.borderColor = "#00d2ff";
                 } else {
-                    btnEl.style.backgroundColor = "#3a3a3a";
-                    btnEl.style.borderColor = "transparent";
+                    allButtons[i].style.backgroundColor = "#3a3a3a";
+                    allButtons[i].style.borderColor = "transparent";
                 }
             }
         }
     }
 
-    // Переключение тумблера Оформления (вкл/выкл)
-    function toggleDesignSwitch() {
-        var bg = document.getElementById("design-toggle-bg");
-        var circle = document.getElementById("design-toggle-circle");
-        
-        if (currentSelection.design === "no") {
-            currentSelection.design = "yes";
-            bg.style.backgroundColor = "#007bff";
-            circle.style.left = "27px";
-        } else {
-            currentSelection.design = "no";
-            bg.style.backgroundColor = "#3a3a3a";
-            circle.style.left = "3px";
-        }
+    // Подсчет отдельного элемента
+    function getSinglePrice(item) {
+        var base = priceMatrix[item.render][item.format];
+        var mult = (item.chars === "2") ? 2 : (item.chars === "3" ? 3 : 1);
+        var sub = base * mult;
+
+        var minBg = 0, maxBg = 0;
+        if (item.bg === "light") { minBg = 500; maxBg = 500; }
+        else if (item.bg === "hard") { minBg = 1000; maxBg = 3000; }
+
+        return {
+            min: sub + minBg,
+            max: sub + maxBg,
+            isRange: item.bg === "hard",
+            isPlus: item.chars === "3"
+        };
     }
 
-    // Сброс конструктора после добавления в корзину
-Используйте код с осторожностью.function resetInterfaceToDefault() { setCalcOption('chars', '1'); setCalcOption('render', 'sketch'); setCalcOption('format', 'head'); setCalcOption('bg', 'none');// Сброс тумблера в положение "выкл" currentSelection.design = "no"; document.getElementById("design-toggle-bg").style.backgroundColor = "#3a3a3a"; document.getElementById("design-toggle-circle").style.left = "3px"; }// Подсчет цены для одной позицииfunction getSingleItemData(item) {var base = priceMatrix[item.render][item.format];var multiplier = parseInt(item.chars);var subtotal = base * multiplier;if (item.design === "yes") {subtotal += (200 * multiplier);}var minBg = 0, maxBg = 0;if (item.bg === "light") { minBg = 500; maxBg = 500; }if (item.bg === "hard") { minBg = 1000; maxBg = 3000; }return {min: subtotal + minBg,max: subtotal + maxBg,isRange: item.bg === "hard",isPlus: item.chars === "3"};}// Обновление корзиныfunction updateBasketDisplay() {var listContainer = document.getElementById("html-items-container");var listBox = document.getElementById("selected-list-box");if (basket.length === 0) {listBox.style.display = "none";document.getElementById("summary-price-text").innerText = "0";return;}listBox.style.display = "block";listContainer.innerHTML = "";var finalMin = 0, finalMax = 0;var hasGlobalRange = false, hasGlobalPlus = false;for (var i = 0; i < basket.length; i++) {(function(idx) {var item = basket[idx];var calc = getSingleItemData(item);finalMin += calc.min;finalMax += calc.max;if (calc.isRange) hasGlobalRange = true;if (calc.isPlus) hasGlobalPlus = true;var txtPrice = calc.isRange ? (calc.min + "-" + calc.max) : calc.min;if (calc.isPlus) txtPrice += "+";var row = document.createElement("div");row.style.cssText = "display: flex; justify-content: space-between; align-items: center; background: #3a3a3a; padding: 10px 12px; border-radius: 8px; margin-bottom: 8px; font-size: 13px; line-height: 1.4;";var labelText = textLabels.chars[item.chars] + ", " + textLabels.render[item.render] + ", " + textLabels.format[item.format] + ", " + textLabels.bg[item.bg];if (item.design === "yes") labelText += ", " + textLabels.design[item.design];var leftSpan = document.createElement("span");leftSpan.innerText = labelText;var rightDiv = document.createElement("div");rightDiv.style.cssText = "display: flex; align-items: center; gap: 12px;";var priceSpan = document.createElement("span");priceSpan.style.cssText = "color: #00d2ff; font-weight: bold;";priceSpan.innerText = txtPrice + " р.";var delBtn = document.createElement("button");delBtn.type = "button";delBtn.innerHTML = "×";delBtn.style.cssText = "background: none; border: none; color: #ff4a4a; font-size: 18px; cursor: pointer; font-weight: bold; outline: none; padding: 0;";delBtn.onclick = function() {basket.splice(idx, 1);updateBasketDisplay();};rightDiv.appendChild(priceSpan); rightDiv.appendChild(delBtn); row.appendChild(leftSpan); row.appendChild(rightDiv); listContainer.appendChild(row); })(i); }var globalText = hasGlobalRange ? (finalMin + " - " + finalMax) : finalMin;if (hasGlobalPlus) globalText += "+";document.getElementById("summary-price-text").innerText = globalText;}// Функция кнопки "Добавить к заказу"function addItemToBasket() {basket.push({chars: currentSelection.chars,render: currentSelection.render,format: currentSelection.format,bg: currentSelection.bg,design: currentSelection.design});updateBasketDisplay();resetInterfaceToDefault();}// Функция кнопки отправки формыfunction submitFullOrder() {if (basket.length === 0) {alert("Пожалуйста, сначала добавьте хотя бы одну работу к заказу с помощью синей кнопки.");return;}вар линии = []; вар FinalMin = 0, FinalMax = 0; вар hasGlobalRange = ложь, hasGlobalPlus = ложь;for (var i = 0; i < basket.length; i++) { var item = basket[i]; var calc = getSingleItemData(item);FinalMin += Calc.min; FinalMax += Calc.max; если (calc.isRange) hasGlobalRange = true; если (calc.isPlus) hasGlobalPlus = true;вар itemPrice = Calc.isRange? (расч.мин + "-" + расч.макс): расч.мин; if (calc.isPlus) itemPrice += "+";lines.push(itemText + " (" + itemPrice + " руб.)"); }var totalText = hasGlobalRange ? (finalMin + " - " + finalMax) : finalMin;if (hasGlobalPlus) totalText += "+";var fullExportText = lines.join("\n") + "\nОбщая стоимость заказа: " + totalText + " руб.";var temp = document.createElement("textarea");temp.value = fullExportText;document.body.appendChild(temp);temp.select();document.execCommand("copy");document.body.removeChild(temp);alert("Параметры комплексного заказа скопированы в буфер обмена!\n\nВставьте их в Google Форму."); window.open("google.com", "_blank"); }
+    // Обновление списка и итоговой стоимости
+    function refreshSummary() {
+        var listDiv = document.getElementById("items-list");
+        var containerDiv = document.getElementById("selected-items-container");
+        var totalSpan = document.getElementById("calc-total-price");
+
+        if (!listDiv || !containerDiv || !totalSpan) return;
+
+        if (savedItemsList.length === 0) {
+            containerDiv.style.display = "none";
+            totalSpan.innerText = "0";
+            return;
+        }
+
+Используйте код с осторожностью.containerDiv.style.display = "block"; listDiv.innerHTML = "";вар TotalMin = 0, TotalMax = 0; вар TotalRange = ложь, TotalPlus = ложь;for (var i = 0; i < savedItemsList.length; i++) { var item = savedItemsList[i]; var p = getSinglePrice(item);TotalMin += p.min; TotalMax += p.max; если (p.isRange) totalRange = true; если (p.isPlus) totalPlus = true;var pText = p.isRange ? (p.min + "-" + p.max) : p.min;if (p.isPlus) pText += "+";var row = document.createElement("div");row.style.cssText = "display: flex; justify-content: space-between; align-items: center; background: #3a3a3a; padding: 10px 12px; border-radius: 8px; margin-bottom: 8px; font-size: 13px; line-height: 1.4;";var textSpan = document.createElement("span");textSpan.style.maxWidth = "80%";textSpan.innerText = textLabels.chars[item.chars] + ", " + textLabels.render[item.render] + ", " + textLabels.format[item.format] + ", " + textLabels.bg[item.bg];var rightBox = document.createElement("div");rightBox.style.cssText = "display: flex; align-items: center; gap: 12px;";var priceSpan = document.createElement("span");priceSpan.style.cssText = "color: #00d2ff; font-weight: bold;";priceSpan.innerText = pText + " р.";var delBtn = document.createElement("button");delBtn.type = "button";delBtn.innerHTML = "×";delBtn.style.cssText = "background: none; border: none; color: #ff4a4a; font-size: 18px; cursor: pointer; padding: 0 4px; font-weight: bold; outline: none;";delBtn.setAttribute("onclick", "removeItemFromOrder(" + i + ")");rightBox.appendChild(priceSpan);rightBox.appendChild(delBtn);row.appendChild(textSpan);row.appendChild(rightBox);listDiv.appendChild(row);}var finalSummaryText = totalRange ? (totalMin + " - " + totalMax) : totalMin;if (totalPlus) finalSummaryText += "+";totalSpan.innerText = finalSummaryText;}// Добавление в корзинуfunction addItemToOrder() {savedItemsList.push({chars: currentSelection.chars,render: currentSelection.render,format: currentSelection.format,bg: currentSelection.bg});refreshSummary();// Мягкий сброс кнопок к исходнымcurrentSelection = { chars: "1", render: "sketch", format: "head", bg: "none" };var btns = document.getElementsByClassName("calc-btn");for (var i = 0; i < btns.length; i++) {var g = btns[i].getAttribute("data-group");var v = btns[i].getAttribute("data-val");if ((g === "chars" && v === "1") || (g === "render" && v === "sketch") ||(g === "format" && v === "head") || (g === "bg" && v === "none")) {btns[i].style.backgroundColor = "#007bff";btns[i].style.borderColor = "#00d2ff";} else {btns[i].style.backgroundColor = "#3a3a3a";btns[i].style.borderColor = "transparent";}}}// Удаление из корзиныfunction removeItemFromOrder(idx) {savedItemsList.splice(idx, 1);refreshSummary();}// Отправка и копированиеfunction sendOrderToGoogle() {if (savedItemsList.length === 0) {alert("Пожалуйста, сначала настройте параметры и добавьте хотя бы одну работу в заказ.");return;}var lines = [];var totalMin = 0, totalMax = 0;var totalRange = false, totalPlus = false;for (var i = 0; i < savedItemsList.length; i++) {var item = savedItemsList[i];var p = getSinglePrice(item);totalMin += p.min;totalMax += p.max;if (p.isRange) totalRange = true;if (p.isPlus) totalPlus = true;var pText = p.isRange ? (p.min + "-" + p.max) : p.min;if (p.isPlus) pText += "+";lines.push(textLabels.chars[item.chars] + ", " + textLabels.render[item.render] + ", " + textLabels.format[item.format] + ", " + textLabels.bg[item.bg] + " (" + pText + " руб.)");}var finalPriceText = totalRange ? (totalMin + " - " + totalMax) : totalMin;if (totalPlus) finalPriceText += "+";var finalClipboardText = lines.join("\n") + "\nОбщая стоимость заказа: " + finalPriceText + " руб.";var el = document.createElement("textarea");el.value = finalClipboardText;document.body.appendChild(el);el.select();document.execCommand("copy");document.body.removeChild(el);alert("Параметры вашего заказа успешно скопированы в буфер обмена!\n\nТеперь вставьте их в поле Google Формы.");window.open("google.com", "_blank");}
