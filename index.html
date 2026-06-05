@@ -483,241 +483,7 @@
 </body>
 </html>
 
-второй калькулятор
-<h2>Калькулятор стоимости</h2>
-<div id="calculator-list"></div>
-<div class="action-buttons">
-    <button class="btn" id="add-block-btn">+ Добавить еще</button>
-</div>
-<div class="final-summary">
-    Общая сумма: <span id="grand-total">0</span> руб.
-</div>
-
-<script>
-    const priceList = {
-        sketch: { head: 450, half: 900, full: 1200 },
-        simple: { head: 800, half: 2000, full: 2800 },
-        hard:   { head: 1300, half: 2800, full: 4200 }
-    };
-
-    const calculatorList = document.getElementById('calculator-list');
-    const grandTotalSpan = document.getElementById('grand-total');
-    let blockCounter = 0;
-
-    function createNewBlock() {
-        blockCounter++;
-        const blockId = blockCounter;
-        
-        const block = document.createElement('div');
-        block.className = 'calculator-block';
-        block.innerHTML = `
-            <button class="remove-btn" title="Удалить этот заказ" onclick="removeBlock(this)">&times;</button>
-            
-            <div class="section">
-                <div class="section-title">Персонажи</div>
-                <div class="options-grid">
-                    <label class="option-label"><input type="radio" name="chars-${blockId}" value="1" checked> 1</label>
-                    <label class="option-label"><input type="radio" name="chars-${blockId}" value="2"> 2 (x2 к цене)</label>
-                    <label class="option-label"><input type="radio" name="chars-${blockId}" value="custom"> Свой вариант</label>
-                </div>
-                <div class="custom-count-wrapper" style="display: none;">
-                    <input type="number" class="custom-count-input" value="3" min="1" placeholder="Введите количество персонажей">
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-title">Формат</div>
-                <div class="options-grid">
-                    <label class="option-label"><input type="radio" name="format-${blockId}" value="head" checked> Хед</label>
-                    <label class="option-label"><input type="radio" name="format-${blockId}" value="half"> Халф</label>
-                    <label class="option-label"><input type="radio" name="format-${blockId}" value="full"> Полнорост</label>
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-title">Рендер</div>
-                <div class="options-grid">
-                    <label class="option-label"><input type="radio" name="render-${blockId}" value="sketch" checked> Скетч/МОНО цвет</label>
-                    <label class="option-label"><input type="radio" name="render-${blockId}" value="simple"> Простой рендер</label>
-                    <label class="option-label"><input type="radio" name="render-${blockId}" value="hard"> Сложный рендер</label>
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-title">Фон</div>
-                <div class="options-grid">
-                    <label class="option-label"><input type="radio" name="background-${blockId}" value="abstract" checked> Абстрактный (бесплатно)</label>
-                    <label class="option-label"><input type="radio" name="background-${blockId}" value="simple"> Простой (+500р.)</label>
-                    <label class="option-label"><input type="radio" name="background-${blockId}" value="hard"> Сложный (+1500-4500р.)</label>
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-title">Скидка</div>
-                <div class="options-grid">
-                    <label class="option-label"><input type="radio" name="discount-${blockId}" value="0" checked> Без скидки</label>
-                    <label class="option-label"><input type="radio" name="discount-${blockId}" value="15"> 15% (заказ с сайта)</label>
-                    <label class="option-label"><input type="radio" name="discount-${blockId}" value="20"> 20% (за отзыв)</label>
-                    <label class="option-label"><input type="radio" name="discount-${blockId}" value="30"> 30% (за подписку)</label>
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-title">Другие опции</div>
-                <div class="options-grid">
-                    <label class="option-label"><input type="checkbox" name="chibi-${blockId}" value="chibi"> Чиби (цена / 2)</label>
-                    <label class="option-label"><input type="checkbox" name="design-${blockId}" value="design"> Оформление (+200)</label>
-                </div>
-            </div>
-
-            <div class="block-total">
-                Стоимость: <span class="block-price" data-min="0" data-max="0">0</span> руб.
-            </div>
-        `;
-
-        block.addEventListener('input', () => calculateBlock(block, blockId));
-        block.addEventListener('change', () => calculateBlock(block, blockId));
-        
-        const charsRadios = block.querySelectorAll(`input[name="chars-${blockId}"]`);
-        const customWrapper = block.querySelector('.custom-count-wrapper');
-        const customInput = block.querySelector('.custom-count-input');
-
-        charsRadios.forEach(radio => {
-            radio.addEventListener('change', (e) => {
-                customWrapper.style.display = (e.target.value === 'custom') ? 'block' : 'none';
-                calculateBlock(block, blockId);
-            });
-        });
-
-        customInput.addEventListener('input', () => calculateBlock(block, blockId));
-
-        calculatorList.appendChild(block);
-        toggleRemoveButtons();
-        calculateBlock(block, blockId);
-        updateFrameHeight();
-    }
-
-    function removeBlock(button) {
-        button.closest('.calculator-block').remove();
-        toggleRemoveButtons();
-        updateGrandTotal();
-        updateFrameHeight();
-    }
-
-    function toggleRemoveButtons() {
-        const blocks = calculatorList.querySelectorAll('.calculator-block');
-        blocks.forEach(block => {
-            const removeBtn = block.querySelector('.remove-btn');
-            if (removeBtn) {
-                removeBtn.style.display = blocks.length === 1 ? 'none' : 'block';
-            }
-        });
-    }
-
-    function calculateBlock(block, blockId) {
-        const renderType = block.querySelector(`input[name="render-${blockId}"]:checked`).value;
-        const format = block.querySelector(`input[name="format-${blockId}"]:checked`).value;
-        const chars = block.querySelector(`input[name="chars-${blockId}"]:checked`).value;
-        const background = block.querySelector(`input[name="background-${blockId}"]:checked`).value;
-        const discountPercent = parseInt(block.querySelector(`input[name="discount-${blockId}"]:checked`).value) || 0;
-        const chibi = block.querySelector(`input[name="chibi-${blockId}"]`).checked;
-        const design = block.querySelector(`input[name="design-${blockId}"]`).checked;
-
-        // Базовая цена
-        let basePrice = priceList[renderType][format];
-
-        // 1. Умножаем цену персонажей без фона
-        let charMultiplier = 1;
-        if (chars === '2') {
-            charMultiplier = 2;
-        } else if (chars === 'custom') {
-            const customCount = block.querySelector('.custom-count-input').value;
-            charMultiplier = parseInt(customCount) || 1;
-            if (charMultiplier < 1) charMultiplier = 1;
-        }
-        basePrice *= charMultiplier;
-
-        // 2. Делим на 2, если Чиби
-        if (chibi) {
-            basePrice /= 2;
-        }
-
-        // 3. Добавляем оформление
-        if (design) {
-            basePrice += 200;
-        }
-
-        // 4. Считаем цену с учетом фона (до скидки)
-        let minBg = 0;
-        let maxBg = 0;
-
-        if (background === 'simple') {
-            minBg = 500;
-            maxBg = 500;
-        } else if (background === 'hard') {
-            minBg = 1500;
-            maxBg = 4500;
-        }
-
-        let totalBeforeDiscountMin = basePrice + minBg;
-        let totalBeforeDiscountMax = basePrice + maxBg;
-
-        // 5. Вариант А: Применяем скидку ко всей сумме карточки целиком
-        let finalBlockMin = totalBeforeDiscountMin * (1 - discountPercent / 100);
-        let finalBlockMax = totalBeforeDiscountMax * (1 - discountPercent / 100);
-
-        // Округляем до целых чисел
-        finalBlockMin = Math.round(finalBlockMin);
-        finalBlockMax = Math.round(finalBlockMax);
-
-        const priceSpan = block.querySelector('.block-price');
-        priceSpan.setAttribute('data-min', finalBlockMin);
-        priceSpan.setAttribute('data-max', finalBlockMax);
-
-        if (minBg !== maxBg) {
-            priceSpan.textContent = finalBlockMin + '-' + finalBlockMax;
-        } else {
-            priceSpan.textContent = finalBlockMin;
-        }
-
-        updateGrandTotal();
-    }
-
-    function updateGrandTotal() {
-        let grandMin = 0;
-        let grandMax = 0;
-        
-        document.querySelectorAll('.block-price').forEach(el => {
-            grandMin += parseInt(el.getAttribute('data-min')) || 0;
-            grandMax += parseInt(el.getAttribute('data-max')) || 0;
-        });
-        
-        if (grandMin !== grandMax) {
-            grandTotalSpan.textContent = grandMin + '-' + grandMax;
-        } else {
-            grandTotalSpan.textContent = grandMin;
-        }
-    }
-
-    function updateFrameHeight() {
-        if (window.parent && window.parent.postMessage) {
-            window.parent.postMessage({ frameHeight: document.body.scrollHeight }, '*');
-        }
-    }
-
-    function openLightbox(src) {
-        console.log('Opening lightbox with:', src);
-    }
-
-    document.getElementById('add-block-btn').addEventListener('click', function() {
-        createNewBlock();
-    });
-
-    createNewBlock();
-</script>
-
-третий 💕
-<h2>Калькулятор стоимости</h2>
+  <h2>Калькулятор стоимости</h2>
             <div id="calculator-list"></div>
             <div class="action-buttons">
                 <button class="btn" id="add-block-btn">+ Добавить еще</button>
@@ -755,7 +521,7 @@
                         <label class="option-label"><input type="radio" name="chars-${blockId}" value="2"> 2 (x2 к цене)</label>
                         <label class="option-label"><input type="radio" name="chars-${blockId}" value="custom"> Свой вариант</label>
                     </div>
-                    <div class="custom-count-wrapper" style="display: none;">
+                    <div class="custom-count-wrapper">
                         <input type="number" class="custom-count-input" value="3" min="1" placeholder="Введите количество персонажей">
                     </div>
                 </div>
@@ -787,17 +553,6 @@
                     </div>
                 </div>
 
-                <!-- ДОБАВЛЕННЫЙ БЛОК СКИДОК -->
-                <div class="section">
-                    <div class="section-title">Скидка</div>
-                    <div class="options-grid">
-                        <label class="option-label"><input type="radio" name="discount-${blockId}" value="0" checked> Без скидки</label>
-                        <label class="option-label"><input type="radio" name="discount-${blockId}" value="15"> 15% (заказ с сайта)</label>
-                        <label class="option-label"><input type="radio" name="discount-${blockId}" value="20"> 20% (за отзыв)</label>
-                        <label class="option-label"><input type="radio" name="discount-${blockId}" value="30"> 30% (за подписку)</label>
-                    </div>
-                </div>
-
                 <div class="section">
                     <div class="section-title">Другие опции</div>
                     <div class="options-grid">
@@ -815,11 +570,6 @@
             
             const charsRadios = block.querySelectorAll(`input[name="chars-${blockId}"]`);
             const customWrapper = block.querySelector('.custom-count-wrapper');
-            
-            // Добавлен слушатель для моментального пересчета при вводе своей цифры персонажей
-            const customInput = block.querySelector('.custom-count-input');
-            customInput.addEventListener('input', () => calculateBlock(block, blockId));
-
             charsRadios.forEach(radio => {
                 radio.addEventListener('change', (e) => {
                     customWrapper.style.display = (e.target.value === 'custom') ? 'block' : 'none';
@@ -833,7 +583,7 @@
 
         function removeBlock(event) {
             event.preventDefault();
-            event.target.closest('.calculator-block').remove();
+            event.currentTarget.closest('.calculator-block').remove();
             updateGrandTotal();
         }
 
@@ -844,9 +594,6 @@
             const background = block.querySelector(`input[name="background-${blockId}"]:checked`).value;
             const chibi = block.querySelector(`input[name="chibi-${blockId}"]`).checked;
             const design = block.querySelector(`input[name="design-${blockId}"]`).checked;
-            
-            // Получаем выбранный процент скидки
-            const discountPercent = parseInt(block.querySelector(`input[name="discount-${blockId}"]:checked`).value) || 0;
 
             let basePrice = priceList[renderType][format];
 
@@ -866,25 +613,19 @@
                 priceWithoutBg += 200;
             }
 
-            // РАСЧЕТ ИТОГОВОЙ СТОИМОСТИ КАРТОЧКИ С УЧЕТОМ СКИДКИ (Вариант А)
+            let bgPrice = 0;
             let priceDisplay = '';
             
             if (background === 'simple') {
-                let total = priceWithoutBg + 500;
-                total = total * (1 - discountPercent / 100); // Применяем скидку
-                priceDisplay = Math.round(total);
+                bgPrice = 500;
+                priceDisplay = (priceWithoutBg + bgPrice);
             } else if (background === 'hard') {
-                let minTotal = priceWithoutBg + 1500;
-                let maxTotal = priceWithoutBg + 4500;
-                
-                minTotal = minTotal * (1 - discountPercent / 100); // Применяем скидку к минимуму
-                maxTotal = maxTotal * (1 - discountPercent / 100); // Применяем скидку к максимуму
-                
-                priceDisplay = Math.round(minTotal) + '-' + Math.round(maxTotal);
+                bgPrice = 1500;
+                const minPrice = priceWithoutBg + 1500;
+                const maxPrice = priceWithoutBg + 4500;
+                priceDisplay = minPrice + '-' + maxPrice;
             } else {
-                let total = priceWithoutBg;
-                total = total * (1 - discountPercent / 100); // Применяем скидку
-                priceDisplay = Math.round(total);
+                priceDisplay = priceWithoutBg;
             }
 
             block.querySelector('.block-price').textContent = priceDisplay;
@@ -898,6 +639,7 @@
             
             document.querySelectorAll('.block-price').forEach(el => {
                 const text = el.textContent;
+                // Если это диапазон (содержит "-"), берём минимальное и максимальное значение
                 if (text.includes('-')) {
                     const parts = text.split('-');
                     const min = parseInt(parts[0]);
@@ -912,6 +654,7 @@
                 }
             });
             
+            // Отображаем диапазон, если есть хотя бы один, иначе просто число
             if (hasRange && minTotal !== maxTotal) {
                 grandTotalSpan.textContent = minTotal + '-' + maxTotal;
             } else {
@@ -923,4 +666,11 @@
             console.log('Opening lightbox with:', src);
         }
 
+        document.getElementById('add-block-btn').addEventListener('click', function() {
+            createNewBlock();
+        });
 
+        createNewBlock();
+    </script>
+</body>
+</html>
