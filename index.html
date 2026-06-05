@@ -203,12 +203,6 @@
             margin-bottom: 8px;
         }
 
-        .hard-bg-price-input {
-            width: 100%;
-            margin-bottom: 8px;
-            accent-color: var(--main-color);
-        }
-
         .hard-bg-price-display {
             font-weight: bold;
             color: var(--main-color);
@@ -382,12 +376,7 @@
                         <label class="option-label"><input type="radio" name="background-${blockId}" value="none" checked> Без фона</label>
                         <label class="option-label"><input type="radio" name="background-${blockId}" value="abstract"> Абстрактный (бесплатно)</label>
                         <label class="option-label"><input type="radio" name="background-${blockId}" value="simple"> Простой (+500р.)</label>
-                        <label class="option-label"><input type="radio" name="background-${blockId}" value="hard"> Сложный (+1000-3000р.)</label>
-                    </div>
-                    <div class="hard-bg-wrapper" style="display: none;">
-                        <label for="hard-bg-price-${blockId}">Стоимость фона:</label>
-                        <input type="range" id="hard-bg-price-${blockId}" class="hard-bg-price-input" min="1000" max="3000" value="1000" step="100">
-                        <span class="hard-bg-price-display">1000</span> руб.
+                        <label class="option-label"><input type="radio" name="background-${blockId}" value="hard"> Сложный (+1500-4500р.)</label>
                     </div>
                 </div>
 
@@ -416,24 +405,12 @@
             });
 
             const bgRadios = block.querySelectorAll(`input[name="background-${blockId}"]`);
-            const hardBgWrapper = block.querySelector('.hard-bg-wrapper');
-            const hardBgInput = block.querySelector(`#hard-bg-price-${blockId}`);
-            const hardBgDisplay = block.querySelector('.hard-bg-price-display');
             
             bgRadios.forEach(radio => {
                 radio.addEventListener('change', (e) => {
-                    const isHardBg = e.target.value === 'hard';
-                    hardBgWrapper.style.display = isHardBg ? 'block' : 'none';
                     calculateBlock(block, blockId);
                 });
             });
-
-            if (hardBgInput) {
-                hardBgInput.addEventListener('input', (e) => {
-                    hardBgDisplay.textContent = e.target.value;
-                    calculateBlock(block, blockId);
-                });
-            }
 
             calculatorList.appendChild(block);
             calculateBlock(block, blockId);
@@ -475,8 +452,7 @@
             if (background === 'simple') {
                 bgPrice = 500;
             } else if (background === 'hard') {
-                const hardBgInput = block.querySelector(`#hard-bg-price-${blockId}`);
-                bgPrice = hardBgInput ? parseInt(hardBgInput.value) : 1000;
+                bgPrice = 1500;
             }
 
             const totalPrice = priceWithoutBg + bgPrice;
