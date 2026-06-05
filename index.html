@@ -303,7 +303,6 @@
 <div class="section discount-section" style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.2);">
     <div class="section-title" style="font-weight: bold; margin-bottom: 10px; color: #fff;">Скидка:</div>
     <div class="options-grid" id="discount-group" style="display: flex; gap: 15px; flex-wrap: wrap;">
-        <label class="option-label" style="color: #fff; cursor: pointer;"><input type="radio" name="discount-option" value="0" checked> Ноль процентов</label>
         <label class="option-label" style="color: #fff; cursor: pointer;"><input type="radio" name="discount-option" value="10"> Заказ с сайта (10%)</label>
         <label class="option-label" style="color: #fff; cursor: pointer;"><input type="radio" name="discount-option" value="20"> За отзыв (20%)</label>
         <label class="option-label" style="color: #fff; cursor: pointer;"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
@@ -491,7 +490,40 @@
             createNewBlock();
         });
 
-        createNewBlock();
+        createNewBlock();// --- Автономный блок скидок (не меняет ваш исходный код) ---
+document.getElementById('discount-group').addEventListener('change', applyDiscountToTotal);
+
+// Встраиваемся в ваш стандартный пересчет, чтобы скидка работала при кликах на калькулятор
+const originalUpdateGrandTotal = updateGrandTotal;
+updateGrandTotal = function() {
+    originalUpdateGrandTotal(); 
+    applyDiscountToTotal();     
+};
+
+function applyDiscountToTotal() {
+    // Получаем значение выбранной радио-кнопки
+    const selectedRadio = document.querySelector('input[name="discount-option"]:checked');
+    const discountValue = selectedRadio ? parseInt(selectedRadio.value) : 0;
+
+    if (discountValue === 0) return; // Если выбрано 0%, оставляем базовую цену
+
+    const totalSpan = document.getElementById('grand-total');
+    const currentText = totalSpan.textContent;
+
+    if (currentText.includes('-')) {
+        // Исправленный расчет для сложного фона (диапазона цен)
+        const parts = currentText.split('-');
+        const min = Math.round(parseInt(parts[0]) * (1 - discountValue / 100));
+        const max = Math.round(parseInt(parts[1]) * (1 - discountValue / 100));
+        totalSpan.textContent = min + '-' + max;
+    } else {
+        // Расчет для обычной фиксированной цены
+        const normalPrice = parseInt(currentText) || 0;
+        totalSpan.textContent = Math.round(normalPrice * (1 - discountValue / 100));
+    }
+}
+// -----------------------------------------------------------
+
     </script>
 </body>
 </html>
