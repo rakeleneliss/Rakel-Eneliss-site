@@ -109,8 +109,8 @@
             </div>
         </div>
     </section>
-
-                    <div id="art-calc-widget" style="background: #2b2b2b; color: #fff; max-width: 500px; margin: 20px auto; border-radius: 16px; padding: 25px; font-family: system-ui, -apple-system, sans-serif; box-sizing: border-box;">
+КАЛЬКУЛЯТОР
+                 <div id="art-calc-widget" style="background: #2b2b2b; color: #fff; max-width: 500px; margin: 20px auto; border-radius: 16px; padding: 25px; font-family: system-ui, -apple-system, sans-serif; box-sizing: border-box;">
     
     <!-- Группа 1: Персонажи -->
     <div class="calc-group" style="margin-bottom: 20px;">
@@ -156,7 +156,6 @@
         Итого: <span id="calc-price-num">450</span> руб.
     </div>
 
-    <!-- Кнопка оформления заказа -->
     <button type="button" id="submit-order-btn" style="display: block; width: 100%; background: #28a745; border: none; color: #fff; padding: 15px; margin-top: 20px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.2s; text-align: center; box-shadow: 0 4px 15px rgba(40,167,69,0.3);">
         Оформить заказ через Google Форму
     </button>
@@ -170,7 +169,6 @@
             hard: { head: 1300, half: 2800, full: 4200 }
         };
 
-        // Текстовые названия для сборки строки заказа
         var textLabels = {
             chars: { "1": "1 персонаж", "2": "2 персонажа", "3": "3+ персонажа" },
             render: { "sketch": "Чб/Моно скетч", "simple": "Простой рендер", "hard": "Сложный рендер" },
@@ -180,9 +178,8 @@
 
         var current = { chars: "1", render: "sketch", format: "head", bg: "none" };
         var buttons = document.getElementsByClassName("calc-btn");
-        var resultText = "450";
 
-        function calculatePrice() {
+        function getPriceString() {
             var basePrice = priceMatrix[current.render][current.format];
             var charMultiplier = (current.chars === "2") ? 2 : (current.chars === "3" ? 3 : 1);
             var subtotal = basePrice * charMultiplier;
@@ -194,19 +191,23 @@
             var finalMin = subtotal + minBg;
             var finalMax = subtotal + maxBg;
 
+            var str = "";
             if (current.bg === "hard") {
-                resultText = finalMin + " - " + finalMax;
+                str = finalMin + " - " + finalMax;
             } else {
-                resultText = finalMin;
+                str = finalMin;
             }
 
             if (current.chars === "3") {
-                resultText += "+";
+                str += "+";
             }
+            return str;
+        }
 
+        function calculatePrice() {
             var priceDisplay = document.getElementById("calc-price-num");
             if (priceDisplay) {
-                priceDisplay.innerText = resultText;
+                priceDisplay.innerText = getPriceString();
             }
         }
 
@@ -231,17 +232,15 @@
             });
         }
 
-        // Логика кнопки заказа
         var orderBtn = document.getElementById("submit-order-btn");
         if (orderBtn) {
             orderBtn.addEventListener("click", function() {
-                // Формируем красивую строчку с конфигурацией заказа
+                var currentPrice = getPriceString();
                 var orderDetails = "Заказ: " + textLabels.chars[current.chars] + ", " + 
                                    textLabels.render[current.render] + ", " + 
                                    textLabels.format[current.format] + ", " + 
-                                   textLabels.bg[current.bg] + ". Примерная цена: " + resultText + " руб.";
+                                   textLabels.bg[current.bg] + ". Примерная цена: " + currentPrice + " руб.";
 
-                // Автоматически копируем эти параметры в буфер обмена клиента
                 var tempTextArea = document.createElement("textarea");
                 tempTextArea.value = orderDetails;
                 document.body.appendChild(tempTextArea);
@@ -250,5 +249,10 @@
                 document.body.removeChild(tempTextArea);
 
                 alert("Параметры расчета скопированы в буфер обмена!\n\nВставьте их в соответствующее поле Google Формы.");
+                window.open("https://google.com", "_blank");
+            });
+        }
 
-Используйте код с осторожностью.// Сюда вставьте ссылку на вашу готовую Google Форму вместо знака #window.open("google.com", "_blank");});}calculatePrice();});
+        calculatePrice();
+    });
+</script>
