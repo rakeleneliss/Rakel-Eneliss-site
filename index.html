@@ -523,6 +523,81 @@ function applyDiscountToTotal() {
     }
 }
 // -----------------------------------------------------------
+                // Дописываем вашу последнюю команду калькулятора, которая оборвалась:
+        createNewBlock();
+    </script>
+
+    <!-- БЛОК СКИДОК: Вставляется прямо сюда, в самый конец файла -->
+    <script>
+        // 1. Создаем и вставляем блок скидок на страницу программно перед "Общая сумма"
+        const grandTotalWrapper = document.getElementById('grand-total').parentNode;
+        const discountDiv = document.createElement('div');
+        discountDiv.className = 'section discount-section';
+        discountDiv.style.cssText = 'margin-top: 15px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.2);';
+        discountDiv.innerHTML = `
+            <div class="section-title" style="font-weight: bold; margin-bottom: 10px; color: #fff;">Скидка:</div>
+            <div class="options-grid" id="discount-group" style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <label class="option-label" style="color: #fff; cursor: pointer;"><input type="radio" name="discount-option" value="10"> Заказ с сайта (-10%)</label>
+                <label class="option-label" style="color: #fff; cursor: pointer;"><input type="radio" name="discount-option" value="20"> За отзыв (-20%)</label>
+                <label class="option-label" style="color: #fff; cursor: pointer;"><input type="radio" name="discount-option" value="30"> За подписку (-30%)</label>
+            </div>
+        `;
+        grandTotalWrapper.parentNode.insertBefore(discountDiv, grandTotalWrapper);
+
+        // 2. Логика работы скидок (отжатие кнопок и уменьшение цены)
+        let lastCheckedRadio = null;
+
+        document.querySelectorAll('input[name="discount-option"]').forEach(radio => {
+            radio.addEventListener('click', function() {
+                if (lastCheckedRadio === this) {
+                    this.checked = false;
+                    lastCheckedRadio = null;
+                } else {
+                    lastCheckedRadio = this;
+                }
+                applyDiscountToTotal();
+            });
+        });
+
+        // Каждые 100 миллисекунд проверяем цену, чтобы подстроить скидку под ваш калькулятор
+        setInterval(applyDiscountToTotal, 100);
+
+        function applyDiscountToTotal() {
+            const selectedRadio = document.querySelector('input[name="discount-option"]:checked');
+            const discountValue = selectedRadio ? parseInt(selectedRadio.value) : 0;
+            const totalSpan = document.getElementById('grand-total');
+            if (!totalSpan) return;
+
+            // Запоминаем чистую цену калькулятора без скидки
+            if (!totalSpan.hasAttribute('data-original')) {
+                totalSpan.setAttribute('data-original', totalSpan.textContent);
+            }
+            const currentText = totalSpan.textContent;
+            if (!currentText.includes('%') && currentText !== totalSpan.getAttribute('data-original')) {
+                totalSpan.setAttribute('data-original', currentText);
+            }
+
+            const originalPriceText = totalSpan.getAttribute('data-original') || "0";
+
+            if (discountValue === 0) {
+                totalSpan.textContent = originalPriceText;
+                return;
+            }
+
+            // Рассчитываем стоимость минус процент скидки
+            if (originalPriceText.includes('-')) {
+                const parts = originalPriceText.split('-');
+                const min = Math.round(parseInt(parts[0]) * (1 - discountValue / 100));
+                const max = Math.round(parseInt(parts[1]) * (1 - discountValue / 100));
+                totalSpan.textContent = min + '-' + max + ' (со скидкой -' + discountValue + '%)';
+            } else {
+                const normalPrice = parseInt(originalPriceText) || 0;
+                const discounted = Math.round(normalPrice * (1 - discountValue / 100));
+                totalSpan.textContent = discounted + ' (со скидкой -' + discountValue + '%)';
+            }
+        }
+    </script>
+
 
     </script>
 </body>
