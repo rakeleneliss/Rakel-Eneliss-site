@@ -715,3 +715,212 @@
 
     createNewBlock();
 </script>
+
+третий 💕
+<h2>Калькулятор стоимости</h2>
+            <div id="calculator-list"></div>
+            <div class="action-buttons">
+                <button class="btn" id="add-block-btn">+ Добавить еще</button>
+            </div>
+            <div class="final-summary">
+                Общая сумма: <span id="grand-total">0</span> руб.
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const priceList = {
+            sketch: { head: 450, half: 900, full: 1200 },
+            simple: { head: 800, half: 2000, full: 2800 },
+            hard:   { head: 1300, half: 2800, full: 4200 }
+        };
+
+        const calculatorList = document.getElementById('calculator-list');
+        const grandTotalSpan = document.getElementById('grand-total');
+        let blockCounter = 0;
+
+        function createNewBlock() {
+            blockCounter++;
+            const blockId = blockCounter;
+            
+            const block = document.createElement('div');
+            block.className = 'calculator-block';
+            block.innerHTML = `
+                <button class="remove-btn" title="Удалить этот заказ" onclick="removeBlock(event)">&times;</button>
+                
+                <div class="section">
+                    <div class="section-title">Персонажи</div>
+                    <div class="options-grid">
+                        <label class="option-label"><input type="radio" name="chars-${blockId}" value="1" checked> 1</label>
+                        <label class="option-label"><input type="radio" name="chars-${blockId}" value="2"> 2 (x2 к цене)</label>
+                        <label class="option-label"><input type="radio" name="chars-${blockId}" value="custom"> Свой вариант</label>
+                    </div>
+                    <div class="custom-count-wrapper" style="display: none;">
+                        <input type="number" class="custom-count-input" value="3" min="1" placeholder="Введите количество персонажей">
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Формат</div>
+                    <div class="options-grid">
+                        <label class="option-label"><input type="radio" name="format-${blockId}" value="head" checked> Хед</label>
+                        <label class="option-label"><input type="radio" name="format-${blockId}" value="half"> Халф</label>
+                        <label class="option-label"><input type="radio" name="format-${blockId}" value="full"> Полнорост</label>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Рендер</div>
+                    <div class="options-grid">
+                        <label class="option-label"><input type="radio" name="render-${blockId}" value="sketch" checked> Скетч/МОНО цвет</label>
+                        <label class="option-label"><input type="radio" name="render-${blockId}" value="simple"> Простой рендер</label>
+                        <label class="option-label"><input type="radio" name="render-${blockId}" value="hard"> Сложный рендер</label>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Фон</div>
+                    <div class="options-grid">
+                        <label class="option-label"><input type="radio" name="background-${blockId}" value="abstract" checked> Абстрактный (бесплатно)</label>
+                        <label class="option-label"><input type="radio" name="background-${blockId}" value="simple"> Простой (+500р.)</label>
+                        <label class="option-label"><input type="radio" name="background-${blockId}" value="hard"> Сложный (+1500-4500р.)</label>
+                    </div>
+                </div>
+
+                <!-- ДОБАВЛЕННЫЙ БЛОК СКИДОК -->
+                <div class="section">
+                    <div class="section-title">Скидка</div>
+                    <div class="options-grid">
+                        <label class="option-label"><input type="radio" name="discount-${blockId}" value="0" checked> Без скидки</label>
+                        <label class="option-label"><input type="radio" name="discount-${blockId}" value="15"> 15% (заказ с сайта)</label>
+                        <label class="option-label"><input type="radio" name="discount-${blockId}" value="20"> 20% (за отзыв)</label>
+                        <label class="option-label"><input type="radio" name="discount-${blockId}" value="30"> 30% (за подписку)</label>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Другие опции</div>
+                    <div class="options-grid">
+                        <label class="option-label"><input type="checkbox" name="chibi-${blockId}" value="chibi"> Чиби (цена / 2)</label>
+                        <label class="option-label"><input type="checkbox" name="design-${blockId}" value="design"> Оформление (+200)</label>
+                    </div>
+                </div>
+
+                <div class="block-total">
+                    Стоимость: <span class="block-price">0</span> руб.
+                </div>
+            `;
+
+            block.addEventListener('change', () => calculateBlock(block, blockId));
+            
+            const charsRadios = block.querySelectorAll(`input[name="chars-${blockId}"]`);
+            const customWrapper = block.querySelector('.custom-count-wrapper');
+            
+            // Добавлен слушатель для моментального пересчета при вводе своей цифры персонажей
+            const customInput = block.querySelector('.custom-count-input');
+            customInput.addEventListener('input', () => calculateBlock(block, blockId));
+
+            charsRadios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    customWrapper.style.display = (e.target.value === 'custom') ? 'block' : 'none';
+                    calculateBlock(block, blockId);
+                });
+            });
+
+            calculatorList.appendChild(block);
+            calculateBlock(block, blockId);
+        }
+
+        function removeBlock(event) {
+            event.preventDefault();
+            event.target.closest('.calculator-block').remove();
+            updateGrandTotal();
+        }
+
+        function calculateBlock(block, blockId) {
+            const renderType = block.querySelector(`input[name="render-${blockId}"]:checked`).value;
+            const format = block.querySelector(`input[name="format-${blockId}"]:checked`).value;
+            const chars = block.querySelector(`input[name="chars-${blockId}"]:checked`).value;
+            const background = block.querySelector(`input[name="background-${blockId}"]:checked`).value;
+            const chibi = block.querySelector(`input[name="chibi-${blockId}"]`).checked;
+            const design = block.querySelector(`input[name="design-${blockId}"]`).checked;
+            
+            // Получаем выбранный процент скидки
+            const discountPercent = parseInt(block.querySelector(`input[name="discount-${blockId}"]:checked`).value) || 0;
+
+            let basePrice = priceList[renderType][format];
+
+            if (chars === '2') {
+                basePrice *= 2;
+            } else if (chars === 'custom') {
+                const customCount = block.querySelector('.custom-count-input').value || 1;
+                basePrice *= parseInt(customCount);
+            }
+
+            let priceWithoutBg = basePrice;
+            if (chibi) {
+                priceWithoutBg /= 2;
+            }
+
+            if (design) {
+                priceWithoutBg += 200;
+            }
+
+            // РАСЧЕТ ИТОГОВОЙ СТОИМОСТИ КАРТОЧКИ С УЧЕТОМ СКИДКИ (Вариант А)
+            let priceDisplay = '';
+            
+            if (background === 'simple') {
+                let total = priceWithoutBg + 500;
+                total = total * (1 - discountPercent / 100); // Применяем скидку
+                priceDisplay = Math.round(total);
+            } else if (background === 'hard') {
+                let minTotal = priceWithoutBg + 1500;
+                let maxTotal = priceWithoutBg + 4500;
+                
+                minTotal = minTotal * (1 - discountPercent / 100); // Применяем скидку к минимуму
+                maxTotal = maxTotal * (1 - discountPercent / 100); // Применяем скидку к максимуму
+                
+                priceDisplay = Math.round(minTotal) + '-' + Math.round(maxTotal);
+            } else {
+                let total = priceWithoutBg;
+                total = total * (1 - discountPercent / 100); // Применяем скидку
+                priceDisplay = Math.round(total);
+            }
+
+            block.querySelector('.block-price').textContent = priceDisplay;
+            updateGrandTotal();
+        }
+
+        function updateGrandTotal() {
+            let minTotal = 0;
+            let maxTotal = 0;
+            let hasRange = false;
+            
+            document.querySelectorAll('.block-price').forEach(el => {
+                const text = el.textContent;
+                if (text.includes('-')) {
+                    const parts = text.split('-');
+                    const min = parseInt(parts[0]);
+                    const max = parseInt(parts[1]);
+                    minTotal += min || 0;
+                    maxTotal += max || 0;
+                    hasRange = true;
+                } else {
+                    const price = parseInt(text) || 0;
+                    minTotal += price;
+                    maxTotal += price;
+                }
+            });
+            
+            if (hasRange && minTotal !== maxTotal) {
+                grandTotalSpan.textContent = minTotal + '-' + maxTotal;
+            } else {
+                grandTotalSpan.textContent = minTotal;
+            }
+        }
+
+        function openLightbox(src) {
+            console.log('Opening lightbox with:', src);
+        }
+
+
