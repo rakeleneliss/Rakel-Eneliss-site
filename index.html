@@ -110,127 +110,182 @@
         </div>
     </section>
 
-ВТОРОЙ КАЛЬКУЛЯТОР 2
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Конструктор заказа</title>
-</head>
-<body style="background-color: #1a1a1a; margin: 0; padding: 20px;">
+ВТОРОЙ КАЛЬКУЛЯТОР 3
+<div id="art-smart-calc" style="background: #f8f1f6; color: #333; max-width: 450px; margin: 40px auto; border-radius: 20px; padding: 30px; font-family: system-ui, -apple-system, sans-serif; box-sizing: border-box; box-shadow: 0 10px 30px rgba(136,67,168,0.08); border: 1px solid rgba(136,67,168,0.15);">
+    
+    <h3 style="color: #8843a8; margin: 0 0 20px 0; font-size: 20px; text-align: center; letter-spacing: 0.5px;">Конструктор заказа</h3>
 
-    <div id="art-multicalc-widget" style="background: #2b2b2b; color: #fff; max-width: 500px; margin: 20px auto; border-radius: 16px; padding: 25px; font-family: system-ui, -apple-system, sans-serif; box-sizing: border-box;">
+    <!-- Интерактивные плашки-переключатели -->
+    <div style="display: flex; flex-direction: column; gap: 12px;">
         
-        <!-- Конструктор параметров -->
-        <div id="calc-constructor-block">
-            <!-- Группа 1: Персонажи -->
-            <div class="calc-group" style="margin-bottom: 20px;">
-                <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Персонажи</span>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-                    <button type="button" class="calc-param-btn js-calc-btn" data-group="chars" data-val="1" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">1 Персонаж</button>
-                    <button type="button" class="calc-param-btn js-calc-btn" data-group="chars" data-val="2" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">2 Персонажа (x2)</button>
-                    <button type="button" class="calc-param-btn js-calc-btn" data-group="chars" data-val="3" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">3+ Персонажа (x3)</button>
-                </div>
-            </div>
-
-            <!-- Группа 2: Рендер -->
-            <div class="calc-group" style="margin-bottom: 20px;">
-                <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Рендер</span>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-                    <button type="button" class="calc-param-btn js-calc-btn" data-group="render" data-val="sketch" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Чб/Моно скетч</button>
-                    <button type="button" class="calc-param-btn js-calc-btn" data-group="render" data-val="simple" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Простой рендер</button>
-                    <button type="button" class="calc-param-btn js-calc-btn" data-group="render" data-val="hard" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Сложный рендер</button>
-                </div>
-            </div>
-
-            <!-- Группа 3: Формат -->
-            <div class="calc-group" style="margin-bottom: 20px;">
-                <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Format</span>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-                    <button type="button" class="calc-param-btn js-calc-btn" data-group="format" data-val="head" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Хед</button>
-                    <button type="button" class="calc-param-btn js-calc-btn" data-group="format" data-val="half" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Халф</button>
-                    <button type="button" class="calc-param-btn js-calc-btn" data-group="format" data-val="full" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Фулл</button>
-                </div>
-            </div>
-
-            <!-- Группа 4: Фон -->
-            <div class="calc-group" style="margin-bottom: 25px;">
-                <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Фон</span>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-                    <button type="button" class="calc-param-btn js-calc-btn" data-group="bg" data-val="none" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Без фона</button>
-                    <button type="button" class="calc-param-btn js-calc-btn" data-group="bg" data-val="light" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Лёгкий (+500)</button>
-                    <button type="button" class="calc-param-btn js-calc-btn" data-group="bg" data-val="hard" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Сложный</button>
-                </div>
-            </div>
-
-            <!-- Кнопка добавления в корзину -->
-            <button type="button" id="js-add-item-btn" style="display: block; width: 100%; background: #007bff; border: none; color: #fff; padding: 12px; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; text-align: center; box-shadow: 0 4px 10px rgba(0,123,255,0.2); outline: none; transition: background 0.2s;">
-                ＋ Добавить ещё
-            </button>
+        <!-- Параметр 1: Персонажи -->
+        <div class="js-smart-row" data-type="chars" style="background: #fff; padding: 16px 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; border: 1px solid rgba(136,67,168,0.1); user-select: none; transition: transform 0.1s, border-color 0.2s;">
+            <span style="font-size: 14px; color: #777; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px;">Персонажи</span>
+            <span class="js-smart-val" style="font-weight: 600; color: #8843a8; font-size: 15px;">1 Персонаж</span>
         </div>
 
-        <!-- Список добавленных позиций -->
-        <div id="selected-items-container" style="margin-top: 25px; border-top: 1px solid #444; padding-top: 15px; display: none;">
-            <span style="font-size: 12px; color: #aaa; text-transform: uppercase; display: block; margin-bottom: 10px; font-weight: bold;">Состав текущего заказа:</span>
-            <div id="items-list"></div>
+        <!-- Параметр 2: Рендер -->
+        <div class="js-smart-row" data-type="render" style="background: #fff; padding: 16px 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; border: 1px solid rgba(136,67,168,0.1); user-select: none; transition: transform 0.1s, border-color 0.2s;">
+            <span style="font-size: 14px; color: #777; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px;">Рендер</span>
+            <span class="js-smart-val" style="font-weight: 600; color: #8843a8; font-size: 15px;">Чб/Моно скетч</span>
         </div>
 
-        <!-- Общий итог всей корзины -->
-        <div style="font-size: 26px; font-weight: bold; margin-top: 25px; border-top: 1px solid #444; padding-top: 15px; text-align: center; color: #00d2ff;">
-            Общий итог: <span id="calc-total-price">0</span> руб.
+        <!-- Параметр 3: Формат -->
+        <div class="js-smart-row" data-type="format" style="background: #fff; padding: 16px 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; border: 1px solid rgba(136,67,168,0.1); user-select: none; transition: transform 0.1s, border-color 0.2s;">
+            <span style="font-size: 14px; color: #777; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px;">Формат</span>
+            <span class="js-smart-val" style="font-weight: 600; color: #8843a8; font-size: 15px;">Хед</span>
         </div>
 
-        <!-- Финальная кнопка -->
-        <button type="button" id="js-submit-order-btn" style="display: block; width: 100%; background: #28a745; border: none; color: #fff; padding: 15px; margin-top: 20px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; text-align: center; box-shadow: 0 4px 15px rgba(40,167,69,0.3); outline: none; transition: background 0.2s;">
-            Оформить заказ через Google Форму
-        </button>
+        <!-- Параметр 4: Фон -->
+        <div class="js-smart-row" data-type="bg" style="background: #fff; padding: 16px 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; border: 1px solid rgba(136,67,168,0.1); user-select: none; transition: transform 0.1s, border-color 0.2s;">
+            <span style="font-size: 14px; color: #777; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px;">Фон</span>
+            <span class="js-smart-val" style="font-weight: 600; color: #8843a8; font-size: 15px;">Без фона</span>
+        </div>
     </div>
 
-    <script>
-        (function() {
-            var priceMatrix = {
-                sketch: { head: 450, half: 900, full: 1200 },
-                simple: { head: 800, half: 2000, full: 2800 },
-                hard: { head: 1300, half: 2800, full: 4200 }
+    <!-- Кнопка "Добавить еще" -->
+    <button type="button" id="js-smart-add" style="display: block; width: 100%; background: none; border: 2px dashed #8843a8; color: #8843a8; padding: 14px; margin-top: 20px; border-radius: 12px; font-size: 15px; font-weight: bold; cursor: pointer; transition: background 0.2s, color 0.2s; outline: none;">
+        ＋ Добавить ещё
+    </button>
+
+    <!-- Список добавленных позиций (Корзина) -->
+    <div id="js-smart-list-container" style="margin-top: 25px; border-top: 1px solid rgba(136,67,168,0.15); padding-top: 20px; display: none;">
+        <span style="font-size: 12px; color: #777; text-transform: uppercase; display: block; margin-bottom: 12px; font-weight: bold; letter-spacing: 0.5px;">Выбранный заказ:</span>
+        <div id="js-smart-items-list"></div>
+    </div>
+
+    <!-- Блок вывода стоимости -->
+    <div style="font-size: 24px; font-weight: bold; margin-top: 25px; border-top: 1px solid rgba(136,67,168,0.15); padding-top: 20px; text-align: center; color: #8843a8;">
+        Общий итог: <span id="js-smart-total-price">0</span> руб.
+    </div>
+
+    <!-- Финальная кнопка действия -->
+    <button type="button" id="js-smart-submit" style="display: block; width: 100%; background: #8843a8; border: none; color: #fff; padding: 16px; margin-top: 20px; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; text-align: center; box-shadow: 0 6px 20px rgba(136,67,168,0.25); outline: none; transition: background 0.2s;">
+        Оформить заказ через Google Форму
+    </button>
+</div>
+
+<script>
+    (function() {
+        // Ваши фиксированные тарифы
+        var priceMatrix = {
+            sketch: { head: 450, half: 900, full: 1200 },
+            simple: { head: 800, half: 2000, full: 2800 },
+            hard: { head: 1300, half: 2800, full: 4200 }
+        };
+
+        // Списки опций для циклического переключения
+        var optionsConfig = {
+            chars: [
+                { val: "1", text: "1 Персонаж" },
+                { val: "2", text: "2 Персонажа (x2)" },
+                { val: "3", text: "3+ Персонажа (x3)" }
+            ],
+            render: [
+                { val: "sketch", text: "Чб/Моно скетч" },
+                { val: "simple", text: "Простой рендер" },
+                { val: "hard", text: "Сложный рендер" }
+            ],
+            format: [
+                { val: "head", text: "Хед" },
+                { val: "half", text: "Халф" },
+                { val: "full", text: "Фулл" }
+            ],
+            bg: [
+                { val: "none", text: "Без фона" },
+                { val: "light", text: "Лёгкий фон (+500)" },
+                { val: "hard", text: "Сложный фон" }
+            ]
+        };
+
+        // Текущие индексы выбранных элементов в списках
+        var currentIndices = { chars: 0, render: 0, format: 0, bg: 0 };
+        var savedOrders = [];
+
+        // Вспомогательная функция для получения текущего состояния объекта параметров
+        function getActiveItemState() {
+            return {
+                chars: optionsConfig.chars[currentIndices.chars].val,
+                render: optionsConfig.render[currentIndices.render].val,
+                format: optionsConfig.format[currentIndices.format].val,
+                bg: optionsConfig.bg[currentIndices.bg].val,
+                charsText: optionsConfig.chars[currentIndices.chars].text.split(" (")[0],
+                renderText: optionsConfig.render[currentIndices.render].text,
+                formatText: optionsConfig.format[currentIndices.format].text,
+                bgText: optionsConfig.bg[currentIndices.bg].text.split(" (+")[0]
             };
+        }
 
-            var textLabels = {
-                chars: { "1": "1 персонаж", "2": "2 персонажа", "3": "3+ персонажа" },
-                render: { "sketch": "Чб/Моно скетч", "simple": "Простой рендер", "hard": "Сложный рендер" },
-                format: { "head": "Хед", "half": "Халф", "full": "Фулл" },
-                bg: { "none": "Без фона", "light": "Лёгкий фон", "hard": "Сложный фон" }
+        // Подсчет стоимости одной строчки
+        function calculateSinglePrice(item) {
+            var base = priceMatrix[item.render][item.format];
+            var mult = (item.chars === "2") ? 2 : (item.chars === "3" ? 3 : 1);
+            var sub = base * mult;
+
+            var minBg = 0, maxBg = 0;
+            if (item.bg === "light") { minBg = 500; maxBg = 500; }
+            else if (item.bg === "hard") { minBg = 1000; maxBg = 3000; }
+
+            return {
+                min: sub + minBg,
+                max: sub + maxBg,
+                isRange: item.bg === "hard",
+                isPlus: item.chars === "3"
             };
+        }
 
-            var currentSelection = { chars: "1", render: "sketch", format: "head", bg: "none" };
-            var savedItemsList = [];
+        // Обновление всей корзины и итоговой суммы
+        function updateCartSummary() {
+            var listDiv = document.getElementById("js-smart-items-list");
+            var containerDiv = document.getElementById("js-smart-list-container");
+            var totalSpan = document.getElementById("js-smart-total-price");
 
-            function resetConstructorStyles() {
-                var btns = document.querySelectorAll(".js-calc-btn");
-                btns.forEach(function(btn) {
-                    var g = btn.getAttribute("data-group");
-                    var v = btn.getAttribute("data-val");
-                    if ((g === "chars" && v === "1") || (g === "render" && v === "sketch") || 
-                        (g === "format" && v === "head") || (g === "bg" && v === "none")) {
-                        btn.style.backgroundColor = "#007bff";
-                        btn.style.borderColor = "#00d2ff";
-                    } else {
-                        btn.style.backgroundColor = "#3a3a3a";
-                        btn.style.borderColor = "transparent";
-                    }
-                });
+            if (!listDiv || !containerDiv || !totalSpan) return;
+
+            if (savedOrders.length === 0) {
+                containerDiv.style.display = "none";
+                totalSpan.innerText = "0";
+                return;
             }
 
-            function getSinglePrice(item) {
-                var base = priceMatrix[item.render][item.format];
-                var mult = (item.chars === "2") ? 2 : (item.chars === "3" ? 3 : 1);
-                var sub = base * mult;
+            containerDiv.style.display = "block";
+            listDiv.innerHTML = "";
 
-                var minBg = 0, maxBg = 0;
-                if (item.bg === "light") { minBg = 500; maxBg = 500; }
-                else if (item.bg === "hard") { minBg = 1000; maxBg = 3000; }
+            var totalMin = 0, totalMax = 0;
+            var hasRange = false, hasPlus = false;
 
-                return {
-                    min: sub + minBg,
-                    max: sub + maxBg,
-Используйте код с осторожностью.isRange: item.bg === "жесткий", isPlus: item.chars === "3" }; }function refreshSummary() { var listDiv = document.getElementById("items-list"); var containerDiv = document.getElementById("selected-items-container"); var totalSpan = document.getElementById("calc-total-price");if (!listDiv || !containerDiv || !totalSpan) return;if (savedItemsList.length === 0) { containerDiv.style.display = "none"; totalSpan.innerText = "0"; return; }containerDiv.style.display = "block"; listDiv.innerHTML = "";вар TotalMin = 0, TotalMax = 0; вар TotalRange = ложь, TotalPlus = ложь;savedItemsList.forEach(function(item, index) { var p = getSinglePrice(item);TotalMin += p.min; TotalMax += p.max; если (p.isRange) totalRange = true; если (p.isPlus) totalPlus = true;вар pText = p.isRange? (мин + «-» + макс) : мин; if (p.isPlus) pText += "+";var rightBox = document.createElement("div"); rightBox.style.cssText = "display: flex; align-items: center; gap: 12px;";var priceSpan = document.createElement("span"); priceSpan.style.cssText = "color: #00d2ff; font-weight: bold;"; priceSpan.innerText = pText + " р.";delBtn.addEventListener("click", function() { savedItemsList.splice(index, 1); refreshSummary(); });rightBox.appendChild(priceSpan); rightBox.appendChild(delBtn); row.appendChild(textSpan); row.appendChild(rightBox); listDiv.appendChild(row); });function initCalculator() { var paramButtons = document.querySelectorAll(".js-calc-btn");paramButtons.forEach(function(btn) { btn.addEventListener("click", function(e) { e.preventDefault(); var group = this.getAttribute("data-group"); var value = this.getAttribute("data-val");currentSelection[group] = value;paramButtons.forEach(function(b) { if (b.getAttribute("data-group") === group) { if (b === btn) { b.style.backgroundColor = "#007bff"; b.style.borderColor = "#00d2ff"; } else { b.style.backgroundColor = "#3a3a3a"; b.style.borderColor = "transparent"; } } }); }); });var addBtn = document.getElementById("js-add-item-btn"); if (addBtn) { addBtn.addEventListener("click", function(e) { e.preventDefault(); savedItemsList.push({ chars: currentSelection.chars, render: currentSelection.render, format: currentSelection.format, bg: currentSelection.bg }); refreshSummary();currentSelection = { chars: "1", render: "sketch", format: "head", bg: "none" }; resetConstructorStyles(); }); }var submitBtn = document.getElementById("js-submit-order-btn"); if (submitBtn) { submitBtn.addEventListener("click", function(e) { e.preventDefault(); if (savedItemsList.length === 0) { alert("Пожалуйста, сначала настройте параметры и таблицы хотя бы одну работу в заказ."); return; }вар линии = []; вар TotalMin = 0, TotalMax = 0; вар TotalRange = ложь, TotalPlus = ложь;savedItemsList.forEach(function(item) { var p = getSinglePrice(item); totalMin += p.min; totalMax += p.max; if (p.isRange) totalRange = true; if (p.isPlus) totalPlus = true;вар pText = p.isRange? (мин + «-» + макс) : мин; if (p.isPlus) pText += "+";lines.push(textLabels.chars[item.chars] + ", " + textLabels.render[item.render] + ", " + textLabels.format[item.format] + ", " + textLabels.bg[item.bg] + " (" + pText + " руб.)"); });вар FinalPriceText = TotalRange? (totalMin + "-" + totalMax): totalMin; if (totalPlus) FinalPriceText += "+";var el = document.createElement("textarea"); el.value = finalClipboardText; document.body.appendChild(el); el.select(); document.execCommand("copy"); document.body.removeChild(el);alert("Параметры вашего заказа успешно скопированы в буфер обмена!\n\nТеперь вставьте их в поле Google Формы."); window.open("google.com", "_blank"); }); } }if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", initCalculator); } else { initCalculator(); } })();
+            savedOrders.forEach(function(item, idx) {
+                var p = calculateSinglePrice(item);
+                totalMin += p.min;
+                totalMax += p.max;
+                if (p.isRange) hasRange = true;
+                if (p.isPlus) hasPlus = true;
+
+                var pText = p.isRange ? (p.min + "-" + p.max) : p.min;
+                if (p.isPlus) pText += "+";
+
+                var row = document.createElement("div");
+                row.style.cssText = "display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 12px 16px; border-radius: 10px; margin-bottom: 8px; font-size: 13px; line-height: 1.4; border: 1px solid rgba(136,67,168,0.08);";
+
+                var textSpan = document.createElement("span");
+                textSpan.style.maxWidth = "75%";
+                textSpan.style.color = "#444";
+                textSpan.innerText = item.charsText + ", " + item.renderText + ", " + item.formatText + ", " + item.bgText;
+
+                var rightBox = document.createElement("div");
+                rightBox.style.cssText = "display: flex; align-items: center; gap: 12px;";
+
+                var priceSpan = document.createElement("span");
+                priceSpan.style.cssText = "color: #8843a8; font-weight: bold;";
+                priceSpan.innerText = pText + " р.";
+
+                var delBtn = document.createElement("button");
+                delBtn.type = "button";
+                delBtn.innerHTML = "&times;";
+                delBtn.style.cssText = "background: none; border: none; color: #ff4a4a; font-size: 20px; cursor: pointer; padding: 0; font-weight: bold; outline: none; line-height: 1;";
+                delBtn.addEventListener("click", function() {
+                    savedOrders.splice(idx, 1);
+                    updateCartSummary();
+                });
+
+Используйте код с осторожностью.rightBox.appendChild(priceSpan); rightBox.appendChild(delBtn); row.appendChild(textSpan); row.appendChild(rightBox); listDiv.appendChild(row); });// Запуск логики function startWidget() { var rows = document.querySelectorAll(".js-smart-row");rows.forEach(function(row) { var type = row.getAttribute("data-type"); var valSpan = row.querySelector(".js-smart-val");// Эффект поддержки на плашке row.addEventListener("mousedown", function() { this.style.transform = "scale(0.98)"; }); row.addEventListener("mouseup", function() { this.style.transform = "scale(1)"; }); row.addEventListener("mouseleave", function() { this.style.transform = "scale(1)"; });// Щелчок переключает индекс по кругу row.addEventListener("click", function(e) { e.preventDefault(); var list = optionsConfig[type]; currentIndices[type] = (currentIndices[type] + 1) % list.length;if (valSpan) { valSpan.innerText = list[currentIndices[type]].text; }// Подсвечиваем рамку при выступе this.style.borderColor = "#8843a8"; вар сам = это; setTimeout(function() { self.style.borderColor = "rgba(136,67,168,0.1)"; }, 200); }); });// Кнопка "Добавить еще" var addBtn = document.getElementById("js-smart-add"); if (addBtn) { addBtn.addEventListener("click", function(e) { e.preventDefault(); saveOrders.push(getActiveItemState()); updateCartSummary();// Сбрасываем плашки в первый результат currentIndices = { chars: 0, render: 0, format: 0, bg: 0 }; rows.forEach(function(r) { var t = r.getAttribute("data-type"); var s = r.querySelector(".js-smart-val"); if (s) s.innerText = optionsConfig[t][0].text; }); }); }// Финальная кнопка сообщения var submitBtn = document.getElementById("js-smart-submit"); if (submitBtn) { submitBtn.addEventListener("click", function(e) { e.preventDefault(); if (savedOrders.length === 0) { alert("Пожалуйста, нажмите кнопку «Добавить ещё», чтобы принять параметры в заказ."); return; }вар линии = []; вар TotalMin = 0, TotalMax = 0; вар hasRange = ложь, hasPlus = ложь;savedOrders.forEach(function(item) { var p = calculateSinglePrice(item); totalMin += p.min; totalMax += p.max; if (p.isRange) hasRange = true; if (p.isPlus) hasPlus = true;вар pText = p.isRange? (мин + «-» + макс) : мин; if (p.isPlus) pText += "+";var el = document.createElement("textarea"); el.value = clipboardText; document.body.appendChild(el); el.select(); document.execCommand("copy"); document.body.removeChild(el);alert("Детали вашего заказа скопированы!\n\nВставьте их в текстовое поле открытой Google Формы."); window.open("google.com", "_blank"); }); } }if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", startWidget); } else { startWidget(); } })();
