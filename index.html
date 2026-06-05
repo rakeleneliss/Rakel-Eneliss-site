@@ -190,24 +190,6 @@
             border-color: var(--main-color);
         }
 
-        .hard-bg-wrapper {
-            margin-top: 10px;
-            padding: 10px;
-            background: var(--bg-color);
-            border-radius: 6px;
-        }
-
-        .hard-bg-wrapper label {
-            display: block;
-            font-size: 0.9em;
-            margin-bottom: 8px;
-        }
-
-        .hard-bg-price-display {
-            font-weight: bold;
-            color: var(--main-color);
-        }
-
         .notice {
             font-size: 0.8em;
             color: var(--muted-color);
@@ -373,8 +355,7 @@
                 <div class="section">
                     <div class="section-title">Фон</div>
                     <div class="options-grid">
-                        <label class="option-label"><input type="radio" name="background-${blockId}" value="none" checked> Без фона</label>
-                        <label class="option-label"><input type="radio" name="background-${blockId}" value="abstract"> Абстрактный (бесплатно)</label>
+                        <label class="option-label"><input type="radio" name="background-${blockId}" value="abstract" checked> Абстрактный (бесплатно)</label>
                         <label class="option-label"><input type="radio" name="background-${blockId}" value="simple"> Простой (+500р.)</label>
                         <label class="option-label"><input type="radio" name="background-${blockId}" value="hard"> Сложный (+1500-4500р.)</label>
                     </div>
@@ -400,14 +381,6 @@
             charsRadios.forEach(radio => {
                 radio.addEventListener('change', (e) => {
                     customWrapper.style.display = (e.target.value === 'custom') ? 'block' : 'none';
-                    calculateBlock(block, blockId);
-                });
-            });
-
-            const bgRadios = block.querySelectorAll(`input[name="background-${blockId}"]`);
-            
-            bgRadios.forEach(radio => {
-                radio.addEventListener('change', (e) => {
                     calculateBlock(block, blockId);
                 });
             });
@@ -449,21 +422,35 @@
             }
 
             let bgPrice = 0;
+            let priceDisplay = '';
+            
             if (background === 'simple') {
                 bgPrice = 500;
+                priceDisplay = (priceWithoutBg + bgPrice);
             } else if (background === 'hard') {
                 bgPrice = 1500;
+                const minPrice = priceWithoutBg + 1500;
+                const maxPrice = priceWithoutBg + 4500;
+                priceDisplay = minPrice + '-' + maxPrice;
+            } else {
+                priceDisplay = priceWithoutBg;
             }
 
-            const totalPrice = priceWithoutBg + bgPrice;
-            block.querySelector('.block-price').textContent = totalPrice;
+            block.querySelector('.block-price').textContent = priceDisplay;
             updateGrandTotal();
         }
 
         function updateGrandTotal() {
             let total = 0;
             document.querySelectorAll('.block-price').forEach(el => {
-                total += parseInt(el.textContent) || 0;
+                const text = el.textContent;
+                // Если это диапазон (содержит "-"), берём минимальное значение
+                if (text.includes('-')) {
+                    const min = parseInt(text.split('-')[0]);
+                    total += min || 0;
+                } else {
+                    total += parseInt(text) || 0;
+                }
             });
             grandTotalSpan.textContent = total;
         }
