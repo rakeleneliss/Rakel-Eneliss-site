@@ -111,130 +111,141 @@
     </section>
 
 ВТОРОЙ КАЛЬКУЛЯТОР
-  <div id="art-multicalc-widget" style="background: #2b2b2b; color: #fff; max-width: 500px; margin: 20px auto; border-radius: 16px; padding: 25px; font-family: system-ui, -apple-system, sans-serif; box-sizing: border-box;">
+<div id="art-multicalc-widget" style="background: #2b2b2b; color: #fff; max-width: 500px; margin: 20px auto; border-radius: 16px; padding: 25px; font-family: system-ui, -apple-system, sans-serif; box-sizing: border-box;">
     
-    <!-- Скрытый блок текущей настройки (конструктор) -->
-    <div id="calc-constructor-block">
-        <!-- Группа 1: Персонажи -->
-        <div class="calc-group" style="margin-bottom: 20px;">
-            <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Персонажи</span>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-                <button type="button" class="calc-btn" data-group="chars" data-val="1" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">1 Персонаж</button>
-                <button type="button" class="calc-btn" data-group="chars" data-val="2" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">2 Персонажа (x2)</button>
-                <button type="button" class="calc-btn" data-group="chars" data-val="3" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">3+ Персонажа (x3)</button>
-            </div>
+    <!-- Группа 1: Персонажи -->
+    <div style="margin-bottom: 20px;">
+        <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Персонажи</span>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+            <button type="button" id="btn-chars-1" onclick="setCalcOption('chars', '1')" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">1 Персонаж</button>
+            <button type="button" id="btn-chars-2" onclick="setCalcOption('chars', '2')" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">2 Персонажа (x2)</button>
+            <button type="button" id="btn-chars-3" onclick="setCalcOption('chars', '3')" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">3+ Персонажа (x3)</button>
         </div>
-
-        <!-- Группа 2: Рендер -->
-        <div class="calc-group" style="margin-bottom: 20px;">
-            <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Рендер</span>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-                <button type="button" class="calc-btn" data-group="render" data-val="sketch" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Чб/Моно скетч</button>
-                <button type="button" class="calc-btn" data-group="render" data-val="simple" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Простой рендер</button>
-                <button type="button" class="calc-btn" data-group="render" data-val="hard" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Сложный рендер</button>
-            </div>
-        </div>
-
-        <!-- Группа 3: Формат -->
-        <div class="calc-group" style="margin-bottom: 20px;">
-            <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Формат</span>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-                <button type="button" class="calc-btn" data-group="format" data-val="head" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Хед</button>
-                <button type="button" class="calc-btn" data-group="format" data-val="half" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Халф</button>
-                <button type="button" class="calc-btn" data-group="format" data-val="full" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Фулл</button>
-            </div>
-        </div>
-
-        <!-- Группа 4: Фон -->
-        <div class="calc-group" style="margin-bottom: 25px;">
-            <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Фон</span>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-                <button type="button" class="calc-btn" data-group="bg" data-val="none" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Без фона</button>
-                <button type="button" class="calc-btn" data-group="bg" data-val="light" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Лёгкий (+500)</button>
-                <button type="button" class="calc-btn" data-group="bg" data-val="hard" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Сложный</button>
-            </div>
-        </div>
-
-        <!-- Кнопка добавления иллюстрации в корзину -->
-        <button type="button" id="add-to-list-btn" style="display: block; width: 100%; background: #007bff; border: none; color: #fff; padding: 12px; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; transition: background 0.2s; text-align: center; box-shadow: 0 4px 10px rgba(0,123,255,0.2);">
-            ＋ Добавить эту работу к заказу
-        </button>
     </div>
 
+    <!-- Группа 2: Рендер -->
+    <div style="margin-bottom: 20px;">
+        <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Рендер</span>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+            <button type="button" id="btn-render-sketch" onclick="setCalcOption('render', 'sketch')" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Чб/Моно скетч</button>
+            <button type="button" id="btn-render-simple" onclick="setCalcOption('render', 'simple')" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Простой рендер</button>
+            <button type="button" id="btn-render-hard" onclick="setCalcOption('render', 'hard')" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Сложный рендер</button>
+        </div>
+    </div>
+
+    <!-- Группа 3: Формат -->
+    <div style="margin-bottom: 20px;">
+        <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Формат</span>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+            <button type="button" id="btn-format-head" onclick="setCalcOption('format', 'head')" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Хед</button>
+            <button type="button" id="btn-format-half" onclick="setCalcOption('format', 'half')" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Халф</button>
+            <button type="button" id="btn-format-full" onclick="setCalcOption('format', 'full')" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Фулл</button>
+        </div>
+    </div>
+
+    <!-- Группа 4: Фон -->
+    <div style="margin-bottom: 20px;">
+        <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Фон</span>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+            <button type="button" id="btn-bg-none" onclick="setCalcOption('bg', 'none')" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Без фона</button>
+            <button type="button" id="btn-bg-light" onclick="setCalcOption('bg', 'light')" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Лёгкий (+500)</button>
+            <button type="button" id="btn-bg-hard" onclick="setCalcOption('bg', 'hard')" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none;">Сложный</button>
+        </div>
+    </div>
+
+    <!-- Группа 5: Оформление в виде тумблера (вкл/выкл) -->
+    <div style="margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 15px; border-radius: 12px;">
+        <span style="font-size: 14px; color: #fff; font-weight: bold; text-transform: uppercase;">Добавить оформление (+200р)</span>
+        <!-- Кликабельная область переключателя -->
+        <div onclick="toggleDesignSwitch()" style="position: relative; width: 50px; height: 26px; background-color: #3a3a3a; border-radius: 13px; cursor: pointer; transition: background-color 0.2s;" id="design-toggle-bg">
+            <div id="design-toggle-circle" style="position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; background-color: #fff; border-radius: 50%; transition: left 0.2s;"></div>
+        </div>
+    </div>
+
+    <!-- Кнопка добавления иллюстрации в список -->
+    <button type="button" onclick="addItemToBasket()" style="display: block; width: 100%; background: #007bff; border: none; color: #fff; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; transition: background 0.2s; text-align: center; box-shadow: 0 4px 10px rgba(0,123,255,0.2); outline: none;">
+        ＋ Добавить эту работу к заказу
+    </button>
+
     <!-- Список добавленных позиций -->
-    <div id="selected-items-container" style="margin-top: 25px; border-top: 1px solid #444; padding-top: 15px; display: none;">
+    <div id="selected-list-box" style="margin-top: 25px; border-top: 1px solid #444; padding-top: 15px; display: none;">
         <span style="font-size: 12px; color: #aaa; text-transform: uppercase; display: block; margin-bottom: 10px; font-weight: bold;">Состав текущего заказа:</span>
-        <div id="items-list"></div>
+        <div id="html-items-container"></div>
     </div>
 
     <!-- Финальный блок стоимости и отправки -->
     <div style="font-size: 26px; font-weight: bold; margin-top: 25px; border-top: 1px solid #444; padding-top: 15px; text-align: center; color: #00d2ff;">
-        Общий итог: <span id="calc-total-price">0</span> руб.
+        Общий итог: <span id="summary-price-text">0</span> руб.
     </div>
 
-    <button type="button" id="submit-order-btn" style="display: block; width: 100%; background: #28a745; border: none; color: #fff; padding: 15px; margin-top: 20px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.2s; text-align: center; box-shadow: 0 4px 15px rgba(40,167,69,0.3);">
+    <button type="button" onclick="submitFullOrder()" style="display: block; width: 100%; background: #28a745; border: none; color: #fff; padding: 15px; margin-top: 20px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.2s; text-align: center; box-shadow: 0 4px 15px rgba(40,167,69,0.3); outline: none;">
         Оформить заказ через Google Форму
     </button>
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var priceMatrix = {
-            sketch: { head: 450, half: 900, full: 1200 },
-            simple: { head: 800, half: 2000, full: 2800 },
-            hard: { head: 1300, half: 2800, full: 4200 }
+    // Базовые глобальные данные, которые видны браузеру в любой момент времени
+    var priceMatrix = {
+        sketch: { head: 450, half: 900, full: 1200 },
+        simple: { head: 800, half: 2000, full: 2800 },
+        hard: { head: 1300, half: 2800, full: 4200 }
+    };
+
+    var textLabels = {
+        chars: { "1": "1 персонаж", "2": "2 персонажа", "3": "3+ персонажа" },
+        render: { "sketch": "Чб/Моно скетч", "simple": "Простой рендер", "hard": "Сложный рендер" },
+        format: { "head": "Хед", "half": "Халф", "full": "Фулл" },
+        bg: { "none": "Без фона", "light": "Лёгкий фон", "hard": "Сложный фон" },
+        design: { "no": "Без оформления", "yes": "С оформлением" }
+    };
+
+    // Текущий выбор пользователя в конструкторе
+    var currentSelection = { chars: "1", render: "sketch", format: "head", bg: "none", design: "no" };
+    var basket = [];
+
+    // Эта функция переключает кнопки ИГНОРИРУЯ Cloudflare кэш
+    function setCalcOption(group, value) {
+        currentSelection[group] = value;
+
+        // Находим все кнопки этой группы и сбрасываем их стиль
+        var allIds = {
+            chars: ["1", "2", "3"],
+            render: ["sketch", "simple", "hard"],
+            format: ["head", "half", "full"],
+            bg: ["none", "light", "hard"]
         };
 
-        var textLabels = {
-            chars: { "1": "1 персонаж", "2": "2 персонажа", "3": "3+ персонажа" },
-            render: { "sketch": "Чб/Моно скетч", "simple": "Простой рендер", "hard": "Сложный рендер" },
-            format: { "head": "Хед", "half": "Халф", "full": "Фулл" },
-            bg: { "none": "Без фона", "light": "Лёгкий фон", "hard": "Сложный фон" }
-        };
-
-        var current = { chars: "1", render: "sketch", format: "head", bg: "none" };
-        var savedItems = []; // Сюда сохраняются добавленные позиции
-        var buttons = document.getElementsByClassName("calc-btn");
-
-        // Функция сброса конструктора на начальные настройки
-        function resetConstructor() {
-            current = { chars: "1", render: "sketch", format: "head", bg: "none" };
-            for (var i = 0; i < buttons.length; i++) {
-                var group = buttons[i].getAttribute("data-group");
-                var val = buttons[i].getAttribute("data-val");
-                if ((group === "chars" && val === "1") || (group === "render" && val === "sketch") || 
-                    (group === "format" && val === "head") || (group === "bg" && val === "none")) {
-                    buttons[i].style.backgroundColor = "#007bff";
-                    buttons[i].style.borderColor = "#00d2ff";
+        var currentGroupIds = allIds[group];
+        for (var i = 0; i < currentGroupIds.length; i++) {
+            var btnId = "btn-" + group + "-" + currentGroupIds[i];
+            var btnEl = document.getElementById(btnId);
+            if (btnEl) {
+                if (currentGroupIds[i] === value) {
+                    btnEl.style.backgroundColor = "#007bff";
+                    btnEl.style.borderColor = "#00d2ff";
                 } else {
-                    buttons[i].style.backgroundColor = "#3a3a3a";
-                    buttons[i].style.borderColor = "transparent";
+                    btnEl.style.backgroundColor = "#3a3a3a";
+                    btnEl.style.borderColor = "transparent";
                 }
             }
         }
+    }
 
-        // Подсчёт стоимости отдельной позиции
-        function calculateSingleItemPrice(item) {
-            var basePrice = priceMatrix[item.render][item.format];
-            var charMultiplier = (item.chars === "2") ? 2 : (item.chars === "3" ? 3 : 1);
-            var subtotal = basePrice * charMultiplier;
-
-            var minBg = 0, maxBg = 0;
-            if (item.bg === "light") { minBg = 500; maxBg = 500; }
-            else if (item.bg === "hard") { minBg = 1000; maxBg = 3000; }
-
-            return {
-                min: subtotal + minBg,
-                max: subtotal + maxBg,
-                hasRange: item.bg === "hard",
-                hasPlus: item.chars === "3"
-            };
+    // Переключение тумблера Оформления (вкл/выкл)
+    function toggleDesignSwitch() {
+        var bg = document.getElementById("design-toggle-bg");
+        var circle = document.getElementById("design-toggle-circle");
+        
+        if (currentSelection.design === "no") {
+            currentSelection.design = "yes";
+            bg.style.backgroundColor = "#007bff";
+            circle.style.left = "27px";
+        } else {
+            currentSelection.design = "no";
+            bg.style.backgroundColor = "#3a3a3a";
+            circle.style.left = "3px";
         }
+    }
 
-        // Обновление общего интерфейса списка и итоговой цены всего калькулятора
-        function updateGlobalSummary() {
-            var itemsListDiv = document.getElementById("items-list");
-            var containerDiv = document.getElementById("selected-items-container");
-            
-            if (savedItems.length === 0) {
-Используйте код с осторожностью.containerDiv.style.display = "none"; document.getElementById("calc-total-price").innerText = "0"; return; }контейнерDiv.style.display = "блок"; itemsListDiv.innerHTML = "";вар TotalMin = 0; вар TotalMax = 0; вар globalHasRange = ложь; вар globalHasPlus = ложь;for (var i = 0; i < savedItems.length; i++) { var item = savedItems[i]; var priceCalc = calculateSingleItemPrice(item);TotalMin += PriceCalc.min; totalMax += ценаCalc.max; если (priceCalc.hasRange) globalHasRange = true; если (priceCalc.hasPlus) globalHasPlus = true;// Красивая текстовая строка для отображения в списке var PriceText = PriceCalc.hasRange ? (priceCalc.min + "-" + PriceCalc.max): ценаCalc.min; if (priceCalc.hasPlus) PriceText += "+";var itemDiv = document.createElement("div"); itemDiv.style.cssText = "display: flex; justify-content: space-between; align-items: center; background: #3a3a3a; padding: 10px 12px; border-radius: 8px; margin-bottom: 8px; font-size: 13px; line-height: 1.4;";var labelSpan = document.createElement("span"); labelSpan.style.maxWidth = "80%"; labelSpan.innerText = textLabels.chars[item.chars] + ", " + textLabels.render[item.render] + ", " + textLabels.format[item.format] + ", " + textLabels.bg[item.bg];var rightDiv = document.createElement("div"); rightDiv.style.cssText = "display: flex; align-items: center; gap: 12px;";var priceSpan = document.createElement("span"); priceSpan.style.cssText = "color: #00d2ff; font-weight: bold;"; priceSpan.innerText = priceText + " р.";var deleteBtn = document.createElement("button"); deleteBtn.type = "button"; deleteBtn.innerHTML = "×"; deleteBtn.style.cssText = "background: none; border: none; color: #ff4a4a; font-size: 18px; cursor: pointer; padding: 0 4px; font-weight: bold; outline: none;";// Передаем индекс для удаления элемента deleteBtn.setAttribute("data-index", i); deleteBtn.addEventListener("click", function() { var indexToRemove = parseInt(this.getAttribute("data-index")); saveItems.splice(indexToRemove, 1); updateGlobalSummary(); });rightDiv.appendChild(priceSpan); rightDiv.appendChild(deleteBtn); itemDiv.appendChild(labelSpan); itemDiv.appendChild(rightDiv); itemsListDiv.appendChild(itemDiv); }// Вывод общей стоимости var FinalGlobalText = globalHasRange ? (totalMin + "-" + totalMax): totalMin; if (globalHasPlus) FinalGlobalText += "+";document.getElementById("calc-total-price").innerText = finalGlobalText; }// Логика настройки кнопок for (var i = 0; i < buttons.length; i++) { buttons[i].addEventListener("click", function(event) { event.preventDefault(); var groupName = this.getAttribute("data-group"); var valueName = this.getAttribute("data-val");for (var j = 0; j < buttons.length; j++) { if (buttons[j].getAttribute("data-group") === groupName) { buttons[j].style.backgroundColor = "#3a3a3a"; buttons[j].style.borderColor = "transparent"; } }this.style.backgroundColor = "#007bff"; this.style.borderColor = "#00d2ff"; current[groupName] = valueName; }); }// Клик по кнопке "Добавить эту работу к заказу" var addBtn = document.getElementById("add-to-list-btn"); if (addBtn) { addBtn.addEventListener("click", function() { // Клонируем текущие настройки в сохраненных сохраненныхItems.push({ chars: current.chars, render: current.render, format: current.format, bg: current.bg }); updateGlobalSummary(); resetConstructor(); // Возвращаем команду к дефолту для запроса }); }// Финальная кнопка отправки сообщения в Google Форму var orderBtn = document.getElementById("submit-order-btn"); if (orderBtn) { orderBtn.addEventListener("click", function() { if (savedItems.length === 0) { alert("Пожалуйста, настройте параметры и нажмите кнопку «Добавить эту работу к заказу» перед отправкой."); return; }// Собираем текст для обмена буфера (без слов Позиция 1, Позиция 2) var textLines = []; вар TotalMin = 0, TotalMax = 0; вар globalHasRange = ложь, globalHasPlus = ложь;for (var i = 0; i < savedItems.length; i++) { var item = savedItems[i]; var pc = calculateSingleItemPrice(item);totalMin += pc.min; totalMax += pc.max; if (pc.hasRange) globalHasRange = true; if (pc.hasPlus) globalHasPlus = true;var itemPriceText = pc.hasRange ? (pc.min + "-" + pc.max) : pc.min; if (pc.hasPlus) itemPriceText += "+";textLines.push(textLabels.chars[item.chars] + ", " + textLabels.render[item.render] + ", " + textLabels.format[item.format] + ", " + textLabels.bg[item.bg] + " (" + itemPriceText + " руб.)"); }вар FinalPriceText = globalHasRange? (totalMin + "-" + totalMax): totalMin; если (globalHasPlus) FinalPriceText += "+";var FinalExportText = textLines.join("\n") + "\nОбщая стоимость заказа: " + FinalPriceText + " руб.";// Копирование в буфер var tempTextArea = document.createElement("textarea"); tempTextArea.value = finalExportText; document.body.appendChild(tempTextArea); tempTextArea.select(); document.execCommand("copy"); document.body.removeChild(tempTextArea);alert("Параметры вашего комплексного заказа скопированы в буфер обмена!\n\nВставьте их в поле Google Формы."); window.open("google.com", "_blank"); }); }resetConstructor(); });
+    // Сброс конструктора после добавления в корзину
+Используйте код с осторожностью.function resetInterfaceToDefault() { setCalcOption('chars', '1'); setCalcOption('render', 'sketch'); setCalcOption('format', 'head'); setCalcOption('bg', 'none');// Сброс тумблера в положение "выкл" currentSelection.design = "no"; document.getElementById("design-toggle-bg").style.backgroundColor = "#3a3a3a"; document.getElementById("design-toggle-circle").style.left = "3px"; }// Подсчет цены для одной позицииfunction getSingleItemData(item) {var base = priceMatrix[item.render][item.format];var multiplier = parseInt(item.chars);var subtotal = base * multiplier;if (item.design === "yes") {subtotal += (200 * multiplier);}var minBg = 0, maxBg = 0;if (item.bg === "light") { minBg = 500; maxBg = 500; }if (item.bg === "hard") { minBg = 1000; maxBg = 3000; }return {min: subtotal + minBg,max: subtotal + maxBg,isRange: item.bg === "hard",isPlus: item.chars === "3"};}// Обновление корзиныfunction updateBasketDisplay() {var listContainer = document.getElementById("html-items-container");var listBox = document.getElementById("selected-list-box");if (basket.length === 0) {listBox.style.display = "none";document.getElementById("summary-price-text").innerText = "0";return;}listBox.style.display = "block";listContainer.innerHTML = "";var finalMin = 0, finalMax = 0;var hasGlobalRange = false, hasGlobalPlus = false;for (var i = 0; i < basket.length; i++) {(function(idx) {var item = basket[idx];var calc = getSingleItemData(item);finalMin += calc.min;finalMax += calc.max;if (calc.isRange) hasGlobalRange = true;if (calc.isPlus) hasGlobalPlus = true;var txtPrice = calc.isRange ? (calc.min + "-" + calc.max) : calc.min;if (calc.isPlus) txtPrice += "+";var row = document.createElement("div");row.style.cssText = "display: flex; justify-content: space-between; align-items: center; background: #3a3a3a; padding: 10px 12px; border-radius: 8px; margin-bottom: 8px; font-size: 13px; line-height: 1.4;";var labelText = textLabels.chars[item.chars] + ", " + textLabels.render[item.render] + ", " + textLabels.format[item.format] + ", " + textLabels.bg[item.bg];if (item.design === "yes") labelText += ", " + textLabels.design[item.design];var leftSpan = document.createElement("span");leftSpan.innerText = labelText;var rightDiv = document.createElement("div");rightDiv.style.cssText = "display: flex; align-items: center; gap: 12px;";var priceSpan = document.createElement("span");priceSpan.style.cssText = "color: #00d2ff; font-weight: bold;";priceSpan.innerText = txtPrice + " р.";var delBtn = document.createElement("button");delBtn.type = "button";delBtn.innerHTML = "×";delBtn.style.cssText = "background: none; border: none; color: #ff4a4a; font-size: 18px; cursor: pointer; font-weight: bold; outline: none; padding: 0;";delBtn.onclick = function() {basket.splice(idx, 1);updateBasketDisplay();};rightDiv.appendChild(priceSpan); rightDiv.appendChild(delBtn); row.appendChild(leftSpan); row.appendChild(rightDiv); listContainer.appendChild(row); })(i); }var globalText = hasGlobalRange ? (finalMin + " - " + finalMax) : finalMin;if (hasGlobalPlus) globalText += "+";document.getElementById("summary-price-text").innerText = globalText;}// Функция кнопки "Добавить к заказу"function addItemToBasket() {basket.push({chars: currentSelection.chars,render: currentSelection.render,format: currentSelection.format,bg: currentSelection.bg,design: currentSelection.design});updateBasketDisplay();resetInterfaceToDefault();}// Функция кнопки отправки формыfunction submitFullOrder() {if (basket.length === 0) {alert("Пожалуйста, сначала добавьте хотя бы одну работу к заказу с помощью синей кнопки.");return;}вар линии = []; вар FinalMin = 0, FinalMax = 0; вар hasGlobalRange = ложь, hasGlobalPlus = ложь;for (var i = 0; i < basket.length; i++) { var item = basket[i]; var calc = getSingleItemData(item);FinalMin += Calc.min; FinalMax += Calc.max; если (calc.isRange) hasGlobalRange = true; если (calc.isPlus) hasGlobalPlus = true;вар itemPrice = Calc.isRange? (расч.мин + "-" + расч.макс): расч.мин; if (calc.isPlus) itemPrice += "+";lines.push(itemText + " (" + itemPrice + " руб.)"); }var totalText = hasGlobalRange ? (finalMin + " - " + finalMax) : finalMin;if (hasGlobalPlus) totalText += "+";var fullExportText = lines.join("\n") + "\nОбщая стоимость заказа: " + totalText + " руб.";var temp = document.createElement("textarea");temp.value = fullExportText;document.body.appendChild(temp);temp.select();document.execCommand("copy");document.body.removeChild(temp);alert("Параметры комплексного заказа скопированы в буфер обмена!\n\nВставьте их в Google Форму."); window.open("google.com", "_blank"); }
