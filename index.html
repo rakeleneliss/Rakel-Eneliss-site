@@ -110,75 +110,7 @@
         </div>
     </section>
 
-    <section class="constructor-section">
-        <h2 style="margin-bottom: 30px; font-size: 28px;">Калькулятор заказа (Коммишены)</h2>
-        <div class="constructor-card">
-            <div class="preview-box">
-                <img id="order-preview" src="https://picsum.photos" alt="Превью опции">
-            </div>
-            <div class="option-group">
-                <span class="option-label">Персонажи</span>
-                <div class="buttons-grid">
-                    <button class="btn-opt active" data-type="chars" data-value="1" onclick="selectOption(this)">1 Персонаж</button>
-                    <button class="btn-opt" data-type="chars" data-value="2" onclick="selectOption(this)">2 Персонажа</button>
-                    <button class="btn-opt" data-type="chars" data-value="3" onclick="selectOption(this)">3+ Несколько</button>
-                </div>
-            </div>
-            <div class="option-group">
-                <span class="option-label">Рендер</span>
-                <div class="buttons-grid">
-                    <button class="btn-opt active" data-type="render" data-value="sketch" onclick="selectOption(this)">Скетч</button>
-                    <button class="btn-opt" data-type="render" data-value="simple" onclick="selectOption(this)">Простой</button>
-                    <button class="btn-opt" data-type="render" data-value="hard" onclick="selectOption(this)">Сложный</button>
-                </div>
-            </div>
-            <div class="option-group">
-                <span class="option-label">Формат</span>
-                <div class="buttons-grid">
-                    <button class="btn-opt active" data-type="format" data-value="head" onclick="selectOption(this)">Хед (Портрет)</button>
-                    <button class="btn-opt" data-type="format" data-value="half" onclick="selectOption(this)">Халф (По пояс)</button>
-                    <button class="btn-opt" data-type="format" data-value="full" onclick="selectOption(this)">Полнорост</button>
-                </div>
-            </div>
-            <div class="option-group">
-                <span class="option-label">Фон</span>
-                <div class="buttons-grid">
-                    <button class="btn-opt active" data-type="bg" data-value="none" onclick="selectOption(this)">Без фона</button>
-                    <button class="btn-opt" data-type="bg" data-value="light" onclick="selectOption(this)">Лёгкий</button>
-                    <button class="btn-opt" data-type="bg" data-value="hard" onclick="selectOption(this)">Сложный</button>
-                </div>
-            </div>
-            <div class="price-display">Итого: <span id="total-price">1000</span> руб.</div>
-        </div>
-    </section>
-
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <img id="lightbox-img" class="lightbox-img" src="" alt="Увеличенное изображение">
-    </div>
-
-    <script>
-        document.querySelectorAll('.carousel-container').forEach(carousel => {
-            const slidesContainer = carousel.querySelector('.carousel-slides');
-            const slides = carousel.querySelectorAll('.carousel-slide');
-            const speed = parseInt(carousel.getAttribute('data-speed')) || 3000;
-            let currentIndex = 0;
-            setInterval(() => {
-                currentIndex = (currentIndex + 1) % slides.length;
-                slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-            }, speed);
-        });
-
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-
-        function openLightbox(src) {
-            lightboxImg.src = src;
-            lightbox.classList.add('active');
-        }
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-        }
-   <div id="art-calc-widget" style="background: #2b2b2b; color: #fff; max-width: 500px; margin: 20px auto; border-radius: 16px; padding: 25px; font-family: system-ui, -apple-system, sans-serif; box-sizing: border-box;">
+                    <div id="art-calc-widget" style="background: #2b2b2b; color: #fff; max-width: 500px; margin: 20px auto; border-radius: 16px; padding: 25px; font-family: system-ui, -apple-system, sans-serif; box-sizing: border-box;">
     
     <!-- Группа 1: Персонажи -->
     <div class="calc-group" style="margin-bottom: 20px;">
@@ -319,4 +251,4 @@
 
                 alert("Параметры расчета скопированы в буфер обмена!\n\nВставьте их в соответствующее поле Google Формы.");
 
-Используйте код с осторожностью.// Сюда вставьте ссылку на вашу готовую Форму Google вместо знака # window.open("google.com", "_blank"); }); }calculatePrice(); });
+Используйте код с осторожностью.// Сюда вставьте ссылку на вашу готовую Google Форму вместо знака #window.open("google.com", "_blank");});}calculatePrice();});
