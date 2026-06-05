@@ -69,55 +69,8 @@
         .lightbox.active { opacity: 1; pointer-events: auto; }
         .lightbox-img { max-width: 90%; max-height: 90%; border-radius: 4px; transform: scale(0.95); transition: transform 0.4s ease; }
         .lightbox.active .lightbox-img { transform: scale(1); }
-    </style>
-</head>
-<body class="parallax-bg">
-
-    <header>
-        <div class="header-left">
-            <img class="avatar" src="https://picsum.photos" alt="Аватар">
-            <div class="header-text">
-                <h1>Ваше Имя / Никнейм</h1>
-                <p>Digital художник & Иллюстратор</p>
-            </div>
-        </div>
-        <div class="social-icons">
-            <a href="#" class="social-icon">TG</a>
-            <a href="#" class="social-icon">VK</a>
-            <a href="#" class="social-icon">DA</a>
-        </div>
-    </header>
-
-    <section class="block">
-        <div class="block-title parallax-bg">Мои Скетчи</div>
-        <div class="carousel-container" data-speed="3000">
-            <div class="carousel-slides">
-                <img class="carousel-slide" src="https://picsum.photos" alt="Скетч 1" onclick="openLightbox(this.src)">
-                <img class="carousel-slide" src="https://picsum.photos" alt="Скетч 2" onclick="openLightbox(this.src)">
-                <img class="carousel-slide" src="https://picsum.photos" alt="Скетч 3" onclick="openLightbox(this.src)">
-            </div>
-        </div>
-    </section>
-
-    <section class="block">
-        <div class="block-title parallax-bg">Сложный рендер</div>
-        <div class="carousel-container" data-speed="3000">
-            <div class="carousel-slides">
-                <img class="carousel-slide" src="https://picsum.photos" alt="Арт 1" onclick="openLightbox(this.src)">
-                <img class="carousel-slide" src="https://picsum.photos" alt="Арт 2" onclick="openLightbox(this.src)">
-                <img class="carousel-slide" src="https://picsum.photos" alt="Арт 3" onclick="openLightbox(this.src)">
-            </div>
-        </div>
-    </section>
-
-ВТОРОЙ КАЛЬКУЛЯТОР 4
-    <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Калькулятор заказов</title>
-    <style>
+        
+        /* Стили для калькулятора */
         @font-face {
             font-family: 'Epos Medium';
             src: local('Epos Medium'), local('Epos-Medium');
@@ -130,21 +83,17 @@
             --border-color: #e8d0e5;
         }
 
-        body {
-            font-family: 'Epos Medium', 'Segoe UI', Roboto, sans-serif;
+        .calculator-section {
             background-color: var(--bg-color);
             color: var(--main-color);
-            margin: 0;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 40px 10%;
         }
 
         .container {
             width: 100%;
             max-width: 600px;
             box-sizing: border-box;
+            margin: 0 auto;
         }
 
         h2 {
@@ -176,6 +125,10 @@
             cursor: pointer;
             padding: 0;
             line-height: 1;
+        }
+
+        .remove-btn:hover {
+            color: #ff5555;
         }
 
         .section {
@@ -277,6 +230,10 @@
             color: #ffffff;
         }
 
+        .btn:active {
+            transform: scale(0.98);
+        }
+
         .final-summary {
             background: var(--main-color);
             color: #ffffff;
@@ -293,22 +250,57 @@
         }
     </style>
 </head>
-<body>
+<body class="parallax-bg">
 
-    <div class="container">
-        <h2>Калькулятор стоимости заказа</h2>
-
-        <!-- Сюда добавляются карточки -->
-        <div id="calculator-list"></div>
-
-        <div class="action-buttons">
-            <button class="btn" id="add-block-btn">+ Добавить еще</button>
+    <header>
+        <div class="header-left">
+            <img class="avatar" src="https://picsum.photos" alt="Аватар">
+            <div class="header-text">
+                <h1>Ваше Имя / Никнейм</h1>
+                <p>Digital художник & Иллюстратор</p>
+            </div>
         </div>
-
-        <div class="final-summary">
-            Общая сумма: <span id="grand-total">0</span> руб.
+        <div class="social-icons">
+            <a href="#" class="social-icon">TG</a>
+            <a href="#" class="social-icon">VK</a>
+            <a href="#" class="social-icon">DA</a>
         </div>
-    </div>
+    </header>
+
+    <section class="block">
+        <div class="block-title parallax-bg">Мои Скетчи</div>
+        <div class="carousel-container" data-speed="3000">
+            <div class="carousel-slides">
+                <img class="carousel-slide" src="https://picsum.photos" alt="Скетч 1" onclick="openLightbox(this.src)">
+                <img class="carousel-slide" src="https://picsum.photos" alt="Скетч 2" onclick="openLightbox(this.src)">
+                <img class="carousel-slide" src="https://picsum.photos" alt="Скетч 3" onclick="openLightbox(this.src)">
+            </div>
+        </div>
+    </section>
+
+    <section class="block">
+        <div class="block-title parallax-bg">Сложный рендер</div>
+        <div class="carousel-container" data-speed="3000">
+            <div class="carousel-slides">
+                <img class="carousel-slide" src="https://picsum.photos" alt="Арт 1" onclick="openLightbox(this.src)">
+                <img class="carousel-slide" src="https://picsum.photos" alt="Арт 2" onclick="openLightbox(this.src)">
+                <img class="carousel-slide" src="https://picsum.photos" alt="Арт 3" onclick="openLightbox(this.src)">
+            </div>
+        </div>
+    </section>
+
+    <section class="calculator-section">
+        <div class="container">
+            <h2>Второй калькулятор</h2>
+            <div id="calculator-list"></div>
+            <div class="action-buttons">
+                <button class="btn" id="add-block-btn">+ Добавить еще</button>
+            </div>
+            <div class="final-summary">
+                Общая сумма: <span id="grand-total">0</span> руб.
+            </div>
+        </div>
+    </section>
 
     <script>
         const priceList = {
@@ -321,7 +313,6 @@
         const grandTotalSpan = document.getElementById('grand-total');
         let blockCounter = 0;
 
-        // Прямая генерация HTML-структуры без использования шаблонов
         function createNewBlock() {
             blockCounter++;
             const blockId = blockCounter;
@@ -329,7 +320,7 @@
             const block = document.createElement('div');
             block.className = 'calculator-block';
             block.innerHTML = `
-                <button class="remove-btn" title="Удалить этот заказ" onclick="removeBlock(this)">&times;</button>
+                <button class="remove-btn" title="Удалить этот заказ" onclick="removeBlock(event)">&times;</button>
                 
                 <div class="section">
                     <div class="section-title">Рендер</div>
@@ -383,10 +374,8 @@
                 </div>
             `;
 
-            // Подписка на изменения данных внутри блока
-            block.addEventListener('input', () => calculateBlock(block, blockId));
+            block.addEventListener('change', () => calculateBlock(block, blockId));
             
-            // Отслеживание выбора персонажей для показа инпута
             const charsRadios = block.querySelectorAll(`input[name="chars-${blockId}"]`);
             const customWrapper = block.querySelector('.custom-count-wrapper');
             charsRadios.forEach(radio => {
@@ -396,7 +385,70 @@
                 });
             });
 
-            // Отслеживание традишионала
             const styleRadios = block.querySelectorAll(`input[name="style-${blockId}"]`);
-            const traditionalNotice = block.querySelector('.traditional-notice');styleRadios.forEach(radio => {radio.addEventListener('change', (e) => {traditionalNotice.style.display = (e.target.value === 'traditional') ? 'block' : 'none';calculateBlock(block, blockId);});});calculatorList.appendChild(block);toggleRemoveButtons();calculateBlock(block, blockId);// Важно для Google Sites: сообщаем фрейму, что высота измениласьupdateFrameHeight();}function calculateBlock(block, blockId) {const renderType = block.querySelector(input[name="render-${blockId}"]:checked).value;const formatType = block.querySelector(input[name="format-${blockId}"]:checked).value;const charType = block.querySelector(input[name="chars-${blockId}"]:checked).value;const isChibi = block.querySelector(input[name="chibi-${blockId}"]).checked;const isDesign = block.querySelector(input[name="design-${blockId}"]).checked;let basePrice = priceList[renderType][formatType];if (isChibi) {basePrice = basePrice / 2;}let charMultiplier = 1;if (charType === '2') {charMultiplier = 2;} else if (charType === 'custom') {const customInput = block.querySelector('.custom-count-input');charMultiplier = parseInt(customInput.value) || 1;if (charMultiplier < 1) charMultiplier = 1;}let total = basePrice * charMultiplier;if (isDesign) {total += 200;}block.querySelector('.block-price').textContent = Math.round(total);calculateGrandTotal();}function removeBlock(button) {const block = button.closest('.calculator-block');block.remove();toggleRemoveButtons();calculateGrandTotal();updateFrameHeight();}function toggleRemoveButtons() {const blocks = calculatorList.querySelectorAll('.calculator-block');blocks.forEach(block => {const removeBtn = block.querySelector('.remove-btn');removeBtn.style.display = blocks.length === 1 ? 'none' : 'block';});}function calculateGrandTotal() {const blockPrices = calculatorList.querySelectorAll('.block-price');let grandTotal = 0;blockPrices.forEach(span => {grandTotal += parseFloat(span.textContent) || 0;});grandTotalSpan.textContent = grandTotal;}function updateFrameHeight() {// Отправка события изменения высоты для систем, поддерживающих авто-ресайзif (window.parent && window.parent.postMessage) {window.parent.postMessage({ frameHeight: document.body.scrollHeight }, '*');}}document.getElementById('add-block-btn').addEventListener('click', createNewBlock);// Первая карточка при загрузкеcreateNewBlock();
-                
+            const traditionalNotice = block.querySelector('.traditional-notice');
+            styleRadios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    traditionalNotice.style.display = (e.target.value === 'traditional') ? 'block' : 'none';
+                    calculateBlock(block, blockId);
+                });
+            });
+
+            calculatorList.appendChild(block);
+            calculateBlock(block, blockId);
+        }
+
+        function removeBlock(event) {
+            event.preventDefault();
+            event.currentTarget.closest('.calculator-block').remove();
+            updateGrandTotal();
+        }
+
+        function calculateBlock(block, blockId) {
+            const renderType = block.querySelector(`input[name="render-${blockId}"]:checked`).value;
+            const format = block.querySelector(`input[name="format-${blockId}"]:checked`).value;
+            const chars = block.querySelector(`input[name="chars-${blockId}"]:checked`).value;
+            const chibi = block.querySelector(`input[name="chibi-${blockId}"]`).checked;
+            const design = block.querySelector(`input[name="design-${blockId}"]`).checked;
+
+            let price = priceList[renderType][format];
+
+            if (chars === '2') {
+                price *= 2;
+            } else if (chars === 'custom') {
+                const customCount = block.querySelector('.custom-count-input').value || 1;
+                price *= parseInt(customCount);
+            }
+
+            if (chibi) {
+                price /= 2;
+            }
+
+            if (design) {
+                price += 200;
+            }
+
+            block.querySelector('.block-price').textContent = price;
+            updateGrandTotal();
+        }
+
+        function updateGrandTotal() {
+            let total = 0;
+            document.querySelectorAll('.block-price').forEach(el => {
+                total += parseInt(el.textContent) || 0;
+            });
+            grandTotalSpan.textContent = total;
+        }
+
+        function openLightbox(src) {
+            console.log('Opening lightbox with:', src);
+        }
+
+        document.getElementById('add-block-btn').addEventListener('click', function() {
+            createNewBlock();
+        });
+
+        createNewBlock();
+    </script>
+</body>
+</html>
