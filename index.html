@@ -280,6 +280,8 @@
                 if (current.chars === "2") charMultiplier = 2;
                 if (current.chars === "3") charMultiplier = 3;
 
+  
+
                 var subtotal = basePrice * charMultiplier;
 
                 // 3. Рассчитываем доплаты за фон (минимальную и максимальную вилку)
@@ -320,5 +322,140 @@
                 }
             });
         }
+    });
+</script>
+<div id="art-calc-widget" style="background: #2b2b2b; color: #fff; max-width: 500px; margin: 20px auto; border-radius: 16px; padding: 25px; font-family: system-ui, -apple-system, sans-serif; box-sizing: border-box;">
+    
+    <div style="width: 100%; height: 250px; background: #3a3a3a; border-radius: 8px; margin-bottom: 20px; overflow: hidden; box-sizing: border-box;">
+        <img id="calc-preview" src="https://picsum.photos" alt="Превью" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </div>
+
+    <!-- Группа 1: Персонажи -->
+    <div class="calc-group" style="margin-bottom: 20px;">
+        <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Персонажи</span>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+            <button type="button" class="calc-btn active-state" data-group="chars" data-val="1" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">1 Персонаж</button>
+            <button type="button" class="calc-btn" data-group="chars" data-val="2" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">2 Персонажа (x2)</button>
+            <button type="button" class="calc-btn" data-group="chars" data-val="3" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">3+ Персонажа (x3)</button>
+        </div>
+    </div>
+
+    <!-- Группа 2: Рендер -->
+    <div class="calc-group" style="margin-bottom: 20px;">
+        <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Рендер</span>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+            <button type="button" class="calc-btn active-state" data-group="render" data-val="sketch" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Чб/Моно скетч</button>
+            <button type="button" class="calc-btn" data-group="render" data-val="simple" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Простой рендер</button>
+            <button type="button" class="calc-btn" data-group="render" data-val="hard" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Сложный рендер</button>
+        </div>
+    </div>
+
+    <!-- Группа 3: Формат -->
+    <div class="calc-group" style="margin-bottom: 20px;">
+        <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Формат</span>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+            <button type="button" class="calc-btn active-state" data-group="format" data-val="head" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Хед</button>
+            <button type="button" class="calc-btn" data-group="format" data-val="half" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Халф</button>
+            <button type="button" class="calc-btn" data-group="format" data-val="full" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Фулл</button>
+        </div>
+    </div>
+
+    <!-- Группа 4: Фон -->
+    <div class="calc-group" style="margin-bottom: 20px;">
+        <span style="font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block; font-weight: bold;">Фон</span>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+            <button type="button" class="calc-btn active-state" data-group="bg" data-val="none" style="background: #007bff; border: 2px solid #00d2ff; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Без фона</button>
+            <button type="button" class="calc-btn" data-group="bg" data-val="light" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Лёгкий (+500)</button>
+            <button type="button" class="calc-btn" data-group="bg" data-val="hard" style="background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 12px 5px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; outline: none; transition: background 0.2s;">Сложный</button>
+        </div>
+    </div>
+
+    <div style="font-size: 26px; font-weight: bold; margin-top: 25px; color: #00d2ff; border-top: 1px solid #444; padding-top: 15px; text-align: center;">
+        Итого: <span id="calc-price-num">450</span> руб.
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var priceMatrix = {
+            sketch: { head: 450, half: 900, full: 1200 },
+            simple: { head: 800, half: 2000, full: 2800 },
+            hard: { head: 1300, half: 2800, full: 4200 }
+        };
+
+        var current = { chars: "1", render: "sketch", format: "head", bg: "none" };
+        var buttons = document.getElementsByClassName("calc-btn");
+
+        function calculatePrice() {
+            var basePrice = priceMatrix[current.render][current.format];
+            
+            var charMultiplier = 1;
+            if (current.chars === "2") charMultiplier = 2;
+            if (current.chars === "3") charMultiplier = 3;
+
+            var subtotal = basePrice * charMultiplier;
+
+            var minBg = 0;
+            var maxBg = 0;
+
+            if (current.bg === "light") {
+                minBg = 500;
+                maxBg = 500;
+            } else if (current.bg === "hard") {
+                minBg = 1000;
+                maxBg = 3000;
+            }
+
+            var finalMin = subtotal + minBg;
+            var finalMax = subtotal + maxBg;
+
+            var resultText = "";
+            if (current.bg === "hard") {
+                resultText = finalMin + " - " + finalMax;
+            } else {
+                resultText = finalMin;
+            }
+
+            if (current.chars === "3") {
+                resultText += "+";
+            }
+
+            var priceDisplay = document.getElementById("calc-price-num");
+            if (priceDisplay) {
+                priceDisplay.innerText = resultText;
+            }
+        }
+
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", function(event) {
+                event.preventDefault();
+                
+                var clickedBtn = this;
+                var groupName = clickedBtn.getAttribute("data-group");
+                var valueName = clickedBtn.getAttribute("data-val");
+
+                for (var j = 0; j < buttons.length; j++) {
+                    if (buttons[j].getAttribute("data-group") === groupName) {
+                        buttons[j].style.backgroundColor = "#3a3a3a";
+                        buttons[j].style.borderColor = "transparent";
+                    }
+                }
+
+                clickedBtn.style.backgroundColor = "#007bff";
+                clickedBtn.style.borderColor = "#00d2ff";
+
+                current[groupName] = valueName;
+
+                var img = document.getElementById("calc-preview");
+                if (img) {
+                    img.src = "https://picsum.photos" + Math.floor(Math.random() * 1000);
+                }
+
+                calculatePrice();
+            });
+        }
+
+        // Первоначальный запуск функции, чтобы сразу отобразить цену 450
+        calculatePrice();
     });
 </script>
