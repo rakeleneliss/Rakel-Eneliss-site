@@ -224,8 +224,7 @@
             display: flex;
             align-items: center;
             padding: 10px;
-            background: #b977d1;
-            color: #fff;
+            background: var(--bg-color);
             border: 1px solid transparent;
             border-radius: 8px;
             cursor: pointer;
@@ -289,9 +288,9 @@
         }
 
         .btn {
-            background-color: #b977d1;
-            color: #fff;
-            border: 2px solid #b977d1;
+            background-color: transparent;
+            color: var(--main-color);
+            border: 2px solid var(--main-color);
             padding: 10px 25px;
             font-family: 'Cormorant Garamond', serif;
             font-size: 1em;
@@ -301,8 +300,7 @@
         }
 
         .btn:hover {
-            background-color: #a66bbd;
-            border-color: #a66bbd;
+            background-color: var(--main-color);
             color: #ffffff;
         }
 
@@ -327,6 +325,11 @@
 
         .discount-section {
             text-align: left;
+        }
+
+        #discount-group .option-label {
+            background: #b977d1;
+            color: #fff;
         }
     </style>
 </head>
