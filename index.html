@@ -102,6 +102,85 @@ if(D.u!==R){I(!D.u,"Failed to set the default implementation to <"+R+">: The def
       } else {
         globals.headerBgImgExists = false;
       }
+    </script>
+    <style>
+        .calculator-block {
+            margin-bottom: 20px;
+            position: relative;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
+            font-size: 1.2em;
+        }
+        .options-grid {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .option-label {
+            background-color: #b977d1;
+            color: white !important;
+            padding: 5px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            border: none;
+        }
+        .option-label input {
+            margin: 0;
+            cursor: pointer;
+        }
+        .btn {
+            background-color: #b977d1;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .remove-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #888;
+        }
+        .block-total {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .final-summary {
+            margin-top: 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .custom-count-wrapper {
+            margin-top: 10px;
+            display: none;
+        }
+        .custom-count-input {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            max-width: 200px;
+        }
+    </style>
   <h2>🎈🎈🎈🎈🎈🎈🎈🎈🎈Калькулятор стоимости</h2>
             <div id="calculator-list"></div>
             <div class="action-buttons">
@@ -109,13 +188,12 @@ if(D.u!==R){I(!D.u,"Failed to set the default implementation to <"+R+">: The def
             </div>
             <div class="final-summary">
              <!-- Блок скидок -->
-<!-- Блок скидок -->
-<div class="section discount-section" style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.2);">
-    <div class="section-title" style="font-weight: bold; margin-bottom: 10px; color: #fff;">Скидка:</div>
-    <div class="options-grid" id="discount-group" style="display: flex; gap: 15px; flex-wrap: wrap;">
-        <label class="option-label" style="color: #fff; cursor: pointer;"><input type="radio" name="discount-option" value="10"> Заказ с сайта (10%)</label>
-        <label class="option-label" style="color: #fff; cursor: pointer;"><input type="radio" name="discount-option" value="20"> За отзыв (20%)</label>
-        <label class="option-label" style="color: #fff; cursor: pointer;"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
+<div class="section discount-section">
+    <div class="section-title">Скидка:</div>
+    <div class="options-grid" id="discount-group">
+        <label class="option-label"><input type="radio" name="discount-option" value="10"> Заказ с сайта (10%)</label>
+        <label class="option-label"><input type="radio" name="discount-option" value="20"> За отзыв (20%)</label>
+        <label class="option-label"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
     </div>
 </div>
 
