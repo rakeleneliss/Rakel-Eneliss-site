@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Портфолио & Конструктор</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #1a1a1a; color: #fff; line-height: 1.6; overflow-x: hidden; }
@@ -141,7 +140,6 @@
             font-size: 1.05em;
             margin-bottom: 8px;
             font-weight: bold;
-            font-family: 'Cormorant Garamond', serif;
         }
 
         .options-grid {
@@ -161,7 +159,6 @@
             transition: all 0.2s;
             font-size: 0.9em;
             user-select: none;
-            font-family: 'Cormorant Garamond', serif;
         }
 
         .option-label:hover {
@@ -253,6 +250,7 @@
             font-weight: bold;
         }
 
+        /* Стили для скидки */
         .discount-section {
             text-align: left;
             margin-top: 15px;
@@ -263,16 +261,34 @@
         .discount-section .section-title {
             color: #fff;
             margin-bottom: 10px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        #discount-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
         }
 
         #discount-group .option-label {
             background-color: #b977d1;
             color: #fff;
             border: none;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            font-family: 'Cormorant Garamond', serif;
         }
 
         #discount-group .option-label:hover {
-            opacity: 0.9;
+            background-color: #a366bd;
+        }
+
+        #discount-group .option-label input {
+            margin-right: 8px;
         }
     </style>
 </head>
@@ -324,17 +340,17 @@
                 <button class="btn" id="add-block-btn">+ Добавить еще</button>
             </div>
             <div class="final-summary">
-             <!-- Блок скидок -->
-<div class="section discount-section">
-    <div class="section-title">Скидка:</div>
-    <div class="options-grid" id="discount-group">
-        <label class="option-label"><input type="radio" name="discount-option" value="10"> Заказ с сайта (10%)</label>
-        <label class="option-label"><input type="radio" name="discount-option" value="20"> За отзыв (20%)</label>
-        <label class="option-label"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
-    </div>
-</div>
+                <!-- Блок скидок -->
+                <div class="section discount-section">
+                    <div class="section-title">Скидка:</div>
+                    <div class="options-grid" id="discount-group">
+                        <label class="option-label"><input type="radio" name="discount-option" value="10"> Заказ с сайта (10%)</label>
+                        <label class="option-label"><input type="radio" name="discount-option" value="20"> За отзыв (20%)</label>
+                        <label class="option-label"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
+                    </div>
+                </div>
 
-   Общая сумма: <span id="grand-total">0</span> руб.
+                Общая сумма: <span id="grand-total">0</span> руб.
             </div>
         </div>
     </section>
