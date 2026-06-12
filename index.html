@@ -42,6 +42,7 @@
             right: 0;
             bottom: 0;
             left: 0;
+            min-height: 100%;
         }
 
         .layer-base {
@@ -50,21 +51,19 @@
         }
 
         .layer-back {
-            transform: translateZ(-1px) scale(2);
+            transform: translateZ(-0.5px) scale(1.5);
             z-index: -1;
-            background-image: url('https://picsum.photos/id/10/1920/1080');
+            background-image: linear-gradient(rgba(252, 242, 249, 0.8), rgba(252, 242, 249, 0.8)), url('https://picsum.photos/id/10/1920/1080');
             background-size: cover;
             background-position: center;
-            opacity: 0.2;
         }
 
         .layer-deep {
-            transform: translateZ(-2px) scale(3);
+            transform: translateZ(-1px) scale(2);
             z-index: -2;
-            background-image: url('https://picsum.photos/id/20/1920/1080');
+            background-image: linear-gradient(rgba(252, 242, 249, 0.9), rgba(252, 242, 249, 0.9)), url('https://picsum.photos/id/20/1920/1080');
             background-size: cover;
             background-position: center;
-            opacity: 0.1;
         }
 
         .container {
@@ -209,22 +208,70 @@
             transform: scale(1.05);
         }
 
-        /* Centered Headers */
-        .centered-title {
-            text-align: center;
+        /* Section Headers */
+        .section-header {
+            text-align: left;
             font-size: 2.5em;
             margin-bottom: 30px;
             color: var(--main-color);
             position: relative;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        .centered-title::after {
+        .section-header.centered {
+            justify-content: center;
+            text-align: center;
+        }
+
+        .section-header::after {
             content: '';
             display: block;
-            width: 60px;
+            width: 40px;
             height: 3px;
             background: var(--accent-color);
-            margin: 10px auto 0;
+            margin-top: 10px;
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+        }
+
+        .section-header.centered::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Calculator Header Convention */
+        .calc-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .calc-header.centered {
+            justify-content: center;
+        }
+
+        .calc-icon-container {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            fill: white;
+            flex-shrink: 0;
+        }
+
+        .calc-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--main-color);
+            text-align: left;
         }
 
         /* Tables & Lists */
@@ -232,6 +279,33 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
+        }
+
+        .dictionary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        @media (max-width: 800px) {
+            .dictionary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dictionary-col h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .dictionary-col h2::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--accent-color);
+            margin: 8px auto 0;
         }
 
         .stat-item {
@@ -243,17 +317,129 @@
             align-items: center;
         }
 
+        /* Collapsible Terms Styles */
+        details.terms-details {
+            background: var(--bg-color);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        details.terms-details summary {
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.2em;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+            color: var(--main-color);
+            transition: background 0.3s;
+        }
+
+        details.terms-details summary::after {
+            content: '▼';
+            font-size: 0.8em;
+            transition: transform 0.3s;
+        }
+
+        details.terms-details[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        details.terms-details summary:hover {
+            background: #fdf8fb;
+        }
+
+        .terms-content {
+            padding: 20px;
+        }
+
+        /* Gallery and Pricing Styles */
+        .pricing-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .pricing-info-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .price-table th, .price-table td {
+            padding: 10px 5px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95em;
+        }
+
+        .price-table th {
+            color: var(--main-color);
+            font-weight: bold;
+            background: rgba(114, 61, 147, 0.05);
+        }
+
+        .price-table td:first-child {
+            font-weight: bold;
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .gallery-container {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .gallery-scroll {
+            display: flex;
+            height: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .gallery-scroll::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
+        .gallery-item {
+            flex: 0 0 100%;
+            height: 100%;
+            scroll-snap-align: start;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #eee;
+            transition: opacity 0.5s ease-in-out;
+        }
+
         .stat-value { font-weight: bold; color: var(--accent-color); font-size: 1.1em; }
 
-        /* Calculator Styles (Exact Restoration of Original) */
+        /* Calculator Styles */
         .calculator-block {
-            background: var(--white);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
+            background: transparent;
+            border: none;
+            padding: 10px 0;
             margin-bottom: 20px;
             position: relative;
-            box-shadow: 0 4px 10px rgba(114, 61, 147, 0.05);
         }
 
         .remove-btn {
@@ -335,9 +521,9 @@
         }
 
         .btn-action {
-            background-color: transparent;
-            color: var(--main-color);
-            border: 2px solid var(--main-color);
+            background-color: #c787de;
+            color: white;
+            border: 2px solid #c787de;
             padding: 10px 25px;
             font-family: inherit;
             font-size: 1em;
@@ -347,7 +533,8 @@
         }
 
         .btn-action:hover {
-            background-color: var(--main-color);
+            background-color: #b977d1;
+            border-color: #b977d1;
             color: white;
         }
 
@@ -363,29 +550,23 @@
 
         .final-summary span { font-weight: bold; }
 
-        .discount-block {
-            background: #723d93;
-            border: 1px solid #723d93;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(114, 61, 147, 0.1);
-            margin-top: 20px;
+        .discount-selection {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
             margin-bottom: 20px;
         }
 
-        .discount-block .section-title {
+        .discount-selection .section-title {
             color: #fff;
+            margin-bottom: 10px;
             font-weight: bold;
-            margin-bottom: 15px;
-            font-size: 1.1em;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            padding-bottom: 10px;
         }
 
-        .discount-block .option-label {
-            color: #fff;
+        .discount-selection .option-label {
             background: #c787de;
             border-color: #c787de;
+            color: #fff;
         }
 
         /* Generic Helper Classes */
@@ -467,7 +648,7 @@
 
             <main>
                 <section id="stats" class="block-card">
-                    <h2 class="centered-title">Статистика</h2>
+                    <h2 class="section-header">Статистика</h2>
                     <div class="stats-grid">
                         <div class="stat-item"><span>Работ в портфолио</span><span class="stat-value">500 ❙❙❙❙❙❙❙❙</span></div>
                         <div class="stat-item"><span>Заказов</span><span class="stat-value">174 ❙❙❙❙❙❙</span></div>
@@ -483,32 +664,86 @@
                     </div>
                 </section>
 
-                <section id="pricing" class="block-card">
-                    <h2 class="centered-title">Прайс-лист</h2>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                        <div>
-                            <h3 class="mb-20 text-center">•⋅⊰∙∘☽ АНТРО ☾∘∙⊱⋅•</h3>
-                            <p><strong>Чб/Моно скетч:</strong> Хэд - 600, Халф - 1000, Фулл - 1500</p>
-                            <p><strong>Простой рендер:</strong> Хэд - 900, Халф - 2100, Фулл - 3000</p>
-                            <p><strong>Сложный рендер:</strong> Хэд - 1500, Халф - 3000, Фулл - 4500</p>
+                <section id="pricing-anthro" class="block-card">
+                    <h2 class="section-header">АНТРО</h2>
+                    <div class="pricing-layout">
+                        <div class="gallery-container">
+                            <div class="gallery-scroll">
+                                <div class="gallery-item"><img src="https://picsum.photos/id/101/800/1200" alt="Anthro 1"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/102/1200/800" alt="Anthro 2"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/103/1000/1000" alt="Anthro 3"></div>
+                            </div>
                         </div>
-                        <div>
-                            <h3 class="mb-20 text-center">•⋅⊰∙∘☽ ФЕРАЛ ☾∘∙⊱⋅•</h3>
-                            <p><strong>Чб/Моно скетч:</strong> Хэд - 450, Халф - 900, Фулл - 1200</p>
-                            <p><strong>Простой рендер:</strong> Хэд - 800, Халф - 2000, Фулл - 2800</p>
-                            <p><strong>Сложный рендер:</strong> Хэд - 1300, Халф - 2800, Фулл - 4200</p>
+                        <div class="pricing-info-col">
+                            <table class="price-table">
+                                <thead>
+                                    <tr>
+                                        <th>Тип</th>
+                                        <th>Хэд</th>
+                                        <th>Халф</th>
+                                        <th>Фулл</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Скетч</td><td>600</td><td>1000</td><td>1500</td></tr>
+                                    <tr><td>Простой</td><td>900</td><td>2100</td><td>3000</td></tr>
+                                    <tr><td>Сложный</td><td>1500</td><td>3000</td><td>4500</td></tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px dashed var(--border-color);">
-                        <h3 class="mb-20 text-center">•⋅⊰∙∘☽ ЧИБИ и ДРУГИЕ виды ☾∘∙⊱⋅•</h3>
-                        <p><strong>Чиби:</strong> Разделите цену за желаемый формат на 2. К чиби относятся рисунки по лпс.</p>
-                        <p class="mt-20"><strong>Другие виды:</strong> летучие мыши, драконоподобные, пернатые, млп, кроликоподобные, протогены, опоссумы, сурикаты, сахаши, львы, акулы, панды, и крысы, копытные: лошади, олени.</p>
-                        <p class="mt-20"><strong>Люди:</strong> Цены не те же, что и на антро. Рисую от аниме до семи-реализма и реализма.</p>
+                </section>
+
+                <section id="pricing-feral" class="block-card">
+                    <h2 class="section-header">ФЕРАЛ</h2>
+                    <div class="pricing-layout">
+                        <div class="pricing-info-col">
+                            <table class="price-table">
+                                <thead>
+                                    <tr>
+                                        <th>Тип</th>
+                                        <th>Хэд</th>
+                                        <th>Халф</th>
+                                        <th>Фулл</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Скетч</td><td>450</td><td>900</td><td>1200</td></tr>
+                                    <tr><td>Простой</td><td>800</td><td>2000</td><td>2800</td></tr>
+                                    <tr><td>Сложный</td><td>1300</td><td>2800</td><td>4200</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="gallery-container">
+                            <div class="gallery-scroll">
+                                <div class="gallery-item"><img src="https://picsum.photos/id/201/800/1200" alt="Feral 1"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/202/1200/800" alt="Feral 2"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/203/1000/1000" alt="Feral 3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="pricing-chibi" class="block-card">
+                    <h2 class="section-header">ЧИБИ</h2>
+                    <div class="pricing-layout">
+                        <div class="gallery-container">
+                            <div class="gallery-scroll">
+                                <div class="gallery-item"><img src="https://picsum.photos/id/301/800/1200" alt="Chibi 1"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/302/1200/800" alt="Chibi 2"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/303/1000/1000" alt="Chibi 3"></div>
+                            </div>
+                        </div>
+                        <div class="pricing-info-col">
+                            <p class="mb-20">Разделите цену за желаемый формат на 2. К чиби относятся рисунки по лпс.</p>
+                            <p class="mt-20"><strong>Другие виды:</strong> летучие мыши, драконоподобные, пернатые, млп, кроликоподобные, протогены, опоссумы, сурикаты, сахаши, львы, акулы, панды, и крысы, копытные: лошади, олени.</p>
+                            <p class="mt-20"><strong>Люди:</strong> Цены не те же, что и на антро. Рисую от аниме до семи-реализма и реализма.</p>
+                        </div>
                     </div>
                 </section>
 
                 <section id="vtuber" class="block-card">
-                    <h2 class="centered-title">Vtube</h2>
+                    <h2 class="section-header centered">Vtube</h2>
                     <p>• Модель в полный рост без одежды: 12000р + 5к за версию с одеждой</p>
                     <p>• Модель в полный рост с одеждой: 15000р (без раздетой версии)</p>
                     <p>• Доп. эмоция без анимации: 400р</p>
@@ -516,7 +751,7 @@
                 </section>
 
                 <section id="stickers" class="block-card">
-                    <h2 class="centered-title">Стикеры</h2>
+                    <h2 class="section-header">Стикеры</h2>
                     <table style="width: 100%; text-align: left; border-collapse: collapse;">
                         <thead>
                             <tr style="border-bottom: 2px solid var(--border-color);">
@@ -535,59 +770,84 @@
                 </section>
 
                 <section id="merch" class="block-card">
-                    <h2 class="centered-title">Мерч</h2>
+                    <h2 class="section-header centered">Мерч</h2>
                     <p>У меня есть мерч! Отправляю в день оформления любой удобной вам доставкой (озон, яндекс, почта России, СДЭК, авито) за ваш счёт либо личная встреча в Москве. Актуальное наличие уточняйте!</p>
                     <p class="mt-20"><strong>4 вида ламинации:</strong> звёзды, бисер, радуга, битое стекло</p>
                 </section>
 
                 <section id="terms" class="block-card">
-                    <h2 class="centered-title">Условия</h2>
-                    <ul style="padding-left: 20px;">
-                        <li class="mb-20">Оплата сразу или же 50% до и 50% после предоставления скетча на ру карту/бусти/пейпал, возможна оплата частями;</li>
-                        <li class="mb-20">Дополнительная плата взимается за крылья, сложный окрас персонажа и объекты помимо него;</li>
-                        <li class="mb-20">Дополнительная плата за NSFW составит +10-20% от выбранного формата;</li>
-                        <li class="mb-20">Случаи, когда вы хотите чтобы арт не был опубликован или будете использовать его в коммерческих целях, обговариваются отдельно до начала работы(!);</li>
-                        <li class="mb-20">Срок выполнения работы от 3х до 30 дней в зависимости от формата и очереди, возможно сокращение за доплату;</li>
-                        <li>На этапе скетча 2 правки бесплатно, на этапе лайна - только 2 мелкие бесплатно;</li>
-                    </ul>
+                    <h2 class="section-header centered">Условия</h2>
+                    <details class="terms-details">
+                        <summary>Развернуть условия работы</summary>
+                        <div class="terms-content">
+                            <ul style="padding-left: 20px; list-style: none;">
+                                <li class="mb-20">• Оплата сразу или же 50% до и 50% после предоставления скетча на ру карту/бусти/пейпал, возможна оплата частями;</li>
+                                <li class="mb-20">• Дополнительная плата взимается за крылья, сложный окрас персонажа и объекты помимо него;</li>
+                                <li class="mb-20">• Дополнительная плата за NSFW составит +10-20% от выбранного формата;</li>
+                                <li class="mb-20">• Случаи, когда вы хотите чтобы арт не был опубликован или будете использовать его в коммерческих целях, обговариваются отдельно до начала работы(!);</li>
+                                <li class="mb-20">• Если вы отказываетесь от заказа, деньги возвращаются только за непроделанную часть работы;</li>
+                                <li class="mb-20">• Если вы не выходите на связь более, чем 1 месяц, не предупредив заранее меня, заказ аннулируется (я не буду ждать бесконечно);</li>
+                                <li class="mb-20">• Если по вышеописанным причинам заказ аннулируется, я оставляю за собой право из рисунка сделать юч, предварительно убрав все детали, по которым можно было бы опознать персонажа;</li>
+                                <li class="mb-20">• Я рисую в разных направлениях и экспериментирую, так что не стесняйтесь спрашивать, если находите свою идею слишком необычной!;</li>
+                                <li class="mb-20">• Со мной можете общаться на «ты»;</li>
+                                <li class="mb-20">• Срок выполнения работы от 3х до 30 дней в зависимости от формата и очереди, возможно сокращение за доплату;</li>
+                                <li class="mb-20">• До начала работы укажите пожалуйта важные для вас детали вашего персонажа (которые например обычно путают);</li>
+                                <li class="mb-20">• Каждый этап рисунка я скидываю для утверждения, не бойтесь вносить правки, а главное делайте это вовремя!;</li>
+                                <li class="mb-20">• На этапе скетча 2 правки бесплатно, на этапе лайна - только 2 мелкие бесплатно;</li>
+                                <li class="mb-20">• Я всегда на связи и отвечаю либо в первые 15 минут, либо в течение дня;</li>
+                                <li class="mb-20">• Уважайте чужое время, не заваливайте меня идеями без возможности их оплатить в ближайшее время;</li>
+                                <li class="mb-20">• Доны имеют право на 30% СКИДКУ при условии что сумму скидки дон уже оплатил самой подпиской!</li>
+                                <li class="mb-20">• СКИДКА на второй заказ 20% при условии написания отзыва!</li>
+                                <li>• Для оформления заказа можете написать мне в любой социальной сети!</li>
+                            </ul>
+                        </div>
+                    </details>
                 </section>
 
                 <section id="dictionary" class="block-card">
-                    <h2 class="centered-title">Словарь</h2>
-                    <p class="mb-20"><strong>Антро:</strong> очеловеченные, ходящие на двух ногах животные.</p>
-                    <p class="mb-20"><strong>Ферал:</strong> очеловеченные животные, ходящие на 4х лапах.</p>
-                    <p class="mb-20"><strong>Скетч:</strong> набросок, простая работа, выполненная в одном цвете с неровным контуром;</p>
-                    <p class="mb-20"><strong>Простой рендер:</strong> более аккуратный цветной набросок (флэт колор, плоский цвет);</p>
-                    <p class="mb-20"><strong>Сложный рендер:</strong> вылизанная картинка с светотенью и постабработкой (фулл колор);</p>
-                    <p class="mb-20"><strong>Хэд/Халф/Фулл:</strong> голова / по пояс / в полный рост.</p>
-                    <p class="mb-20"><strong>Чиби:</strong> анатомически упрощённый, мультяшный рисунок.</p>
+                    <div class="dictionary-grid">
+                        <div class="dictionary-col">
+                            <h2>Словарь</h2>
+                            <p class="mb-20"><strong>Антро:</strong> очеловеченные, ходящие на двух ногах животные.</p>
+                            <p class="mb-20"><strong>Ферал:</strong> очеловеченные животные, ходящие на 4х лапах.</p>
+                            <p class="mb-20"><strong>Скетч:</strong> набросок, простая работа, выполненная в одном цвете с неровным контуром;</p>
+                            <p class="mb-20"><strong>Простой рендер:</strong> более аккуратный цветной набросок (флэт колор, плоский цвет);</p>
+                            <p class="mb-20"><strong>Сложный рендер:</strong> вылизанная картинка с светотенью и постабработкой (фулл колор);</p>
+                            <p class="mb-20"><strong>Хэд/Халф/Фулл:</strong> голова / по пояс / в полный рост.</p>
+                            <p class="mb-20"><strong>Чиби:</strong> анатомически упрощённый, мультяшный рисунок.</p>
+                        </div>
 
-                    <h2 class="centered-title mt-20">Я рисую</h2>
-                    <ul class="mb-20" style="padding-left: 20px;">
-                        <li>• Любые виды фурри и ферал;</li>
-                        <li>• Людей;</li>
-                        <li>• Май литл пони (млп);</li>
-                        <li>• Драконов;</li>
-                        <li>• 18+ тематику;</li>
-                        <li>• Тематику БДСМ;</li>
-                        <li>• Тематику смерти, старости, младенчества без сексуализации;</li>
-                        <li>• Арты в стиле Дисней;</li>
-                        <li>• Арты в стиле LPS.</li>
-                    </ul>
+                        <div class="dictionary-col">
+                            <h2>Я рисую</h2>
+                            <ul class="mb-20" style="padding-left: 20px; list-style: none;">
+                                <li>• Любые виды фурри и ферал;</li>
+                                <li>• Людей;</li>
+                                <li>• Май литл пони (млп);</li>
+                                <li>• Драконов;</li>
+                                <li>• 18+ тематику;</li>
+                                <li>• Тематику БДСМ;</li>
+                                <li>• Тематику смерти, старости, младенчества без сексуализации;</li>
+                                <li>• Арты в стиле Дисней;</li>
+                                <li>• Арты в стиле LPS.</li>
+                            </ul>
+                        </div>
 
-                    <h2 class="centered-title mt-20">Я не рисую</h2>
-                    <ul style="padding-left: 20px;">
-                        <li>• Ферал п*рно;</li>
-                        <li>• Воре (возможен только намёк);</li>
-                        <li>• Гуро (разложение, гниение - нет);</li>
-                        <li>• Тематику подгузников, фекалий, мочи и тд;</li>
-                        <li>• Педо;</li>
-                        <li>• Гипертрофированные половые признаки.</li>
-                    </ul>
+                        <div class="dictionary-col">
+                            <h2>Я не рисую</h2>
+                            <ul style="padding-left: 20px; list-style: none;">
+                                <li>• Ферал п*рно;</li>
+                                <li>• Воре (возможен только намёк);</li>
+                                <li>• Гуро (разложение, гниение - нет);</li>
+                                <li>• Тематику подгузников, фекалий, мочи и тд;</li>
+                                <li>• Педо;</li>
+                                <li>• Гипертрофированные половые признаки.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </section>
 
                 <section id="donates" class="block-card">
-                    <h2 class="centered-title">Донаты</h2>
+                    <h2 class="section-header">Донаты</h2>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
                         <div class="status-block">
                             <div class="status-title">Базовая поддержка (50р/мес)</div>
@@ -599,7 +859,8 @@
                         </div>
                     </div>
                     <div class="action-buttons" style="gap: 15px; flex-wrap: wrap;">
-                        <a href="https://boosty.to/rakel_eneliss/purchase/3476976?ssource=DIRECT&share=subscription_link" class="nav-btn" target="_blank">Бусти</a>
+                        <a href="https://boosty.to/rakel_eneliss/purchase/3476976?ssource=DIRECT&share=subscription_link" class="nav-btn" target="_blank">Бусти (50р/мес)</a>
+                        <a href="https://boosty.to/rakel_eneliss/purchase/3476980?ssource=DIRECT&share=subscription_link" class="nav-btn" target="_blank">Бусти (300р/мес)</a>
                         <a href="https://vk.com/donut/rakel_eneliss" class="nav-btn" target="_blank">ВК донат</a>
                         <a href="https://t.me/+WPneYApzrRc4MDIy" class="nav-btn" target="_blank">ТГ (50 звёзд)</a>
                         <a href="https://t.me/+8yauwluYLh83MzNi" class="nav-btn" target="_blank">ТГ (300 звёзд)</a>
@@ -607,7 +868,12 @@
                 </section>
 
                 <section id="calculator" class="block-card">
-                    <h2 class="centered-title">Калькулятор</h2>
+                    <div class="calc-header centered">
+                        <div class="calc-icon-container">
+                            <svg viewBox="0 0 24 24" width="24" height="24"><path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3M19 19H5V5H19V19M11 7H13V9H11V7M11 11H13V13H11V11M11 15H13V17H11V15M7 7H9V9H7V7M7 11H9V13H7V11M7 15H9V17H7V15M15 7H17V9H15V7M15 11H17V17H15V11"/></svg>
+                        </div>
+                        <h2 class="calc-title">Калькулятор</h2>
+                    </div>
 
                     <div id="calculator-list"></div>
 
@@ -616,12 +882,12 @@
                     </div>
 
                     <div class="final-summary">
-                        <div class="discount-selection mb-20" style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;">
-                            <div class="section-title" style="color: #fff; margin-bottom: 10px;">Скидка:</div>
+                        <div class="discount-selection">
+                            <div class="section-title">Скидка:</div>
                             <div class="options-grid" id="discount-group">
-                                <label class="option-label" style="background: #c787de; border-color: #c787de; color: #fff;"><input type="radio" name="discount-option" value="10"> Заказ с сайта (10%)</label>
-                                <label class="option-label" style="background: #c787de; border-color: #c787de; color: #fff;"><input type="radio" name="discount-option" value="20"> За отзыв (20%)</label>
-                                <label class="option-label" style="background: #c787de; border-color: #c787de; color: #fff;"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
+                                <label class="option-label"><input type="radio" name="discount-option" value="10"> Заказ с сайта (10%)</label>
+                                <label class="option-label"><input type="radio" name="discount-option" value="20"> За отзыв (20%)</label>
+                                <label class="option-label"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
                             </div>
                         </div>
                         Общая сумма: <span id="grand-total">0</span> руб.
@@ -823,6 +1089,21 @@
     document.getElementById('add-block-btn').addEventListener('click', createNewBlock);
 
     createNewBlock();
+
+    // Auto-scroll galleries
+    document.querySelectorAll('.gallery-scroll').forEach(gallery => {
+        let direction = 1;
+        setInterval(() => {
+            const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+            if (gallery.scrollLeft >= maxScroll) direction = -1;
+            if (gallery.scrollLeft <= 0) direction = 1;
+
+            gallery.scrollBy({
+                left: direction * gallery.clientWidth,
+                behavior: 'smooth'
+            });
+        }, 5000);
+    });
 </script>
 
 </body>
