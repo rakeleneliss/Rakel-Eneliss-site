@@ -13,52 +13,101 @@
             --muted-color: #a382b9;
             --border-color: #e8d0e5;
             --text-color: #723d93;
+            --white: #ffffff;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
             font-family: 'Cormorant Garamond', serif;
             font-size: 18px;
+            overflow-x: hidden;
+            background-color: var(--bg-color);
+        }
+
+        /* Multi-layer Parallax Background */
+        .parallax-wrapper {
+            perspective: 1px;
+            height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            background-color: var(--bg-color);
+        }
+
+        .parallax-layer {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .layer-base {
+            transform: translateZ(0);
+            z-index: 1;
+        }
+
+        .layer-back {
+            transform: translateZ(-1px) scale(2);
+            z-index: -1;
+            background-image: url('https://picsum.photos/id/10/1920/1080');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+        }
+
+        .layer-deep {
+            transform: translateZ(-2px) scale(3);
+            z-index: -2;
+            background-image: url('https://picsum.photos/id/20/1920/1080');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
         }
 
         .container {
             width: 100%;
-            max-width: 800px;
+            max-width: 950px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Blocks / Cards */
+        .block-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(114, 61, 147, 0.1);
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(5px);
         }
 
         /* Header & Profile Styles */
-        .header {
-            padding: 40px 0;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 30px;
-        }
-
         .header-container {
             display: flex;
-            gap: 30px;
-            align-items: flex-start;
+            gap: 40px;
+            align-items: center;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .profile-column {
-            flex: 1;
-            min-width: 200px;
             text-align: center;
         }
 
         .avatar-wrapper {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             margin: 0 auto 20px;
             border-radius: 50%;
             overflow: hidden;
-            border: 3px solid var(--accent-color);
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .avatar-img {
@@ -68,64 +117,73 @@
         }
 
         .profile-name {
-            font-size: 2.5em;
-            line-height: 1.1;
+            font-size: 3em;
+            line-height: 1;
             color: var(--main-color);
+            margin-bottom: 10px;
         }
 
         .info-column {
-            flex: 2;
+            flex: 1;
             min-width: 300px;
         }
 
-        .bio-text {
-            margin-bottom: 15px;
-        }
-
         .status-block {
-            background: #fff;
-            padding: 15px;
-            border-radius: 12px;
+            background: var(--bg-color);
+            padding: 20px;
+            border-radius: 15px;
             margin: 20px 0;
-            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--accent-color);
         }
 
         .status-title {
             font-weight: bold;
             text-transform: uppercase;
             margin-bottom: 10px;
+            color: var(--main-color);
         }
 
         .status-list {
             list-style: none;
         }
 
+        /* Circular Social Buttons */
         .socials-links {
             display: flex;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
-        .social-link {
-            padding: 5px 15px;
+        .social-btn {
+            width: 50px;
+            height: 50px;
             background: var(--accent-color);
-            color: #fff;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
             text-decoration: none;
-            border-radius: 20px;
-            font-size: 0.9em;
-            transition: 0.3s;
+            transition: transform 0.3s, background 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            fill: white;
         }
 
-        .social-link:hover {
+        .social-btn:hover {
+            transform: translateY(-5px);
             background: var(--main-color);
         }
 
-        /* Navigation */
+        .social-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Navigation as Buttons */
         .header-nav {
-            margin-top: 30px;
-            padding: 10px 0;
-            border-top: 1px solid var(--border-color);
+            margin: 40px 0;
             display: flex;
             justify-content: center;
             gap: 15px;
@@ -134,350 +192,425 @@
 
         .nav-btn {
             text-decoration: none;
+            background: var(--white);
             color: var(--main-color);
             font-weight: 600;
-            padding: 5px 10px;
-            border-radius: 5px;
+            padding: 12px 25px;
+            border-radius: 30px;
+            border: 2px solid var(--accent-color);
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
         .nav-btn:hover {
-            background: var(--border-color);
+            background: var(--accent-color);
+            color: white;
+            transform: scale(1.05);
         }
 
-        /* Content Blocks */
-        section {
-            margin-bottom: 50px;
-        }
-
-        .section-title {
-            font-size: 2em;
-            margin-bottom: 20px;
-            border-left: 5px solid var(--accent-color);
-            padding-left: 15px;
+        /* Centered Headers */
+        .centered-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
             color: var(--main-color);
+            position: relative;
         }
 
-        .content-block {
-            background: #fff;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(114, 61, 147, 0.05);
-            border: 1px solid var(--border-color);
+        .centered-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 10px auto 0;
         }
 
-        /* Calculator Styles */
-        .calculator-section {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            border: 2px solid var(--border-color);
+        /* Tables & Lists */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
         }
 
-        .calculator-block {
+        .stat-item {
+            padding: 15px;
             background: var(--bg-color);
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-value { font-weight: bold; color: var(--accent-color); font-size: 1.1em; }
+
+        /* Calculator Styles (Exact Restoration of Original) */
+        .calculator-block {
+            background: var(--white);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 20px;
             position: relative;
+            box-shadow: 0 4px 10px rgba(114, 61, 147, 0.05);
         }
 
         .remove-btn {
             position: absolute;
-            top: 10px;
+            top: 12px;
             right: 15px;
             background: none;
             border: none;
             color: #cc4444;
             font-size: 24px;
             cursor: pointer;
+            line-height: 1;
+        }
+
+        .section {
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: 1.05em;
+            margin-bottom: 8px;
+            font-weight: bold;
         }
 
         .options-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             gap: 10px;
-            margin-top: 10px;
         }
 
         .option-label {
             display: flex;
             align-items: center;
-            padding: 12px;
-            background: #fff;
-            border: 1px solid var(--border-color);
+            padding: 10px;
+            background: var(--bg-color);
+            border: 1px solid transparent;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 0.95em;
+            transition: all 0.2s;
+            font-size: 0.9em;
+        }
+
+        .option-label:hover {
+            border-color: var(--muted-color);
         }
 
         .option-label input {
-            margin-right: 10px;
+            margin-right: 8px;
             accent-color: var(--main-color);
+        }
+
+        .custom-count-wrapper {
+            margin-top: 10px;
+            display: none;
+        }
+
+        .custom-count-input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--main-color);
+            outline: none;
         }
 
         .block-total {
             text-align: right;
-            font-weight: bold;
-            margin-top: 15px;
-            font-size: 1.2em;
-        }
-
-        .btn {
-            background-color: var(--accent-color);
-            color: #fff;
-            border: none;
-            padding: 12px 25px;
-            font-family: inherit;
             font-size: 1.1em;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: 0.3s;
+            margin-top: 15px;
+            font-weight: bold;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 15px;
         }
 
-        .btn:hover {
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            margin: 25px 0;
+        }
+
+        .btn-action {
+            background-color: transparent;
+            color: var(--main-color);
+            border: 2px solid var(--main-color);
+            padding: 10px 25px;
+            font-family: inherit;
+            font-size: 1em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-action:hover {
             background-color: var(--main-color);
+            color: white;
         }
 
         .final-summary {
             background: var(--main-color);
-            color: #fff;
+            color: white;
+            border-radius: 15px;
             padding: 25px;
-            border-radius: 12px;
             text-align: center;
-            font-size: 1.4em;
-            margin-top: 30px;
+            font-size: 1.3em;
+            box-shadow: 0 6px 15px rgba(114, 61, 147, 0.2);
         }
 
         .final-summary span { font-weight: bold; }
 
-        /* Tables & Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+        .discount-block {
+            background: #723d93;
+            border: 1px solid #723d93;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(114, 61, 147, 0.1);
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
 
-        .stat-item {
-            padding: 15px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
+        .discount-block .section-title {
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
         }
 
-        .stat-value { font-weight: bold; color: var(--accent-color); }
+        .discount-block .option-label {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+        }
 
-        /* Responsive */
+        /* Generic Helper Classes */
+        .text-center { text-align: center; }
+        .mt-20 { margin-top: 20px; }
+        .mb-20 { margin-bottom: 20px; }
+
         @media (max-width: 600px) {
             .header-container { flex-direction: column; text-align: center; }
-            .info-column { min-width: 100%; }
+            .block-card { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header class="header">
-        <div class="header-container">
-            <div class="profile-column">
-                <div class="avatar-wrapper">
-                    <img src="https://picsum.photos/200" alt="Ракель Энелисс" class="avatar-img">
+<div class="parallax-wrapper">
+    <div class="parallax-layer layer-deep"></div>
+    <div class="parallax-layer layer-back"></div>
+    <div class="parallax-layer layer-base">
+
+        <div class="container">
+            <header class="block-card">
+                <div class="header-container">
+                    <div class="profile-column">
+                        <div class="avatar-wrapper">
+                            <img src="https://picsum.photos/id/64/400/400" alt="Ракель Энелисс" class="avatar-img">
+                        </div>
+                        <h1 class="profile-name">Ракель<br>Энелисс</h1>
+                    </div>
+
+                    <div class="info-column">
+                        <p class="mb-20">
+                            Привет! Я диджитал художница, мне 20 лет. Моё творчество — это не только рисунки фурри, но и анимации, портреты, vtobe модели live 2d, фигурки из лёгкого пластилина и полимерной глины, рисунки на чехлах, кружках и одежде, стикеры, комиксы, гифки, эмодзи, фурсюты и тд!
+                        </p>
+                        <p>
+                            Помимо этого, у меня есть свой мерч — стикеры, стикерпаки, лентикулярные открытки, магнитики, брелки, значки и тд, и многое из этого я изготавливаю своими руками!
+                        </p>
+
+                        <div class="status-block">
+                            <div class="status-title">СТАТУС: заказы по слотам!</div>
+                            <ul class="status-list">
+                                <li>• трейды: скилл = моему</li>
+                                <li>• коллабы: скилл = моему</li>
+                                <li>• реквесты: за особые заслуги</li>
+                            </ul>
+                        </div>
+
+                        <div class="socials-links">
+                            <a href="https://vk.com/rakel_eneliss" class="social-btn" title="VK">
+                                <svg viewBox="0 0 24 24"><path d="M14.54 20h1.15c.46 0 .6-.25.6-.58 0-.42-.2-.8-.2-1.28 0-.54.43-.82.43-.82.52-.3 1.17 1.1 1.72 1.58.4.37.75.5 1.13.5h1.72c.4 0 .6-.2.48-.6-.1-.3-.7-1.5-1.45-2.5-.4-.53-1-1.1-1.2-1.4-.27-.37-.2-.53 0-.85 0 0 1.5-2.1 1.65-2.87.08-.4-.05-.6-.5-.6h-1.72c-.37 0-.54.2-.63.43-.1 0-1 2.54-2.27 4.17-.4.5-.58.67-.8.67-.12 0-.3-.17-.3-.63v-3.77c0-.37-.1-.54-.42-.54h-2.7c-.23 0-.4.18-.4.35 0 .34.5.42.55 1.37v1.96c0 .43-.08.6-.26.6-.47 0-1.62-2.55-2.3-5.46-.14-.42-.3-.6-.67-.6H3.45c-.45 0-.54.2-.54.44 0 .4 1.55 7.33 7.08 10.15.54.27 1.05.4 1.55.4h1.15z"/></svg>
+                            </a>
+                            <a href="https://t.me/rakel_eneliss" class="social-btn" title="Telegram">
+                                <svg viewBox="0 0 24 24"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 1.054 3.416c.127.35.064.488.41.488.27 0 .392-.123.542-.27l2.603-2.53 5.412 3.996c.997.55 1.713.267 1.96-.923l3.54-16.69c.364-1.458-.556-2.123-1.51-1.706z"/></svg>
+                            </a>
+                            <a href="https://boosty.to/rakel_eneliss" class="social-btn" title="Boosty">
+                                <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.666 12.59c-.435 2.16-2.348 3.744-4.57 3.744h-2.227c-1.01 0-1.83-.82-1.83-1.83V9.504c0-1.01.82-1.83 1.83-1.83h2.227c2.222 0 4.135 1.584 4.57 3.744.07.35.107.71.107 1.086 0 .376-.037.736-.107 1.086z"/></svg>
+                            </a>
+                            <a href="https://www.furaffinity.net/user/rakeleneliss" class="social-btn" title="FurAffinity">
+                                <svg viewBox="0 0 24 24"><path d="M11.392 11.238c-.378.312-.76.621-1.144.927.135-.555.263-1.11.385-1.666.253.246.505.492.759.739zm2.464-.739c.122.556.25 1.111.385 1.666-.384-.306-.766-.615-1.144-.927.254-.247.506-.493.759-.739zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6.915 15.344c-.382.72-.942 1.332-1.558 1.815-.224.175-.453.336-.689.481l-.04.025c-.171.1-.344.195-.522.28-.707.34-1.472.56-2.259.646-.226.024-.455.039-.684.045-.054.001-.108.002-.163.002s-.109-.001-.163-.002c-.229-.006-.458-.021-.684-.045-.787-.086-1.552-.306-2.259-.646-.178-.085-.351-.18-.522-.28l-.04-.025c-.236-.145-.465-.306-.689-.481-.616-.483-1.176-1.095-1.558-1.815-.178-.337-.306-.688-.382-1.05-.01-.044-.018-.088-.025-.133-.06-.356-.089-.72-.089-1.093 0-.306.02-.607.06-.902.008-.063.018-.125.029-.187.085-.48.236-.935.441-1.354.015-.031.03-.062.046-.093l.006-.011c.08-.158.172-.313.273-.46.331-.482.748-.895 1.229-1.21.365-.24.773-.42 1.206-.528.064-.016.129-.03.195-.042.348-.06.709-.092 1.079-.092s.731.032 1.079.092c.066.012.131.026.195.042.433.108.841.288 1.206.528.481.315.898.728 1.229 1.21.101.147.193.302.273.46l.006.011c.016.031.031.062.046.093.205.419.356.874.441 1.354.011.062.021.124.029.187.04.295.06.596.06.902 0 .373-.029.737-.089 1.093-.007.045-.015.089-.025.133-.076.362-.204.713-.382 1.05z"/></svg>
+                            </a>
+                            <a href="https://toyhou.se/RakelEneliss" class="social-btn" title="Toyhouse">
+                                <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.12 16.56l-5.12 2.31-5.12-2.31V7.44l5.12-2.31 5.12 2.31v9.12z"/></svg>
+                            </a>
+                            <a href="https://www.youtube.com/@РакельЭнелисс" class="social-btn" title="YouTube">
+                                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <h1 class="profile-name">Ракель<br>Энелисс</h1>
-            </div>
 
-            <div class="info-column">
-                <p class="bio-text">
-                    Привет! Я диджитал художница, мне 20 лет. Моё творчество — это не только рисунки фурри, но и анимации, портреты, vtobe модели live 2d, фигурки из лёгкого пластилина и полимерной глины, рисунки на чехлах, кружках и одежде, стикеры, комиксы, гифки, эмодзи, фурсюты и тд!
-                </p>
-                <p class="bio-text">
-                    Помимо этого, у меня есть свой мерч — стикеры, стикерпаки, лентикулярные открытки, магнитики, брелки, значки и тд, и многое из этого я изготавливаю своими руками!
-                </p>
+                <nav class="header-nav">
+                    <a href="#dictionary" class="nav-btn">Словарь</a>
+                    <a href="#terms" class="nav-btn">Условия</a>
+                    <a href="#merch" class="nav-btn">Мерч</a>
+                    <a href="#vtuber" class="nav-btn">Vtube</a>
+                    <a href="#calculator" class="nav-btn">Калькулятор</a>
+                </nav>
+            </header>
 
-                <div class="status-block">
-                    <div class="status-title">СТАТУС: заказы по слотам!</div>
-                    <ul class="status-list">
-                        <li>• трейды: скилл = моему</li>
-                        <li>• коллабы: скилл = моему</li>
-                        <li>• реквесты: за особые заслуги</li>
+            <main>
+                <section id="stats" class="block-card">
+                    <h2 class="centered-title">Статистика</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item"><span>Работ в портфолио</span><span class="stat-value">500 ❙❙❙❙❙❙❙❙</span></div>
+                        <div class="stat-item"><span>Заказов</span><span class="stat-value">174 ❙❙❙❙❙❙</span></div>
+                        <div class="stat-item"><span>Стикеров</span><span class="stat-value">76 ❙❙❙❙</span></div>
+                        <div class="stat-item"><span>Vtube моделей</span><span class="stat-value">5 ❙❙</span></div>
+                        <div class="stat-item"><span>Референсов</span><span class="stat-value">19 ❙❙❙❙</span></div>
+                        <div class="stat-item"><span>Аудитория тг</span><span class="stat-value">630+ ❙❙❙❙❙❙❙</span></div>
+                        <div class="stat-item"><span>Аудитория ВК</span><span class="stat-value">1250+ ❙❙❙❙❙❙❙❙❙❙❙❙❙❙❙</span></div>
+                        <div class="stat-item"><span>Донов</span><span class="stat-value">13 ❙❙❙</span></div>
+                        <div class="stat-item"><span>Средний дедлайн</span><span class="stat-value">2 недели ❙❙❙</span></div>
+                        <div class="stat-item"><span>Ожидание ответа</span><span class="stat-value">15 минут ❙❙</span></div>
+                        <div class="stat-item"><span>Лет на рынке</span><span class="stat-value">7,5 ❙❙❙❙❙❙</span></div>
+                    </div>
+                </section>
+
+                <section id="pricing" class="block-card">
+                    <h2 class="centered-title">Прайс-лист</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                        <div>
+                            <h3 class="mb-20 text-center">•⋅⊰∙∘☽ АНТРО ☾∘∙⊱⋅•</h3>
+                            <p><strong>Чб/Моно скетч:</strong> Хэд - 600, Халф - 1000, Фулл - 1500</p>
+                            <p><strong>Простой рендер:</strong> Хэд - 900, Халф - 2100, Фулл - 3000</p>
+                            <p><strong>Сложный рендер:</strong> Хэд - 1500, Халф - 3000, Фулл - 4500</p>
+                        </div>
+                        <div>
+                            <h3 class="mb-20 text-center">•⋅⊰∙∘☽ ФЕРАЛ ☾∘∙⊱⋅•</h3>
+                            <p><strong>Чб/Моно скетч:</strong> Хэд - 450, Халф - 900, Фулл - 1200</p>
+                            <p><strong>Простой рендер:</strong> Хэд - 800, Халф - 2000, Фулл - 2800</p>
+                            <p><strong>Сложный рендер:</strong> Хэд - 1300, Халф - 2800, Фулл - 4200</p>
+                        </div>
+                    </div>
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px dashed var(--border-color);">
+                        <h3 class="mb-20 text-center">•⋅⊰∙∘☽ ЧИБИ и ДРУГИЕ виды ☾∘∙⊱⋅•</h3>
+                        <p><strong>Чиби:</strong> Разделите цену за желаемый формат на 2. К чиби относятся рисунки по лпс.</p>
+                        <p class="mt-20"><strong>Другие виды:</strong> летучие мыши, драконоподобные, пернатые, млп, кроликоподобные, протогены, опоссумы, сурикаты, сахаши, львы, акулы, панды, и крысы, копытные: лошади, олени.</p>
+                        <p class="mt-20"><strong>Люди:</strong> Цены не те же, что и на антро. Рисую от аниме до семи-реализма и реализма.</p>
+                    </div>
+                </section>
+
+                <section id="vtuber" class="block-card">
+                    <h2 class="centered-title">Vtube</h2>
+                    <p>• Модель в полный рост без одежды: 12000р + 5к за версию с одеждой</p>
+                    <p>• Модель в полный рост с одеждой: 15000р (без раздетой версии)</p>
+                    <p>• Доп. эмоция без анимации: 400р</p>
+                    <p>• Доп. эмоция с анимацией: 500р</p>
+                </section>
+
+                <section id="stickers" class="block-card">
+                    <h2 class="centered-title">Стикеры</h2>
+                    <table style="width: 100%; text-align: left; border-collapse: collapse;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--border-color);">
+                                <th style="padding: 10px;">Кол-во</th>
+                                <th style="padding: 10px;">Простой рендер</th>
+                                <th style="padding: 10px;">Сложный рендер</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td style="padding: 10px;">3 штуки</td><td style="padding: 10px;">1650 (550р/шт)</td><td style="padding: 10px;">2100 (700р/шт)</td></tr>
+                            <tr><td style="padding: 10px;">6 штук</td><td style="padding: 10px;">3000 (500р/шт)</td><td style="padding: 10px;">3900 (650р/шт)</td></tr>
+                            <tr><td style="padding: 10px;">12 штук</td><td style="padding: 10px;">5400 (450р/шт)</td><td style="padding: 10px;">7200 (600р/шт)</td></tr>
+                            <tr><td style="padding: 10px;">24 штуки</td><td style="padding: 10px;">9600 (400р/шт)</td><td style="padding: 10px;">13200 (550р/шт)</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section id="merch" class="block-card">
+                    <h2 class="centered-title">Мерч</h2>
+                    <p>У меня есть мерч! Отправляю в день оформления любой удобной вам доставкой (озон, яндекс, почта России, СДЭК, авито) за ваш счёт либо личная встреча в Москве. Актуальное наличие уточняйте!</p>
+                    <p class="mt-20"><strong>4 вида ламинации:</strong> звёзды, бисер, радуга, битое стекло</p>
+                </section>
+
+                <section id="terms" class="block-card">
+                    <h2 class="centered-title">Условия</h2>
+                    <ul style="padding-left: 20px;">
+                        <li class="mb-20">Оплата сразу или же 50% до и 50% после предоставления скетча на ру карту/бусти/пейпал, возможна оплата частями;</li>
+                        <li class="mb-20">Дополнительная плата взимается за крылья, сложный окрас персонажа и объекты помимо него;</li>
+                        <li class="mb-20">Дополнительная плата за NSFW составит +10-20% от выбранного формата;</li>
+                        <li class="mb-20">Случаи, когда вы хотите чтобы арт не был опубликован или будете использовать его в коммерческих целях, обговариваются отдельно до начала работы(!);</li>
+                        <li class="mb-20">Срок выполнения работы от 3х до 30 дней в зависимости от формата и очереди, возможно сокращение за доплату;</li>
+                        <li>На этапе скетча 2 правки бесплатно, на этапе лайна - только 2 мелкие бесплатно;</li>
                     </ul>
-                </div>
+                </section>
 
-                <div class="socials-links">
-                    <a href="https://vk.com/rakel_eneliss" class="social-link">VK</a>
-                    <a href="https://t.me/rakel_eneliss" class="social-link">Telegram</a>
-                    <a href="https://boosty.to/rakel_eneliss" class="social-link">Boosty</a>
-                    <a href="https://www.furaffinity.net/user/rakeleneliss" class="social-link">FurAffinity</a>
-                    <a href="https://toyhou.se/RakelEneliss" class="social-link">Toyhouse</a>
-                    <a href="https://www.youtube.com/@РакельЭнелисс" class="social-link">YouTube</a>
-                </div>
-            </div>
+                <section id="dictionary" class="block-card">
+                    <h2 class="centered-title">Словарь</h2>
+                    <p class="mb-20"><strong>Антро:</strong> очеловеченные, ходящие на двух ногах животные.</p>
+                    <p class="mb-20"><strong>Ферал:</strong> очеловеченные животные, ходящие на 4х лапах.</p>
+                    <p class="mb-20"><strong>Скетч:</strong> набросок, простая работа, выполненная в одном цвете с неровным контуром;</p>
+                    <p class="mb-20"><strong>Простой рендер:</strong> более аккуратный цветной набросок (флэт колор, плоский цвет);</p>
+                    <p class="mb-20"><strong>Сложный рендер:</strong> вылизанная картинка с светотенью и постабработкой (фулл колор);</p>
+                    <p class="mb-20"><strong>Хэд/Халф/Фулл:</strong> голова / по пояс / в полный рост.</p>
+                    <p><strong>Чиби:</strong> анатомически упрощённый, мультяшный рисунок.</p>
+                </section>
+
+                <section id="donates" class="block-card">
+                    <h2 class="centered-title">Донаты</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        <div class="status-block">
+                            <div class="status-title">Базовая поддержка (50р/мес)</div>
+                            <p>Скидка 15% на все позиции прайса, ранний доступ, вент арты.</p>
+                        </div>
+                        <div class="status-block">
+                            <div class="status-title">Поддержка PRO (300р/мес)</div>
+                            <p>Каждый месяц я выбираю одного из донов и рисую ему арт!</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="calculator" class="block-card">
+                    <h2 class="centered-title">Калькулятор</h2>
+
+                    <div id="calculator-list"></div>
+
+                    <div class="action-buttons">
+                        <button class="btn-action" id="add-block-btn">+ Добавить еще</button>
+                    </div>
+
+                    <div class="discount-block">
+                        <div class="section-title">Скидка:</div>
+                        <div class="options-grid" id="discount-group">
+                            <label class="option-label"><input type="radio" name="discount-option" value="10"> Заказ с сайта (10%)</label>
+                            <label class="option-label"><input type="radio" name="discount-option" value="20"> За отзыв (20%)</label>
+                            <label class="option-label"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
+                        </div>
+                    </div>
+
+                    <div class="final-summary">
+                        Общая сумма: <span id="grand-total">0</span> руб.
+                    </div>
+                </section>
+            </main>
+
+            <footer class="text-center mb-20" style="color: var(--muted-color); font-size: 0.9em;">
+                &copy; 2025 Ракель Энелисс. Все права защищены.
+            </footer>
         </div>
-
-        <nav class="header-nav">
-            <a href="#dictionary" class="nav-btn">Словарь</a>
-            <a href="#terms" class="nav-btn">Условия</a>
-            <a href="#merch" class="nav-btn">Мерч</a>
-            <a href="#vtuber" class="nav-btn">Vtube</a>
-            <a href="#calculator" class="nav-btn">Калькулятор</a>
-        </nav>
-    </header>
-
-    <main id="content">
-        <section id="stats">
-            <h2 class="section-title">Статистика</h2>
-            <div class="content-block stats-grid">
-                <div class="stat-item"><span>Работ в портфолио</span><span class="stat-value">500 ❙❙❙❙❙❙❙❙</span></div>
-                <div class="stat-item"><span>Заказов</span><span class="stat-value">174 ❙❙❙❙❙❙</span></div>
-                <div class="stat-item"><span>Стикеров</span><span class="stat-value">76 ❙❙❙❙</span></div>
-                <div class="stat-item"><span>Vtube моделей</span><span class="stat-value">5 ❙❙</span></div>
-                <div class="stat-item"><span>Референсов</span><span class="stat-value">19 ❙❙❙❙</span></div>
-                <div class="stat-item"><span>Аудитория тг</span><span class="stat-value">630+ ❙❙❙❙❙❙❙</span></div>
-                <div class="stat-item"><span>Аудитория ВК</span><span class="stat-value">1250+ ❙❙❙❙❙❙❙❙❙❙❙❙❙❙❙</span></div>
-                <div class="stat-item"><span>Донов</span><span class="stat-value">13 ❙❙❙</span></div>
-                <div class="stat-item"><span>Средний дедлайн</span><span class="stat-value">2 недели ❙❙❙</span></div>
-                <div class="stat-item"><span>Ожидание ответа</span><span class="stat-value">15 минут ❙❙</span></div>
-                <div class="stat-item"><span>Лет на рынке</span><span class="stat-value">7,5 ❙❙❙❙❙❙</span></div>
-            </div>
-        </section>
-
-        <section id="pricing">
-            <h2 class="section-title">Прайс-лист</h2>
-            <div class="content-block">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div>
-                        <h3>•⋅⊰∙∘☽ АНТРО ☾∘∙⊱⋅•</h3>
-                        <p><strong>Чб/Моно скетч:</strong> Хэд - 600, Халф - 1000, Фулл - 1500</p>
-                        <p><strong>Простой рендер:</strong> Хэд - 900, Халф - 2100, Фулл - 3000</p>
-                        <p><strong>Сложный рендер:</strong> Хэд - 1500, Халф - 3000, Фулл - 4500</p>
-                    </div>
-                    <div>
-                        <h3>•⋅⊰∙∘☽ ФЕРАЛ ☾∘∙⊱⋅•</h3>
-                        <p><strong>Чб/Моно скетч:</strong> Хэд - 450, Халф - 900, Фулл - 1200</p>
-                        <p><strong>Простой рендер:</strong> Хэд - 800, Халф - 2000, Фулл - 2800</p>
-                        <p><strong>Сложный рендер:</strong> Хэд - 1300, Халф - 2800, Фулл - 4200</p>
-                    </div>
-                </div>
-                <div style="margin-top: 20px; padding-top: 15px; border-top: 1px dashed var(--border-color);">
-                    <h3>•⋅⊰∙∘☽ ЧИБИ и ДРУГИЕ виды ☾∘∙⊱⋅•</h3>
-                    <p><strong>Чиби:</strong> Разделите цену за желаемый формат на 2. К чиби относятся рисунки по лпс.</p>
-                    <p><strong>Другие виды:</strong> летучие мыши, драконоподобные, пернатые, млп, кроликоподобные, протогены, опоссумы, сурикаты, сахаши, львы, акулы, панды, и крысы, копытные: лошади, олени.</p>
-                    <p><strong>Люди:</strong> Цены не те же, что и на антро. Рисую от аниме до семи-реализма и реализма.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="vtuber">
-            <h2 class="section-title">Vtube Модели</h2>
-            <div class="content-block">
-                <p>• Модель в полный рост без одежды: 12000р + 5к за версию с одеждой</p>
-                <p>• Модель в полный рост с одеждой: 15000р (без раздетой версии)</p>
-                <p>• Доп. эмоция без анимации: 400р</p>
-                <p>• Доп. эмоция с анимацией: 500р</p>
-            </div>
-        </section>
-
-        <section id="stickers">
-            <h2 class="section-title">Стикеры</h2>
-            <div class="content-block">
-                <table style="width: 100%; text-align: left; border-collapse: collapse;">
-                    <thead>
-                        <tr style="border-bottom: 2px solid var(--border-color);">
-                            <th>Кол-во</th>
-                            <th>Простой рендер</th>
-                            <th>Сложный рендер</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>3 штуки</td><td>1650 (550р/шт)</td><td>2100 (700р/шт)</td></tr>
-                        <tr><td>6 штук</td><td>3000 (500р/шт)</td><td>3900 (650р/шт)</td></tr>
-                        <tr><td>12 штук</td><td>5400 (450р/шт)</td><td>7200 (600р/шт)</td></tr>
-                        <tr><td>24 штуки</td><td>9600 (400р/шт)</td><td>13200 (550р/шт)</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="merch">
-            <h2 class="section-title">Мерч</h2>
-            <div class="content-block">
-                <p>У меня есть мерч! Отправляю в день оформления любой удобной вам доставкой (озон, яндекс, почта России, СДЭК, авито) за ваш счёт либо личная встреча в Москве. Актуальное наличие уточняйте!</p>
-                <p style="margin-top: 10px;"><strong>4 вида ламинации:</strong> звёзды, бисер, радуга, битое стекло</p>
-            </div>
-        </section>
-
-        <section id="terms">
-            <h2 class="section-title">Условия работы</h2>
-            <div class="content-block">
-                <ul style="padding-left: 20px;">
-                    <li>Оплата сразу или же 50% до и 50% после предоставления скетча.</li>
-                    <li>Дополнительная плата за крылья, сложный окрас и объекты.</li>
-                    <li>Дополнительная плата за NSFW составит +10-20%.</li>
-                    <li>Коммерческое использование обговаривается отдельно.</li>
-                    <li>Срок выполнения: от 3х до 30 дней.</li>
-                    <li>Правки: на этапе скетча 2 бесплатно, на этапе лайна 2 мелкие бесплатно.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="dictionary">
-            <h2 class="section-title">Словарь</h2>
-            <div class="content-block">
-                <p><strong>Антро:</strong> очеловеченные, ходящие на двух ногах животные.</p>
-                <p><strong>Ферал:</strong> очеловеченные животные, ходящие на 4х лапах.</p>
-                <p><strong>Скетч:</strong> набросок, простая работа в одном цвете.</p>
-                <p><strong>Простой рендер:</strong> аккуратный цветной набросок (флэт колор).</p>
-                <p><strong>Сложный рендер:</strong> вылизанная картинка с светотенью (фулл колор).</p>
-                <p><strong>Хэд/Халф/Фулл:</strong> голова / по пояс / в полный рост.</p>
-                <p><strong>Чиби:</strong> мультяшный, упрощённый стиль.</p>
-            </div>
-        </section>
-
-        <section id="donates">
-            <h2 class="section-title">Донаты</h2>
-            <div class="content-block">
-                <p><strong>Базовая поддержка (50р/мес):</strong> Скидка 15% на все позиции, ранний доступ, вент арты.</p>
-                <p><strong>Поддержка PRO (300р/мес):</strong> Каждый месяц выбираю одного дона и рисую ему арт!</p>
-            </div>
-        </section>
-
-        <section id="calculator">
-            <h2 class="section-title">Калькулятор стоимости</h2>
-            <div class="calculator-section">
-                <div id="calculator-list"></div>
-                <div style="text-align: center; margin: 20px 0;">
-                    <button class="btn" id="add-block-btn">+ Добавить еще</button>
-                </div>
-                
-                <div class="content-block" style="margin-top: 20px;">
-                    <div style="font-weight: bold; margin-bottom: 10px;">Скидки:</div>
-                    <div class="options-grid" id="discount-group">
-                        <label class="option-label"><input type="radio" name="discount-option" value="10"> Заказ с сайта (10%)</label>
-                        <label class="option-label"><input type="radio" name="discount-option" value="20"> За отзыв (20%)</label>
-                        <label class="option-label"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
-                    </div>
-                </div>
-
-                <div class="final-summary">
-                    Общая сумма: <span id="grand-total">0</span> руб.
-                </div>
-            </div>
-        </section>
-    </main>
+    </div>
 </div>
 
 <script>
     const priceList = {
-        anthro: {
-            sketch: { head: 600, half: 1000, full: 1500 },
-            simple: { head: 900, half: 2100, full: 3000 },
-            hard:   { head: 1500, half: 3000, full: 4500 }
-        },
-        feral: {
-            sketch: { head: 450, half: 900, full: 1200 },
-            simple: { head: 800, half: 2000, full: 2800 },
-            hard:   { head: 1300, half: 2800, full: 4200 }
-        }
+        sketch: { head: 450, half: 900, full: 1200 },
+        simple: { head: 800, half: 2000, full: 2800 },
+        hard:   { head: 1300, half: 2800, full: 4200 }
     };
 
     const calculatorList = document.getElementById('calculator-list');
@@ -491,18 +624,22 @@
         const block = document.createElement('div');
         block.className = 'calculator-block';
         block.innerHTML = `
-            <button class="remove-btn" onclick="removeBlock(event)">&times;</button>
+            <button class="remove-btn" title="Удалить этот заказ" onclick="removeBlock(event)">&times;</button>
 
-            <div style="margin-bottom: 15px;">
-                <div style="font-weight: bold; margin-bottom: 5px;">Тип персонажа</div>
+            <div class="section">
+                <div class="section-title">Персонажи</div>
                 <div class="options-grid">
-                    <label class="option-label"><input type="radio" name="type-${blockId}" value="anthro" checked> Антро</label>
-                    <label class="option-label"><input type="radio" name="type-${blockId}" value="feral"> Ферал</label>
+                    <label class="option-label"><input type="radio" name="chars-${blockId}" value="1" checked> 1</label>
+                    <label class="option-label"><input type="radio" name="chars-${blockId}" value="2"> 2 (x2 к цене)</label>
+                    <label class="option-label"><input type="radio" name="chars-${blockId}" value="custom"> Свой вариант</label>
+                </div>
+                <div class="custom-count-wrapper">
+                    <input type="number" class="custom-count-input" value="3" min="1" placeholder="Введите количество персонажей">
                 </div>
             </div>
 
-            <div style="margin-bottom: 15px;">
-                <div style="font-weight: bold; margin-bottom: 5px;">Формат</div>
+            <div class="section">
+                <div class="section-title">Формат</div>
                 <div class="options-grid">
                     <label class="option-label"><input type="radio" name="format-${blockId}" value="head" checked> Хед</label>
                     <label class="option-label"><input type="radio" name="format-${blockId}" value="half"> Халф</label>
@@ -510,88 +647,151 @@
                 </div>
             </div>
 
-            <div style="margin-bottom: 15px;">
-                <div style="font-weight: bold; margin-bottom: 5px;">Рендер</div>
+            <div class="section">
+                <div class="section-title">Рендер</div>
                 <div class="options-grid">
-                    <label class="option-label"><input type="radio" name="render-${blockId}" value="sketch" checked> Скетч</label>
-                    <label class="option-label"><input type="radio" name="render-${blockId}" value="simple"> Простой</label>
-                    <label class="option-label"><input type="radio" name="render-${blockId}" value="hard"> Сложный</label>
+                    <label class="option-label"><input type="radio" name="render-${blockId}" value="sketch" checked> Скетч/МОНО цвет</label>
+                    <label class="option-label"><input type="radio" name="render-${blockId}" value="simple"> Простой рендер</label>
+                    <label class="option-label"><input type="radio" name="render-${blockId}" value="hard"> Сложный рендер</label>
                 </div>
             </div>
 
-            <div style="margin-bottom: 15px;">
-                <div style="font-weight: bold; margin-bottom: 5px;">Дополнительно</div>
+            <div class="section">
+                <div class="section-title">Фон</div>
                 <div class="options-grid">
-                    <label class="option-label"><input type="checkbox" name="chibi-${blockId}"> Чиби (Цена / 2)</label>
-                    <label class="option-label"><input type="checkbox" name="nsfw-${blockId}"> NSFW (+20%)</label>
+                    <label class="option-label"><input type="radio" name="background-${blockId}" value="abstract" checked> Абстрактный (бесплатно)</label>
+                    <label class="option-label"><input type="radio" name="background-${blockId}" value="simple"> Простой (+500р.)</label>
+                    <label class="option-label"><input type="radio" name="background-${blockId}" value="hard"> Сложный (+1500-4500р.)</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Другие опции</div>
+                <div class="options-grid">
+                    <label class="option-label"><input type="checkbox" name="chibi-${blockId}" value="chibi"> Чиби (цена / 2)</label>
+                    <label class="option-label"><input type="checkbox" name="design-${blockId}" value="design"> Оформление (+200)</label>
                 </div>
             </div>
 
             <div class="block-total">
-                Цена: <span class="block-price">0</span> руб.
+                Стоимость: <span class="block-price">0</span> руб.
             </div>
         `;
 
         block.addEventListener('change', () => calculateBlock(block, blockId));
+
+        const charsRadios = block.querySelectorAll(`input[name="chars-${blockId}"]`);
+        const customWrapper = block.querySelector('.custom-count-wrapper');
+        charsRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                customWrapper.style.display = (e.target.value === 'custom') ? 'block' : 'none';
+                calculateBlock(block, blockId);
+            });
+        });
+
         calculatorList.appendChild(block);
         calculateBlock(block, blockId);
     }
 
     function removeBlock(event) {
-        event.target.closest('.calculator-block').remove();
+        event.preventDefault();
+        event.currentTarget.closest('.calculator-block').remove();
         updateGrandTotal();
     }
 
     function calculateBlock(block, blockId) {
-        const type = block.querySelector(`input[name="type-${blockId}"]:checked`).value;
+        const renderType = block.querySelector(`input[name="render-${blockId}"]:checked`).value;
         const format = block.querySelector(`input[name="format-${blockId}"]:checked`).value;
-        const render = block.querySelector(`input[name="render-${blockId}"]:checked`).value;
-        const isChibi = block.querySelector(`input[name="chibi-${blockId}"]`).checked;
-        const isNsfw = block.querySelector(`input[name="nsfw-${blockId}"]`).checked;
+        const chars = block.querySelector(`input[name="chars-${blockId}"]:checked`).value;
+        const background = block.querySelector(`input[name="background-${blockId}"]:checked`).value;
+        const chibi = block.querySelector(`input[name="chibi-${blockId}"]`).checked;
+        const design = block.querySelector(`input[name="design-${blockId}"]`).checked;
 
-        let price = priceList[type][render][format];
+        let basePrice = priceList[renderType][format];
 
-        if (isChibi) price /= 2;
-        if (isNsfw) price *= 1.2;
+        if (chars === '2') {
+            basePrice *= 2;
+        } else if (chars === 'custom') {
+            const customCount = block.querySelector('.custom-count-input').value || 1;
+            basePrice *= parseInt(customCount);
+        }
 
-        block.querySelector('.block-price').textContent = Math.round(price);
+        let priceWithoutBg = basePrice;
+        if (chibi) {
+            priceWithoutBg /= 2;
+        }
+
+        if (design) {
+            priceWithoutBg += 200;
+        }
+
+        let priceDisplay = '';
+
+        if (background === 'simple') {
+            priceDisplay = (priceWithoutBg + 500);
+        } else if (background === 'hard') {
+            const minPrice = priceWithoutBg + 1500;
+            const maxPrice = priceWithoutBg + 4500;
+            priceDisplay = minPrice + '-' + maxPrice;
+        } else {
+            priceDisplay = priceWithoutBg;
+        }
+
+        block.querySelector('.block-price').textContent = priceDisplay;
         updateGrandTotal();
     }
 
     function updateGrandTotal() {
-        let total = 0;
+        let minTotal = 0;
+        let maxTotal = 0;
+        let hasRange = false;
+
         document.querySelectorAll('.block-price').forEach(el => {
-            total += parseInt(el.textContent) || 0;
+            const text = el.textContent;
+            if (text.includes('-')) {
+                const parts = text.split('-');
+                minTotal += parseInt(parts[0]) || 0;
+                maxTotal += parseInt(parts[1]) || 0;
+                hasRange = true;
+            } else {
+                const price = parseInt(text) || 0;
+                minTotal += price;
+                maxTotal += price;
+            }
         });
 
-        const selectedDiscount = document.querySelector('input[name="discount-option"]:checked');
-        let discount = 0;
-        if (selectedDiscount) {
-            discount = parseInt(selectedDiscount.value);
-            total = Math.round(total * (1 - discount / 100));
+        const selectedRadio = document.querySelector('input[name="discount-option"]:checked');
+        const discountValue = selectedRadio ? parseInt(selectedRadio.value) : 0;
+
+        if (discountValue > 0) {
+            minTotal = Math.round(minTotal * (1 - discountValue / 100));
+            maxTotal = Math.round(maxTotal * (1 - discountValue / 100));
         }
 
-        grandTotalSpan.textContent = total + (discount > 0 ? ` (со скидкой -${discount}%)` : '');
+        let resultText = (hasRange && minTotal !== maxTotal) ? (minTotal + '-' + maxTotal) : minTotal;
+        if (discountValue > 0) resultText += ' (со скидкой -' + discountValue + '%)';
+
+        grandTotalSpan.textContent = resultText;
     }
 
-    // Toggle radio buttons for discounts
-    let lastChecked = null;
+    document.getElementById('discount-group').addEventListener('change', updateGrandTotal);
+
+    // Логика отжатия кнопок скидок
+    let lastCheckedRadio = null;
     document.querySelectorAll('input[name="discount-option"]').forEach(radio => {
         radio.addEventListener('click', function() {
-            if (lastChecked === this) {
+            if (lastCheckedRadio === this) {
                 this.checked = false;
-                lastChecked = null;
+                lastCheckedRadio = null;
+                updateGrandTotal();
             } else {
-                lastChecked = this;
+                lastCheckedRadio = this;
             }
-            updateGrandTotal();
         });
     });
 
     document.getElementById('add-block-btn').addEventListener('click', createNewBlock);
-    document.getElementById('discount-group').addEventListener('change', updateGrandTotal);
 
-    // Initial block
     createNewBlock();
 </script>
 
