@@ -192,18 +192,19 @@
 
         .nav-btn {
             text-decoration: none;
-            background: var(--white);
-            color: var(--main-color);
+            background: #c787de;
+            color: white;
             font-weight: 600;
             padding: 12px 25px;
             border-radius: 30px;
-            border: 2px solid var(--accent-color);
+            border: 2px solid #c787de;
             transition: all 0.3s;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
         .nav-btn:hover {
-            background: var(--accent-color);
+            background: #b977d1;
+            border-color: #b977d1;
             color: white;
             transform: scale(1.05);
         }
@@ -383,7 +384,8 @@
 
         .discount-block .option-label {
             color: #fff;
-            background: rgba(255, 255, 255, 0.1);
+            background: #c787de;
+            border-color: #c787de;
         }
 
         /* Generic Helper Classes */
@@ -558,7 +560,30 @@
                     <p class="mb-20"><strong>Простой рендер:</strong> более аккуратный цветной набросок (флэт колор, плоский цвет);</p>
                     <p class="mb-20"><strong>Сложный рендер:</strong> вылизанная картинка с светотенью и постабработкой (фулл колор);</p>
                     <p class="mb-20"><strong>Хэд/Халф/Фулл:</strong> голова / по пояс / в полный рост.</p>
-                    <p><strong>Чиби:</strong> анатомически упрощённый, мультяшный рисунок.</p>
+                    <p class="mb-20"><strong>Чиби:</strong> анатомически упрощённый, мультяшный рисунок.</p>
+
+                    <h2 class="centered-title mt-20">Я рисую</h2>
+                    <ul class="mb-20" style="padding-left: 20px;">
+                        <li>• Любые виды фурри и ферал;</li>
+                        <li>• Людей;</li>
+                        <li>• Май литл пони (млп);</li>
+                        <li>• Драконов;</li>
+                        <li>• 18+ тематику;</li>
+                        <li>• Тематику БДСМ;</li>
+                        <li>• Тематику смерти, старости, младенчества без сексуализации;</li>
+                        <li>• Арты в стиле Дисней;</li>
+                        <li>• Арты в стиле LPS.</li>
+                    </ul>
+
+                    <h2 class="centered-title mt-20">Я не рисую</h2>
+                    <ul style="padding-left: 20px;">
+                        <li>• Ферал п*рно;</li>
+                        <li>• Воре (возможен только намёк);</li>
+                        <li>• Гуро (разложение, гниение - нет);</li>
+                        <li>• Тематику подгузников, фекалий, мочи и тд;</li>
+                        <li>• Педо;</li>
+                        <li>• Гипертрофированные половые признаки.</li>
+                    </ul>
                 </section>
 
                 <section id="donates" class="block-card">
@@ -573,6 +598,12 @@
                             <p>Каждый месяц я выбираю одного из донов и рисую ему арт!</p>
                         </div>
                     </div>
+                    <div class="action-buttons" style="gap: 15px; flex-wrap: wrap;">
+                        <a href="https://boosty.to/rakel_eneliss/purchase/3476976?ssource=DIRECT&share=subscription_link" class="nav-btn" target="_blank">Бусти</a>
+                        <a href="https://vk.com/donut/rakel_eneliss" class="nav-btn" target="_blank">ВК донат</a>
+                        <a href="https://t.me/+WPneYApzrRc4MDIy" class="nav-btn" target="_blank">ТГ (50 звёзд)</a>
+                        <a href="https://t.me/+8yauwluYLh83MzNi" class="nav-btn" target="_blank">ТГ (300 звёзд)</a>
+                    </div>
                 </section>
 
                 <section id="calculator" class="block-card">
@@ -584,16 +615,15 @@
                         <button class="btn-action" id="add-block-btn">+ Добавить еще</button>
                     </div>
 
-                    <div class="discount-block">
-                        <div class="section-title">Скидка:</div>
-                        <div class="options-grid" id="discount-group">
-                            <label class="option-label"><input type="radio" name="discount-option" value="10"> Заказ с сайта (10%)</label>
-                            <label class="option-label"><input type="radio" name="discount-option" value="20"> За отзыв (20%)</label>
-                            <label class="option-label"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
-                        </div>
-                    </div>
-
                     <div class="final-summary">
+                        <div class="discount-selection mb-20" style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;">
+                            <div class="section-title" style="color: #fff; margin-bottom: 10px;">Скидка:</div>
+                            <div class="options-grid" id="discount-group">
+                                <label class="option-label" style="background: #c787de; border-color: #c787de; color: #fff;"><input type="radio" name="discount-option" value="10"> Заказ с сайта (10%)</label>
+                                <label class="option-label" style="background: #c787de; border-color: #c787de; color: #fff;"><input type="radio" name="discount-option" value="20"> За отзыв (20%)</label>
+                                <label class="option-label" style="background: #c787de; border-color: #c787de; color: #fff;"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
+                            </div>
+                        </div>
                         Общая сумма: <span id="grand-total">0</span> руб.
                     </div>
                 </section>
