@@ -56,17 +56,25 @@
         }
 
         .layer-back {
-            transform: translateZ(-0.5px) scale(1.5);
+            transform: translateZ(-0.3px) scale(1.3);
             z-index: -1;
-            background-image: linear-gradient(rgba(252, 242, 249, 0.7), rgba(252, 242, 249, 0.7)), url('https://lh3.googleusercontent.com/sitesv/AA5AbUA9XfNjwCAm1tORy8Hx15AKeLT0K5NZvofIghaWr-yoCTlIGo3hz8xj2vTkBFHGu8X75RLWg3P-S1_N2peT6MVNXCJSS_O8nV_-9WP4z4JRj8AXjgWolVeBYZZbDKZffUNaRVmoFIsQsQrDVqApqbW6rjqqSUTNpYvc6HSFpN-DmxRz3g4nCZj_K4m-YzYygancj2m4LYFbbnvsDHQNOM6uh2s_DY06iLyIF7B9Gsg=w1280');
+            background-image: linear-gradient(rgba(252, 242, 249, 0.4), rgba(252, 242, 249, 0.4)), url('https://lh3.googleusercontent.com/sitesv/AA5AbUA9XfNjwCAm1tORy8Hx15AKeLT0K5NZvofIghaWr-yoCTlIGo3hz8xj2vTkBFHGu8X75RLWg3P-S1_N2peT6MVNXCJSS_O8nV_-9WP4z4JRj8AXjgWolVeBYZZbDKZffUNaRVmoFIsQsQrDVqApqbW6rjqqSUTNpYvc6HSFpN-DmxRz3g4nCZj_K4m-YzYygancj2m4LYFbbnvsDHQNOM6uh2s_DY06iLyIF7B9Gsg=w1280');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .layer-mid {
+            transform: translateZ(-0.6px) scale(1.6);
+            z-index: -2;
+            background-image: linear-gradient(rgba(252, 242, 249, 0.6), rgba(252, 242, 249, 0.6)), url('https://lh3.googleusercontent.com/sitesv/AA5AbUA8oR5OgOR3qwVHqo4i0QZixAi-3iHfEYNQ758prjZIcT5CbsNSD1N1IU3iOLXUqb6cpoXzLMYK97HJIqmltStF0YQPrSRrqSEv8BvWgQZFiAMgK4AdIA-thntr64aUWbaG3YLsqvLV0ddv1ei6PZB8nOTbFYig0UlGQ7admcqx8NobkTAE45qEW9AT_d9TrGo7hOCBBbRFJG0KiLHAjrpBXddt8DsHSkK8ddSklzE=w1280');
             background-size: cover;
             background-position: center;
         }
 
         .layer-deep {
             transform: translateZ(-1px) scale(2);
-            z-index: -2;
-            background-image: linear-gradient(rgba(252, 242, 249, 0.8), rgba(252, 242, 249, 0.8)), url('https://lh3.googleusercontent.com/sitesv/AA5AbUA8oR5OgOR3qwVHqo4i0QZixAi-3iHfEYNQ758prjZIcT5CbsNSD1N1IU3iOLXUqb6cpoXzLMYK97HJIqmltStF0YQPrSRrqSEv8BvWgQZFiAMgK4AdIA-thntr64aUWbaG3YLsqvLV0ddv1ei6PZB8nOTbFYig0UlGQ7admcqx8NobkTAE45qEW9AT_d9TrGo7hOCBBbRFJG0KiLHAjrpBXddt8DsHSkK8ddSklzE=w1280');
+            z-index: -3;
+            background-image: linear-gradient(rgba(252, 242, 249, 0.8), rgba(252, 242, 249, 0.8)), url('https://lh3.googleusercontent.com/sitesv/AA5AbUBtXbxHUHc3RuZrynzg47jxupsfUY0OY1aoDDBYzLf2ZaANq0MLrAEqWVRtDhoM1XcIPS4tcCzr-xYnApqpyfz2fgLqU9E_OHHvOqMWgmh9K__F2NYS3eX3vgkMWjuF_E7i-bEqV55mWQh_rHVoLd7sTFGlyGxgvpSmOJqITiEE0diuOWlob0odjG7uIgRNTdY1RTN-cBOscU_PMC6RzTEzT-jJCA8Qa6LgBzyy9l8=w1280');
             background-size: cover;
             background-position: center;
         }
@@ -228,8 +236,8 @@
 
         /* Section Headers */
         .section-header {
-            text-align: center;
-            justify-content: center;
+            text-align: left;
+            justify-content: flex-start;
             font-size: 2.5em;
             margin-bottom: 30px;
             color: var(--main-color);
@@ -248,8 +256,7 @@
             margin-top: 10px;
             position: absolute;
             bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
         }
 
         /* Calculator Header Convention */
@@ -258,10 +265,11 @@
             align-items: center;
             gap: 15px;
             margin-bottom: 30px;
+            justify-content: flex-start;
         }
 
         .calc-header.centered {
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         .calc-icon-container {
@@ -399,29 +407,32 @@
 
         /* Collapsible Terms Styles */
         details.terms-details {
-            background: var(--bg-color);
+            background: rgba(255, 255, 255, 0.6);
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border-color);
+            margin-bottom: 10px;
         }
 
         details.terms-details summary {
-            padding: 15px 20px;
+            padding: 10px 15px;
             cursor: pointer;
-            font-weight: bold;
-            font-size: 1.2em;
+            font-weight: 700;
+            font-size: 1.8em;
+            font-family: 'Cormorant Garamond', serif;
             list-style: none;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            background: var(--white);
+            background: transparent;
             color: var(--main-color);
             transition: background 0.3s;
+            gap: 15px;
         }
 
         details.terms-details summary::after {
             content: '▼';
-            font-size: 0.8em;
+            font-size: 0.6em;
             transition: transform 0.3s;
         }
 
@@ -438,16 +449,42 @@
         }
 
         /* Gallery and Pricing Styles */
-        .stacked-pricing-layout {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .image-row {
+        .pricing-grid-3col {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 800px) {
+            .pricing-grid-3col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pricing-column {
+            display: flex;
+            flex-direction: column;
             gap: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .pricing-column .gallery-container {
+            height: 250px;
+        }
+
+        .pricing-column .pricing-info-col {
+            text-align: left;
+            font-size: 0.95em;
+        }
+
+        .pricing-title {
+            font-weight: 700;
+            color: var(--main-color);
+            margin-bottom: 5px;
+            display: block;
         }
 
         .image-row img {
@@ -758,7 +795,7 @@
             accent-color: #b977d1;
             height: 8px;
             border-radius: 5px;
-            background: linear-gradient(90deg, #e8d0e5, #fcf2f9);
+            background: linear-gradient(to right, #c787de 0%, #e8d0e5 0%);
             outline: none;
             -webkit-appearance: none;
         }
@@ -767,7 +804,7 @@
             width: 100%;
             height: 8px;
             cursor: pointer;
-            background: linear-gradient(90deg, #c787de, #fcf2f9);
+            background: transparent;
             border-radius: 5px;
         }
 
@@ -919,6 +956,7 @@
 
 <div class="parallax-wrapper">
     <div class="parallax-layer layer-deep"></div>
+    <div class="parallax-layer layer-mid"></div>
     <div class="parallax-layer layer-back"></div>
     <div class="parallax-layer layer-base">
 
@@ -1077,37 +1115,109 @@
 
                 <section id="anthro" class="block-card">
                     <h2 class="section-header">АНТРО</h2>
-                    <div class="gallery-container">
-                        <button class="gallery-nav prev">&#10094;</button>
-                        <div class="gallery-scroll">
-                            <div class="gallery-item"><img src="https://picsum.photos/id/101/800/1200" alt="Anthro 1"></div>
-                            <div class="gallery-item"><img src="https://picsum.photos/id/102/1200/800" alt="Anthro 2"></div>
-                            <div class="gallery-item"><img src="https://picsum.photos/id/103/1000/1000" alt="Anthro 3"></div>
+                    <div class="pricing-grid-3col">
+                        <div class="pricing-column">
+                            <div class="gallery-container">
+                                <button class="gallery-nav prev">&#10094;</button>
+                                <div class="gallery-scroll">
+                                    <div class="gallery-item"><img src="https://picsum.photos/id/11/500/700" alt="Anthro Sketch 1"></div>
+                                    <div class="gallery-item"><img src="https://picsum.photos/id/12/500/700" alt="Anthro Sketch 2"></div>
+                                </div>
+                                <button class="gallery-nav next">&#10095;</button>
+                            </div>
+                            <div class="pricing-info-col">
+                                <span class="pricing-title">Чб/Моно скетч</span>
+                                <p>• Хэд: 600р</p>
+                                <p>• Халф: 1000р</p>
+                                <p>• Фулл: 1500р</p>
+                            </div>
                         </div>
-                        <button class="gallery-nav next">&#10095;</button>
-                    </div>
-                    <div class="pricing-info-col mt-20 text-center">
-                        <p class="mb-10"><strong>Чб/Моно скетч:</strong> Хэд - 600, Халф - 1000, Фулл - 1500</p>
-                        <p class="mb-10"><strong>Простой рендер:</strong> Хэд - 900, Халф - 2100, Фулл - 3000</p>
-                        <p><strong>Сложный рендер:</strong> Хэд - 1500, Халф - 3000, Фулл - 4500</p>
+                        <div class="pricing-column">
+                            <div class="gallery-container">
+                                <button class="gallery-nav prev">&#10094;</button>
+                                <div class="gallery-scroll">
+                                    <div class="gallery-item"><img src="https://picsum.photos/id/13/500/700" alt="Anthro Simple 1"></div>
+                                    <div class="gallery-item"><img src="https://picsum.photos/id/14/500/700" alt="Anthro Simple 2"></div>
+                                </div>
+                                <button class="gallery-nav next">&#10095;</button>
+                            </div>
+                            <div class="pricing-info-col">
+                                <span class="pricing-title">Простой рендер</span>
+                                <p>• Хэд: 900р</p>
+                                <p>• Халф: 2100р</p>
+                                <p>• Фулл: 3000р</p>
+                            </div>
+                        </div>
+                        <div class="pricing-column">
+                            <div class="gallery-container">
+                                <button class="gallery-nav prev">&#10094;</button>
+                                <div class="gallery-scroll">
+                                    <div class="gallery-item"><img src="https://picsum.photos/id/15/500/700" alt="Anthro Hard 1"></div>
+                                    <div class="gallery-item"><img src="https://picsum.photos/id/16/500/700" alt="Anthro Hard 2"></div>
+                                </div>
+                                <button class="gallery-nav next">&#10095;</button>
+                            </div>
+                            <div class="pricing-info-col">
+                                <span class="pricing-title">Сложный рендер</span>
+                                <p>• Хэд: 1500р</p>
+                                <p>• Халф: 3000р</p>
+                                <p>• Фулл: 4500р</p>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
                 <section id="feral" class="block-card">
                     <h2 class="section-header">ФЕРАЛ</h2>
-                    <div class="gallery-container">
-                        <button class="gallery-nav prev">&#10094;</button>
-                        <div class="gallery-scroll">
-                            <div class="gallery-item"><img src="https://picsum.photos/id/201/800/1200" alt="Feral 1"></div>
-                            <div class="gallery-item"><img src="https://picsum.photos/id/202/1200/800" alt="Feral 2"></div>
-                            <div class="gallery-item"><img src="https://picsum.photos/id/203/1000/1000" alt="Feral 3"></div>
+                    <div class="pricing-grid-3col">
+                        <div class="pricing-column">
+                            <div class="gallery-container">
+                                <button class="gallery-nav prev">&#10094;</button>
+                                <div class="gallery-scroll">
+                                    <div class="gallery-item"><img src="https://picsum.photos/id/21/500/700" alt="Feral Sketch 1"></div>
+                                    <div class="gallery-item"><img src="https://picsum.photos/id/22/500/700" alt="Feral Sketch 2"></div>
+                                </div>
+                                <button class="gallery-nav next">&#10095;</button>
+                            </div>
+                            <div class="pricing-info-col">
+                                <span class="pricing-title">Чб/Моно скетч</span>
+                                <p>• Хэд: 450р</p>
+                                <p>• Халф: 900р</p>
+                                <p>• Фулл: 1200р</p>
+                            </div>
                         </div>
-                        <button class="gallery-nav next">&#10095;</button>
-                    </div>
-                    <div class="pricing-info-col mt-20 text-center">
-                        <p class="mb-10"><strong>Чб/Моно скетч:</strong> Хэд - 450, Халф - 900, Фулл - 1200</p>
-                        <p class="mb-10"><strong>Простой рендер:</strong> Хэд - 800, Халф - 2000, Фулл - 2800</p>
-                        <p><strong>Сложный рендер:</strong> Хэд - 1300, Халф - 2800, Фулл - 4200</p>
+                        <div class="pricing-column">
+                            <div class="gallery-container">
+                                <button class="gallery-nav prev">&#10094;</button>
+                                <div class="gallery-scroll">
+                                    <div class="gallery-item"><img src="https://picsum.photos/id/23/500/700" alt="Feral Simple 1"></div>
+                                    <div class="gallery-item"><img src="https://picsum.photos/id/24/500/700" alt="Feral Simple 2"></div>
+                                </div>
+                                <button class="gallery-nav next">&#10095;</button>
+                            </div>
+                            <div class="pricing-info-col">
+                                <span class="pricing-title">Простой рендер</span>
+                                <p>• Хэд: 800р</p>
+                                <p>• Халф: 2000р</p>
+                                <p>• Фулл: 2800р</p>
+                            </div>
+                        </div>
+                        <div class="pricing-column">
+                            <div class="gallery-container">
+                                <button class="gallery-nav prev">&#10094;</button>
+                                <div class="gallery-scroll">
+                                    <div class="gallery-item"><img src="https://picsum.photos/id/25/500/700" alt="Feral Hard 1"></div>
+                                    <div class="gallery-item"><img src="https://picsum.photos/id/26/500/700" alt="Feral Hard 2"></div>
+                                </div>
+                                <button class="gallery-nav next">&#10095;</button>
+                            </div>
+                            <div class="pricing-info-col">
+                                <span class="pricing-title">Сложный рендер</span>
+                                <p>• Хэд: 1300р</p>
+                                <p>• Халф: 2800р</p>
+                                <p>• Фулл: 4200р</p>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
@@ -1115,16 +1225,57 @@
                     <details class="terms-details">
                         <summary><h2 class="section-header" style="margin-bottom: 0;">ЧИБИ</h2></summary>
                         <div class="terms-content">
-                            <div class="gallery-container">
-                                <button class="gallery-nav prev">&#10094;</button>
-                                <div class="gallery-scroll">
-                                    <div class="gallery-item"><img src="https://picsum.photos/id/301/800/1200" alt="Chibi 1"></div>
-                                    <div class="gallery-item"><img src="https://picsum.photos/id/302/1200/800" alt="Chibi 2"></div>
-                                    <div class="gallery-item"><img src="https://picsum.photos/id/303/1000/1000" alt="Chibi 3"></div>
+                            <div class="pricing-grid-3col">
+                                <div class="pricing-column">
+                                    <div class="gallery-container">
+                                        <button class="gallery-nav prev">&#10094;</button>
+                                        <div class="gallery-scroll">
+                                            <div class="gallery-item"><img src="https://picsum.photos/id/31/500/700" alt="Chibi 1"></div>
+                                            <div class="gallery-item"><img src="https://picsum.photos/id/32/500/700" alt="Chibi 2"></div>
+                                        </div>
+                                        <button class="gallery-nav next">&#10095;</button>
+                                    </div>
+                                    <div class="pricing-info-col">
+                                        <span class="pricing-title">Чб/Моно скетч</span>
+                                        <p>• Хэд: 300р</p>
+                                        <p>• Халф: 500р</p>
+                                        <p>• Фулл: 750р</p>
+                                    </div>
                                 </div>
-                                <button class="gallery-nav next">&#10095;</button>
+                                <div class="pricing-column">
+                                    <div class="gallery-container">
+                                        <button class="gallery-nav prev">&#10094;</button>
+                                        <div class="gallery-scroll">
+                                            <div class="gallery-item"><img src="https://picsum.photos/id/33/500/700" alt="Chibi 3"></div>
+                                            <div class="gallery-item"><img src="https://picsum.photos/id/34/500/700" alt="Chibi 4"></div>
+                                        </div>
+                                        <button class="gallery-nav next">&#10095;</button>
+                                    </div>
+                                    <div class="pricing-info-col">
+                                        <span class="pricing-title">Простой рендер</span>
+                                        <p>• Хэд: 450р</p>
+                                        <p>• Халф: 1050р</p>
+                                        <p>• Фулл: 1500р</p>
+                                    </div>
+                                </div>
+                                <div class="pricing-column">
+                                    <div class="gallery-container">
+                                        <button class="gallery-nav prev">&#10094;</button>
+                                        <div class="gallery-scroll">
+                                            <div class="gallery-item"><img src="https://picsum.photos/id/35/500/700" alt="Chibi 5"></div>
+                                            <div class="gallery-item"><img src="https://picsum.photos/id/36/500/700" alt="Chibi 6"></div>
+                                        </div>
+                                        <button class="gallery-nav next">&#10095;</button>
+                                    </div>
+                                    <div class="pricing-info-col">
+                                        <span class="pricing-title">Сложный рендер</span>
+                                        <p>• Хэд: 750р</p>
+                                        <p>• Халф: 1500р</p>
+                                        <p>• Фулл: 2250р</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="pricing-info-col mt-20 text-center">
+                            <div class="pricing-info-col mt-20">
                                 <p class="mb-20"><strong>Чиби:</strong> Разделите цену за желаемый формат на 2. К чиби относятся рисунки по лпс.</p>
                                 <p class="mt-20"><strong>Другие виды:</strong> летучие мыши, драконоподобные, пернатые, млп, кроликоподобные, протогены, опоссумы, сурикаты, сахаши, львы, акулы, панды, и крысы, копытные: лошади, олени.</p>
                                 <p class="mt-20"><strong>Люди:</strong> Цены не те же, что и на антро. Рисую от аниме до семи-реализма и реализма.</p>
@@ -1276,10 +1427,10 @@
                 </section>
 
                 <section id="dictionary" class="block-card">
-                    <div style="display: flex; flex-direction: column; gap: 15px;">
-                        <details class="terms-details">
-                            <summary><h2 class="section-header" style="margin-bottom: 0;">Словарь</h2></summary>
-                            <div class="terms-content">
+                    <div class="dictionary-grid">
+                        <div class="dictionary-col">
+                            <h2 class="section-header" style="font-size: 1.8em;">Словарь</h2>
+                            <div class="terms-content" style="padding: 0;">
                                 <p class="mb-20"><strong>Антро:</strong> очеловеченные, ходящие на двух ногах животные.</p>
                                 <p class="mb-20"><strong>Ферал:</strong> очеловеченные животные, ходящие на 4х лапах.</p>
                                 <p class="mb-20"><strong>Скетч:</strong> набросок, простая работа, выполненная в одном цвете с неровным контуром;</p>
@@ -1288,12 +1439,12 @@
                                 <p class="mb-20"><strong>Хэд/Халф/Фулл:</strong> голова / по пояс / в полный рост.</p>
                                 <p class="mb-20"><strong>Чиби:</strong> анатомически упрощённый, мультяшный рисунок.</p>
                             </div>
-                        </details>
+                        </div>
 
-                        <details class="terms-details">
-                            <summary><h2 class="section-header" style="margin-bottom: 0;">Я рисую</h2></summary>
-                            <div class="terms-content">
-                                <ul style="padding-left: 20px; list-style: none;">
+                        <div class="dictionary-col">
+                            <h2 class="section-header" style="font-size: 1.8em;">Я рисую</h2>
+                            <div class="terms-content" style="padding: 0;">
+                                <ul style="padding-left: 0; list-style: none;">
                                     <li>• Любые виды фурри и ферал;</li>
                                     <li>• Людей;</li>
                                     <li>• Май литл пони (млп);</li>
@@ -1305,12 +1456,12 @@
                                     <li>• Арты в стиле LPS.</li>
                                 </ul>
                             </div>
-                        </details>
+                        </div>
 
-                        <details class="terms-details">
-                            <summary><h2 class="section-header" style="margin-bottom: 0;">Я не рисую</h2></summary>
-                            <div class="terms-content">
-                                <ul style="padding-left: 20px; list-style: none;">
+                        <div class="dictionary-col">
+                            <h2 class="section-header" style="font-size: 1.8em;">Я не рисую</h2>
+                            <div class="terms-content" style="padding: 0;">
+                                <ul style="padding-left: 0; list-style: none;">
                                     <li>• Ферал п*рно;</li>
                                     <li>• Воре (возможен только намёк);</li>
                                     <li>• Гуро (разложение, гниение - нет);</li>
@@ -1319,7 +1470,7 @@
                                     <li>• Гипертрофированные половые признаки.</li>
                                 </ul>
                             </div>
-                        </details>
+                        </div>
                     </div>
                 </section>
 
@@ -1342,35 +1493,6 @@
                         <a href="https://t.me/+WPneYApzrRc4MDIy" class="nav-btn" target="_blank" style="white-space: nowrap;">ТГ (50☆)</a>
                         <a href="https://t.me/+8yauwluYLh83MzNi" class="nav-btn" target="_blank" style="white-space: nowrap;">ТГ (300☆)</a>
                     </div>
-                </section>
-
-                <section id="terms" class="block-card">
-                    <h2 class="section-header centered">Условия</h2>
-                    <details class="terms-details">
-                        <summary>прочесть перед заказом</summary>
-                        <div class="terms-content">
-                            <ul style="padding-left: 20px; list-style: none;">
-                                <li class="mb-20">• Оплата сразу или же 50% до и 50% после предоставления скетча на ру карту/бусти/пейпал, возможна оплата частями;</li>
-                                <li class="mb-20">• Дополнительная плата взимается за крылья, сложный окрас персонажа и объекты помимо него;</li>
-                                <li class="mb-20">• Дополнительная плата за NSFW составит +10-20% от выбранного формата;</li>
-                                <li class="mb-20">• Случаи, когда вы хотите чтобы арт не был опубликован или будете использовать его в коммерческих целях, обговариваются отдельно до начала работы(!);</li>
-                                <li class="mb-20">• Если вы отказываетесь от заказа, деньги возвращаются только за непроделанную часть работы;</li>
-                                <li class="mb-20">• Если вы не выходите на связь более, чем 1 месяц, не предупредив заранее меня, заказ аннулируется (я не буду ждать бесконечно);</li>
-                                <li class="mb-20">• Если по вышеописанным причинам заказ аннулируется, я оставляю за собой право из рисунка сделать юч, предварительно убрав все детали, по которым можно было бы опознать персонажа;</li>
-                                <li class="mb-20">• Я рисую в разных направлениях и экспериментирую, так что не стесняйтесь спрашивать, если находите свою идею слишком необычной!;</li>
-                                <li class="mb-20">• Со мной можете общаться на «ты»;</li>
-                                <li class="mb-20">• Срок выполнения работы от 3х до 30 дней в зависимости от формата и очереди, возможно сокращение за доплату;</li>
-                                <li class="mb-20">• До начала работы укажите пожалуйта важные для вас детали вашего персонажа (которые например обычно путают);</li>
-                                <li class="mb-20">• Каждый этап рисунка я скидываю для утверждения, не бойтесь вносить правки, а главное делайте это вовремя!;</li>
-                                <li class="mb-20">• На этапе скетча 2 правки бесплатно, на этапе лайна - только 2 мелкие бесплатно;</li>
-                                <li class="mb-20">• Я всегда на связи и отвечаю либо в первые 15 минут, либо в течение дня;</li>
-                                <li class="mb-20">• Уважайте чужое время, не заваливайте меня идеями без возможности их оплатить в ближайшее время;</li>
-                                <li class="mb-20">• Доны имеют право на 30% СКИДКУ при условии что сумму скидки дон уже оплатил самой подпиской!</li>
-                                <li class="mb-20">• СКИДКА на второй заказ 20% при условии написания отзыва!</li>
-                                <li>• Для оформления заказа можете написать мне в любой социальной сети!</li>
-                            </ul>
-                        </div>
-                    </details>
                 </section>
 
                 <section id="calculator" class="block-card">
@@ -1401,6 +1523,35 @@
                             <svg viewBox="0 0 24 24" width="20" height="20" fill="white" style="opacity: 0.8;"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
                         </div>
                     </div>
+                </section>
+
+                <section id="terms" class="block-card">
+                    <h2 class="section-header">Условия</h2>
+                    <details class="terms-details">
+                        <summary style="justify-content: flex-start;">прочесть перед заказом</summary>
+                        <div class="terms-content">
+                            <ul style="padding-left: 20px; list-style: none;">
+                                <li class="mb-20">• Оплата сразу или же 50% до и 50% после предоставления скетча на ру карту/бусти/пейпал, возможна оплата частями;</li>
+                                <li class="mb-20">• Дополнительная плата взимается за крылья, сложный окрас персонажа и объекты помимо него;</li>
+                                <li class="mb-20">• Дополнительная плата за NSFW составит +10-20% от выбранного формата;</li>
+                                <li class="mb-20">• Случаи, когда вы хотите чтобы арт не был опубликован или будете использовать его в коммерческих целях, обговариваются отдельно до начала работы(!);</li>
+                                <li class="mb-20">• Если вы отказываетесь от заказа, деньги возвращаются только за непроделанную часть работы;</li>
+                                <li class="mb-20">• Если вы не выходите на связь более, чем 1 месяц, не предупредив заранее меня, заказ аннулируется (я не буду ждать бесконечно);</li>
+                                <li class="mb-20">• Если по вышеописанным причинам заказ аннулируется, я оставляю за собой право из рисунка сделать юч, предварительно убрав все детали, по которым можно было бы опознать персонажа;</li>
+                                <li class="mb-20">• Я рисую в разных направлениях и экспериментирую, так что не стесняйтесь спрашивать, если находите свою идею слишком необычной!;</li>
+                                <li class="mb-20">• Со мной можете общаться на «ты»;</li>
+                                <li class="mb-20">• Срок выполнения работы от 3х до 30 дней в зависимости от формата и очереди, возможно сокращение за доплату;</li>
+                                <li class="mb-20">• До начала работы укажите пожалуйта важные для вас детали вашего персонажа (которые например обычно путают);</li>
+                                <li class="mb-20">• Каждый этап рисунка я скидываю для утверждения, не бойтесь вносить правки, а главное делайте это вовремя!;</li>
+                                <li class="mb-20">• На этапе скетча 2 правки бесплатно, на этапе лайна - только 2 мелкие бесплатно;</li>
+                                <li class="mb-20">• Я всегда на связи и отвечаю либо в первые 15 минут, либо в течение дня;</li>
+                                <li class="mb-20">• Уважайте чужое время, не заваливайте меня идеями без возможности их оплатить в ближайшее время;</li>
+                                <li class="mb-20">• Доны имеют право на 30% СКИДКУ при условии что сумму скидки дон уже оплатил самой подпиской!</li>
+                                <li class="mb-20">• СКИДКА на второй заказ 20% при условии написания отзыва!</li>
+                                <li>• Для оформления заказа можете написать мне в любой социальной сети!</li>
+                            </ul>
+                        </div>
+                    </details>
                 </section>
 
             </main>
@@ -1612,7 +1763,7 @@
                     <label class="option-label"><input type="radio" name="rating-${blockId}" value="custom_nsfw"> NSFW Custom</label>
                 </div>
                 <div class="nsfw-custom-wrapper" style="margin-top: 10px; display: none;">
-                    <input type="number" class="nsfw-custom-input" value="3" min="1" placeholder="Введите количество NSFW персонажей">
+                    <input type="number" class="nsfw-custom-input custom-count-input" value="1" min="1" placeholder="Введите количество NSFW персонажей">
                 </div>
             </div>
 
@@ -1641,7 +1792,12 @@
         `;
 
         block.addEventListener('change', () => calculateBlock(block, blockId));
-        block.addEventListener('input', () => calculateBlock(block, blockId)); // For slider
+        block.addEventListener('input', (e) => {
+            if (e.target.classList.contains('deadline-slider')) {
+                updateSliderGradient(e.target);
+            }
+            calculateBlock(block, blockId);
+        });
 
         const charsRadios = block.querySelectorAll(`input[name="chars-${blockId}"]`);
         const customWrapper = block.querySelector('.custom-count-wrapper');
@@ -1662,6 +1818,7 @@
         });
 
         calculatorList.appendChild(block);
+        updateSliderGradient(block.querySelector('.deadline-slider'));
         calculateBlock(block, blockId);
     }
 
@@ -1783,6 +1940,14 @@
             }
         });
     });
+
+    function updateSliderGradient(slider) {
+        const val = slider.value;
+        const min = slider.min ? slider.min : 1;
+        const max = slider.max ? slider.max : 31;
+        const percent = (val - min) / (max - min) * 100;
+        slider.style.background = `linear-gradient(to right, #c787de ${percent}%, #e8d0e5 ${percent}%)`;
+    }
 
     document.getElementById('add-block-btn').addEventListener('click', createNewBlock);
 
