@@ -326,36 +326,54 @@
             margin: 8px auto 0;
         }
 
-        .stat-item {
-            padding: 15px;
-            background: var(--bg-color);
-            border-radius: 10px;
+        .stat-line {
             display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .stat-label-row {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            width: 100%;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(114, 61, 147, 0.1);
+            font-size: 1.1em;
         }
 
-        .stat-bar-container {
-            width: 100%;
-            height: 8px;
-            background: rgba(114, 61, 147, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-top: 5px;
+        .stat-line:last-child {
+            border-bottom: none;
         }
 
-        .stat-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-color), var(--main-color));
-            border-radius: 4px;
-            transition: width 1s ease-out;
+        .stat-label {
+            flex: 1;
+        }
+
+        .stat-sep {
+            color: var(--accent-color);
+            font-weight: 300;
+            opacity: 0.6;
+        }
+
+        .stat-value {
+            font-weight: bold;
+            color: var(--main-color);
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .stat-bars {
+            color: var(--accent-color);
+            letter-spacing: 2px;
+            font-size: 1.2em;
+            min-width: 150px;
+        }
+
+        @media (max-width: 600px) {
+            .stat-line {
+                flex-wrap: wrap;
+                gap: 5px 10px;
+            }
+            .stat-label {
+                flex: 1 1 100%;
+            }
+            .stat-sep:first-of-type {
+                display: none;
+            }
         }
 
         .stats-images {
@@ -739,6 +757,23 @@
             padding-top: 15px;
         }
 
+        .slider-container {
+            margin-top: 10px;
+        }
+
+        .deadline-slider {
+            width: 100%;
+            accent-color: var(--main-color);
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85em;
+            color: var(--muted-color);
+            margin-top: 5px;
+        }
+
         .action-buttons {
             display: flex;
             justify-content: center;
@@ -921,6 +956,7 @@
                 </div>
 
                 <nav class="header-nav">
+                    <a href="#dictionary" class="nav-btn">Словарь</a>
                     <a href="#anthro" class="nav-btn">Антро</a>
                     <a href="#feral" class="nav-btn">Ферал</a>
                     <a href="#chibi" class="nav-btn">Чиби</a>
@@ -936,50 +972,83 @@
             <main>
                 <section id="stats" class="block-card">
                     <h2 class="section-header">Статистика</h2>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-label-row"><span>Работ в портфолио</span><span class="stat-value">500</span></div>
-                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 95%;"></div></div>
+                    <div class="stats-list-laconical">
+                        <div class="stat-line">
+                            <span class="stat-label">Работ в портфолио</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-value">500</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-bars">❙❙❙❙❙❙❙❙</span>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-label-row"><span>Заказов</span><span class="stat-value">174</span></div>
-                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 80%;"></div></div>
+                        <div class="stat-line">
+                            <span class="stat-label">Заказов</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-value">174</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-bars">❙❙❙❙❙❙</span>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-label-row"><span>Стикеров</span><span class="stat-value">76</span></div>
-                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 60%;"></div></div>
+                        <div class="stat-line">
+                            <span class="stat-label">Стикеров</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-value">76</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-bars">❙❙❙❙</span>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-label-row"><span>Vtube моделей</span><span class="stat-value">5</span></div>
-                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 30%;"></div></div>
+                        <div class="stat-line">
+                            <span class="stat-label">Vtube моделей</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-value">5</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-bars">❙❙</span>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-label-row"><span>Референсов</span><span class="stat-value">19</span></div>
-                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 45%;"></div></div>
+                        <div class="stat-line">
+                            <span class="stat-label">Референсов</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-value">19</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-bars">❙❙❙❙</span>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-label-row"><span>Аудитория тг</span><span class="stat-value">630+</span></div>
-                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 70%;"></div></div>
+                        <div class="stat-line">
+                            <span class="stat-label">Аудитория ТГ</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-value">630+</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-bars">❙❙❙❙❙❙❙</span>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-label-row"><span>Аудитория ВК</span><span class="stat-value">1250+</span></div>
-                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 90%;"></div></div>
+                        <div class="stat-line">
+                            <span class="stat-label">Аудитория ВК</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-value">1250+</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-bars">❙❙❙❙❙❙❙❙❙❙❙❙❙❙❙</span>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-label-row"><span>Донов</span><span class="stat-value">13</span></div>
-                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 40%;"></div></div>
+                        <div class="stat-line">
+                            <span class="stat-label">Донов</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-value">13</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-bars">❙❙❙</span>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-label-row"><span>Средний дедлайн</span><span class="stat-value">2 недели</span></div>
-                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 85%;"></div></div>
+                        <div class="stat-line">
+                            <span class="stat-label">Средний дедлайн</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-value">2 недели</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-bars">❙❙❙</span>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-label-row"><span>Ожидание ответа</span><span class="stat-value">15 минут</span></div>
-                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 95%;"></div></div>
+                        <div class="stat-line">
+                            <span class="stat-label">Ожидание ответа</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-value">15 минут</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-bars">❙❙</span>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-label-row"><span>Лет на рынке</span><span class="stat-value">7,5</span></div>
-                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 75%;"></div></div>
+                        <div class="stat-line">
+                            <span class="stat-label">Лет на рынке</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-value">7,5</span>
+                            <span class="stat-sep">|</span>
+                            <span class="stat-bars">❙❙❙❙❙❙</span>
                         </div>
                     </div>
 
@@ -1237,42 +1306,12 @@
                             <p>Каждый месяц я выбираю одного из донов и рисую ему арт!</p>
                         </div>
                     </div>
-                    <div class="action-buttons" style="gap: 15px; flex-wrap: wrap;">
-                        <a href="https://boosty.to/rakel_eneliss/purchase/3476976?ssource=DIRECT&share=subscription_link" class="nav-btn" target="_blank">Бусти (50р/мес)</a>
-                        <a href="https://boosty.to/rakel_eneliss/purchase/3476980?ssource=DIRECT&share=subscription_link" class="nav-btn" target="_blank">Бусти (300р/мес)</a>
-                        <a href="https://vk.com/donut/rakel_eneliss" class="nav-btn" target="_blank">ВК донат</a>
-                        <a href="https://t.me/+WPneYApzrRc4MDIy" class="nav-btn" target="_blank">ТГ (50 звёзд)</a>
-                        <a href="https://t.me/+8yauwluYLh83MzNi" class="nav-btn" target="_blank">ТГ (300 звёзд)</a>
-                    </div>
-                </section>
-
-                <section id="calculator" class="block-card">
-                    <div class="calc-header centered">
-                        <div class="calc-icon-container">
-                            <svg viewBox="0 0 24 24" width="24" height="24"><path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3M19 19H5V5H19V19M11 7H13V9H11V7M11 11H13V13H11V11M11 15H13V17H11V15M7 7H9V9H7V7M7 11H9V13H7V11M7 15H9V17H7V15M15 7H17V9H15V7M15 11H17V17H15V11"/></svg>
-                        </div>
-                        <h2 class="calc-title">Калькулятор</h2>
-                    </div>
-
-                    <div id="calculator-list"></div>
-
-                    <div class="action-buttons">
-                        <button class="btn-action" id="add-block-btn">+ Добавить еще</button>
-                    </div>
-
-                    <div class="final-summary">
-                        <div class="discount-selection">
-                            <div class="section-title">Скидка:</div>
-                            <div class="options-grid" id="discount-group">
-                                <label class="option-label"><input type="radio" name="discount-option" value="10"> Заказ с сайта (10%)</label>
-                                <label class="option-label"><input type="radio" name="discount-option" value="20"> За отзыв (20%)</label>
-                                <label class="option-label"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer;" id="copy-total" title="Нажмите, чтобы скопировать">
-                            Общая сумма: <span id="grand-total">0</span> руб.
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="white" style="opacity: 0.8;"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-                        </div>
+                    <div class="action-buttons" style="gap: 10px; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start;">
+                        <a href="https://boosty.to/rakel_eneliss/purchase/3476976?ssource=DIRECT&share=subscription_link" class="nav-btn" target="_blank" style="white-space: nowrap;">Бусти (50р)</a>
+                        <a href="https://boosty.to/rakel_eneliss/purchase/3476980?ssource=DIRECT&share=subscription_link" class="nav-btn" target="_blank" style="white-space: nowrap;">Бусти (300р)</a>
+                        <a href="https://vk.com/donut/rakel_eneliss" class="nav-btn" target="_blank" style="white-space: nowrap;">ВК донат</a>
+                        <a href="https://t.me/+WPneYApzrRc4MDIy" class="nav-btn" target="_blank" style="white-space: nowrap;">ТГ (50☆)</a>
+                        <a href="https://t.me/+8yauwluYLh83MzNi" class="nav-btn" target="_blank" style="white-space: nowrap;">ТГ (300☆)</a>
                     </div>
                 </section>
 
@@ -1305,6 +1344,36 @@
                     </details>
                 </section>
 
+                <section id="calculator" class="block-card">
+                    <div class="calc-header centered">
+                        <div class="calc-icon-container">
+                            <svg viewBox="0 0 24 24" width="24" height="24"><path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3M19 19H5V5H19V19M11 7H13V9H11V7M11 11H13V13H11V11M11 15H13V17H11V15M7 7H9V9H7V7M7 11H9V13H7V11M7 15H9V17H7V15M15 7H17V9H15V7M15 11H17V17H15V11"/></svg>
+                        </div>
+                        <h2 class="calc-title">Калькулятор</h2>
+                    </div>
+
+                    <div id="calculator-list"></div>
+
+                    <div class="action-buttons">
+                        <button class="btn-action" id="add-block-btn">+ Добавить еще</button>
+                    </div>
+
+                    <div class="final-summary">
+                        <div class="discount-selection">
+                            <div class="section-title">Скидка:</div>
+                            <div class="options-grid" id="discount-group">
+                                <label class="option-label"><input type="radio" name="discount-option" value="10"> Заказ с сайта (10%)</label>
+                                <label class="option-label"><input type="radio" name="discount-option" value="20"> За отзыв (20%)</label>
+                                <label class="option-label"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer;" id="copy-total" title="Нажмите, чтобы скопировать">
+                            Общая сумма: <span id="grand-total">0</span> руб.
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="white" style="opacity: 0.8;"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                        </div>
+                    </div>
+                </section>
+
             </main>
 
             <footer class="text-center mb-20" style="color: var(--muted-color); font-size: 0.9em;">
@@ -1315,10 +1384,17 @@
 </div>
 
 <script>
-    const priceList = {
-        sketch: { head: 450, half: 900, full: 1200 },
-        simple: { head: 800, half: 2000, full: 2800 },
-        hard:   { head: 1300, half: 2800, full: 4200 }
+    const prices = {
+        anthro: {
+            sketch: { head: 600, half: 1000, full: 1500 },
+            simple: { head: 900, half: 2100, full: 3000 },
+            hard:   { head: 1500, half: 3000, full: 4500 }
+        },
+        feral: {
+            sketch: { head: 450, half: 900, full: 1200 },
+            simple: { head: 800, half: 2000, full: 2800 },
+            hard:   { head: 1300, half: 2800, full: 4200 }
+        }
     };
 
     const calculatorList = document.getElementById('calculator-list');
@@ -1452,6 +1528,14 @@
             <button class="remove-btn" title="Удалить этот заказ" onclick="removeBlock(event)">&times;</button>
 
             <div class="section">
+                <div class="section-title">Категория</div>
+                <div class="options-grid">
+                    <label class="option-label"><input type="radio" name="category-${blockId}" value="anthro" checked> Антро</label>
+                    <label class="option-label"><input type="radio" name="category-${blockId}" value="feral"> Ферал</label>
+                </div>
+            </div>
+
+            <div class="section">
                 <div class="section-title">Персонажи</div>
                 <div class="options-grid">
                     <label class="option-label"><input type="radio" name="chars-${blockId}" value="1" checked> 1</label>
@@ -1491,6 +1575,27 @@
             </div>
 
             <div class="section">
+                <div class="section-title">Рейтинг</div>
+                <div class="options-grid">
+                    <label class="option-label"><input type="radio" name="rating-${blockId}" value="sfw" checked> SFW</label>
+                    <label class="option-label"><input type="radio" name="rating-${blockId}" value="solo"> NSFW Solo (+10%)</label>
+                    <label class="option-label"><input type="radio" name="rating-${blockId}" value="duo"> NSFW Duo (+20%)</label>
+                    <label class="option-label"><input type="radio" name="rating-${blockId}" value="custom_nsfw"> NSFW Custom</label>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Срок: <span class="deadline-val">31</span> день (+<span class="deadline-bonus">0</span>%)</div>
+                <div class="slider-container">
+                    <input type="range" class="deadline-slider" name="deadline-${blockId}" min="1" max="31" value="31">
+                    <div class="slider-labels">
+                        <span>1 день (+100%)</span>
+                        <span>31 день (+0%)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
                 <div class="section-title">Другие опции</div>
                 <div class="options-grid">
                     <label class="option-label"><input type="checkbox" name="chibi-${blockId}" value="chibi"> Чиби (цена / 2)</label>
@@ -1504,6 +1609,7 @@
         `;
 
         block.addEventListener('change', () => calculateBlock(block, blockId));
+        block.addEventListener('input', () => calculateBlock(block, blockId)); // For slider
 
         const charsRadios = block.querySelectorAll(`input[name="chars-${blockId}"]`);
         const customWrapper = block.querySelector('.custom-count-wrapper');
@@ -1525,21 +1631,41 @@
     }
 
     function calculateBlock(block, blockId) {
+        const category = block.querySelector(`input[name="category-${blockId}"]:checked`).value;
         const renderType = block.querySelector(`input[name="render-${blockId}"]:checked`).value;
         const format = block.querySelector(`input[name="format-${blockId}"]:checked`).value;
         const chars = block.querySelector(`input[name="chars-${blockId}"]:checked`).value;
         const background = block.querySelector(`input[name="background-${blockId}"]:checked`).value;
+        const rating = block.querySelector(`input[name="rating-${blockId}"]:checked`).value;
+        const deadline = parseInt(block.querySelector(`input[name="deadline-${blockId}"]`).value);
         const chibi = block.querySelector(`input[name="chibi-${blockId}"]`).checked;
         const design = block.querySelector(`input[name="design-${blockId}"]`).checked;
 
-        let basePrice = priceList[renderType][format];
+        let basePrice = prices[category][renderType][format];
 
+        // Number of characters multiplier
+        let numChars = 1;
         if (chars === '2') {
-            basePrice *= 2;
+            numChars = 2;
         } else if (chars === 'custom') {
-            const customCount = block.querySelector('.custom-count-input').value || 1;
-            basePrice *= parseInt(customCount);
+            numChars = parseInt(block.querySelector('.custom-count-input').value) || 1;
         }
+        basePrice *= numChars;
+
+        // Rating modifier
+        let ratingMod = 0;
+        if (rating === 'solo') ratingMod = 0.1;
+        else if (rating === 'duo') ratingMod = 0.2;
+        else if (rating === 'custom_nsfw') ratingMod = numChars * 0.1;
+
+        basePrice *= (1 + ratingMod);
+
+        // Deadline modifier
+        // 1 day = +100% (1.0), 31 days = +0% (0.0)
+        let deadlineBonus = Math.round(((31 - deadline) / 30) * 100);
+        block.querySelector('.deadline-val').textContent = deadline;
+        block.querySelector('.deadline-bonus').textContent = deadlineBonus;
+        basePrice *= (1 + (deadlineBonus / 100));
 
         let priceWithoutBg = basePrice;
         if (chibi) {
@@ -1551,15 +1677,14 @@
         }
 
         let priceDisplay = '';
-
         if (background === 'simple') {
-            priceDisplay = (priceWithoutBg + 500);
+            priceDisplay = Math.round(priceWithoutBg + 500);
         } else if (background === 'hard') {
-            const minPrice = priceWithoutBg + 1500;
-            const maxPrice = priceWithoutBg + 4500;
+            const minPrice = Math.round(priceWithoutBg + 1500);
+            const maxPrice = Math.round(priceWithoutBg + 4500);
             priceDisplay = minPrice + '-' + maxPrice;
         } else {
-            priceDisplay = priceWithoutBg;
+            priceDisplay = Math.round(priceWithoutBg);
         }
 
         block.querySelector('.block-price').textContent = priceDisplay;
