@@ -428,6 +428,42 @@
         }
 
         /* Gallery and Pricing Styles */
+        .stacked-pricing-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .image-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .image-row img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .image-row img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(114, 61, 147, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .image-row {
+                grid-template-columns: 1fr;
+            }
+            .image-row img {
+                height: 350px;
+            }
+        }
+
         .pricing-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -885,11 +921,15 @@
                 </div>
 
                 <nav class="header-nav">
-                    <a href="#dictionary" class="nav-btn">Словарь</a>
-                    <a href="#terms" class="nav-btn">Условия</a>
-                    <a href="#merch" class="nav-btn">Мерч</a>
+                    <a href="#anthro" class="nav-btn">Антро</a>
+                    <a href="#feral" class="nav-btn">Ферал</a>
+                    <a href="#chibi" class="nav-btn">Чиби</a>
+                    <a href="#references" class="nav-btn">Рефы</a>
                     <a href="#vtuber" class="nav-btn">Vtube</a>
+                    <a href="#stickers" class="nav-btn">Стикеры</a>
+                    <a href="#merch" class="nav-btn">Мерч</a>
                     <a href="#calculator" class="nav-btn">Калькулятор</a>
+                    <a href="#terms" class="nav-btn">Условия</a>
                 </nav>
             </header>
 
@@ -944,23 +984,18 @@
                     </div>
 
                     <div class="stats-images">
-                        <div class="stats-img-item"><img src="https://picsum.photos/id/1/400/400" alt="Статистика 1"></div>
-                        <div class="stats-img-item"><img src="https://picsum.photos/id/2/400/400" alt="Статистика 2"></div>
-                        <div class="stats-img-item"><img src="https://picsum.photos/id/3/400/400" alt="Статистика 3"></div>
+                        <div class="stats-img-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUBtXbxHUHc3RuZrynzg47jxupsfUY0OY1aoDDBYzLf2ZaANq0MLrAEqWVRtDhoM1XcIPS4tcCzr-xYnApqpyfz2fgLqU9E_OHHvOqMWgmh9K__F2NYS3eX3vgkMWjuF_E7i-bEqV55mWQh_rHVoLd7sTFGlyGxgvpSmOJqITiEE0diuOWlob0odjG7uIgRNTdY1RTN-cBOscU_PMC6RzTEzT-jJCA8Qa6LgBzyy9l8=w1280" alt="Итоги за 2024 и 2025 года"></div>
+                        <div class="stats-img-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUDstL8etxmi2cCyapBXZoWd0bJkrNwe6XUufjCPGs1tvC6dh0rEPTq61MaD5j7gjoYrJq-LizLU8WcMTTIwKQb7DMXAFHES1OKDIQ_tQ5wDmqYDbDBIEcOebor-8i8Hwkh_U7OiKVvNg7lop_c2erI9BKV0ncanYX4ym7Yqs7oHOgBs8VWgheoNb3PpFWBqyf6z3wsJ6TFn24ytND1LUz4mt32V4zBJbyKAjbL7IpA=w1280" alt="Итоги за 2024 и 2025 года"></div>
                     </div>
                 </section>
 
                 <section id="anthro" class="block-card">
                     <h2 class="section-header">АНТРО</h2>
-                    <div class="pricing-layout">
-                        <div class="gallery-container">
-                            <button class="gallery-nav prev">&#10094;</button>
-                            <div class="gallery-scroll">
-                                <div class="gallery-item"><img src="https://picsum.photos/id/101/800/1200" alt="Anthro 1"></div>
-                                <div class="gallery-item"><img src="https://picsum.photos/id/102/1200/800" alt="Anthro 2"></div>
-                                <div class="gallery-item"><img src="https://picsum.photos/id/103/1000/1000" alt="Anthro 3"></div>
-                            </div>
-                            <button class="gallery-nav next">&#10095;</button>
+                    <div class="stacked-pricing-layout">
+                        <div class="image-row">
+                            <div class="gallery-item"><img src="https://picsum.photos/id/101/800/1200" alt="Anthro 1"></div>
+                            <div class="gallery-item"><img src="https://picsum.photos/id/102/1200/800" alt="Anthro 2"></div>
+                            <div class="gallery-item"><img src="https://picsum.photos/id/103/1000/1000" alt="Anthro 3"></div>
                         </div>
                         <div class="pricing-info-col">
                             <table class="price-table">
@@ -984,7 +1019,12 @@
 
                 <section id="feral" class="block-card">
                     <h2 class="section-header">ФЕРАЛ</h2>
-                    <div class="pricing-layout">
+                    <div class="stacked-pricing-layout">
+                        <div class="image-row">
+                            <div class="gallery-item"><img src="https://picsum.photos/id/201/800/1200" alt="Feral 1"></div>
+                            <div class="gallery-item"><img src="https://picsum.photos/id/202/1200/800" alt="Feral 2"></div>
+                            <div class="gallery-item"><img src="https://picsum.photos/id/203/1000/1000" alt="Feral 3"></div>
+                        </div>
                         <div class="pricing-info-col">
                             <table class="price-table">
                                 <thead>
@@ -1002,34 +1042,58 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="gallery-container">
-                            <button class="gallery-nav prev">&#10094;</button>
-                            <div class="gallery-scroll">
-                                <div class="gallery-item"><img src="https://picsum.photos/id/201/800/1200" alt="Feral 1"></div>
-                                <div class="gallery-item"><img src="https://picsum.photos/id/202/1200/800" alt="Feral 2"></div>
-                                <div class="gallery-item"><img src="https://picsum.photos/id/203/1000/1000" alt="Feral 3"></div>
-                            </div>
-                            <button class="gallery-nav next">&#10095;</button>
-                        </div>
                     </div>
                 </section>
 
                 <section id="chibi" class="block-card">
                     <h2 class="section-header">ЧИБИ</h2>
-                    <div class="pricing-layout">
-                        <div class="gallery-container">
-                            <button class="gallery-nav prev">&#10094;</button>
-                            <div class="gallery-scroll">
-                                <div class="gallery-item"><img src="https://picsum.photos/id/301/800/1200" alt="Chibi 1"></div>
-                                <div class="gallery-item"><img src="https://picsum.photos/id/302/1200/800" alt="Chibi 2"></div>
-                                <div class="gallery-item"><img src="https://picsum.photos/id/303/1000/1000" alt="Chibi 3"></div>
-                            </div>
-                            <button class="gallery-nav next">&#10095;</button>
+                    <div class="stacked-pricing-layout">
+                        <div class="image-row">
+                            <div class="gallery-item"><img src="https://picsum.photos/id/301/800/1200" alt="Chibi 1"></div>
+                            <div class="gallery-item"><img src="https://picsum.photos/id/302/1200/800" alt="Chibi 2"></div>
+                            <div class="gallery-item"><img src="https://picsum.photos/id/303/1000/1000" alt="Chibi 3"></div>
                         </div>
                         <div class="pricing-info-col">
                             <p class="mb-20">Разделите цену за желаемый формат на 2. К чиби относятся рисунки по лпс.</p>
                             <p class="mt-20"><strong>Другие виды:</strong> летучие мыши, драконоподобные, пернатые, млп, кроликоподобные, протогены, опоссумы, сурикаты, сахаши, львы, акулы, панды, и крысы, копытные: лошади, олени.</p>
                             <p class="mt-20"><strong>Люди:</strong> Цены не те же, что и на антро. Рисую от аниме до семи-реализма и реализма.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="references" class="block-card">
+                    <h2 class="section-header">РЕФЕРЕНСЫ</h2>
+                    <ul class="mb-20" style="padding-left: 20px; list-style: none;">
+                        <li class="mb-10">• Суммируйте цены за желаемое наполнение из обычного прайса;</li>
+                        <li class="mb-10">• При заказе вида "спереди и сзади" на одной базе (отзеркалены), второй рисунок будет в половину цены (примеры 4 и 5);</li>
+                        <li class="mb-10">• При заказе "одетой версии" на одной и той же базе, второй рисунок будет в половину цены (пример 3);</li>
+                        <li class="mb-10">• Глазки, подушечки, язык и носик, текст, палитра - 200р за всё сразу;</li>
+                        <li>• Цены за все эти референсы ниже, это может вам помочь:</li>
+                    </ul>
+
+                    <div class="pricing-layout">
+                        <div class="pricing-info-col">
+                            <ol style="padding-left: 20px; color: var(--text-color);">
+                                <li class="mb-20">3000 * 2 + (3000 * 1,1) + 2100 + 200 = 11600 ₽ (есть NSFW версия одного полнороста)</li>
+                                <li class="mb-20">3000 + 900 * 2 + (2800 : 2) + 200 = 6400 ₽</li>
+                                <li class="mb-20">3000 + (3000 : 2) + 900 * 2 + (3000 : 2) + (3000 : 2 : 2) + 200 = 8 750 ₽</li>
+                                <li class="mb-20">3000 + (3000 : 2) + 900 + 2800 + 200 = 8400 ₽</li>
+                                <li class="mb-20">3000 + (3000 : 2) + 800 + 2800 + 200 = 8300 ₽</li>
+                                <li class="mb-20">3000 * 2 + 2800 + 800 + 200 = 9800 ₽</li>
+                            </ol>
+                            <p class="mt-20"><i>• Если не понимаете, как посчитать цену за нужное вам наполнение, спросите, я обязательно отвечу!!</i></p>
+                        </div>
+                        <div class="gallery-container">
+                            <button class="gallery-nav prev">&#10094;</button>
+                            <div class="gallery-scroll">
+                                <div class="gallery-item"><img src="https://picsum.photos/id/601/1000/1400" alt="Reference Example 1"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/602/1000/1400" alt="Reference Example 2"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/603/1000/1400" alt="Reference Example 3"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/604/1000/1400" alt="Reference Example 4"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/605/1000/1400" alt="Reference Example 5"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/606/1000/1400" alt="Reference Example 6"></div>
+                            </div>
+                            <button class="gallery-nav next">&#10095;</button>
                         </div>
                     </div>
                 </section>
@@ -1086,8 +1150,13 @@
                         <div class="gallery-container">
                             <button class="gallery-nav prev">&#10094;</button>
                             <div class="gallery-scroll">
-                                <div class="gallery-item"><img src="https://picsum.photos/id/501/1200/800" alt="Merch Showcase"></div>
-                                <div class="gallery-item"><img src="https://picsum.photos/id/502/1200/800" alt="Merch Showcase 2"></div>
+                            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAS44uod21rRF_5BWhPCU7KDXUjb0U5dApWCe9trqU1cflKI3iRAfTKPUdG6gk15Lpvm9E9ktfgtvudFzOXYEMR2adsufUUJQ16Ig2jW_h90V6gAeEfwnVWKiSoPpe0YZ1tFHMovofVUF8QBT9XrhlV104-gk0B9Ve0OAU4od2-L6VPAVA1qcsXjU9juW8Kv1uI69WGElchU4rD_YDTYwCwuQx4hoOJoe-tZIaSKgo=w1280" alt="Merch 1"></div>
+                            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUC2LXioCleDDT6LzNobZ46OOs0kU1Y8YFvfVlek8yEH0kYEVw7NFOZlioPBNFYkXhpAbDEvmaojD3AGsL2uad8HQ5yJWmPSi_wJrqOB3vdf0sFacymJkt2nRuJTdEjfBZqyRsN0y4hkzCqvLohUR5zYhG3DLhZxCqZyRrM_w3kt3navdpXSD2o1U8FIaF57EUbQmIHCeg3Hzkr7vGEvtlMfDBWWOuihSQWv_1Du=w1280" alt="Merch 2"></div>
+                            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAVuTEyAqBVniZFf6Xkm7ePle22dTINO98B-CpMCecP_YTh9L40h_KM5xdqSdsh37ElykKeOkYv5miw3o_T48ByGcP8hciyaXFwigShpOXmUxd9eaKnbuQ8PXnnPcmkQBnMQkq9wouFMtMwphfcMc0wq7rdaE3TCZhdV3LLsMj1MfBrleAhzQdV58ac-fNp1FHOtItpikSBdcwZi-J-XUOujchzIGot_pEySsh_3B4=w1280" alt="Merch 3"></div>
+                            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUCxQq0sdRGfSWhUmy1PsZ2uSef2ROaUHobV4OQThDYML-DzzNZsKDjcV8lQ2zLSXKMzSENPXCbok0_uZu3lacj2WXIqsXzhjPUu95q4MIMIcQhcXEg5HFK7g537pgpNXhKnSKiOC7wubrOU7Wa_cEzEvkV80LHmi3XB-j6oapOA63giwSh9GD7q7vJFu_xYZ4mC37BTC7_chZoUaeaYl5DcX2dPgZ9xxcbKonqKb5g=w1280" alt="Merch 4"></div>
+                            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAIAHudVNCEE1otJ0q1_qIEzBwtTXbBUPriFGGrR2QEAI4qPfb0SBNWQ2i28rJfQDHO4tOvhs7KwlMi35fXZ7RfHSIiZSJ-HxRFn9FvU6cQah9J5__P7DsmIyTijdgzTzUNg_l6qtqqmTc9L1j_uvdiPEc6_NypEv64yTDWtrMIN4YaELPOmYoQqzlXLkavgSd200cyEGpOh48rBKYdtkrPE0vCa5y34w0BLGkrkdM=w1280" alt="Merch 5"></div>
+                            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUCmK9Oaf8RoASM5xV5UMYXGZ_DJHSysKbanoA9kBos_sUhen6S6KfOa23TxgzJMXcHqzOBE9d0VL-JHVgZPdFctbRQKIt6BjFGvIB0pHzRmHcDXCS89Yq_K5gt6EG-_GQFfUfpmAfSOfn5APsii4MgacO-HDWhCNTX8L7iE0oecmRbHBU2OKRtBIrSIl5E=w1280" alt="Merch 6"></div>
+                            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUCLT8_p47NcEPl0hJqEA_0pX0KIhOF19iriaR558J2xzHVijY3O6dVFc94jeDOYcfvN6qKr51KwX834X_A0RjzqU1dshim7n9hdsmEQTNtmPXdgEmjcxZQw2vy-TftX4OFHbCk-p9WnlXnDNaCQBVDYusxXjVW-A0S9ahiueHjUTQ96na897VnduzW9jWdClJhJ0KmgQu1T32kvWs8aSeWTkyf3Ln-PNJdl3nDr=w1280" alt="Merch 7"></div>
                             </div>
                             <button class="gallery-nav next">&#10095;</button>
                         </div>
@@ -1096,6 +1165,22 @@
                             <p class="mt-20"><strong>4 вида ламинации:</strong> звёзды, бисер, радуга, битое стекло</p>
                         </div>
                     </div>
+                </section>
+
+                <section id="additional" class="block-card">
+                    <h2 class="section-header">ДОПОЛНИТЕЛЬНО</h2>
+                    <p class="mb-20">Помимо этого, я:</p>
+                    <ul style="padding-left: 20px; list-style: none;">
+                        <li class="mb-10">• Оформляю баннеры для групп вк\бусти\ютуба и тд;</li>
+                        <li class="mb-10">• Создаю дизайны персонажей по вашим пожеланиям;</li>
+                        <li class="mb-10">• Рисую мемные картинки;</li>
+                        <li class="mb-10">• Рисую мордочку фурри поверх вашего селфи;</li>
+                        <li class="mb-10">• Обработываю фото + распечатываю на хосте, подбираю рамку и тд.;</li>
+                        <li class="mb-10">• Расписываю кружки, шкатулки и тд. акриловыми маркерами;</li>
+                        <li class="mb-10">• Леплю фигурки из лёгкого пластилина и самозатвердевающей/полимерной глины;</li>
+                        <li class="mb-10">• Отправляю традишные арты письмом любой службой доставки за ваш счёт;</li>
+                        <li>• Курирую начинающих художников. Пробные полчаса бесплатно, далее 1 час 500р либо недельное кураторство 1000р за 3 консультации.</li>
+                    </ul>
                 </section>
 
                 <section id="dictionary" class="block-card">
@@ -1219,6 +1304,7 @@
                         </div>
                     </details>
                 </section>
+
             </main>
 
             <footer class="text-center mb-20" style="color: var(--muted-color); font-size: 0.9em;">
@@ -1329,7 +1415,7 @@
 
     // Attach Lightbox & Nav to Gallery Items
     function refreshGalleryHooks() {
-        document.querySelectorAll('.gallery-container, .stats-images').forEach(container => {
+        document.querySelectorAll('.gallery-container, .stats-images, .image-row').forEach(container => {
             const items = container.querySelectorAll('.gallery-item, .stats-img-item');
             const scroll = container.querySelector('.gallery-scroll');
             const prevBtn = container.querySelector('.gallery-nav.prev');
