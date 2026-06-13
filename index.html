@@ -18,6 +18,8 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
+        html { scroll-behavior: smooth; }
+
         body {
             color: var(--text-color);
             line-height: 1.6;
@@ -42,18 +44,21 @@
             right: 0;
             bottom: 0;
             left: 0;
-            min-height: 100%;
+            min-height: 200%;
+            pointer-events: none;
         }
 
         .layer-base {
             transform: translateZ(0);
             z-index: 1;
+            position: relative;
+            pointer-events: auto;
         }
 
         .layer-back {
             transform: translateZ(-0.5px) scale(1.5);
             z-index: -1;
-            background-image: linear-gradient(rgba(252, 242, 249, 0.8), rgba(252, 242, 249, 0.8)), url('https://picsum.photos/id/10/1920/1080');
+            background-image: linear-gradient(rgba(252, 242, 249, 0.7), rgba(252, 242, 249, 0.7)), url('https://lh3.googleusercontent.com/sitesv/AA5AbUA9XfNjwCAm1tORy8Hx15AKeLT0K5NZvofIghaWr-yoCTlIGo3hz8xj2vTkBFHGu8X75RLWg3P-S1_N2peT6MVNXCJSS_O8nV_-9WP4z4JRj8AXjgWolVeBYZZbDKZffUNaRVmoFIsQsQrDVqApqbW6rjqqSUTNpYvc6HSFpN-DmxRz3g4nCZj_K4m-YzYygancj2m4LYFbbnvsDHQNOM6uh2s_DY06iLyIF7B9Gsg=w1280');
             background-size: cover;
             background-position: center;
         }
@@ -61,7 +66,7 @@
         .layer-deep {
             transform: translateZ(-1px) scale(2);
             z-index: -2;
-            background-image: linear-gradient(rgba(252, 242, 249, 0.9), rgba(252, 242, 249, 0.9)), url('https://picsum.photos/id/20/1920/1080');
+            background-image: linear-gradient(rgba(252, 242, 249, 0.8), rgba(252, 242, 249, 0.8)), url('https://lh3.googleusercontent.com/sitesv/AA5AbUA8oR5OgOR3qwVHqo4i0QZixAi-3iHfEYNQ758prjZIcT5CbsNSD1N1IU3iOLXUqb6cpoXzLMYK97HJIqmltStF0YQPrSRrqSEv8BvWgQZFiAMgK4AdIA-thntr64aUWbaG3YLsqvLV0ddv1ei6PZB8nOTbFYig0UlGQ7admcqx8NobkTAE45qEW9AT_d9TrGo7hOCBBbRFJG0KiLHAjrpBXddt8DsHSkK8ddSklzE=w1280');
             background-size: cover;
             background-position: center;
         }
@@ -84,6 +89,12 @@
             margin-bottom: 40px;
             border: 1px solid var(--border-color);
             backdrop-filter: blur(5px);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .block-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(114, 61, 147, 0.15);
         }
 
         /* Header & Profile Styles */
@@ -107,6 +118,13 @@
             overflow: hidden;
             border: 4px solid var(--accent-color);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
 
         .avatar-img {
@@ -313,8 +331,60 @@
             background: var(--bg-color);
             border-radius: 10px;
             display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .stat-label-row {
+            display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
+        }
+
+        .stat-bar-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(114, 61, 147, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .stat-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-color), var(--main-color));
+            border-radius: 4px;
+            transition: width 1s ease-out;
+        }
+
+        .stats-images {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stats-img-item {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid var(--border-color);
+            transition: transform 0.3s;
+        }
+
+        .stats-img-item:hover {
+            transform: scale(1.1);
+            border-color: var(--accent-color);
+        }
+
+        .stats-img-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Collapsible Terms Styles */
@@ -362,6 +432,12 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-layout {
+                grid-template-columns: 1fr;
+            }
         }
 
         .pricing-info-col {
@@ -421,14 +497,121 @@
             height: 100%;
             scroll-snap-align: start;
             position: relative;
+            cursor: pointer;
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            background: #eee;
-            transition: opacity 0.5s ease-in-out;
+            background: #f8f8f8;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.02);
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(114, 61, 147, 0.6);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: background 0.3s, transform 0.2s;
+            opacity: 0;
+        }
+
+        .gallery-container:hover .gallery-nav {
+            opacity: 1;
+        }
+
+        .gallery-nav:hover {
+            background: var(--main-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .gallery-nav.prev { left: 10px; }
+        .gallery-nav.next { right: 10px; }
+
+        /* Lightbox Styles */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            backdrop-filter: blur(10px);
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            object-fit: contain;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            border: 4px solid white;
+            border-radius: 4px;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        #lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 2001;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 50px;
+            cursor: pointer;
+            user-select: none;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        #lightbox-prev { left: 20px; }
+        #lightbox-next { right: 20px; }
+
+        #lightbox-caption {
+            color: white;
+            margin-top: 20px;
+            font-size: 1.4em;
+            font-weight: 600;
         }
 
         .stat-value { font-weight: bold; color: var(--accent-color); font-size: 1.1em; }
@@ -440,6 +623,12 @@
             padding: 10px 0;
             margin-bottom: 20px;
             position: relative;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .remove-btn {
@@ -521,21 +710,27 @@
         }
 
         .btn-action {
-            background-color: #c787de;
+            background: linear-gradient(135deg, #c787de 0%, #b977d1 100%);
             color: white;
-            border: 2px solid #c787de;
-            padding: 10px 25px;
+            border: none;
+            padding: 12px 30px;
             font-family: inherit;
             font-size: 1em;
+            font-weight: 600;
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(185, 119, 209, 0.3);
         }
 
         .btn-action:hover {
-            background-color: #b977d1;
-            border-color: #b977d1;
-            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(185, 119, 209, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .btn-action:active {
+            transform: translateY(1px);
         }
 
         .final-summary {
@@ -577,10 +772,62 @@
         @media (max-width: 600px) {
             .header-container { flex-direction: column; text-align: center; }
             .block-card { padding: 20px; }
+            .profile-name { font-size: 2.2em; }
+            .lightbox-nav { width: 50px; height: 50px; font-size: 30px; }
+        }
+
+        .video-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            margin: 20px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: #000;
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--main-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        #back-to-top.visible {
+            opacity: 1;
+        }
+
+        #back-to-top:hover {
+            transform: translateY(-5px);
+            background: var(--accent-color);
         }
     </style>
 </head>
 <body>
+
+<div id="lightbox">
+    <span id="lightbox-close">&times;</span>
+    <span id="lightbox-prev" class="lightbox-nav">&#10094;</span>
+    <img id="lightbox-img" src="" alt="">
+    <span id="lightbox-next" class="lightbox-nav">&#10095;</span>
+    <div id="lightbox-caption"></div>
+</div>
+
+<a href="#" id="back-to-top" title="Наверх">↑</a>
 
 <div class="parallax-wrapper">
     <div class="parallax-layer layer-deep"></div>
@@ -592,7 +839,7 @@
                 <div class="header-container">
                     <div class="profile-column">
                         <div class="avatar-wrapper">
-                            <img src="https://picsum.photos/id/64/400/400" alt="Ракель Энелисс" class="avatar-img">
+                            <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAJlOrdImNJDUZW1T2Uvvg9lRVWGgzIfplAj1p29Qvv4y4Gctyqajgrm68J1poR5-FDY2UvcTHRzQRH-4CsswkeXNahb_3ur7SDLKoyYc03PtM-ImK9W1uXhlHJWUYJu25WLmhbumEYv5k-qV9tAekaYePQQiMrXIwfVB8vifLtWFsPAFa_lLuNnrRicvV0ImhEjtYXp_cqsFsTdwbEuA3w5YlGwK97eF9elD-bRLo=w1280" alt="Ракель Энелисс" class="avatar-img">
                         </div>
                         <h1 class="profile-name">Ракель<br>Энелисс</h1>
                     </div>
@@ -650,29 +897,70 @@
                 <section id="stats" class="block-card">
                     <h2 class="section-header">Статистика</h2>
                     <div class="stats-grid">
-                        <div class="stat-item"><span>Работ в портфолио</span><span class="stat-value">500 ❙❙❙❙❙❙❙❙</span></div>
-                        <div class="stat-item"><span>Заказов</span><span class="stat-value">174 ❙❙❙❙❙❙</span></div>
-                        <div class="stat-item"><span>Стикеров</span><span class="stat-value">76 ❙❙❙❙</span></div>
-                        <div class="stat-item"><span>Vtube моделей</span><span class="stat-value">5 ❙❙</span></div>
-                        <div class="stat-item"><span>Референсов</span><span class="stat-value">19 ❙❙❙❙</span></div>
-                        <div class="stat-item"><span>Аудитория тг</span><span class="stat-value">630+ ❙❙❙❙❙❙❙</span></div>
-                        <div class="stat-item"><span>Аудитория ВК</span><span class="stat-value">1250+ ❙❙❙❙❙❙❙❙❙❙❙❙❙❙❙</span></div>
-                        <div class="stat-item"><span>Донов</span><span class="stat-value">13 ❙❙❙</span></div>
-                        <div class="stat-item"><span>Средний дедлайн</span><span class="stat-value">2 недели ❙❙❙</span></div>
-                        <div class="stat-item"><span>Ожидание ответа</span><span class="stat-value">15 минут ❙❙</span></div>
-                        <div class="stat-item"><span>Лет на рынке</span><span class="stat-value">7,5 ❙❙❙❙❙❙</span></div>
+                        <div class="stat-item">
+                            <div class="stat-label-row"><span>Работ в портфолио</span><span class="stat-value">500</span></div>
+                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 95%;"></div></div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label-row"><span>Заказов</span><span class="stat-value">174</span></div>
+                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 80%;"></div></div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label-row"><span>Стикеров</span><span class="stat-value">76</span></div>
+                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 60%;"></div></div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label-row"><span>Vtube моделей</span><span class="stat-value">5</span></div>
+                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 30%;"></div></div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label-row"><span>Референсов</span><span class="stat-value">19</span></div>
+                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 45%;"></div></div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label-row"><span>Аудитория тг</span><span class="stat-value">630+</span></div>
+                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 70%;"></div></div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label-row"><span>Аудитория ВК</span><span class="stat-value">1250+</span></div>
+                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label-row"><span>Донов</span><span class="stat-value">13</span></div>
+                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 40%;"></div></div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label-row"><span>Средний дедлайн</span><span class="stat-value">2 недели</span></div>
+                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label-row"><span>Ожидание ответа</span><span class="stat-value">15 минут</span></div>
+                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 95%;"></div></div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label-row"><span>Лет на рынке</span><span class="stat-value">7,5</span></div>
+                            <div class="stat-bar-container"><div class="stat-bar-fill" style="width: 75%;"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="stats-images">
+                        <div class="stats-img-item"><img src="https://picsum.photos/id/1/400/400" alt="Статистика 1"></div>
+                        <div class="stats-img-item"><img src="https://picsum.photos/id/2/400/400" alt="Статистика 2"></div>
+                        <div class="stats-img-item"><img src="https://picsum.photos/id/3/400/400" alt="Статистика 3"></div>
                     </div>
                 </section>
 
-                <section id="pricing-anthro" class="block-card">
+                <section id="anthro" class="block-card">
                     <h2 class="section-header">АНТРО</h2>
                     <div class="pricing-layout">
                         <div class="gallery-container">
+                            <button class="gallery-nav prev">&#10094;</button>
                             <div class="gallery-scroll">
                                 <div class="gallery-item"><img src="https://picsum.photos/id/101/800/1200" alt="Anthro 1"></div>
                                 <div class="gallery-item"><img src="https://picsum.photos/id/102/1200/800" alt="Anthro 2"></div>
                                 <div class="gallery-item"><img src="https://picsum.photos/id/103/1000/1000" alt="Anthro 3"></div>
                             </div>
+                            <button class="gallery-nav next">&#10095;</button>
                         </div>
                         <div class="pricing-info-col">
                             <table class="price-table">
@@ -694,7 +982,7 @@
                     </div>
                 </section>
 
-                <section id="pricing-feral" class="block-card">
+                <section id="feral" class="block-card">
                     <h2 class="section-header">ФЕРАЛ</h2>
                     <div class="pricing-layout">
                         <div class="pricing-info-col">
@@ -715,24 +1003,28 @@
                             </table>
                         </div>
                         <div class="gallery-container">
+                            <button class="gallery-nav prev">&#10094;</button>
                             <div class="gallery-scroll">
                                 <div class="gallery-item"><img src="https://picsum.photos/id/201/800/1200" alt="Feral 1"></div>
                                 <div class="gallery-item"><img src="https://picsum.photos/id/202/1200/800" alt="Feral 2"></div>
                                 <div class="gallery-item"><img src="https://picsum.photos/id/203/1000/1000" alt="Feral 3"></div>
                             </div>
+                            <button class="gallery-nav next">&#10095;</button>
                         </div>
                     </div>
                 </section>
 
-                <section id="pricing-chibi" class="block-card">
+                <section id="chibi" class="block-card">
                     <h2 class="section-header">ЧИБИ</h2>
                     <div class="pricing-layout">
                         <div class="gallery-container">
+                            <button class="gallery-nav prev">&#10094;</button>
                             <div class="gallery-scroll">
                                 <div class="gallery-item"><img src="https://picsum.photos/id/301/800/1200" alt="Chibi 1"></div>
                                 <div class="gallery-item"><img src="https://picsum.photos/id/302/1200/800" alt="Chibi 2"></div>
                                 <div class="gallery-item"><img src="https://picsum.photos/id/303/1000/1000" alt="Chibi 3"></div>
                             </div>
+                            <button class="gallery-nav next">&#10095;</button>
                         </div>
                         <div class="pricing-info-col">
                             <p class="mb-20">Разделите цену за желаемый формат на 2. К чиби относятся рисунки по лпс.</p>
@@ -744,64 +1036,66 @@
 
                 <section id="vtuber" class="block-card">
                     <h2 class="section-header centered">Vtube</h2>
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/1UVwtl8RUUf7ekDrKGFLurdLiGFIAucFX/preview" width="100%" height="100%" allow="autoplay" style="border:none;"></iframe>
+                    </div>
+                    <p class="text-center mb-20">Примеры риггинга и моделей Live2D</p>
                     <p>• Модель в полный рост без одежды: 12000р + 5к за версию с одеждой</p>
                     <p>• Модель в полный рост с одеждой: 15000р (без раздетой версии)</p>
                     <p>• Доп. эмоция без анимации: 400р</p>
                     <p>• Доп. эмоция с анимацией: 500р</p>
+                    <div class="video-container">
+                        <iframe src="https://drive.google.com/file/d/19RkFvIZaloDl8nspn9Q33qfxq-p2EsYi/preview" width="100%" height="100%" allow="autoplay" style="border:none;"></iframe>
+                    </div>
                 </section>
 
                 <section id="stickers" class="block-card">
                     <h2 class="section-header">Стикеры</h2>
-                    <table style="width: 100%; text-align: left; border-collapse: collapse;">
-                        <thead>
-                            <tr style="border-bottom: 2px solid var(--border-color);">
-                                <th style="padding: 10px;">Кол-во</th>
-                                <th style="padding: 10px;">Простой рендер</th>
-                                <th style="padding: 10px;">Сложный рендер</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td style="padding: 10px;">3 штуки</td><td style="padding: 10px;">1650 (550р/шт)</td><td style="padding: 10px;">2100 (700р/шт)</td></tr>
-                            <tr><td style="padding: 10px;">6 штук</td><td style="padding: 10px;">3000 (500р/шт)</td><td style="padding: 10px;">3900 (650р/шт)</td></tr>
-                            <tr><td style="padding: 10px;">12 штук</td><td style="padding: 10px;">5400 (450р/шт)</td><td style="padding: 10px;">7200 (600р/шт)</td></tr>
-                            <tr><td style="padding: 10px;">24 штуки</td><td style="padding: 10px;">9600 (400р/шт)</td><td style="padding: 10px;">13200 (550р/шт)</td></tr>
-                        </tbody>
-                    </table>
+                    <div class="pricing-layout">
+                        <div class="pricing-info-col">
+                            <table style="width: 100%; text-align: left; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="border-bottom: 2px solid var(--border-color);">
+                                        <th style="padding: 10px;">Кол-во</th>
+                                        <th style="padding: 10px;">Простой</th>
+                                        <th style="padding: 10px;">Сложный</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td style="padding: 10px;">3 шт</td><td style="padding: 10px;">1650</td><td style="padding: 10px;">2100</td></tr>
+                                    <tr><td style="padding: 10px;">6 шт</td><td style="padding: 10px;">3000</td><td style="padding: 10px;">3900</td></tr>
+                                    <tr><td style="padding: 10px;">12 шт</td><td style="padding: 10px;">5400</td><td style="padding: 10px;">7200</td></tr>
+                                    <tr><td style="padding: 10px;">24 шт</td><td style="padding: 10px;">9600</td><td style="padding: 10px;">13200</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="gallery-container">
+                            <button class="gallery-nav prev">&#10094;</button>
+                            <div class="gallery-scroll">
+                                <div class="gallery-item"><img src="https://picsum.photos/id/401/1000/1000" alt="Stickers Showcase"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/402/1000/1000" alt="Stickers Showcase 2"></div>
+                            </div>
+                            <button class="gallery-nav next">&#10095;</button>
+                        </div>
+                    </div>
                 </section>
 
                 <section id="merch" class="block-card">
                     <h2 class="section-header centered">Мерч</h2>
-                    <p>У меня есть мерч! Отправляю в день оформления любой удобной вам доставкой (озон, яндекс, почта России, СДЭК, авито) за ваш счёт либо личная встреча в Москве. Актуальное наличие уточняйте!</p>
-                    <p class="mt-20"><strong>4 вида ламинации:</strong> звёзды, бисер, радуга, битое стекло</p>
-                </section>
-
-                <section id="terms" class="block-card">
-                    <h2 class="section-header centered">Условия</h2>
-                    <details class="terms-details">
-                        <summary>Развернуть условия работы</summary>
-                        <div class="terms-content">
-                            <ul style="padding-left: 20px; list-style: none;">
-                                <li class="mb-20">• Оплата сразу или же 50% до и 50% после предоставления скетча на ру карту/бусти/пейпал, возможна оплата частями;</li>
-                                <li class="mb-20">• Дополнительная плата взимается за крылья, сложный окрас персонажа и объекты помимо него;</li>
-                                <li class="mb-20">• Дополнительная плата за NSFW составит +10-20% от выбранного формата;</li>
-                                <li class="mb-20">• Случаи, когда вы хотите чтобы арт не был опубликован или будете использовать его в коммерческих целях, обговариваются отдельно до начала работы(!);</li>
-                                <li class="mb-20">• Если вы отказываетесь от заказа, деньги возвращаются только за непроделанную часть работы;</li>
-                                <li class="mb-20">• Если вы не выходите на связь более, чем 1 месяц, не предупредив заранее меня, заказ аннулируется (я не буду ждать бесконечно);</li>
-                                <li class="mb-20">• Если по вышеописанным причинам заказ аннулируется, я оставляю за собой право из рисунка сделать юч, предварительно убрав все детали, по которым можно было бы опознать персонажа;</li>
-                                <li class="mb-20">• Я рисую в разных направлениях и экспериментирую, так что не стесняйтесь спрашивать, если находите свою идею слишком необычной!;</li>
-                                <li class="mb-20">• Со мной можете общаться на «ты»;</li>
-                                <li class="mb-20">• Срок выполнения работы от 3х до 30 дней в зависимости от формата и очереди, возможно сокращение за доплату;</li>
-                                <li class="mb-20">• До начала работы укажите пожалуйта важные для вас детали вашего персонажа (которые например обычно путают);</li>
-                                <li class="mb-20">• Каждый этап рисунка я скидываю для утверждения, не бойтесь вносить правки, а главное делайте это вовремя!;</li>
-                                <li class="mb-20">• На этапе скетча 2 правки бесплатно, на этапе лайна - только 2 мелкие бесплатно;</li>
-                                <li class="mb-20">• Я всегда на связи и отвечаю либо в первые 15 минут, либо в течение дня;</li>
-                                <li class="mb-20">• Уважайте чужое время, не заваливайте меня идеями без возможности их оплатить в ближайшее время;</li>
-                                <li class="mb-20">• Доны имеют право на 30% СКИДКУ при условии что сумму скидки дон уже оплатил самой подпиской!</li>
-                                <li class="mb-20">• СКИДКА на второй заказ 20% при условии написания отзыва!</li>
-                                <li>• Для оформления заказа можете написать мне в любой социальной сети!</li>
-                            </ul>
+                    <div class="pricing-layout">
+                        <div class="gallery-container">
+                            <button class="gallery-nav prev">&#10094;</button>
+                            <div class="gallery-scroll">
+                                <div class="gallery-item"><img src="https://picsum.photos/id/501/1200/800" alt="Merch Showcase"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/502/1200/800" alt="Merch Showcase 2"></div>
+                            </div>
+                            <button class="gallery-nav next">&#10095;</button>
                         </div>
-                    </details>
+                        <div class="pricing-info-col">
+                            <p>У меня есть мерч! Отправляю в день оформления любой удобной вам доставкой (озон, яндекс, почта России, СДЭК, авито) за ваш счёт либо личная встреча в Москве. Актуальное наличие уточняйте!</p>
+                            <p class="mt-20"><strong>4 вида ламинации:</strong> звёзды, бисер, радуга, битое стекло</p>
+                        </div>
+                    </div>
                 </section>
 
                 <section id="dictionary" class="block-card">
@@ -890,8 +1184,40 @@
                                 <label class="option-label"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
                             </div>
                         </div>
-                        Общая сумма: <span id="grand-total">0</span> руб.
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer;" id="copy-total" title="Нажмите, чтобы скопировать">
+                            Общая сумма: <span id="grand-total">0</span> руб.
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="white" style="opacity: 0.8;"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                        </div>
                     </div>
+                </section>
+
+                <section id="terms" class="block-card">
+                    <h2 class="section-header centered">Условия</h2>
+                    <details class="terms-details">
+                        <summary>прочесть перед заказом</summary>
+                        <div class="terms-content">
+                            <ul style="padding-left: 20px; list-style: none;">
+                                <li class="mb-20">• Оплата сразу или же 50% до и 50% после предоставления скетча на ру карту/бусти/пейпал, возможна оплата частями;</li>
+                                <li class="mb-20">• Дополнительная плата взимается за крылья, сложный окрас персонажа и объекты помимо него;</li>
+                                <li class="mb-20">• Дополнительная плата за NSFW составит +10-20% от выбранного формата;</li>
+                                <li class="mb-20">• Случаи, когда вы хотите чтобы арт не был опубликован или будете использовать его в коммерческих целях, обговариваются отдельно до начала работы(!);</li>
+                                <li class="mb-20">• Если вы отказываетесь от заказа, деньги возвращаются только за непроделанную часть работы;</li>
+                                <li class="mb-20">• Если вы не выходите на связь более, чем 1 месяц, не предупредив заранее меня, заказ аннулируется (я не буду ждать бесконечно);</li>
+                                <li class="mb-20">• Если по вышеописанным причинам заказ аннулируется, я оставляю за собой право из рисунка сделать юч, предварительно убрав все детали, по которым можно было бы опознать персонажа;</li>
+                                <li class="mb-20">• Я рисую в разных направлениях и экспериментирую, так что не стесняйтесь спрашивать, если находите свою идею слишком необычной!;</li>
+                                <li class="mb-20">• Со мной можете общаться на «ты»;</li>
+                                <li class="mb-20">• Срок выполнения работы от 3х до 30 дней в зависимости от формата и очереди, возможно сокращение за доплату;</li>
+                                <li class="mb-20">• До начала работы укажите пожалуйта важные для вас детали вашего персонажа (которые например обычно путают);</li>
+                                <li class="mb-20">• Каждый этап рисунка я скидываю для утверждения, не бойтесь вносить правки, а главное делайте это вовремя!;</li>
+                                <li class="mb-20">• На этапе скетча 2 правки бесплатно, на этапе лайна - только 2 мелкие бесплатно;</li>
+                                <li class="mb-20">• Я всегда на связи и отвечаю либо в первые 15 минут, либо в течение дня;</li>
+                                <li class="mb-20">• Уважайте чужое время, не заваливайте меня идеями без возможности их оплатить в ближайшее время;</li>
+                                <li class="mb-20">• Доны имеют право на 30% СКИДКУ при условии что сумму скидки дон уже оплатил самой подпиской!</li>
+                                <li class="mb-20">• СКИДКА на второй заказ 20% при условии написания отзыва!</li>
+                                <li>• Для оформления заказа можете написать мне в любой социальной сети!</li>
+                            </ul>
+                        </div>
+                    </details>
                 </section>
             </main>
 
@@ -912,6 +1238,123 @@
     const calculatorList = document.getElementById('calculator-list');
     const grandTotalSpan = document.getElementById('grand-total');
     let blockCounter = 0;
+
+    // Back to top logic
+    const btt = document.getElementById('back-to-top');
+    const wrapper = document.querySelector('.parallax-wrapper');
+    wrapper.onscroll = () => {
+        if (wrapper.scrollTop > 500) btt.classList.add('visible');
+        else btt.classList.remove('visible');
+    };
+    btt.onclick = (e) => {
+        e.preventDefault();
+        wrapper.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // Lightbox Logic
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+
+    let currentGallery = [];
+    let currentIndex = 0;
+
+    function openLightbox(imgElement, galleryElements) {
+        currentGallery = Array.from(galleryElements);
+        currentIndex = currentGallery.indexOf(imgElement.parentElement);
+        updateLightbox();
+        lightbox.style.display = 'flex';
+    }
+
+    function updateLightbox() {
+        const currentItem = currentGallery[currentIndex].querySelector('img');
+        lightboxImg.style.opacity = 0;
+
+        // Dynamic background tint (best effort based on cross-origin constraints)
+        // Since we can't always get pixel data due to CORS, we'll use a CSS filter/backdrop hack
+        // or a simplified heuristic if it was a local asset.
+        // For now, let's just add a subtle transition to the backdrop blur.
+
+        setTimeout(() => {
+            lightboxImg.src = currentItem.src;
+            lightboxCaption.textContent = currentItem.alt;
+            lightboxImg.style.opacity = 1;
+
+            // Heuristic: if we wanted real color extraction, we'd need a canvas.
+            // But since these are from picsum.photos, CORS might block it.
+            // We'll use a CSS trick to "bleed" some color into the background using a hidden blurred copy
+            let blurredBg = document.getElementById('lightbox-blur-bg');
+            if (!blurredBg) {
+                blurredBg = document.createElement('div');
+                blurredBg.id = 'lightbox-blur-bg';
+                blurredBg.style.position = 'absolute';
+                blurredBg.style.top = '0';
+                blurredBg.style.left = '0';
+                blurredBg.style.width = '100%';
+                blurredBg.style.height = '100%';
+                blurredBg.style.zIndex = '-1';
+                blurredBg.style.opacity = '0.3';
+                blurredBg.style.filter = 'blur(100px) brightness(0.8)';
+                blurredBg.style.backgroundSize = 'cover';
+                blurredBg.style.backgroundPosition = 'center';
+                blurredBg.style.transition = 'background-image 0.5s';
+                lightbox.appendChild(blurredBg);
+            }
+            blurredBg.style.backgroundImage = `url(${currentItem.src})`;
+        }, 150);
+    }
+
+    lightboxClose.onclick = () => lightbox.style.display = 'none';
+    lightboxPrev.onclick = () => {
+        currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+        updateLightbox();
+    };
+    lightboxNext.onclick = () => {
+        currentIndex = (currentIndex + 1) % currentGallery.length;
+        updateLightbox();
+    };
+
+    window.onclick = (e) => { if (e.target === lightbox) lightbox.style.display = 'none'; };
+
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.style.display === 'flex') {
+            if (e.key === 'ArrowLeft') lightboxPrev.onclick();
+            if (e.key === 'ArrowRight') lightboxNext.onclick();
+            if (e.key === 'Escape') lightboxClose.onclick();
+        }
+    });
+
+    // Attach Lightbox & Nav to Gallery Items
+    function refreshGalleryHooks() {
+        document.querySelectorAll('.gallery-container, .stats-images').forEach(container => {
+            const items = container.querySelectorAll('.gallery-item, .stats-img-item');
+            const scroll = container.querySelector('.gallery-scroll');
+            const prevBtn = container.querySelector('.gallery-nav.prev');
+            const nextBtn = container.querySelector('.gallery-nav.next');
+
+            items.forEach(item => {
+                item.onclick = (e) => {
+                    e.stopPropagation();
+                    openLightbox(item.querySelector('img'), items);
+                };
+            });
+
+            if (prevBtn && nextBtn && scroll) {
+                prevBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    scroll.scrollBy({ left: -scroll.clientWidth, behavior: 'smooth' });
+                };
+                nextBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    scroll.scrollBy({ left: scroll.clientWidth, behavior: 'smooth' });
+                };
+            }
+        });
+    }
+    refreshGalleryHooks();
 
     function createNewBlock() {
         blockCounter++;
@@ -1088,15 +1531,35 @@
 
     document.getElementById('add-block-btn').addEventListener('click', createNewBlock);
 
+    document.getElementById('copy-total').onclick = function() {
+        const totalText = grandTotalSpan.textContent;
+        const cleanTotal = totalText.split(' ')[0];
+
+        const textArea = document.createElement("textarea");
+        textArea.value = cleanTotal;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            const originalHTML = this.innerHTML;
+            this.innerHTML = '<span style="font-weight:bold; color:#fff;">Скопировано! ✓</span>';
+            setTimeout(() => { this.innerHTML = originalHTML; }, 2000);
+        } catch (err) {
+            console.error('Copy failed', err);
+        }
+        document.body.removeChild(textArea);
+    };
+
     createNewBlock();
 
     // Auto-scroll galleries
     document.querySelectorAll('.gallery-scroll').forEach(gallery => {
         let direction = 1;
         setInterval(() => {
+            if (lightbox.style.display === 'flex') return; // Pause if lightbox is open
             const maxScroll = gallery.scrollWidth - gallery.clientWidth;
-            if (gallery.scrollLeft >= maxScroll) direction = -1;
-            if (gallery.scrollLeft <= 0) direction = 1;
+            if (gallery.scrollLeft >= maxScroll - 5) direction = -1;
+            if (gallery.scrollLeft <= 5) direction = 1;
 
             gallery.scrollBy({
                 left: direction * gallery.clientWidth,
