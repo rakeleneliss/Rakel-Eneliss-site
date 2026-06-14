@@ -50,12 +50,13 @@
   <!-- Нижнее навигационное меню (Кнопки) -->
   <nav class="header-nav">
     <div class="nav-container">
-      <a href="#dictionary" class="nav-btn">Словарь</a>
-      <a href="#terms" class="nav-btn">Условия</a>
-      <a href="#reviews" class="nav-btn">Отзывы</a>
+      <a href="#chibi" class="nav-btn">ЧИБИ</a>
+      <a href="#references" class="nav-btn">РЕФЕРЕНСЫ</a>
+      <a href="#vtuber" class="nav-btn">Vtube</a>
+      <a href="#stickers" class="nav-btn">Стикеры</a>
       <a href="#merch" class="nav-btn">Мерч</a>
-      <a href="#vtuber" class="nav-btn">Vtube Модели</a>
-      <a href="#references" class="nav-btn">Референсы</a>
+      <a href="#extra" class="nav-btn">ДОПОЛНИТЕЛЬНО</a>
+      <a href="#dictionary" class="nav-btn">СЛОВАРЬ И ПРАВИЛА</a>
     </div>
   </nav>
 </header>
@@ -75,9 +76,9 @@
     <title>Портфолио & Конструктор</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cormorant Garamond', serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
         body { background-color: #1a1a1a; color: #fff; line-height: 1.6; overflow-x: hidden; }
         .parallax-bg {
             background-image: url('https://picsum.photos');
@@ -106,7 +107,7 @@
         .social-icon:hover { background: #fff; color: #1a1a1a; transform: translateY(-3px); }
         .block { padding: 60px 10%; }
         .block-title {
-            padding: 20px; text-align: center; font-size: 28px; letter-spacing: 2px;
+            padding: 20px; text-align: center; font-size: 0.9em; letter-spacing: 2px;
             text-transform: uppercase; border-radius: 8px; margin-bottom: 30px;
             box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4);
         }
@@ -124,7 +125,7 @@
         .preview-box { width: 100%; height: 250px; background: #3a3a3a; border-radius: 8px; margin-bottom: 20px; overflow: hidden; }
         .preview-box img { width: 100%; height: 100%; object-fit: cover; }
         .option-group { margin-bottom: 20px; text-align: left; }
-        .option-label { font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block;}
+        .option-label { font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: none; display: block;}
         .buttons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
         .btn-opt {
             background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 10px 5px;
@@ -172,7 +173,7 @@
             text-align: left;
             font-weight: normal;
             margin-bottom: 25px;
-            font-size: 1.5em;
+            font-size: 0.9em;
         }
 
         .calculator-block {
@@ -208,7 +209,7 @@
         }
 
         .section-title {
-            font-size: 1.05em;
+            font-size: 0.9em;
             margin-bottom: 8px;
             font-weight: bold;
             text-align: left;
@@ -232,7 +233,8 @@
             transition: all 0.2s;
             font-size: 0.9em;
             user-select: none;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Roboto', sans-serif;
+            text-transform: none;
         }
 
         .option-label:hover {
@@ -293,7 +295,7 @@
             color: #fff;
             border: 2px solid #b977d1;
             padding: 10px 25px;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Roboto', sans-serif;
             font-size: 1em;
             border-radius: 25px;
             cursor: pointer;
@@ -422,8 +424,8 @@
                 <div class="section">
                     <div class="section-title">Персонажи</div>
                     <div class="options-grid">
-                        <label class="option-label"><input type="radio" name="chars-${blockId}" value="1" checked> 1</label>
-                        <label class="option-label"><input type="radio" name="chars-${blockId}" value="2"> 2 (x2 к цене)</label>
+                        <label class="option-label"><input type="radio" name="chars-${blockId}" value="1" checked> чиби</label>
+                        <label class="option-label"><input type="radio" name="chars-${blockId}" value="2"> антро (x2 к цене)</label>
                         <label class="option-label"><input type="radio" name="chars-${blockId}" value="custom"> Свой вариант</label>
                     </div>
                     <div class="custom-count-wrapper">
@@ -459,7 +461,7 @@
                 </div>
 
                 <div class="section">
-                    <div class="section-title">Другие опции</div>
+                    <div class="section-title">ЧИБИ</div>
                     <div class="options-grid">
                         <label class="option-label"><input type="checkbox" name="chibi-${blockId}" value="chibi"> Чиби (цена / 2)</label>
                         <label class="option-label"><input type="checkbox" name="design-${blockId}" value="design"> Оформление (+200)</label>
