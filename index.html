@@ -760,6 +760,12 @@
             border-color: var(--muted-color);
         }
 
+        .option-label:has(input:checked) {
+            background: #e8d0e5;
+            border-color: var(--main-color);
+            box-shadow: 0 0 10px rgba(114, 61, 147, 0.2);
+        }
+
         .option-label input {
             margin-right: 8px;
             accent-color: var(--main-color);
@@ -889,6 +895,12 @@
             background: #c787de;
             border-color: #c787de;
             color: #fff;
+        }
+
+        .discount-selection .option-label:has(input:checked) {
+            background: #fff;
+            color: var(--main-color);
+            border-color: #fff;
         }
 
         /* Generic Helper Classes */
@@ -1525,9 +1537,12 @@
                                 <label class="option-label"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
                             </div>
                         </div>
-                        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer;" id="copy-total" title="Нажмите, чтобы скопировать">
-                            Общая сумма: <span id="grand-total">0</span> руб.
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="white" style="opacity: 0.8;"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                        <div style="cursor: pointer; position: relative; padding: 10px;" id="copy-total" title="Нажмите, чтобы скопировать">
+                            <div id="total-display-wrapper" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                                <span id="total-label">Общая сумма:</span> <span id="grand-total">0</span> руб.
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="white" style="opacity: 0.8;"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                            </div>
+                            <div id="copy-feedback" style="display: none; font-weight: bold; color: #fff;">Скопировано! ✓</div>
                         </div>
                     </div>
                 </section>
@@ -1585,7 +1600,6 @@
     };
 
     const calculatorList = document.getElementById('calculator-list');
-    const grandTotalSpan = document.getElementById('grand-total');
     let blockCounter = 0;
 
     // Back to top logic
@@ -1900,6 +1914,9 @@
     }
 
     function updateGrandTotal() {
+        const grandTotalSpan = document.getElementById('grand-total');
+        if (!grandTotalSpan) return;
+
         let minTotal = 0;
         let maxTotal = 0;
         let hasRange = false;
@@ -1959,6 +1976,9 @@
     document.getElementById('add-block-btn').addEventListener('click', createNewBlock);
 
     document.getElementById('copy-total').onclick = function() {
+        const grandTotalSpan = document.getElementById('grand-total');
+        if (!grandTotalSpan) return;
+
         const totalText = grandTotalSpan.textContent;
         const cleanTotal = totalText.split(' ')[0];
 
@@ -1968,9 +1988,17 @@
         textArea.select();
         try {
             document.execCommand('copy');
-            const originalHTML = this.innerHTML;
-            this.innerHTML = '<span style="font-weight:bold; color:#fff;">Скопировано! ✓</span>';
-            setTimeout(() => { this.innerHTML = originalHTML; }, 2000);
+
+            const wrapper = document.getElementById('total-display-wrapper');
+            const feedback = document.getElementById('copy-feedback');
+
+            wrapper.style.display = 'none';
+            feedback.style.display = 'block';
+
+            setTimeout(() => {
+                wrapper.style.display = 'flex';
+                feedback.style.display = 'none';
+            }, 2000);
         } catch (err) {
             console.error('Copy failed', err);
         }
