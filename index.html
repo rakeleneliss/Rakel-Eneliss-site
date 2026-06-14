@@ -27,6 +27,7 @@
             font-size: 18px;
             overflow-x: hidden;
             background-color: var(--bg-color);
+            text-align: left;
         }
 
         /* Multi-layer Parallax Background */
@@ -43,7 +44,7 @@
             top: 0;
             right: 0;
             bottom: 0;
-            left: 0;
+            left: 50%;
             min-height: 200%;
             pointer-events: none;
         }
@@ -111,11 +112,11 @@
             gap: 40px;
             align-items: center;
             flex-wrap: wrap;
-            justify-content: flex-start;
+            justify-content: center;
         }
 
         .profile-column {
-            text-align: left;
+            text-align: center;
         }
 
         .avatar-wrapper {
@@ -151,7 +152,7 @@
         .info-column {
             flex: 1;
             min-width: 300px;
-            text-align: left;
+            text-align: center;
         }
 
         .status-block {
@@ -178,7 +179,7 @@
             display: flex;
             gap: 15px;
             margin-top: 20px;
-            justify-content: flex-start;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
@@ -189,7 +190,7 @@
             color: white;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             border-radius: 50%;
             text-decoration: none;
             transition: transform 0.3s, background 0.3s;
@@ -211,7 +212,7 @@
         .header-nav {
             margin: 40px 0;
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
         }
@@ -223,7 +224,7 @@
             font-weight: 600;
             padding: 12px 25px;
             border-radius: 30px;
-            border: 2px solid #c787de;
+            border: 2px solid #b977d1;
             transition: all 0.3s;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
@@ -280,7 +281,7 @@
             border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             fill: white;
             flex-shrink: 0;
         }
@@ -323,7 +324,7 @@
             width: 40px;
             height: 2px;
             background: var(--accent-color);
-            margin: 8px auto 0;
+            margin: 8px 0 0;
         }
 
         .stat-line {
@@ -353,7 +354,7 @@
             font-weight: bold;
             color: var(--main-color);
             min-width: 80px;
-            text-align: left;
+            text-align: center;
         }
 
         .stat-bars {
@@ -380,7 +381,7 @@
             display: flex;
             gap: 15px;
             margin-top: 30px;
-            justify-content: flex-start;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
@@ -421,7 +422,7 @@
             font-size: 1.2em;
             list-style: none;
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             background: transparent;
             color: var(--main-color);
@@ -475,7 +476,7 @@
         }
 
         .pricing-column .pricing-info-col {
-            text-align: left;
+            text-align: center;
             font-size: 0.95em;
         }
 
@@ -525,8 +526,8 @@
         .pricing-info-col {
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            text-align: left;
+            justify-content: center;
+            text-align: center;
         }
 
         .price-table {
@@ -537,7 +538,7 @@
 
         .price-table th, .price-table td {
             padding: 10px 5px;
-            text-align: left;
+            text-align: center;
             border-bottom: 1px solid var(--border-color);
             font-size: 0.95em;
         }
@@ -550,7 +551,7 @@
 
         .price-table td:first-child {
             font-weight: bold;
-            text-align: left;
+            text-align: center;
         }
 
         .gallery-container {
@@ -608,7 +609,7 @@
             z-index: 5;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             font-size: 20px;
             transition: background 0.3s, transform 0.2s;
             opacity: 0;
@@ -630,13 +631,13 @@
         #lightbox {
             position: fixed;
             top: 0;
-            left: 0;
+            left: 50%;
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.95);
             z-index: 2000;
             display: none;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             flex-direction: column;
             backdrop-filter: blur(10px);
@@ -678,7 +679,7 @@
             height: 80px;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             transition: background 0.3s;
         }
 
@@ -818,7 +819,7 @@
             width: 20px;
             border-radius: 50%;
             background: #ffffff;
-            border: 2px solid #c787de;
+            border: 2px solid #b977d1;
             cursor: pointer;
             -webkit-appearance: none;
             margin-top: -6px;
@@ -835,7 +836,7 @@
 
         .action-buttons {
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             margin: 25px 0;
         }
 
@@ -868,7 +869,7 @@
             color: white;
             border-radius: 15px;
             padding: 25px;
-            text-align: left;
+            text-align: center;
             font-size: 1.3em;
             box-shadow: 0 6px 15px rgba(114, 61, 147, 0.2);
         }
@@ -886,12 +887,17 @@
             color: #fff;
             margin-bottom: 10px;
             font-weight: bold;
+            text-align: left;
         }
 
         .discount-selection .option-label {
             background: #b977d1;
-            border-color: #b977d1;
+            border: 2px solid #b977d1;
             color: #fff;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
         .discount-selection .option-label:has(input:checked) {
@@ -899,12 +905,12 @@
         }
 
         /* Generic Helper Classes */
-        .text-center { text-align: left; }
+        .text-center { text-align: center; }
         .mt-20 { margin-top: 20px; }
         .mb-20 { margin-bottom: 20px; }
 
         @media (max-width: 600px) {
-            .header-container { flex-direction: column; text-align: left; }
+            .header-container { flex-direction: column; text-align: center; }
             .block-card { padding: 20px; }
             .profile-name { font-size: 2.2em; }
             .lightbox-nav { width: 50px; height: 50px; font-size: 30px; }
@@ -931,7 +937,7 @@
             border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             cursor: pointer;
             opacity: 0;
             transition: opacity 0.3s, transform 0.3s;
@@ -1307,7 +1313,7 @@
 
                             <div class="pricing-layout">
                                 <div class="pricing-info-col">
-                                    <ol style="padding-left: 0; list-style-position: inside; color: var(--text-color); text-align: left;">
+                                    <ol style="padding-left: 0; list-style-position: inside; color: var(--text-color); text-align: center;">
                                         <li class="mb-20">3000 * 2 + (3000 * 1,1) + 2100 + 200 = 11600 ₽ (есть NSFW версия одного полнороста)</li>
                                         <li class="mb-20">3000 + 900 * 2 + (2800 : 2) + 200 = 6400 ₽</li>
                                         <li class="mb-20">3000 + (3000 : 2) + 900 * 2 + (3000 : 2) + (3000 : 2 : 2) + 200 = 8 750 ₽</li>
@@ -1500,7 +1506,7 @@
                             <p>Каждый месяц я выбираю одного из донов и рисую ему арт!</p>
                         </div>
                     </div>
-                    <div class="action-buttons" style="gap: 10px; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start;">
+                    <div class="action-buttons" style="gap: 10px; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 10px; justify-content: center;">
                         <a href="https://boosty.to/rakel_eneliss/purchase/3476976?ssource=DIRECT&share=subscription_link" class="nav-btn" target="_blank" style="white-space: nowrap;" title="Подписка на Бусти за 50 рублей">Бусти (50р)</a>
                         <a href="https://boosty.to/rakel_eneliss/purchase/3476980?ssource=DIRECT&share=subscription_link" class="nav-btn" target="_blank" style="white-space: nowrap;" title="Подписка на Бусти за 300 рублей">Бусти (300р)</a>
                         <a href="https://vk.com/donut/rakel_eneliss" class="nav-btn" target="_blank" style="white-space: nowrap;" title="Поддержка через ВК Донат">ВК донат</a>
@@ -1533,7 +1539,7 @@
                             </div>
                         </div>
                         <div style="cursor: pointer; position: relative; padding: 10px;" id="copy-total" title="Нажмите, чтобы скопировать">
-                            <div id="total-display-wrapper" style="display: flex; align-items: center; justify-content: flex-start; gap: 10px;">
+                            <div id="total-display-wrapper" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
                                 <span id="total-label">Общая сумма:</span> <span id="grand-total">0</span> руб.
                                 <svg viewBox="0 0 24 24" width="20" height="20" fill="white" style="opacity: 0.8;"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
                             </div>
@@ -1545,7 +1551,7 @@
                 <section id="terms" class="block-card">
                     <h2 class="section-header">Условия</h2>
                     <details class="terms-details">
-                        <summary style="justify-content: flex-start;">прочесть перед заказом</summary>
+                        <summary style="justify-content: center;">прочесть перед заказом</summary>
                         <div class="terms-content">
                             <ul style="padding-left: 20px; list-style: none;">
                                 <li class="mb-20">• Оплата сразу или же 50% до и 50% после предоставления скетча на ру карту/бусти/пейпал, возможна оплата частями;</li>
