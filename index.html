@@ -761,7 +761,7 @@
         }
 
         .option-label:has(input:checked) {
-            background: #e8d0e5;
+            background: var(--white);
             border-color: var(--main-color);
             box-shadow: 0 0 10px rgba(114, 61, 147, 0.2);
         }
@@ -859,11 +859,11 @@
         .btn-action:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(185, 119, 209, 0.4);
-            filter: brightness(1.1);
         }
 
         .btn-action:active {
             transform: translateY(1px);
+            filter: none;
         }
 
         .final-summary {
