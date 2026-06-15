@@ -60,7 +60,7 @@
         .layer-back {
             transform: translateZ(-0.3px) scale(1.3);
             z-index: -1;
-            background-image: linear-gradient(rgba(252, 242, 249, 0.4), rgba(252, 242, 249, 0.4)), url('https://lh3.googleusercontent.com/sitesv/AA5AbUA9XfNjwCAm1tORy8Hx15AKeLT0K5NZvofIghaWr-yoCTlIGo3hz8xj2vTkBFHGu8X75RLWg3P-S1_N2peT6MVNXCJSS_O8nV_-9WP4z4JRj8AXjgWolVeBYZZbDKZffUNaRVmoFIsQsQrDVqApqbW6rjqqSUTNpYvc6HSFpN-DmxRz3g4nCZj_K4m-YzYygancj2m4LYFbbnvsDHQNOM6uh2s_DY06iLyIF7B9Gsg=w1280');
+            background-image: linear-gradient(rgba(252, 242, 249, 0.2), rgba(252, 242, 249, 0.2)), url('https://lh3.googleusercontent.com/sitesv/AA5AbUA9XfNjwCAm1tORy8Hx15AKeLT0K5NZvofIghaWr-yoCTlIGo3hz8xj2vTkBFHGu8X75RLWg3P-S1_N2peT6MVNXCJSS_O8nV_-9WP4z4JRj8AXjgWolVeBYZZbDKZffUNaRVmoFIsQsQrDVqApqbW6rjqqSUTNpYvc6HSFpN-DmxRz3g4nCZj_K4m-YzYygancj2m4LYFbbnvsDHQNOM6uh2s_DY06iLyIF7B9Gsg=w1280');
             background-size: cover;
             background-position: center;
         }
@@ -68,7 +68,7 @@
         .layer-mid {
             transform: translateZ(-0.6px) scale(1.6);
             z-index: -2;
-            background-image: linear-gradient(rgba(252, 242, 249, 0.6), rgba(252, 242, 249, 0.6)), url('https://lh3.googleusercontent.com/sitesv/AA5AbUA8oR5OgOR3qwVHqo4i0QZixAi-3iHfEYNQ758prjZIcT5CbsNSD1N1IU3iOLXUqb6cpoXzLMYK97HJIqmltStF0YQPrSRrqSEv8BvWgQZFiAMgK4AdIA-thntr64aUWbaG3YLsqvLV0ddv1ei6PZB8nOTbFYig0UlGQ7admcqx8NobkTAE45qEW9AT_d9TrGo7hOCBBbRFJG0KiLHAjrpBXddt8DsHSkK8ddSklzE=w1280');
+            background-image: linear-gradient(rgba(252, 242, 249, 0.3), rgba(252, 242, 249, 0.3)), url('https://lh3.googleusercontent.com/sitesv/AA5AbUA8oR5OgOR3qwVHqo4i0QZixAi-3iHfEYNQ758prjZIcT5CbsNSD1N1IU3iOLXUqb6cpoXzLMYK97HJIqmltStF0YQPrSRrqSEv8BvWgQZFiAMgK4AdIA-thntr64aUWbaG3YLsqvLV0ddv1ei6PZB8nOTbFYig0UlGQ7admcqx8NobkTAE45qEW9AT_d9TrGo7hOCBBbRFJG0KiLHAjrpBXddt8DsHSkK8ddSklzE=w1280');
             background-size: cover;
             background-position: center;
         }
@@ -76,7 +76,7 @@
         .layer-deep {
             transform: translateZ(-1px) scale(2);
             z-index: -3;
-            background-image: linear-gradient(rgba(252, 242, 249, 0.8), rgba(252, 242, 249, 0.8)), url('https://lh3.googleusercontent.com/sitesv/AA5AbUBtXbxHUHc3RuZrynzg47jxupsfUY0OY1aoDDBYzLf2ZaANq0MLrAEqWVRtDhoM1XcIPS4tcCzr-xYnApqpyfz2fgLqU9E_OHHvOqMWgmh9K__F2NYS3eX3vgkMWjuF_E7i-bEqV55mWQh_rHVoLd7sTFGlyGxgvpSmOJqITiEE0diuOWlob0odjG7uIgRNTdY1RTN-cBOscU_PMC6RzTEzT-jJCA8Qa6LgBzyy9l8=w1280');
+            background-image: linear-gradient(rgba(252, 242, 249, 0.4), rgba(252, 242, 249, 0.4)), url('https://lh3.googleusercontent.com/sitesv/AA5AbUBtXbxHUHc3RuZrynzg47jxupsfUY0OY1aoDDBYzLf2ZaANq0MLrAEqWVRtDhoM1XcIPS4tcCzr-xYnApqpyfz2fgLqU9E_OHHvOqMWgmh9K__F2NYS3eX3vgkMWjuF_E7i-bEqV55mWQh_rHVoLd7sTFGlyGxgvpSmOJqITiEE0diuOWlob0odjG7uIgRNTdY1RTN-cBOscU_PMC6RzTEzT-jJCA8Qa6LgBzyy9l8=w1280');
             background-size: cover;
             background-position: center;
         }
@@ -113,17 +113,17 @@
             gap: 40px;
             align-items: center;
             flex-wrap: wrap;
-            justify-content: flex-start;
+            justify-content: center;
         }
 
         .profile-column {
-            text-align: left;
+            text-align: center;
         }
 
         .avatar-wrapper {
             width: 180px;
             height: 180px;
-            margin: 0 0 20px 0;
+            margin: 0 auto 20px auto;
             border-radius: 50%;
             overflow: hidden;
             border: 4px solid var(--accent-color);
@@ -153,7 +153,7 @@
         .info-column {
             flex: 1;
             min-width: 300px;
-            text-align: left;
+            text-align: center;
         }
 
         .status-block {
@@ -180,7 +180,7 @@
             display: flex;
             gap: 15px;
             margin-top: 20px;
-            justify-content: flex-start;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
@@ -213,7 +213,7 @@
         .header-nav {
             margin: 40px 0;
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
         }
@@ -382,7 +382,7 @@
             display: flex;
             gap: 15px;
             margin-top: 30px;
-            justify-content: flex-start;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
@@ -477,7 +477,7 @@
         }
 
         .pricing-column .pricing-info-col {
-            text-align: left;
+            text-align: center;
             font-size: 0.95em;
         }
 
@@ -528,7 +528,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            text-align: left;
+            text-align: center;
         }
 
         .price-table {
@@ -539,7 +539,7 @@
 
         .price-table th, .price-table td {
             padding: 10px 10px;
-            text-align: left;
+            text-align: center;
             border-bottom: 1px solid var(--border-color);
             font-size: 0.95em;
         }
@@ -552,7 +552,7 @@
 
         .price-table td:first-child {
             font-weight: bold;
-            text-align: left;
+            text-align: center;
         }
 
         .gallery-container {
@@ -885,7 +885,7 @@
         }
 
         .discount-selection .section-title {
-            color: #fff;
+            color: var(--main-color);
             margin-bottom: 10px;
             font-weight: bold;
             text-align: left;
@@ -893,16 +893,44 @@
 
         .discount-selection .option-label {
             background: #b977d1;
-            border: 2px solid #b977d1;
-            color: #fff;
-            padding: 12px 25px;
+            color: white;
+            padding: 10px 25px;
+            border: none;
             border-radius: 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(185, 119, 209, 0.2);
+            font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .discount-selection .option-label:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(185, 119, 209, 0.4);
+        }
+
+        .discount-selection .option-label:active {
+            transform: translateY(1px);
+        }
+
+        .discount-selection .option-label input {
+            display: none;
         }
 
         .discount-selection .option-label:has(input:checked) {
-            border-color: #fff;
+            background: var(--main-color);
+            box-shadow: 0 0 15px rgba(114, 61, 147, 0.4);
+        }
+
+        #discount-group {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         /* Generic Helper Classes */
@@ -1314,7 +1342,7 @@
 
                             <div class="pricing-layout">
                                 <div class="pricing-info-col">
-                                    <ol style="padding-left: 20px; color: var(--text-color); text-align: left;">
+                                    <ol style="padding-left: 0; list-style-position: inside; color: var(--text-color); text-align: center;">
                                         <li class="mb-20">3000 * 2 + (3000 * 1,1) + 2100 + 200 = 11600 ₽ (есть NSFW версия одного полнороста)</li>
                                         <li class="mb-20">3000 + 900 * 2 + (2800 : 2) + 200 = 6400 ₽</li>
                                         <li class="mb-20">3000 + (3000 : 2) + 900 * 2 + (3000 : 2) + (3000 : 2 : 2) + 200 = 8 750 ₽</li>
@@ -1348,7 +1376,7 @@
                             <div class="video-container">
                                 <iframe src="https://drive.google.com/file/d/1UVwtl8RUUf7ekDrKGFLurdLiGFIAucFX/preview" width="100%" height="100%" allow="autoplay" style="border:none;"></iframe>
                             </div>
-                            <p class="mb-20">Примеры риггинга и моделей Live2D</p>
+                            <p class="text-center mb-20">Примеры риггинга и моделей Live2D</p>
                             <p>• Модель в полный рост без одежды: 12000р + 5к за версию с одеждой</p>
                             <p>• Модель в полный рост с одеждой: 15000р (без раздетой версии)</p>
                             <p>• Доп. эмоция без анимации: 400р</p>
@@ -1507,7 +1535,7 @@
                             <p>Каждый месяц я выбираю одного из донов и рисую ему арт!</p>
                         </div>
                     </div>
-                    <div class="action-buttons" style="gap: 10px; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start;">
+                    <div class="action-buttons" style="gap: 10px; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 10px; justify-content: center;">
                         <a href="https://boosty.to/rakel_eneliss/purchase/3476976?ssource=DIRECT&share=subscription_link" class="nav-btn" target="_blank" style="white-space: nowrap;" title="Подписка на Бусти за 50 рублей">Бусти (50р)</a>
                         <a href="https://boosty.to/rakel_eneliss/purchase/3476980?ssource=DIRECT&share=subscription_link" class="nav-btn" target="_blank" style="white-space: nowrap;" title="Подписка на Бусти за 300 рублей">Бусти (300р)</a>
                         <a href="https://vk.com/donut/rakel_eneliss" class="nav-btn" target="_blank" style="white-space: nowrap;" title="Поддержка через ВК Донат">ВК донат</a>
@@ -1530,15 +1558,16 @@
                         <button class="btn-action" id="add-block-btn">+ Добавить еще</button>
                     </div>
 
-                    <div class="final-summary">
-                        <div class="discount-selection">
-                            <h2 class="section-header" style="margin-bottom: 20px; color: #fff;">Скидка</h2>
-                            <div class="options-grid" id="discount-group">
-                                <label class="option-label"><input type="radio" name="discount-option" value="10"> Заказ с сайта (10%)</label>
-                                <label class="option-label"><input type="radio" name="discount-option" value="20"> За отзыв (20%)</label>
-                                <label class="option-label"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
-                            </div>
+                    <h2 class="section-header" style="margin-top: 30px;">Скидка</h2>
+                    <div class="discount-selection" style="margin-bottom: 25px;">
+                        <div id="discount-group">
+                            <label class="option-label"><input type="radio" name="discount-option" value="10"> Заказ с сайта (10%)</label>
+                            <label class="option-label"><input type="radio" name="discount-option" value="20"> За отзыв (20%)</label>
+                            <label class="option-label"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
                         </div>
+                    </div>
+
+                    <div class="final-summary">
                         <div style="cursor: pointer; position: relative; padding: 10px;" id="copy-total" title="Нажмите, чтобы скопировать">
                             <div id="total-display-wrapper" style="display: flex; align-items: center; justify-content: flex-start; gap: 10px;">
                                 <span id="total-label">Общая сумма:</span> <span id="grand-total">0</span> руб.
