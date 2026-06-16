@@ -1,719 +1,187 @@
+<header class="header">
+  <div class="header-container">
+
+    <!-- Левая колонка: Профиль -->
+    <div class="profile-column">
+      <div class="avatar-wrapper">
+        <!-- Замени пустой путь на свою картинку -->
+        <img src="avatar.jpg" alt="Ракель Энелисс" class="avatar-img">
+      </div>
+      <h1 class="profile-name">Ракель<br>Энелисс</h1>
+    </div>
+
+    <!-- Правая колонка: Информация -->
+    <div class="info-column">
+      <p class="bio-text">
+        Привет! Я диджитал художница, мне 20 лет. Моё творчество — это не только рисунки фурри, но и анимации, портреты, vtobe модели live 2d, фигурки из лёгкого пластилина и полимерной глины, рисунки на чехлах, кружках и одежде, стикеры, комиксы, гифки, эмодзи, фурсюты и тд!
+      </p>
+      <p class="bio-text">
+        Помимо этого, у меня есть свой мерч — стикеры, стикерпаки, лентикулярные открытки, магнитики, брелки, значки и тд, и многое из этого я изготавливаю своими руками!
+      </p>
+
+      <!-- Блок статуса -->
+      <div class="status-block">
+        <div class="status-title">СТАТУС: заказы по слотам!</div>
+        <ul class="status-list">
+          <li>трейды: скилл = моему</li>
+          <li>коллабы: скилл = моему</li>
+          <li>реквесты: за особые заслуги</li>
+        </ul>
+      </div>
+
+      <!-- Соцсети -->
+      <div class="socials-block">
+        <p class="socials-title">Чтобы наблюдать за моим творчеством, вы можете подписаться на меня в удобной для вас соцсети!</p>
+        <div class="socials-links">
+          <!-- Замени # на реальные ссылки -->
+          <a href="#" class="social-icon vk" title="VK"></a>
+          <a href="#" class="social-icon telegram" title="Telegram"></a>
+          <a href="#" class="social-icon boosty" title="Boosty"></a>
+          <a href="#" class="social-icon FA" title="FurAffinity"></a>
+          <a href="#" class="social-icon th" title="Toyhouse"></a>
+          <a href="#" class="social-icon youtube" title="YouTube"></a>
+          <a href="#" class="social-icon discord" title="Discord"></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Нижнее навигационное меню (Кнопки) -->
+  <nav class="header-nav">
+    <div class="nav-container">
+      <a href="#dictionary" class="nav-btn">Словарь</a>
+      <a href="#terms" class="nav-btn">Условия</a>
+      <a href="#reviews" class="nav-btn">Отзывы</a>
+      <a href="#merch" class="nav-btn">Мерч</a>
+      <a href="#vtuber" class="nav-btn">Vtube Модели</a>
+      <a href="#references" class="nav-btn">Референсы</a>
+    </div>
+  </nav>
+</header>
+
+<!-- Пример того, куда будут прокручиваться кнопки (для проверки) -->
+<main>
+  <section id="dictionary" style="height: 100vh; padding: 50px; background: #fdf6ff;"><h2>Раздел: Словарь</h2></section>
+  <section id="terms" style="height: 100vh; padding: 50px; background: #f9ebff;"><h2>Раздел: Условия</h2></section>
+  <section id="reviews" style="height: 100vh; padding: 50px; background: #fdf6ff;"><h2>Раздел: Отзывы</h2></section>
+</main>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rakel Eneliss - Price & TOS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Портфолио & Конструктор</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cormorant Garamond', serif; }
+        body { background-color: #1a1a1a; color: #fff; line-height: 1.6; overflow-x: hidden; }
+        .parallax-bg {
+            background-image: url('https://picsum.photos');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 10%;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .header-left { display: flex; align-items: center; gap: 20px; }
+        .avatar { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; }
+        .header-text h1 { font-size: 24px; font-weight: 600; }
+        .header-text p { font-size: 14px; color: #ccc; }
+        .social-icons { display: flex; gap: 15px; }
+        .social-icon {
+            width: 40px; height: 40px; background: rgba(255,255,255,0.1);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: #fff; text-decoration: none; font-weight: bold; transition: 0.3s;
+        }
+        .social-icon:hover { background: #fff; color: #1a1a1a; transform: translateY(-3px); }
+        .block { padding: 60px 10%; }
+        .block-title {
+            padding: 20px; text-align: left; font-size: 28px; letter-spacing: 2px;
+            text-transform: uppercase; border-radius: 8px; margin-bottom: 30px;
+            box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4);
+        }
+        .carousel-container {
+            max-width: 600px; margin: 0 auto; position: relative;
+            border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .carousel-slides { display: flex; transition: transform 0.5s ease-in-out; }
+        .carousel-slide { min-width: 100%; height: 400px; object-fit: cover; cursor: pointer; }
+        .constructor-section { background: #222; padding: 60px 10%; text-align: center; }
+        .constructor-card {
+            background: #2b2b2b; max-width: 500px; margin: 0 auto; border-radius: 16px;
+            overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.6); padding: 25px;
+        }
+        .preview-box { width: 100%; height: 250px; background: #3a3a3a; border-radius: 8px; margin-bottom: 20px; overflow: hidden; }
+        .preview-box img { width: 100%; height: 100%; object-fit: cover; }
+        .option-group { margin-bottom: 20px; text-align: left; }
+        .option-label { font-size: 14px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; display: block;}
+        .buttons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .btn-opt {
+            background: #3a3a3a; border: 2px solid transparent; color: #fff; padding: 10px 5px;
+            border-radius: 8px; cursor: pointer; font-size: 13px; transition: 0.2s; font-weight: 500;
+        }
+        .btn-opt:hover { background: #4a4a4a; }
+        .btn-opt.active { background: #007bff !important; border-color: #00d2ff !important; }
+        .price-display { font-size: 28px; font-weight: bold; margin-top: 25px; color: #00d2ff; border-top: 1px solid #444; padding-top: 15px; }
+        .lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9);
+            display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none;
+            transition: opacity 0.4s ease; z-index: 1000;
+        }
+        .lightbox.active { opacity: 1; pointer-events: auto; }
+        .lightbox-img { max-width: 90%; max-height: 90%; border-radius: 4px; transform: scale(0.95); transition: transform 0.4s ease; }
+        .lightbox.active .lightbox-img { transform: scale(1); }
+
+        /* Стили для калькулятора */
+        @font-face {
+            font-family: 'Epos Medium';
+            src: local('Epos Medium'), local('Epos-Medium');
+        }
+
         :root {
             --bg-color: #fcf2f9;
             --main-color: #723d93;
-            --accent-color: #b977d1;
             --muted-color: #a382b9;
             --border-color: #e8d0e5;
-            --text-color: #723d93;
-            --white: #ffffff;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            color: var(--text-color);
-            line-height: 1.6;
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 500;
-            font-size: 18px;
-            overflow-x: hidden;
+        .calculator-section {
             background-color: var(--bg-color);
-            text-align: left;
-        }
-
-        /* Multi-layer Parallax Background */
-        .parallax-wrapper {
-            perspective: 1px;
-            height: 100vh;
-            overflow-x: hidden;
-            overflow-y: auto;
-            background-color: var(--bg-color);
-        }
-
-        .parallax-layer {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            min-height: 200%;
-            pointer-events: none;
-        }
-
-        .layer-base {
-            transform: translateZ(0);
-            z-index: 1;
-            position: relative;
-            pointer-events: auto;
-        }
-
-        .layer-back {
-            transform: translateZ(-0.3px) scale(1.3);
-            z-index: -1;
-            background-image: linear-gradient(rgba(252, 242, 249, 0.2), rgba(252, 242, 249, 0.2)), url('https://lh3.googleusercontent.com/sitesv/AA5AbUA9XfNjwCAm1tORy8Hx15AKeLT0K5NZvofIghaWr-yoCTlIGo3hz8xj2vTkBFHGu8X75RLWg3P-S1_N2peT6MVNXCJSS_O8nV_-9WP4z4JRj8AXjgWolVeBYZZbDKZffUNaRVmoFIsQsQrDVqApqbW6rjqqSUTNpYvc6HSFpN-DmxRz3g4nCZj_K4m-YzYygancj2m4LYFbbnvsDHQNOM6uh2s_DY06iLyIF7B9Gsg=w1280');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .layer-mid {
-            transform: translateZ(-0.6px) scale(1.6);
-            z-index: -2;
-            background-image: linear-gradient(rgba(252, 242, 249, 0.3), rgba(252, 242, 249, 0.3)), url('https://lh3.googleusercontent.com/sitesv/AA5AbUA8oR5OgOR3qwVHqo4i0QZixAi-3iHfEYNQ758prjZIcT5CbsNSD1N1IU3iOLXUqb6cpoXzLMYK97HJIqmltStF0YQPrSRrqSEv8BvWgQZFiAMgK4AdIA-thntr64aUWbaG3YLsqvLV0ddv1ei6PZB8nOTbFYig0UlGQ7admcqx8NobkTAE45qEW9AT_d9TrGo7hOCBBbRFJG0KiLHAjrpBXddt8DsHSkK8ddSklzE=w1280');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .layer-deep {
-            transform: translateZ(-1px) scale(2);
-            z-index: -3;
-            background-image: linear-gradient(rgba(252, 242, 249, 0.4), rgba(252, 242, 249, 0.4)), url('https://lh3.googleusercontent.com/sitesv/AA5AbUBtXbxHUHc3RuZrynzg47jxupsfUY0OY1aoDDBYzLf2ZaANq0MLrAEqWVRtDhoM1XcIPS4tcCzr-xYnApqpyfz2fgLqU9E_OHHvOqMWgmh9K__F2NYS3eX3vgkMWjuF_E7i-bEqV55mWQh_rHVoLd7sTFGlyGxgvpSmOJqITiEE0diuOWlob0odjG7uIgRNTdY1RTN-cBOscU_PMC6RzTEzT-jJCA8Qa6LgBzyy9l8=w1280');
-            background-size: cover;
-            background-position: center;
+            color: var(--main-color);
+            padding: 40px 10%;
         }
 
         .container {
             width: 100%;
-            max-width: 950px;
+            max-width: 600px;
+            box-sizing: border-box;
             margin: 0 auto;
-            padding: 40px 20px;
-            position: relative;
-            z-index: 10;
         }
 
-        /* Blocks / Cards */
-        .block-card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(114, 61, 147, 0.1);
-            margin-bottom: 40px;
-            border: 1px solid var(--border-color);
-            backdrop-filter: blur(5px);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .block-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(114, 61, 147, 0.15);
-        }
-
-        /* Header & Profile Styles */
-        .header-container {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .profile-column {
-            text-align: center;
-        }
-
-        .avatar-wrapper {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 20px auto;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid var(--accent-color);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .avatar-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .profile-name {
-            font-size: 3em;
-            line-height: 1;
-            color: var(--main-color);
-            margin-bottom: 10px;
-        }
-
-        .info-column {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
-        }
-
-        .status-block {
-            background: var(--bg-color);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-            border-left: 5px solid var(--accent-color);
-        }
-
-        .status-title {
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            color: var(--main-color);
-        }
-
-        .status-list {
-            list-style: none;
-        }
-
-        /* Circular Social Buttons */
-        .socials-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .social-btn {
-            width: 50px;
-            height: 50px;
-            background: var(--accent-color);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            text-decoration: none;
-            transition: transform 0.3s, background 0.3s;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            fill: white;
-        }
-
-        .social-btn:hover {
-            transform: translateY(-5px);
-            background: var(--main-color);
-        }
-
-        .social-btn svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* Navigation as Buttons */
-        .header-nav {
-            margin: 40px 0;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .nav-btn {
-            text-decoration: none;
-            background: #b977d1;
-            color: white;
-            font-weight: 600;
-            padding: 12px 25px;
-            border-radius: 30px;
-            border: 2px solid #b977d1;
-            transition: all 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .nav-btn:hover {
-            background: #b977d1;
-            border-color: #b977d1;
-            color: white;
-            transform: scale(1.05);
-        }
-
-        /* Section Headers */
-        .section-header {
+        h2 {
             text-align: left;
-            justify-content: flex-start;
-            font-size: 2em; /* Size consistent with calc-title */
-            margin-bottom: 30px;
-            color: var(--main-color);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 15px;
-        }
-
-        .section-header::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 3px;
-            background: var(--accent-color);
-            margin-top: 10px;
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-        }
-
-        /* Calculator Header Convention */
-        .calc-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 30px;
-            justify-content: flex-start;
-        }
-
-        .calc-header.centered {
-            justify-content: flex-start;
-        }
-
-        .calc-icon-container {
-            width: 40px;
-            height: 40px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            fill: white;
-            flex-shrink: 0;
-        }
-
-        .calc-title {
-            font-size: 2em;
-            font-weight: 700;
-            color: var(--main-color);
-            text-align: left;
-        }
-
-        /* Tables & Lists */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .dictionary-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        @media (max-width: 800px) {
-            .dictionary-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .dictionary-col h2 {
+            font-weight: normal;
+            margin-bottom: 25px;
             font-size: 1.5em;
-            margin-bottom: 20px;
-            text-align: left;
         }
 
-        .dictionary-col h2::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 2px;
-            background: var(--accent-color);
-            margin: 8px 0 0;
-        }
-
-        .stat-line {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(114, 61, 147, 0.1);
-            font-size: 1.1em;
-        }
-
-        .stat-line:last-child {
-            border-bottom: none;
-        }
-
-        .stat-label {
-            flex: 1;
-        }
-
-        .stat-sep {
-            color: var(--accent-color);
-            font-weight: 300;
-            opacity: 0.6;
-        }
-
-        .stat-value {
-            font-weight: bold;
-            color: var(--main-color);
-            min-width: 80px;
-            text-align: center;
-        }
-
-        .stat-bars {
-            color: var(--accent-color);
-            letter-spacing: 2px;
-            font-size: 1.2em;
-            min-width: 150px;
-        }
-
-        @media (max-width: 600px) {
-            .stat-line {
-                flex-wrap: wrap;
-                gap: 5px 10px;
-            }
-            .stat-label {
-                flex: 1 1 100%;
-            }
-            .stat-sep:first-of-type {
-                display: none;
-            }
-        }
-
-        .stats-images {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-            justify-content: flex-start;
-            flex-wrap: wrap;
-        }
-
-        .stats-img-item {
-            width: 120px;
-            height: 120px;
-            border-radius: 10px;
-            overflow: hidden;
-            cursor: pointer;
-            border: 2px solid var(--border-color);
-            transition: transform 0.3s;
-        }
-
-        .stats-img-item:hover {
-            transform: scale(1.1);
-            border-color: var(--accent-color);
-        }
-
-        .stats-img-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Collapsible Terms Styles */
-        details.terms-details {
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            margin-bottom: 10px;
-        }
-
-        details.terms-details summary {
-            padding: 10px 15px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 1.2em;
-            list-style: none;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            background: transparent;
-            color: var(--main-color);
-            transition: background 0.3s;
-            gap: 15px;
-        }
-
-        details.terms-details summary::after {
-            content: '▼';
-            font-size: 0.6em;
-            transition: transform 0.3s;
-        }
-
-        details.terms-details[open] summary::after {
-            transform: rotate(180deg);
-        }
-
-        details.terms-details summary:hover {
-            background: #fdf8fb;
-        }
-
-        .terms-content {
-            padding: 20px;
-        }
-
-        /* Gallery and Pricing Styles */
-        .pricing-grid-3col {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        @media (max-width: 800px) {
-            .pricing-grid-3col {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .pricing-column {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            background: rgba(255, 255, 255, 0.5);
-            padding: 15px;
-            border-radius: 15px;
-            border: 1px solid var(--border-color);
-        }
-
-        .pricing-column .gallery-container {
-            height: 250px;
-        }
-
-        .pricing-column .pricing-info-col {
-            text-align: left;
-            font-size: 0.95em;
-        }
-
-        .pricing-title {
-            font-weight: 700;
-            color: var(--main-color);
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        .image-row img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 12px;
-            cursor: pointer;
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .image-row img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 5px 15px rgba(114, 61, 147, 0.2);
-        }
-
-        @media (max-width: 768px) {
-            .image-row {
-                grid-template-columns: 1fr;
-            }
-            .image-row img {
-                height: 350px;
-            }
-        }
-
-        .pricing-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .pricing-layout {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .pricing-info-col {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: left;
-        }
-
-        .price-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        .price-table th, .price-table td {
-            padding: 10px 10px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 0.95em;
-        }
-
-        .price-table th {
-            color: var(--main-color);
-            font-weight: bold;
-            background: rgba(114, 61, 147, 0.05);
-        }
-
-        .price-table td:first-child {
-            font-weight: bold;
-            text-align: left;
-        }
-
-        .gallery-container {
-            width: 100%;
-            height: 400px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .gallery-scroll {
-            display: flex;
-            height: 100%;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none; /* Firefox */
-        }
-
-        .gallery-scroll::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
-        }
-
-        .gallery-item {
-            flex: 0 0 100%;
-            height: 100%;
-            scroll-snap-align: start;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background: #f8f8f8;
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.02);
-        }
-
-        .gallery-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(114, 61, 147, 0.6);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            transition: background 0.3s, transform 0.2s;
-            opacity: 0;
-        }
-
-        .gallery-container:hover .gallery-nav {
-            opacity: 1;
-        }
-
-        .gallery-nav:hover {
-            background: var(--main-color);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .gallery-nav.prev { left: 10px; }
-        .gallery-nav.next { right: 10px; }
-
-        /* Lightbox Styles */
-        #lightbox {
-            position: fixed;
-            top: 0;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 2000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            backdrop-filter: blur(10px);
-        }
-
-        #lightbox img {
-            max-width: 90%;
-            max-height: 80%;
-            object-fit: contain;
-            box-shadow: 0 0 50px rgba(0,0,0,0.8);
-            border: 4px solid white;
-            border-radius: 4px;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        #lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 40px;
-            cursor: pointer;
-            font-weight: bold;
-            z-index: 2001;
-        }
-
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: white;
-            font-size: 50px;
-            cursor: pointer;
-            user-select: none;
-            padding: 20px;
-            background: rgba(0,0,0,0.2);
-            border-radius: 50%;
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s;
-        }
-
-        .lightbox-nav:hover {
-            background: rgba(255,255,255,0.1);
-        }
-
-        #lightbox-prev { left: 20px; }
-        #lightbox-next { right: 20px; }
-
-        #lightbox-caption {
-            color: white;
-            margin-top: 20px;
-            font-size: 1.4em;
-            font-weight: 600;
-        }
-
-        .stat-value { font-weight: bold; color: var(--accent-color); font-size: 1.1em; }
-
-        /* Calculator Styles */
         .calculator-block {
-            background: transparent;
-            border: none;
-            padding: 10px 0;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
             margin-bottom: 20px;
             position: relative;
-            animation: slideIn 0.4s ease-out;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            box-shadow: 0 4px 10px rgba(114, 61, 147, 0.05);
+            box-sizing: border-box;
         }
 
         .remove-btn {
@@ -725,7 +193,12 @@
             color: #cc4444;
             font-size: 24px;
             cursor: pointer;
+            padding: 0;
             line-height: 1;
+        }
+
+        .remove-btn:hover {
+            color: #ff5555;
         }
 
         .section {
@@ -749,26 +222,22 @@
             align-items: center;
             padding: 10px;
             background: var(--bg-color);
-            color: #b977d1;
             border: 1px solid transparent;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s;
             font-size: 0.9em;
+            user-select: none;
         }
 
         .option-label:hover {
             border-color: var(--muted-color);
         }
 
-        .option-label:has(input:checked) {
-            border-color: var(--main-color);
-            box-shadow: 0 0 10px rgba(114, 61, 147, 0.2);
-        }
-
         .option-label input {
             margin-right: 8px;
             accent-color: var(--main-color);
+            cursor: pointer;
         }
 
         .custom-count-wrapper {
@@ -782,11 +251,24 @@
             border: 1px solid var(--border-color);
             border-radius: 6px;
             color: var(--main-color);
+            font-family: inherit;
+            box-sizing: border-box;
             outline: none;
         }
 
+        .custom-count-input:focus {
+            border-color: var(--main-color);
+        }
+
+        .notice {
+            font-size: 0.8em;
+            color: var(--muted-color);
+            margin-top: 8px;
+            line-height: 1.3;
+        }
+
         .block-total {
-            text-align: left;
+            text-align: right;
             font-size: 1.1em;
             margin-top: 15px;
             font-weight: bold;
@@ -794,1267 +276,359 @@
             padding-top: 15px;
         }
 
-        .slider-container {
-            margin-top: 10px;
-        }
-
-        .deadline-slider {
-            width: 100%;
-            accent-color: #b977d1;
-            height: 8px;
-            border-radius: 5px;
-            background: linear-gradient(to right, #c787de 0%, #e8d0e5 0%);
-            outline: none;
-            -webkit-appearance: none;
-        }
-
-        .deadline-slider::-webkit-slider-runnable-track {
-            width: 100%;
-            height: 8px;
-            cursor: pointer;
-            background: transparent;
-            border-radius: 5px;
-        }
-
-        .deadline-slider::-webkit-slider-thumb {
-            height: 20px;
-            width: 20px;
-            border-radius: 50%;
-            background: #ffffff;
-            border: 2px solid #b977d1;
-            cursor: pointer;
-            -webkit-appearance: none;
-            margin-top: -6px;
-            box-shadow: 0 2px 5px rgba(114, 61, 147, 0.2);
-        }
-
-        .slider-labels {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85em;
-            color: var(--muted-color);
-            margin-top: 5px;
-        }
-
         .action-buttons {
             display: flex;
             justify-content: flex-start;
-            margin: 25px 0;
+            margin-top: 10px;
+            margin-bottom: 25px;
         }
 
-        .btn-action {
-            background: #b977d1;
-            color: white;
-            border: 2px solid #b977d1;
-            padding: 12px 30px;
+        .btn {
+            background-color: transparent;
+            color: var(--main-color);
+            border: 2px solid var(--main-color);
+            padding: 10px 25px;
             font-family: inherit;
             font-size: 1em;
-            font-weight: 600;
-            border-radius: 30px;
+            border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(185, 119, 209, 0.3);
         }
 
-        .btn-action:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(185, 119, 209, 0.4);
+        .btn:hover {
+            background-color: var(--main-color);
+            color: #ffffff;
         }
 
-        .btn-action:active {
-            transform: translateY(1px);
-            filter: none;
+        .btn:active {
+            transform: scale(0.98);
         }
 
         .final-summary {
             background: var(--main-color);
-            color: white;
-            border-radius: 15px;
-            padding: 25px;
-            text-align: left;
-            font-size: 1.3em;
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+            font-size: 1.25em;
             box-shadow: 0 6px 15px rgba(114, 61, 147, 0.2);
+            box-sizing: border-box;
         }
 
-        .final-summary span { font-weight: bold; }
-
-        .discount-selection {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .discount-selection .section-title {
-            color: var(--main-color);
-            margin-bottom: 10px;
+        .final-summary span {
             font-weight: bold;
+        }
+
+        /* Discount section styling */
+        .discount-section {
             text-align: left;
-        }
-
-        .discount-selection .option-label {
-            background: #b977d1;
-            color: white;
-            padding: 12px 25px;
-            border: 2px solid #b977d1;
-            border-radius: 30px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .discount-selection .option-label:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(185, 119, 209, 0.4);
-        }
-
-        .discount-selection .option-label:active {
-            transform: translateY(1px);
-        }
-
-        .discount-selection .option-label input {
-            display: none;
-        }
-
-        .discount-selection .option-label:has(input:checked) {
-            background: var(--main-color);
-            box-shadow: 0 0 15px rgba(114, 61, 147, 0.4);
         }
 
         #discount-group {
-            display: flex;
-            justify-content: flex-start;
-            flex-wrap: wrap;
-            gap: 15px;
+            justify-content: flex-start !important;
+            margin-top: 10px;
         }
 
-        /* Generic Helper Classes */
-        .text-center { text-align: center; }
-        .mt-20 { margin-top: 20px; }
-        .mb-20 { margin-bottom: 20px; }
-
-        @media (max-width: 600px) {
-            .header-container { flex-direction: column; text-align: left; align-items: flex-start; }
-            .block-card { padding: 20px; }
-            .profile-name { font-size: 2.2em; }
-            .lightbox-nav { width: 50px; height: 50px; font-size: 30px; }
+        #discount-group .option-label {
+            background-color: #b977d1;
+            color: #fff !important;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 25px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .video-container {
-            width: 100%;
-            aspect-ratio: 16/9;
-            margin: 20px 0;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            background: #000;
+        #discount-group .option-label:hover {
+            background-color: #a663bc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
-        #back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--main-color);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.3s, transform 0.3s;
-            z-index: 100;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            text-decoration: none;
-            font-size: 24px;
+        #discount-group .option-label input {
+            display: none; /* Hide radio dot to make it look like a button */
         }
 
-        #back-to-top.visible {
-            opacity: 1;
-        }
-
-        #back-to-top:hover {
-            transform: translateY(-5px);
-            background: var(--accent-color);
+        #discount-group .option-label:has(input:checked) {
+            background-color: #723d93;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
         }
     </style>
 </head>
-<body>
+<body class="parallax-bg">
 
-<div id="lightbox">
-    <span id="lightbox-close">&times;</span>
-    <span id="lightbox-prev" class="lightbox-nav">&#10094;</span>
-    <img id="lightbox-img" src="" alt="">
-    <span id="lightbox-next" class="lightbox-nav">&#10095;</span>
-    <div id="lightbox-caption"></div>
-</div>
-
-<a href="#" id="back-to-top" title="Наверх">↑</a>
-
-<div class="parallax-wrapper">
-    <div class="parallax-layer layer-deep"></div>
-    <div class="parallax-layer layer-mid"></div>
-    <div class="parallax-layer layer-back"></div>
-    <div class="parallax-layer layer-base">
-
-        <div class="container">
-            <header class="block-card">
-                <div class="header-container">
-                    <div class="profile-column">
-                        <div class="avatar-wrapper">
-                            <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAJlOrdImNJDUZW1T2Uvvg9lRVWGgzIfplAj1p29Qvv4y4Gctyqajgrm68J1poR5-FDY2UvcTHRzQRH-4CsswkeXNahb_3ur7SDLKoyYc03PtM-ImK9W1uXhlHJWUYJu25WLmhbumEYv5k-qV9tAekaYePQQiMrXIwfVB8vifLtWFsPAFa_lLuNnrRicvV0ImhEjtYXp_cqsFsTdwbEuA3w5YlGwK97eF9elD-bRLo=w1280" alt="Ракель Энелисс" class="avatar-img">
-                        </div>
-                        <h1 class="profile-name">Ракель<br>Энелисс</h1>
-                    </div>
-
-                    <div class="info-column">
-                        <p class="mb-20">
-                            Привет! Я диджитал художница, мне 20 лет. Моё творчество — это не только рисунки фурри, но и анимации, портреты, vtobe модели live 2d, фигурки из лёгкого пластилина и полимерной глины, рисунки на чехлах, кружках и одежде, стикеры, комиксы, гифки, эмодзи, фурсюты и тд!
-                        </p>
-                        <p>
-                            Помимо этого, у меня есть свой мерч — стикеры, стикерпаки, лентикулярные открытки, магнитики, брелки, значки и тд, и многое из этого я изготавливаю своими руками!
-                        </p>
-
-                        <div class="status-block">
-                            <div class="status-title">СТАТУС: заказы по слотам!</div>
-                            <ul class="status-list">
-                                <li>• трейды: скилл = моему</li>
-                                <li>• коллабы: скилл = моему</li>
-                                <li>• реквесты: за особые заслуги</li>
-                            </ul>
-                        </div>
-
-                        <div class="socials-links">
-                            <a href="https://vk.com/rakel_eneliss" class="social-btn" title="VK">
-                                <svg viewBox="0 0 24 24"><path d="M14.54 20h1.15c.46 0 .6-.25.6-.58 0-.42-.2-.8-.2-1.28 0-.54.43-.82.43-.82.52-.3 1.17 1.1 1.72 1.58.4.37.75.5 1.13.5h1.72c.4 0 .6-.2.48-.6-.1-.3-.7-1.5-1.45-2.5-.4-.53-1-1.1-1.2-1.4-.27-.37-.2-.53 0-.85 0 0 1.5-2.1 1.65-2.87.08-.4-.05-.6-.5-.6h-1.72c-.37 0-.54.2-.63.43-.1 0-1 2.54-2.27 4.17-.4.5-.58.67-.8.67-.12 0-.3-.17-.3-.63v-3.77c0-.37-.1-.54-.42-.54h-2.7c-.23 0-.4.18-.4.35 0 .34.5.42.55 1.37v1.96c0 .43-.08.6-.26.6-.47 0-1.62-2.55-2.3-5.46-.14-.42-.3-.6-.67-.6H3.45c-.45 0-.54.2-.54.44 0 .4 1.55 7.33 7.08 10.15.54.27 1.05.4 1.55.4h1.15z"/></svg>
-                            </a>
-                            <a href="https://t.me/rakel_eneliss" class="social-btn" title="Telegram">
-                                <svg viewBox="0 0 24 24"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 1.054 3.416c.127.35.064.488.41.488.27 0 .392-.123.542-.27l2.603-2.53 5.412 3.996c.997.55 1.713.267 1.96-.923l3.54-16.69c.364-1.458-.556-2.123-1.51-1.706z"/></svg>
-                            </a>
-                            <a href="https://boosty.to/rakel_eneliss" class="social-btn" title="Boosty">
-                                <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.666 12.59c-.435 2.16-2.348 3.744-4.57 3.744h-2.227c-1.01 0-1.83-.82-1.83-1.83V9.504c0-1.01.82-1.83 1.83-1.83h2.227c2.222 0 4.135 1.584 4.57 3.744.07.35.107.71.107 1.086 0 .376-.037.736-.107 1.086z"/></svg>
-                            </a>
-                            <a href="https://www.furaffinity.net/user/rakeleneliss" class="social-btn" title="FurAffinity">
-                                <svg viewBox="0 0 24 24"><path d="M11.392 11.238c-.378.312-.76.621-1.144.927.135-.555.263-1.11.385-1.666.253.246.505.492.759.739zm2.464-.739c.122.556.25 1.111.385 1.666-.384-.306-.766-.615-1.144-.927.254-.247.506-.493.759-.739zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6.915 15.344c-.382.72-.942 1.332-1.558 1.815-.224.175-.453.336-.689.481l-.04.025c-.171.1-.344.195-.522.28-.707.34-1.472.56-2.259.646-.226.024-.455.039-.684.045-.054.001-.108.002-.163.002s-.109-.001-.163-.002c-.229-.006-.458-.021-.684-.045-.787-.086-1.552-.306-2.259-.646-.178-.085-.351-.18-.522-.28l-.04-.025c-.236-.145-.465-.306-.689-.481-.616-.483-1.176-1.095-1.558-1.815-.178-.337-.306-.688-.382-1.05-.01-.044-.018-.088-.025-.133-.06-.356-.089-.72-.089-1.093 0-.306.02-.607.06-.902.008-.063.018-.125.029-.187.085-.48.236-.935.441-1.354.015-.031.03-.062.046-.093l.006-.011c.08-.158.172-.313.273-.46.331-.482.748-.895 1.229-1.21.365-.24.773-.42 1.206-.528.064-.016.129-.03.195-.042.348-.06.709-.092 1.079-.092s.731.032 1.079.092c.066.012.131.026.195.042.433.108.841.288 1.206.528.481.315.898.728 1.229 1.21.101.147.193.302.273.46l.006.011c.016.031.031.062.046.093.205.419.356.874.441 1.354.011.062.021.124.029.187.04.295.06.596.06.902 0 .373-.029.737-.089 1.093-.007.045-.015.089-.025.133-.076.362-.204.713-.382 1.05z"/></svg>
-                            </a>
-                            <a href="https://toyhou.se/RakelEneliss" class="social-btn" title="Toyhouse">
-                                <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.12 16.56l-5.12 2.31-5.12-2.31V7.44l5.12-2.31 5.12 2.31v9.12z"/></svg>
-                            </a>
-                            <a href="https://www.youtube.com/@РакельЭнелисс" class="social-btn" title="YouTube">
-                                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <nav class="header-nav">
-                    <a href="#dictionary" class="nav-btn">Словарь</a>
-                    <a href="#anthro" class="nav-btn">Антро</a>
-                    <a href="#feral" class="nav-btn">Ферал</a>
-                    <a href="#chibi" class="nav-btn">Чиби</a>
-                    <a href="#references" class="nav-btn">Рефы</a>
-                    <a href="#vtuber" class="nav-btn">Vtube</a>
-                    <a href="#stickers" class="nav-btn">Стикеры</a>
-                    <a href="#merch" class="nav-btn">Мерч</a>
-                    <a href="#calculator" class="nav-btn">Калькулятор</a>
-                    <a href="#terms" class="nav-btn">Условия</a>
-                </nav>
-            </header>
-
-            <main>
-                <section id="stats" class="block-card">
-                    <h2 class="section-header">Статистика</h2>
-                    <div class="stats-list-laconical">
-                        <div class="stat-line">
-                            <span class="stat-label">Работ в портфолио</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-value">500</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-bars">❙❙❙❙❙❙❙❙</span>
-                        </div>
-                        <div class="stat-line">
-                            <span class="stat-label">Заказов</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-value">174</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-bars">❙❙❙❙❙❙</span>
-                        </div>
-                        <div class="stat-line">
-                            <span class="stat-label">Стикеров</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-value">76</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-bars">❙❙❙❙</span>
-                        </div>
-                        <div class="stat-line">
-                            <span class="stat-label">Vtube моделей</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-value">5</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-bars">❙❙</span>
-                        </div>
-                        <div class="stat-line">
-                            <span class="stat-label">Референсов</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-value">19</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-bars">❙❙❙❙</span>
-                        </div>
-                        <div class="stat-line">
-                            <span class="stat-label">Аудитория ТГ</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-value">630+</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-bars">❙❙❙❙❙❙❙</span>
-                        </div>
-                        <div class="stat-line">
-                            <span class="stat-label">Аудитория ВК</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-value">1250+</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-bars">❙❙❙❙❙❙❙❙❙❙❙❙❙❙❙</span>
-                        </div>
-                        <div class="stat-line">
-                            <span class="stat-label">Донов</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-value">13</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-bars">❙❙❙</span>
-                        </div>
-                        <div class="stat-line">
-                            <span class="stat-label">Средний дедлайн</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-value">2 недели</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-bars">❙❙❙</span>
-                        </div>
-                        <div class="stat-line">
-                            <span class="stat-label">Ожидание ответа</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-value">15 минут</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-bars">❙❙</span>
-                        </div>
-                        <div class="stat-line">
-                            <span class="stat-label">Лет на рынке</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-value">7,5</span>
-                            <span class="stat-sep">|</span>
-                            <span class="stat-bars">❙❙❙❙❙❙</span>
-                        </div>
-                    </div>
-
-                    <div class="stats-images">
-                        <div class="stats-img-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUBtXbxHUHc3RuZrynzg47jxupsfUY0OY1aoDDBYzLf2ZaANq0MLrAEqWVRtDhoM1XcIPS4tcCzr-xYnApqpyfz2fgLqU9E_OHHvOqMWgmh9K__F2NYS3eX3vgkMWjuF_E7i-bEqV55mWQh_rHVoLd7sTFGlyGxgvpSmOJqITiEE0diuOWlob0odjG7uIgRNTdY1RTN-cBOscU_PMC6RzTEzT-jJCA8Qa6LgBzyy9l8=w1280" alt="Итоги за 2024 и 2025 года"></div>
-                        <div class="stats-img-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUDstL8etxmi2cCyapBXZoWd0bJkrNwe6XUufjCPGs1tvC6dh0rEPTq61MaD5j7gjoYrJq-LizLU8WcMTTIwKQb7DMXAFHES1OKDIQ_tQ5wDmqYDbDBIEcOebor-8i8Hwkh_U7OiKVvNg7lop_c2erI9BKV0ncanYX4ym7Yqs7oHOgBs8VWgheoNb3PpFWBqyf6z3wsJ6TFn24ytND1LUz4mt32V4zBJbyKAjbL7IpA=w1280" alt="Итоги за 2024 и 2025 года"></div>
-                    </div>
-                </section>
-
-                <section id="anthro" class="block-card">
-                    <h2 class="section-header">АНТРО</h2>
-                    <div class="pricing-grid-3col">
-                        <div class="pricing-column">
-                            <div class="gallery-container">
-                                <button class="gallery-nav prev">&#10094;</button>
-                                <div class="gallery-scroll">
-                                    <div class="gallery-item"><img src="https://picsum.photos/id/11/500/700" alt="Anthro Sketch 1"></div>
-                                    <div class="gallery-item"><img src="https://picsum.photos/id/12/500/700" alt="Anthro Sketch 2"></div>
-                                </div>
-                                <button class="gallery-nav next">&#10095;</button>
-                            </div>
-                            <div class="pricing-info-col">
-                                <span class="pricing-title">Чб/Моно скетч</span>
-                                <p>• Хэд: 600р</p>
-                                <p>• Халф: 1000р</p>
-                                <p>• Фулл: 1500р</p>
-                            </div>
-                        </div>
-                        <div class="pricing-column">
-                            <div class="gallery-container">
-                                <button class="gallery-nav prev">&#10094;</button>
-                                <div class="gallery-scroll">
-                                    <div class="gallery-item"><img src="https://picsum.photos/id/13/500/700" alt="Anthro Simple 1"></div>
-                                    <div class="gallery-item"><img src="https://picsum.photos/id/14/500/700" alt="Anthro Simple 2"></div>
-                                </div>
-                                <button class="gallery-nav next">&#10095;</button>
-                            </div>
-                            <div class="pricing-info-col">
-                                <span class="pricing-title">Простой рендер</span>
-                                <p>• Хэд: 900р</p>
-                                <p>• Халф: 2100р</p>
-                                <p>• Фулл: 3000р</p>
-                            </div>
-                        </div>
-                        <div class="pricing-column">
-                            <div class="gallery-container">
-                                <button class="gallery-nav prev">&#10094;</button>
-                                <div class="gallery-scroll">
-                                    <div class="gallery-item"><img src="https://picsum.photos/id/15/500/700" alt="Anthro Hard 1"></div>
-                                    <div class="gallery-item"><img src="https://picsum.photos/id/16/500/700" alt="Anthro Hard 2"></div>
-                                </div>
-                                <button class="gallery-nav next">&#10095;</button>
-                            </div>
-                            <div class="pricing-info-col">
-                                <span class="pricing-title">Сложный рендер</span>
-                                <p>• Хэд: 1500р</p>
-                                <p>• Халф: 3000р</p>
-                                <p>• Фулл: 4500р</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="feral" class="block-card">
-                    <h2 class="section-header">ФЕРАЛ</h2>
-                    <div class="pricing-grid-3col">
-                        <div class="pricing-column">
-                            <div class="gallery-container">
-                                <button class="gallery-nav prev">&#10094;</button>
-                                <div class="gallery-scroll">
-                                    <div class="gallery-item"><img src="https://picsum.photos/id/21/500/700" alt="Feral Sketch 1"></div>
-                                    <div class="gallery-item"><img src="https://picsum.photos/id/22/500/700" alt="Feral Sketch 2"></div>
-                                </div>
-                                <button class="gallery-nav next">&#10095;</button>
-                            </div>
-                            <div class="pricing-info-col">
-                                <span class="pricing-title">Чб/Моно скетч</span>
-                                <p>• Хэд: 450р</p>
-                                <p>• Халф: 900р</p>
-                                <p>• Фулл: 1200р</p>
-                            </div>
-                        </div>
-                        <div class="pricing-column">
-                            <div class="gallery-container">
-                                <button class="gallery-nav prev">&#10094;</button>
-                                <div class="gallery-scroll">
-                                    <div class="gallery-item"><img src="https://picsum.photos/id/23/500/700" alt="Feral Simple 1"></div>
-                                    <div class="gallery-item"><img src="https://picsum.photos/id/24/500/700" alt="Feral Simple 2"></div>
-                                </div>
-                                <button class="gallery-nav next">&#10095;</button>
-                            </div>
-                            <div class="pricing-info-col">
-                                <span class="pricing-title">Простой рендер</span>
-                                <p>• Хэд: 800р</p>
-                                <p>• Халф: 2000р</p>
-                                <p>• Фулл: 2800р</p>
-                            </div>
-                        </div>
-                        <div class="pricing-column">
-                            <div class="gallery-container">
-                                <button class="gallery-nav prev">&#10094;</button>
-                                <div class="gallery-scroll">
-                                    <div class="gallery-item"><img src="https://picsum.photos/id/25/500/700" alt="Feral Hard 1"></div>
-                                    <div class="gallery-item"><img src="https://picsum.photos/id/26/500/700" alt="Feral Hard 2"></div>
-                                </div>
-                                <button class="gallery-nav next">&#10095;</button>
-                            </div>
-                            <div class="pricing-info-col">
-                                <span class="pricing-title">Сложный рендер</span>
-                                <p>• Хэд: 1300р</p>
-                                <p>• Халф: 2800р</p>
-                                <p>• Фулл: 4200р</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="chibi" class="block-card">
-                    <details class="terms-details">
-                        <summary><h2 class="section-header" style="margin-bottom: 0;">ЧИБИ</h2></summary>
-                        <div class="terms-content">
-                            <div class="pricing-grid-3col">
-                                <div class="pricing-column">
-                                    <div class="gallery-container">
-                                        <button class="gallery-nav prev">&#10094;</button>
-                                        <div class="gallery-scroll">
-                                            <div class="gallery-item"><img src="https://picsum.photos/id/31/500/700" alt="Chibi 1"></div>
-                                            <div class="gallery-item"><img src="https://picsum.photos/id/32/500/700" alt="Chibi 2"></div>
-                                        </div>
-                                        <button class="gallery-nav next">&#10095;</button>
-                                    </div>
-                                    <div class="pricing-info-col">
-                                        <span class="pricing-title">Чб/Моно скетч</span>
-                                        <p>• Хэд: 300р</p>
-                                        <p>• Халф: 500р</p>
-                                        <p>• Фулл: 750р</p>
-                                    </div>
-                                </div>
-                                <div class="pricing-column">
-                                    <div class="gallery-container">
-                                        <button class="gallery-nav prev">&#10094;</button>
-                                        <div class="gallery-scroll">
-                                            <div class="gallery-item"><img src="https://picsum.photos/id/33/500/700" alt="Chibi 3"></div>
-                                            <div class="gallery-item"><img src="https://picsum.photos/id/34/500/700" alt="Chibi 4"></div>
-                                        </div>
-                                        <button class="gallery-nav next">&#10095;</button>
-                                    </div>
-                                    <div class="pricing-info-col">
-                                        <span class="pricing-title">Простой рендер</span>
-                                        <p>• Хэд: 450р</p>
-                                        <p>• Халф: 1050р</p>
-                                        <p>• Фулл: 1500р</p>
-                                    </div>
-                                </div>
-                                <div class="pricing-column">
-                                    <div class="gallery-container">
-                                        <button class="gallery-nav prev">&#10094;</button>
-                                        <div class="gallery-scroll">
-                                            <div class="gallery-item"><img src="https://picsum.photos/id/35/500/700" alt="Chibi 5"></div>
-                                            <div class="gallery-item"><img src="https://picsum.photos/id/36/500/700" alt="Chibi 6"></div>
-                                        </div>
-                                        <button class="gallery-nav next">&#10095;</button>
-                                    </div>
-                                    <div class="pricing-info-col">
-                                        <span class="pricing-title">Сложный рендер</span>
-                                        <p>• Хэд: 750р</p>
-                                        <p>• Халф: 1500р</p>
-                                        <p>• Фулл: 2250р</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pricing-info-col mt-20">
-                                <p class="mb-20"><strong>Чиби:</strong> Разделите цену за желаемый формат на 2. К чиби относятся рисунки по лпс.</p>
-                                <p class="mt-20"><strong>Другие виды:</strong> летучие мыши, драконоподобные, пернатые, млп, кроликоподобные, протогены, опоссумы, сурикаты, сахаши, львы, акулы, панды, и крысы, копытные: лошади, олени.</p>
-                                <p class="mt-20"><strong>Люди:</strong> Цены не те же, что и на антро. Рисую от аниме до семи-реализма и реализма.</p>
-                            </div>
-                        </div>
-                    </details>
-                </section>
-
-                <section id="references" class="block-card">
-                    <details class="terms-details">
-                        <summary><h2 class="section-header" style="margin-bottom: 0;">РЕФЕРЕНСЫ</h2></summary>
-                        <div class="terms-content">
-                            <ul class="mb-20" style="padding-left: 20px; list-style: none;">
-                                <li class="mb-10">• Суммируйте цены за желаемое наполнение из обычного прайса;</li>
-                                <li class="mb-10">• При заказе вида "спереди и сзади" на одной базе (отзеркалены), второй рисунок будет в половину цены (примеры 4 и 5);</li>
-                                <li class="mb-10">• При заказе "одетой версии" на одной и той же базе, второй рисунок будет в половину цены (пример 3);</li>
-                                <li class="mb-10">• Глазки, подушечки, язык и носик, текст, палитра - 200р за всё сразу;</li>
-                                <li>• Цены за все эти референсы ниже, это может вам помочь:</li>
-                            </ul>
-
-                            <div class="pricing-layout">
-                                <div class="pricing-info-col">
-                                    <ol style="padding-left: 0; list-style-position: inside; color: var(--text-color); text-align: left;">
-                                        <li class="mb-20">3000 * 2 + (3000 * 1,1) + 2100 + 200 = 11600 ₽ (есть NSFW версия одного полнороста)</li>
-                                        <li class="mb-20">3000 + 900 * 2 + (2800 : 2) + 200 = 6400 ₽</li>
-                                        <li class="mb-20">3000 + (3000 : 2) + 900 * 2 + (3000 : 2) + (3000 : 2 : 2) + 200 = 8 750 ₽</li>
-                                        <li class="mb-20">3000 + (3000 : 2) + 900 + 2800 + 200 = 8400 ₽</li>
-                                        <li class="mb-20">3000 + (3000 : 2) + 800 + 2800 + 200 = 8300 ₽</li>
-                                        <li class="mb-20">3000 * 2 + 2800 + 800 + 200 = 9800 ₽</li>
-                                    </ol>
-                                    <p class="mt-20"><i>• Если не понимаете, как посчитать цену за нужное вам наполнение, спросите, я обязательно отвечу!!</i></p>
-                                </div>
-                                <div class="gallery-container">
-                                    <button class="gallery-nav prev">&#10094;</button>
-                                    <div class="gallery-scroll">
-                                        <div class="gallery-item"><img src="https://picsum.photos/id/601/1000/1400" alt="Reference Example 1"></div>
-                                        <div class="gallery-item"><img src="https://picsum.photos/id/602/1000/1400" alt="Reference Example 2"></div>
-                                        <div class="gallery-item"><img src="https://picsum.photos/id/603/1000/1400" alt="Reference Example 3"></div>
-                                        <div class="gallery-item"><img src="https://picsum.photos/id/604/1000/1400" alt="Reference Example 4"></div>
-                                        <div class="gallery-item"><img src="https://picsum.photos/id/605/1000/1400" alt="Reference Example 5"></div>
-                                        <div class="gallery-item"><img src="https://picsum.photos/id/606/1000/1400" alt="Reference Example 6"></div>
-                                    </div>
-                                    <button class="gallery-nav next">&#10095;</button>
-                                </div>
-                            </div>
-                        </div>
-                    </details>
-                </section>
-
-                <section id="vtuber" class="block-card">
-                    <details class="terms-details">
-                        <summary><h2 class="section-header" style="margin-bottom: 0;">Vtube</h2></summary>
-                        <div class="terms-content">
-                            <div class="video-container">
-                                <iframe src="https://drive.google.com/file/d/1UVwtl8RUUf7ekDrKGFLurdLiGFIAucFX/preview" width="100%" height="100%" allow="autoplay" style="border:none;"></iframe>
-                            </div>
-                            <p class="mb-20">Примеры риггинга и моделей Live2D</p>
-                            <p>• Модель в полный рост без одежды: 12000р + 5к за версию с одеждой</p>
-                            <p>• Модель в полный рост с одеждой: 15000р (без раздетой версии)</p>
-                            <p>• Доп. эмоция без анимации: 400р</p>
-                            <p>• Доп. эмоция с анимацией: 500р</p>
-                            <div class="video-container">
-                                <iframe src="https://drive.google.com/file/d/19RkFvIZaloDl8nspn9Q33qfxq-p2EsYi/preview" width="100%" height="100%" allow="autoplay" style="border:none;"></iframe>
-                            </div>
-                        </div>
-                    </details>
-                </section>
-
-                <section id="stickers" class="block-card">
-                    <details class="terms-details">
-                        <summary><h2 class="section-header" style="margin-bottom: 0;">Стикеры</h2></summary>
-                        <div class="terms-content">
-                            <div class="pricing-layout">
-                                <div class="pricing-info-col">
-                                    <table class="price-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Кол-во</th>
-                                                <th>Простой</th>
-                                                <th>Сложный</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr><td>3 шт</td><td>1650</td><td>2100</td></tr>
-                                            <tr><td>6 шт</td><td>3000</td><td>3900</td></tr>
-                                            <tr><td>12 шт</td><td>5400</td><td>7200</td></tr>
-                                            <tr><td>24 шт</td><td>9600</td><td>13200</td></tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="gallery-container">
-                                    <button class="gallery-nav prev">&#10094;</button>
-                                    <div class="gallery-scroll">
-                                        <div class="gallery-item"><img src="https://picsum.photos/id/401/1000/1000" alt="Stickers Showcase"></div>
-                                        <div class="gallery-item"><img src="https://picsum.photos/id/402/1000/1000" alt="Stickers Showcase 2"></div>
-                                    </div>
-                                    <button class="gallery-nav next">&#10095;</button>
-                                </div>
-                            </div>
-                        </div>
-                    </details>
-                </section>
-
-                <section id="merch" class="block-card">
-                    <details class="terms-details">
-                        <summary><h2 class="section-header" style="margin-bottom: 0;">Мерч</h2></summary>
-                        <div class="terms-content">
-                            <div class="pricing-layout">
-                                <div class="gallery-container">
-                                    <button class="gallery-nav prev">&#10094;</button>
-                                    <div class="gallery-scroll">
-                                    <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAS44uod21rRF_5BWhPCU7KDXUjb0U5dApWCe9trqU1cflKI3iRAfTKPUdG6gk15Lpvm9E9ktfgtvudFzOXYEMR2adsufUUJQ16Ig2jW_h90V6gAeEfwnVWKiSoPpe0YZ1tFHMovofVUF8QBT9XrhlV104-gk0B9Ve0OAU4od2-L6VPAVA1qcsXjU9juW8Kv1uI69WGElchU4rD_YDTYwCwuQx4hoOJoe-tZIaSKgo=w1280" alt="Merch 1"></div>
-                                    <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUC2LXioCleDDT6LzNobZ46OOs0kU1Y8YFvfVlek8yEH0kYEVw7NFOZlioPBNFYkXhpAbDEvmaojD3AGsL2uad8HQ5yJWmPSi_wJrqOB3vdf0sFacymJkt2nRuJTdEjfBZqyRsN0y4hkzCqvLohUR5zYhG3DLhZxCqZyRrM_w3kt3navdpXSD2o1U8FIaF57EUbQmIHCeg3Hzkr7vGEvtlMfDBWWOuihSQWv_1Du=w1280" alt="Merch 2"></div>
-                                    <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAVuTEyAqBVniZFf6Xkm7ePle22dTINO98B-CpMCecP_YTh9L40h_KM5xdqSdsh37ElykKeOkYv5miw3o_T48ByGcP8hciyaXFwigShpOXmUxd9eaKnbuQ8PXnnPcmkQBnMQkq9wouFMtMwphfcMc0wq7rdaE3TCZhdV3LLsMj1MfBrleAhzQdV58ac-fNp1FHOtItpikSBdcwZi-J-XUOujchzIGot_pEySsh_3B4=w1280" alt="Merch 3"></div>
-                                    <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUCxQq0sdRGfSWhUmy1PsZ2uSef2ROaUHobV4OQThDYML-DzzNZsKDjcV8lQ2zLSXKMzSENPXCbok0_uZu3lacj2WXIqsXzhjPUu95q4MIMIcQhcXEg5HFK7g537pgpNXhKnSKiOC7wubrOU7Wa_cEzEvkV80LHmi3XB-j6oapOA63giwSh9GD7q7vJFu_xYZ4mC37BTC7_chZoUaeaYl5DcX2dPgZ9xxcbKonqKb5g=w1280" alt="Merch 4"></div>
-                                    <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAIAHudVNCEE1otJ0q1_qIEzBwtTXbBUPriFGGrR2QEAI4qPfb0SBNWQ2i28rJfQDHO4tOvhs7KwlMi35fXZ7RfHSIiZSJ-HxRFn9FvU6cQah9J5__P7DsmIyTijdgzTzUNg_l6qtqqmTc9L1j_uvdiPEc6_NypEv64yTDWtrMIN4YaELPOmYoQqzlXLkavgSd200cyEGpOh48rBKYdtkrPE0vCa5y34w0BLGkrkdM=w1280" alt="Merch 5"></div>
-                                    <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUCmK9Oaf8RoASM5xV5UMYXGZ_DJHSysKbanoA9kBos_sUhen6S6KfOa23TxgzJMXcHqzOBE9d0VL-JHVgZPdFctbRQKIt6BjFGvIB0pHzRmHcDXCS89Yq_K5gt6EG-_GQFfUfpmAfSOfn5APsii4MgacO-HDWhCNTX8L7iE0oecmRbHBU2OKRtBIrSIl5E=w1280" alt="Merch 6"></div>
-                                    <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUCLT8_p47NcEPl0hJqEA_0pX0KIhOF19iriaR558J2xzHVijY3O6dVFc94jeDOYcfvN6qKr51KwX834X_A0RjzqU1dshim7n9hdsmEQTNtmPXdgEmjcxZQw2vy-TftX4OFHbCk-p9WnlXnDNaCQBVDYusxXjVW-A0S9ahiueHjUTQ96na897VnduzW9jWdClJhJ0KmgQu1T32kvWs8aSeWTkyf3Ln-PNJdl3nDr=w1280" alt="Merch 7"></div>
-                                    </div>
-                                    <button class="gallery-nav next">&#10095;</button>
-                                </div>
-                                <div class="pricing-info-col">
-                                    <p>У меня есть мерч! Отправляю в день оформления любой удобной вам доставкой (озон, яндекс, почта России, СДЭК, авито) за ваш счёт либо личная встреча в Москве. Актуальное наличие уточняйте!</p>
-                                    <p class="mt-20"><strong>4 вида ламинации:</strong> звёзды, бисер, радуга, битое стекло</p>
-                                </div>
-                            </div>
-                        </div>
-                    </details>
-                </section>
-
-                <section id="additional" class="block-card">
-                    <details class="terms-details">
-                        <summary><h2 class="section-header" style="margin-bottom: 0;">ДОПОЛНИТЕЛЬНО</h2></summary>
-                        <div class="terms-content">
-                            <p class="mb-20">Помимо этого, я:</p>
-                            <ul style="padding-left: 20px; list-style: none;">
-                                <li class="mb-10">• Оформляю баннеры для групп вк\бусти\ютуба и тд;</li>
-                                <li class="mb-10">• Создаю дизайны персонажей по вашим пожеланиям;</li>
-                                <li class="mb-10">• Рисую мемные картинки;</li>
-                                <li class="mb-10">• Рисую мордочку фурри поверх вашего селфи;</li>
-                                <li class="mb-10">• Обработываю photo + распечатываю на хосте, подбираю рамку и тд.;</li>
-                                <li class="mb-10">• Расписываю кружки, шкатулки и тд. акриловыми маркерами;</li>
-                                <li class="mb-10">• Леплю фигурки из лёгкого пластилина и самозатвердевающей/полимерной глины;</li>
-                                <li class="mb-10">• Отправляю традишные арты письмом любой службой доставки за ваш счёт;</li>
-                                <li>• Курирую начинающих художников. Пробные полчаса бесплатно, далее 1 час 500р либо недельное кураторство 1000р за 3 консультации.</li>
-                            </ul>
-                        </div>
-                    </details>
-                </section>
-
-                <section id="dictionary" class="block-card">
-                    <details class="terms-details">
-                        <summary><h2 class="section-header" style="margin-bottom: 0;">СЛОВАРЬ И ПРАВИЛА</h2></summary>
-                        <div class="terms-content">
-                            <div class="dictionary-grid">
-                                <div class="dictionary-col">
-                                    <h2 class="mb-20">Словарь</h2>
-                                    <div class="terms-content" style="padding: 0;">
-                                        <p class="mb-20"><strong>Антро:</strong> очеловеченные, ходящие на двух ногах животные.</p>
-                                        <p class="mb-20"><strong>Ферал:</strong> очеловеченные животные, ходящие на 4х лапах.</p>
-                                        <p class="mb-20"><strong>Скетч:</strong> набросок, простая работа, выполненная в одном цвете с неровным контуром;</p>
-                                        <p class="mb-20"><strong>Простой рендер:</strong> более аккуратный цветной набросок (флэт колор, плоский цвет);</p>
-                                        <p class="mb-20"><strong>Сложный рендер:</strong> вылизанная картинка с светотенью и постабработкой (фулл колор);</p>
-                                        <p class="mb-20"><strong>Хэд/Халф/Фулл:</strong> голова / по пояс / в полный рост.</p>
-                                        <p class="mb-20"><strong>Чиби:</strong> анатомически упрощённый, мультяшный рисунок.</p>
-                                    </div>
-                                </div>
-
-                                <div class="dictionary-col">
-                                    <h2 class="mb-20">Я рисую</h2>
-                                    <div class="terms-content" style="padding: 0;">
-                                        <ul style="padding-left: 0; list-style: none;">
-                                            <li>• Любые виды фурри и ферал;</li>
-                                            <li>• Людей;</li>
-                                            <li>• Май литл пони (млп);</li>
-                                            <li>• Драконов;</li>
-                                            <li>• 18+ тематику;</li>
-                                            <li>• Тематику БДСМ;</li>
-                                            <li>• Тематику смерти, старости, младенчества без сексуализации;</li>
-                                            <li>• Арты в стиле Дисней;</li>
-                                            <li>• Арты в стиле LPS.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="dictionary-col">
-                                    <h2 class="mb-20">Я не рисую</h2>
-                                    <div class="terms-content" style="padding: 0;">
-                                        <ul style="padding-left: 0; list-style: none;">
-                                            <li>• Ферал п*рно;</li>
-                                            <li>• Воре (возможен только намёк);</li>
-                                            <li>• Гуро (разложение, гниение - нет);</li>
-                                            <li>• Тематику подгузников, фекалий, мочи и тд;</li>
-                                            <li>• Педо;</li>
-                                            <li>• Гипертрофированные половые признаки.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </details>
-                </section>
-
-                <section id="donates" class="block-card">
-                    <h2 class="section-header">Донаты</h2>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                        <div class="status-block">
-                            <div class="status-title">Базовая поддержка (50р/мес)</div>
-                            <p>Скидка 15% на все позиции прайса, ранний доступ, вент арты.</p>
-                        </div>
-                        <div class="status-block">
-                            <div class="status-title">Поддержка PRO (300р/мес)</div>
-                            <p>Каждый месяц я выбираю одного из донов и рисую ему арт!</p>
-                        </div>
-                    </div>
-                    <div class="action-buttons" style="gap: 10px; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start;">
-                        <a href="https://boosty.to/rakel_eneliss/purchase/3476976?ssource=DIRECT&share=subscription_link" class="nav-btn" target="_blank" style="white-space: nowrap;" title="Подписка на Бусти за 50 рублей">Бусти (50р)</a>
-                        <a href="https://boosty.to/rakel_eneliss/purchase/3476980?ssource=DIRECT&share=subscription_link" class="nav-btn" target="_blank" style="white-space: nowrap;" title="Подписка на Бусти за 300 рублей">Бусти (300р)</a>
-                        <a href="https://vk.com/donut/rakel_eneliss" class="nav-btn" target="_blank" style="white-space: nowrap;" title="Поддержка через ВК Донат">ВК донат</a>
-                        <a href="https://t.me/+WPneYApzrRc4MDIy" class="nav-btn" target="_blank" style="white-space: nowrap;" title="Подписка в Телеграм за 50 звезд">ТГ (50☆)</a>
-                        <a href="https://t.me/+8yauwluYLh83MzNi" class="nav-btn" target="_blank" style="white-space: nowrap;" title="Подписка в Телеграм за 300 звезд">ТГ (300☆)</a>
-                    </div>
-                </section>
-
-                <section id="calculator" class="block-card">
-                    <div class="calc-header centered">
-                        <div class="calc-icon-container">
-                            <svg viewBox="0 0 24 24" width="24" height="24"><path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3M19 19H5V5H19V19M11 7H13V9H11V7M11 11H13V13H11V11M11 15H13V17H11V15M7 7H9V9H7V7M7 11H9V13H7V11M7 15H9V17H7V15M15 7H17V9H15V7M15 11H17V17H15V11"/></svg>
-                        </div>
-                        <h2 class="calc-title">Калькулятор</h2>
-                    </div>
-
-                    <div id="calculator-list"></div>
-
-                    <div class="action-buttons">
-                        <button class="btn-action" id="add-block-btn">+ Добавить еще</button>
-                    </div>
-
-                    <h2 class="section-header" style="margin-top: 30px;">Скидка</h2>
-                    <div class="discount-selection" style="margin-bottom: 25px;">
-                        <div id="discount-group">
-                            <label class="option-label"><input type="radio" name="discount-option" value="10"> Заказ с сайта (10%)</label>
-                            <label class="option-label"><input type="radio" name="discount-option" value="20"> За отзыв (20%)</label>
-                            <label class="option-label"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
-                        </div>
-                    </div>
-
-                    <div class="final-summary">
-                        <div style="cursor: pointer; position: relative; padding: 10px;" id="copy-total" title="Нажмите, чтобы скопировать">
-                            <div id="total-display-wrapper" style="display: flex; align-items: center; justify-content: flex-start; gap: 10px;">
-                                <span id="total-label">Общая сумма:</span> <span id="grand-total">0</span> руб.
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="white" style="opacity: 0.8;"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-                            </div>
-                            <div id="copy-feedback" style="display: none; font-weight: bold; color: #fff;">Скопировано! ✓</div>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="terms" class="block-card">
-                    <h2 class="section-header">Условия</h2>
-                    <details class="terms-details">
-                        <summary style="justify-content: flex-start;">прочесть перед заказом</summary>
-                        <div class="terms-content">
-                            <ul style="padding-left: 20px; list-style: none;">
-                                <li class="mb-20">• Оплата сразу или же 50% до и 50% после предоставления скетча на ру карту/бусти/пейпал, возможна оплата частями;</li>
-                                <li class="mb-20">• Дополнительная плата взимается за крылья, сложный окрас персонажа и объекты помимо него;</li>
-                                <li class="mb-20">• Дополнительная плата за NSFW составит +10-20% от выбранного формата;</li>
-                                <li class="mb-20">• Случаи, когда вы хотите чтобы арт не был опубликован или будете использовать его в коммерческих целях, обговариваются отдельно до начала работы(!);</li>
-                                <li class="mb-20">• Если вы отказываетесь от заказа, деньги возвращаются только за непроделанную часть работы;</li>
-                                <li class="mb-20">• Если вы не выходите на связь более, чем 1 месяц, не предупредив заранее меня, заказ аннулируется (я не буду ждать бесконечно);</li>
-                                <li class="mb-20">• Если по вышеописанным причинам заказ аннулируется, я оставляю за собой право из рисунка сделать юч, предварительно убрав все детали, по которым можно было бы опознать персонажа;</li>
-                                <li class="mb-20">• Я рисую в разных направлениях и экспериментирую, так что не стесняйтесь спрашивать, если находите свою идею слишком необычной!;</li>
-                                <li class="mb-20">• Со мной можете общаться на «ты»;</li>
-                                <li class="mb-20">• Срок выполнения работы от 3х до 30 дней в зависимости от формата и очереди, возможно сокращение за доплату;</li>
-                                <li class="mb-20">• До начала работы укажите пожалуйта важные для вас детали вашего персонажа (которые например обычно путают);</li>
-                                <li class="mb-20">• Каждый этап рисунка я скидываю для утверждения, не бойтесь вносить правки, а главное делайте это вовремя!;</li>
-                                <li class="mb-20">• На этапе скетча 2 правки бесплатно, на этапе лайна - только 2 мелкие бесплатно;</li>
-                                <li class="mb-20">• Я всегда на связи и отвечаю либо в первые 15 минут, либо в течение дня;</li>
-                                <li class="mb-20">• Уважайте чужое время, не заваливайте меня идеями без возможности их оплатить в ближайшее время;</li>
-                                <li class="mb-20">• Доны имеют право на 30% СКИДКУ при условии что сумму скидки дон уже оплатил самой подпиской!</li>
-                                <li class="mb-20">• СКИДКА на второй заказ 20% при условии написания отзыва!</li>
-                                <li>• Для оформления заказа можете написать мне в любой социальной сети!</li>
-                            </ul>
-                        </div>
-                    </details>
-                </section>
-
-            </main>
-
-            <footer class="text-center mb-20" style="color: var(--muted-color); font-size: 0.9em;">
-                &copy; 2025 Ракель Энелисс. Все права защищены.
-            </footer>
+    <header>
+        <div class="header-left">
+            <img class="avatar" src="https://picsum.photos" alt="Аватар">
+            <div class="header-text">
+                <h1>Ваше Имя / Никнейм</h1>
+                <p>Digital художник & Иллюстратор</p>
+            </div>
         </div>
+        <div class="social-icons">
+            <a href="#" class="social-icon">TG</a>
+            <a href="#" class="social-icon">VK</a>
+            <a href="#" class="social-icon">DA</a>
+        </div>
+    </header>
+
+    <section class="block">
+        <div class="block-title parallax-bg">Мои Скетчи</div>
+        <div class="carousel-container" data-speed="3000">
+            <div class="carousel-slides">
+                <img class="carousel-slide" src="https://picsum.photos" alt="Скетч 1" onclick="openLightbox(this.src)">
+                <img class="carousel-slide" src="https://picsum.photos" alt="Скетч 2" onclick="openLightbox(this.src)">
+                <img class="carousel-slide" src="https://picsum.photos" alt="Скетч 3" onclick="openLightbox(this.src)">
+            </div>
+        </div>
+    </section>
+
+    <section class="block">
+        <div class="block-title parallax-bg">Сложный рендер</div>
+        <div class="carousel-container" data-speed="3000">
+            <div class="carousel-slides">
+                <img class="carousel-slide" src="https://picsum.photos" alt="Арт 1" onclick="openLightbox(this.src)">
+                <img class="carousel-slide" src="https://picsum.photos" alt="Арт 2" onclick="openLightbox(this.src)">
+                <img class="carousel-slide" src="https://picsum.photos" alt="Арт 3" onclick="openLightbox(this.src)">
+            </div>
+        </div>
+    </section>
+
+    <section class="calculator-section">
+        <div class="container">
+
+  <h2>🎈🎈🎈🎈🎈🎈🎈🎈🎈Калькулятор стоимости</h2>
+            <div id="calculator-list"></div>
+            <div class="action-buttons">
+                <button class="btn" id="add-block-btn">+ Добавить еще</button>
+            </div>
+            <div class="final-summary">
+             <!-- Блок скидок -->
+<!-- Блок скидок -->
+<div class="section discount-section" style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.2);">
+    <div class="section-title" style="font-weight: bold; margin-bottom: 10px; color: #fff;">Скидка:</div>
+    <div class="options-grid" id="discount-group" style="display: flex; gap: 15px; flex-wrap: wrap;">
+        <label class="option-label" style="color: #fff; cursor: pointer;"><input type="radio" name="discount-option" value="10"> Заказ с сайта (10%)</label>
+        <label class="option-label" style="color: #fff; cursor: pointer;"><input type="radio" name="discount-option" value="20"> За отзыв (20%)</label>
+        <label class="option-label" style="color: #fff; cursor: pointer;"><input type="radio" name="discount-option" value="30"> За подписку (30%)</label>
     </div>
 </div>
 
-<script>
-    const prices = {
-        anthro: {
-            sketch: { head: 600, half: 1000, full: 1500 },
-            simple: { head: 900, half: 2100, full: 3000 },
-            hard:   { head: 1500, half: 3000, full: 4500 }
-        },
-        feral: {
+   Общая сумма: <span id="grand-total">0</span> руб.
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const priceList = {
             sketch: { head: 450, half: 900, full: 1200 },
             simple: { head: 800, half: 2000, full: 2800 },
             hard:   { head: 1300, half: 2800, full: 4200 }
-        }
-    };
+        };
 
-    const calculatorList = document.getElementById('calculator-list');
-    let blockCounter = 0;
+        const calculatorList = document.getElementById('calculator-list');
+        const grandTotalSpan = document.getElementById('grand-total');
+        let blockCounter = 0;
 
-    // Back to top logic
-    const btt = document.getElementById('back-to-top');
-    const wrapper = document.querySelector('.parallax-wrapper');
-    wrapper.onscroll = () => {
-        if (wrapper.scrollTop > 500) btt.classList.add('visible');
-        else btt.classList.remove('visible');
-    };
-    btt.onclick = (e) => {
-        e.preventDefault();
-        wrapper.scrollTo({ top: 0, behavior: 'smooth' });
-    };
+        function createNewBlock() {
+            blockCounter++;
+            const blockId = blockCounter;
 
-    // Lightbox Logic
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxCaption = document.getElementById('lightbox-caption');
-    const lightboxClose = document.getElementById('lightbox-close');
-    const lightboxPrev = document.getElementById('lightbox-prev');
-    const lightboxNext = document.getElementById('lightbox-next');
+            const block = document.createElement('div');
+            block.className = 'calculator-block';
+            block.innerHTML = `
+                <button class="remove-btn" title="Удалить этот заказ" onclick="removeBlock(event)">&times;</button>
 
-    let currentGallery = [];
-    let currentIndex = 0;
-
-    function openLightbox(imgElement, galleryElements) {
-        currentGallery = Array.from(galleryElements);
-        currentIndex = currentGallery.indexOf(imgElement.parentElement);
-        updateLightbox();
-        lightbox.style.display = 'flex';
-    }
-
-    function updateLightbox() {
-        const currentItem = currentGallery[currentIndex].querySelector('img');
-        lightboxImg.style.opacity = 0;
-
-        // Dynamic background tint (best effort based on cross-origin constraints)
-        // Since we can't always get pixel data due to CORS, we'll use a CSS filter/backdrop hack
-        // or a simplified heuristic if it was a local asset.
-        // For now, let's just add a subtle transition to the backdrop blur.
-
-        setTimeout(() => {
-            lightboxImg.src = currentItem.src;
-            lightboxCaption.textContent = currentItem.alt;
-            lightboxImg.style.opacity = 1;
-
-            // Heuristic: if we wanted real color extraction, we'd need a canvas.
-            // But since these are from picsum.photos, CORS might block it.
-            // We'll use a CSS trick to "bleed" some color into the background using a hidden blurred copy
-            let blurredBg = document.getElementById('lightbox-blur-bg');
-            if (!blurredBg) {
-                blurredBg = document.createElement('div');
-                blurredBg.id = 'lightbox-blur-bg';
-                blurredBg.style.position = 'absolute';
-                blurredBg.style.top = '0';
-                blurredBg.style.left = '0';
-                blurredBg.style.width = '100%';
-                blurredBg.style.height = '100%';
-                blurredBg.style.zIndex = '-1';
-                blurredBg.style.opacity = '0.3';
-                blurredBg.style.filter = 'blur(100px) brightness(0.8)';
-                blurredBg.style.backgroundSize = 'cover';
-                blurredBg.style.backgroundPosition = 'center';
-                blurredBg.style.transition = 'background-image 0.5s';
-                lightbox.appendChild(blurredBg);
-            }
-            blurredBg.style.backgroundImage = `url(${currentItem.src})`;
-        }, 150);
-    }
-
-    lightboxClose.onclick = () => lightbox.style.display = 'none';
-    lightboxPrev.onclick = () => {
-        currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
-        updateLightbox();
-    };
-    lightboxNext.onclick = () => {
-        currentIndex = (currentIndex + 1) % currentGallery.length;
-        updateLightbox();
-    };
-
-    window.onclick = (e) => { if (e.target === lightbox) lightbox.style.display = 'none'; };
-
-    document.addEventListener('keydown', (e) => {
-        if (lightbox.style.display === 'flex') {
-            if (e.key === 'ArrowLeft') lightboxPrev.onclick();
-            if (e.key === 'ArrowRight') lightboxNext.onclick();
-            if (e.key === 'Escape') lightboxClose.onclick();
-        }
-    });
-
-    // Attach Lightbox & Nav to Gallery Items
-    function refreshGalleryHooks() {
-        document.querySelectorAll('.gallery-container, .stats-images, .image-row').forEach(container => {
-            const items = container.querySelectorAll('.gallery-item, .stats-img-item');
-            const scroll = container.querySelector('.gallery-scroll');
-            const prevBtn = container.querySelector('.gallery-nav.prev');
-            const nextBtn = container.querySelector('.gallery-nav.next');
-
-            items.forEach(item => {
-                item.onclick = (e) => {
-                    e.stopPropagation();
-                    openLightbox(item.querySelector('img'), items);
-                };
-            });
-
-            if (prevBtn && nextBtn && scroll) {
-                prevBtn.onclick = (e) => {
-                    e.stopPropagation();
-                    scroll.scrollBy({ left: -scroll.clientWidth, behavior: 'smooth' });
-                };
-                nextBtn.onclick = (e) => {
-                    e.stopPropagation();
-                    scroll.scrollBy({ left: scroll.clientWidth, behavior: 'smooth' });
-                };
-            }
-        });
-    }
-    refreshGalleryHooks();
-
-    function createNewBlock() {
-        blockCounter++;
-        const blockId = blockCounter;
-
-        const block = document.createElement('div');
-        block.className = 'calculator-block';
-        block.innerHTML = `
-            <button class="remove-btn" title="Удалить этот заказ" onclick="removeBlock(event)">&times;</button>
-
-            <div class="section">
-                <div class="section-title">Категория</div>
-                <div class="options-grid">
-                    <label class="option-label"><input type="radio" name="category-${blockId}" value="anthro" checked> Антро</label>
-                    <label class="option-label"><input type="radio" name="category-${blockId}" value="feral"> Ферал</label>
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-title">Персонажи</div>
-                <div class="options-grid">
-                    <label class="option-label"><input type="radio" name="chars-${blockId}" value="1" checked> 1</label>
-                    <label class="option-label"><input type="radio" name="chars-${blockId}" value="2"> 2 (x2 к цене)</label>
-                    <label class="option-label"><input type="radio" name="chars-${blockId}" value="custom"> Свой вариант</label>
-                </div>
-                <div class="custom-count-wrapper">
-                    <input type="number" class="custom-count-input" value="3" min="1" placeholder="Введите количество персонажей">
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-title">Формат</div>
-                <div class="options-grid">
-                    <label class="option-label"><input type="radio" name="format-${blockId}" value="head" checked> Хед</label>
-                    <label class="option-label"><input type="radio" name="format-${blockId}" value="half"> Халф</label>
-                    <label class="option-label"><input type="radio" name="format-${blockId}" value="full"> Полнорост</label>
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-title">Рендер</div>
-                <div class="options-grid">
-                    <label class="option-label"><input type="radio" name="render-${blockId}" value="sketch" checked> Скетч/МОНО цвет</label>
-                    <label class="option-label"><input type="radio" name="render-${blockId}" value="simple"> Простой рендер</label>
-                    <label class="option-label"><input type="radio" name="render-${blockId}" value="hard"> Сложный рендер</label>
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-title">Фон</div>
-                <div class="options-grid">
-                    <label class="option-label"><input type="radio" name="background-${blockId}" value="abstract" checked> Абстрактный (бесплатно)</label>
-                    <label class="option-label"><input type="radio" name="background-${blockId}" value="simple"> Простой (+500р.)</label>
-                    <label class="option-label"><input type="radio" name="background-${blockId}" value="hard"> Сложный (+1500-4500р.)</label>
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-title">Рейтинг</div>
-                <div class="options-grid">
-                    <label class="option-label"><input type="radio" name="rating-${blockId}" value="sfw" checked> SFW</label>
-                    <label class="option-label"><input type="radio" name="rating-${blockId}" value="solo"> NSFW Solo (+10%)</label>
-                    <label class="option-label"><input type="radio" name="rating-${blockId}" value="duo"> NSFW Duo (+20%)</label>
-                    <label class="option-label"><input type="radio" name="rating-${blockId}" value="custom_nsfw"> NSFW Custom</label>
-                </div>
-                <div class="nsfw-custom-wrapper" style="margin-top: 10px; display: none;">
-                    <input type="number" class="nsfw-custom-input custom-count-input" value="1" min="1" placeholder="Введите количество NSFW персонажей">
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-title">Срок: <span class="deadline-val">31</span> день (+<span class="deadline-bonus">0</span>%)</div>
-                <div class="slider-container">
-                    <input type="range" class="deadline-slider" name="deadline-${blockId}" min="1" max="31" value="31">
-                    <div class="slider-labels">
-                        <span>1 день (+100%)</span>
-                        <span>31 день (+0%)</span>
+                <div class="section">
+                    <div class="section-title">Персонажи</div>
+                    <div class="options-grid">
+                        <label class="option-label"><input type="radio" name="chars-${blockId}" value="1" checked> 1</label>
+                        <label class="option-label"><input type="radio" name="chars-${blockId}" value="2"> 2 (x2 к цене)</label>
+                        <label class="option-label"><input type="radio" name="chars-${blockId}" value="custom"> Свой вариант</label>
+                    </div>
+                    <div class="custom-count-wrapper">
+                        <input type="number" class="custom-count-input" value="3" min="1" placeholder="Введите количество персонажей">
                     </div>
                 </div>
-            </div>
 
-            <div class="section">
-                <div class="section-title">Другие опции</div>
-                <div class="options-grid">
-                    <label class="option-label"><input type="checkbox" name="chibi-${blockId}" value="chibi"> Чиби (цена / 2)</label>
-                    <label class="option-label"><input type="checkbox" name="design-${blockId}" value="design"> Оформление (+200)</label>
+                <div class="section">
+                    <div class="section-title">Формат</div>
+                    <div class="options-grid">
+                        <label class="option-label"><input type="radio" name="format-${blockId}" value="head" checked> Хед</label>
+                        <label class="option-label"><input type="radio" name="format-${blockId}" value="half"> Халф</label>
+                        <label class="option-label"><input type="radio" name="format-${blockId}" value="full"> Полнорост</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="block-total">
-                Стоимость: <span class="block-price">0</span> руб.
-            </div>
-        `;
+                <div class="section">
+                    <div class="section-title">Рендер</div>
+                    <div class="options-grid">
+                        <label class="option-label"><input type="radio" name="render-${blockId}" value="sketch" checked> Скетч/МОНО цвет</label>
+                        <label class="option-label"><input type="radio" name="render-${blockId}" value="simple"> Простой рендер</label>
+                        <label class="option-label"><input type="radio" name="render-${blockId}" value="hard"> Сложный рендер</label>
+                    </div>
+                </div>
 
-        block.addEventListener('change', () => calculateBlock(block, blockId));
-        block.addEventListener('input', (e) => {
-            if (e.target.classList.contains('deadline-slider')) {
-                updateSliderGradient(e.target);
-            }
+                <div class="section">
+                    <div class="section-title">Фон</div>
+                    <div class="options-grid">
+                        <label class="option-label"><input type="radio" name="background-${blockId}" value="abstract" checked> Абстрактный (бесплатно)</label>
+                        <label class="option-label"><input type="radio" name="background-${blockId}" value="simple"> Простой (+500р.)</label>
+                        <label class="option-label"><input type="radio" name="background-${blockId}" value="hard"> Сложный (+1500-4500р.)</label>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Другие опции</div>
+                    <div class="options-grid">
+                        <label class="option-label"><input type="checkbox" name="chibi-${blockId}" value="chibi"> Чиби (цена / 2)</label>
+                        <label class="option-label"><input type="checkbox" name="design-${blockId}" value="design"> Оформление (+200)</label>
+                    </div>
+                </div>
+
+                <div class="block-total">
+                    Стоимость: <span class="block-price">0</span> руб.
+                </div>
+            `;
+
+            block.addEventListener('change', () => calculateBlock(block, blockId));
+
+            const charsRadios = block.querySelectorAll(`input[name="chars-${blockId}"]`);
+            const customWrapper = block.querySelector('.custom-count-wrapper');
+            charsRadios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    customWrapper.style.display = (e.target.value === 'custom') ? 'block' : 'none';
+                    calculateBlock(block, blockId);
+                });
+            });
+
+            calculatorList.appendChild(block);
             calculateBlock(block, blockId);
-        });
-
-        const charsRadios = block.querySelectorAll(`input[name="chars-${blockId}"]`);
-        const customWrapper = block.querySelector('.custom-count-wrapper');
-        charsRadios.forEach(radio => {
-            radio.addEventListener('change', (e) => {
-                customWrapper.style.display = (e.target.value === 'custom') ? 'block' : 'none';
-                calculateBlock(block, blockId);
-            });
-        });
-
-        const ratingRadios = block.querySelectorAll(`input[name="rating-${blockId}"]`);
-        const nsfwCustomWrapper = block.querySelector('.nsfw-custom-wrapper');
-        ratingRadios.forEach(radio => {
-            radio.addEventListener('change', (e) => {
-                nsfwCustomWrapper.style.display = (e.target.value === 'custom_nsfw') ? 'block' : 'none';
-                calculateBlock(block, blockId);
-            });
-        });
-
-        calculatorList.appendChild(block);
-        updateSliderGradient(block.querySelector('.deadline-slider'));
-        calculateBlock(block, blockId);
-    }
-
-    function removeBlock(event) {
-        event.preventDefault();
-        event.currentTarget.closest('.calculator-block').remove();
-        updateGrandTotal();
-    }
-
-    function calculateBlock(block, blockId) {
-        const category = block.querySelector(`input[name="category-${blockId}"]:checked`).value;
-        const renderType = block.querySelector(`input[name="render-${blockId}"]:checked`).value;
-        const format = block.querySelector(`input[name="format-${blockId}"]:checked`).value;
-        const chars = block.querySelector(`input[name="chars-${blockId}"]:checked`).value;
-        const background = block.querySelector(`input[name="background-${blockId}"]:checked`).value;
-        const rating = block.querySelector(`input[name="rating-${blockId}"]:checked`).value;
-        const deadline = parseInt(block.querySelector(`input[name="deadline-${blockId}"]`).value);
-        const chibi = block.querySelector(`input[name="chibi-${blockId}"]`).checked;
-        const design = block.querySelector(`input[name="design-${blockId}"]`).checked;
-
-        let basePrice = prices[category][renderType][format];
-
-        // Number of characters multiplier
-        let numChars = 1;
-        if (chars === '2') {
-            numChars = 2;
-        } else if (chars === 'custom') {
-            numChars = parseInt(block.querySelector('.custom-count-input').value) || 1;
-        }
-        basePrice *= numChars;
-
-        // Rating modifier
-        let ratingMod = 0;
-        if (rating === 'solo') ratingMod = 0.1;
-        else if (rating === 'duo') ratingMod = 0.2;
-        else if (rating === 'custom_nsfw') {
-            const nsfwCount = parseInt(block.querySelector('.nsfw-custom-input').value) || 1;
-            ratingMod = nsfwCount * 0.1;
         }
 
-        basePrice *= (1 + ratingMod);
-
-        // Deadline modifier
-        // 1 day = +100% (1.0), 31 days = +0% (0.0)
-        let deadlineBonus = Math.round(((31 - deadline) / 30) * 100);
-        block.querySelector('.deadline-val').textContent = deadline;
-        block.querySelector('.deadline-bonus').textContent = deadlineBonus;
-        basePrice *= (1 + (deadlineBonus / 100));
-
-        let priceWithoutBg = basePrice;
-        if (chibi) {
-            priceWithoutBg /= 2;
+        function removeBlock(event) {
+            event.preventDefault();
+            event.currentTarget.closest('.calculator-block').remove();
+            updateGrandTotal();
         }
 
-        if (design) {
-            priceWithoutBg += 200;
-        }
+        function calculateBlock(block, blockId) {
+            const renderType = block.querySelector(`input[name="render-${blockId}"]:checked`).value;
+            const format = block.querySelector(`input[name="format-${blockId}"]:checked`).value;
+            const chars = block.querySelector(`input[name="chars-${blockId}"]:checked`).value;
+            const background = block.querySelector(`input[name="background-${blockId}"]:checked`).value;
+            const chibi = block.querySelector(`input[name="chibi-${blockId}"]`).checked;
+            const design = block.querySelector(`input[name="design-${blockId}"]`).checked;
 
-        let priceDisplay = '';
-        if (background === 'simple') {
-            priceDisplay = Math.round(priceWithoutBg + 500);
-        } else if (background === 'hard') {
-            const minPrice = Math.round(priceWithoutBg + 1500);
-            const maxPrice = Math.round(priceWithoutBg + 4500);
-            priceDisplay = minPrice + '-' + maxPrice;
-        } else {
-            priceDisplay = Math.round(priceWithoutBg);
-        }
+            let basePrice = priceList[renderType][format];
 
-        block.querySelector('.block-price').textContent = priceDisplay;
-        updateGrandTotal();
-    }
-
-    function updateGrandTotal() {
-        const grandTotalSpan = document.getElementById('grand-total');
-        if (!grandTotalSpan) return;
-
-        let minTotal = 0;
-        let maxTotal = 0;
-        let hasRange = false;
-
-        document.querySelectorAll('.block-price').forEach(el => {
-            const text = el.textContent;
-            if (text.includes('-')) {
-                const parts = text.split('-');
-                minTotal += parseInt(parts[0]) || 0;
-                maxTotal += parseInt(parts[1]) || 0;
-                hasRange = true;
-            } else {
-                const price = parseInt(text) || 0;
-                minTotal += price;
-                maxTotal += price;
+            if (chars === '2') {
+                basePrice *= 2;
+            } else if (chars === 'custom') {
+                const customCount = block.querySelector('.custom-count-input').value || 1;
+                basePrice *= parseInt(customCount);
             }
-        });
 
-        const selectedRadio = document.querySelector('input[name="discount-option"]:checked');
-        const discountValue = selectedRadio ? parseInt(selectedRadio.value) : 0;
-
-        if (discountValue > 0) {
-            minTotal = Math.round(minTotal * (1 - discountValue / 100));
-            maxTotal = Math.round(maxTotal * (1 - discountValue / 100));
-        }
-
-        let resultText = (hasRange && minTotal !== maxTotal) ? (minTotal + '-' + maxTotal) : minTotal;
-        if (discountValue > 0) resultText += ' (со скидкой -' + discountValue + '%)';
-
-        grandTotalSpan.textContent = resultText;
-    }
-
-    document.getElementById('discount-group').addEventListener('change', updateGrandTotal);
-
-    // Логика отжатия кнопок скидок
-    let lastCheckedRadio = null;
-    document.querySelectorAll('input[name="discount-option"]').forEach(radio => {
-        radio.addEventListener('click', function() {
-            if (lastCheckedRadio === this) {
-                this.checked = false;
-                lastCheckedRadio = null;
-                updateGrandTotal();
-            } else {
-                lastCheckedRadio = this;
+            let priceWithoutBg = basePrice;
+            if (chibi) {
+                priceWithoutBg /= 2;
             }
-        });
-    });
 
-    function updateSliderGradient(slider) {
-        const val = slider.value;
-        const min = slider.min ? slider.min : 1;
-        const max = slider.max ? slider.max : 31;
-        const percent = (val - min) / (max - min) * 100;
-        slider.style.background = `linear-gradient(to right, #c787de ${percent}%, #e8d0e5 ${percent}%)`;
-    }
+            if (design) {
+                priceWithoutBg += 200;
+            }
 
-    document.getElementById('add-block-btn').addEventListener('click', createNewBlock);
+            let bgPrice = 0;
+            let priceDisplay = '';
 
-    document.getElementById('copy-total').onclick = function() {
-        const grandTotalSpan = document.getElementById('grand-total');
-        if (!grandTotalSpan) return;
+            if (background === 'simple') {
+                bgPrice = 500;
+                priceDisplay = (priceWithoutBg + bgPrice);
+            } else if (background === 'hard') {
+                bgPrice = 1500;
+                const minPrice = priceWithoutBg + 1500;
+                const maxPrice = priceWithoutBg + 4500;
+                priceDisplay = minPrice + '-' + maxPrice;
+            } else {
+                priceDisplay = priceWithoutBg;
+            }
 
-        const totalText = grandTotalSpan.textContent;
-        const cleanTotal = totalText.split(' ')[0];
-
-        const textArea = document.createElement("textarea");
-        textArea.value = cleanTotal;
-        document.body.appendChild(textArea);
-        textArea.select();
-        try {
-            document.execCommand('copy');
-
-            const wrapper = document.getElementById('total-display-wrapper');
-            const feedback = document.getElementById('copy-feedback');
-
-            wrapper.style.display = 'none';
-            feedback.style.display = 'block';
-
-            setTimeout(() => {
-                wrapper.style.display = 'flex';
-                feedback.style.display = 'none';
-            }, 2000);
-        } catch (err) {
-            console.error('Copy failed', err);
+            block.querySelector('.block-price').textContent = priceDisplay;
+            updateGrandTotal();
         }
-        document.body.removeChild(textArea);
-    };
 
-    createNewBlock();
+        function updateGrandTotal() {
+            let minTotal = 0;
+            let maxTotal = 0;
+            let hasRange = false;
 
-    // Auto-scroll galleries
-    document.querySelectorAll('.gallery-scroll').forEach(gallery => {
-        let direction = 1;
-        setInterval(() => {
-            if (lightbox.style.display === 'flex') return; // Pause if lightbox is open
-            const maxScroll = gallery.scrollWidth - gallery.clientWidth;
-            if (gallery.scrollLeft >= maxScroll - 5) direction = -1;
-            if (gallery.scrollLeft <= 5) direction = 1;
-
-            gallery.scrollBy({
-                left: direction * gallery.clientWidth,
-                behavior: 'smooth'
+            document.querySelectorAll('.block-price').forEach(el => {
+                const text = el.textContent;
+                // Если это диапазон (содержит "-"), берём минимальное и максимальное значение
+                if (text.includes('-')) {
+                    const parts = text.split('-');
+                    const min = parseInt(parts[0]);
+                    const max = parseInt(parts[1]);
+                    minTotal += min || 0;
+                    maxTotal += max || 0;
+                    hasRange = true;
+                } else {
+                    const price = parseInt(text) || 0;
+                    minTotal += price;
+                    maxTotal += price;
+                }
             });
-        }, 5000);
-    });
-</script>
 
+            // Применяем скидку
+            const selectedRadio = document.querySelector('input[name="discount-option"]:checked');
+            const discountValue = selectedRadio ? parseInt(selectedRadio.value) : 0;
+
+            if (discountValue > 0) {
+                minTotal = Math.round(minTotal * (1 - discountValue / 100));
+                maxTotal = Math.round(maxTotal * (1 - discountValue / 100));
+            }
+
+            // Отображаем диапазон, если есть хотя бы один, иначе просто число
+            let resultText = '';
+            if (hasRange && minTotal !== maxTotal) {
+                resultText = minTotal + '-' + maxTotal;
+            } else {
+                resultText = minTotal;
+            }
+
+            if (discountValue > 0) {
+                resultText += ' (со скидкой -' + discountValue + '%)';
+            }
+
+            grandTotalSpan.textContent = resultText;
+        }
+
+        document.getElementById('discount-group').addEventListener('change', updateGrandTotal);
+
+        // Логика отжатия кнопок скидок
+        let lastCheckedRadio = null;
+        document.querySelectorAll('input[name="discount-option"]').forEach(radio => {
+            radio.addEventListener('click', function() {
+                if (lastCheckedRadio === this) {
+                    this.checked = false;
+                    lastCheckedRadio = null;
+                    updateGrandTotal();
+                } else {
+                    lastCheckedRadio = this;
+                }
+            });
+        });
+
+        function openLightbox(src) {
+            console.log('Opening lightbox with:', src);
+        }
+
+        document.getElementById('add-block-btn').addEventListener('click', function() {
+            createNewBlock();
+        });
+
+        createNewBlock();
+    </script>
 </body>
 </html>
