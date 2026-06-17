@@ -112,17 +112,17 @@
             gap: 40px;
             align-items: center;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         .profile-column {
-            text-align: center;
+            text-align: left;
         }
 
         .avatar-wrapper {
             width: 180px;
             height: 180px;
-            margin: 0 auto 20px;
+            margin: 0 0 20px 0;
             border-radius: 50%;
             overflow: hidden;
             border: 4px solid var(--accent-color);
@@ -152,7 +152,7 @@
         .info-column {
             flex: 1;
             min-width: 300px;
-            text-align: center;
+            text-align: left;
         }
 
         .status-block {
@@ -179,7 +179,7 @@
             display: flex;
             gap: 15px;
             margin-top: 20px;
-            justify-content: center;
+            justify-content: flex-start;
             flex-wrap: wrap;
         }
 
@@ -190,7 +190,7 @@
             color: white;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             border-radius: 50%;
             text-decoration: none;
             transition: transform 0.3s, background 0.3s;
@@ -212,7 +212,7 @@
         .header-nav {
             margin: 40px 0;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 15px;
             flex-wrap: wrap;
         }
@@ -238,8 +238,8 @@
 
         /* Section Headers */
         .section-header {
-            text-align: center;
-            justify-content: center;
+            text-align: left;
+            justify-content: flex-start;
             font-size: 2em; /* Size consistent with calc-title */
             margin-bottom: 30px;
             color: var(--main-color);
@@ -258,8 +258,8 @@
             margin-top: 10px;
             position: absolute;
             bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
+
         }
 
         /* Calculator Header Convention */
@@ -268,11 +268,11 @@
             align-items: center;
             gap: 15px;
             margin-bottom: 30px;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         .calc-header.centered {
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         .calc-icon-container {
@@ -282,7 +282,7 @@
             border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             fill: white;
             flex-shrink: 0;
         }
@@ -291,14 +291,26 @@
             font-size: 2em;
             font-weight: 700;
             color: var(--main-color);
-            text-align: center;
+            text-align: left;
         }
 
         /* Tables & Lists */
-        .stats-grid {
+        .grid-3col {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .grid-3col {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .grid-3col {
+                grid-template-columns: 1fr;
+            }
         }
 
         .dictionary-grid {
@@ -316,7 +328,7 @@
         .dictionary-col h2 {
             font-size: 1.5em;
             margin-bottom: 20px;
-            text-align: center;
+            text-align: left;
         }
 
         .dictionary-col h2::after {
@@ -325,7 +337,7 @@
             width: 40px;
             height: 2px;
             background: var(--accent-color);
-            margin: 8px auto 0;
+            margin: 8px 0 0;
         }
 
         .stats-list-laconical {
@@ -351,17 +363,11 @@
             flex: 1;
         }
 
-        .stat-sep {
-            color: var(--accent-color);
-            font-weight: 300;
-            opacity: 0.6;
-        }
-
         .stat-value {
             font-weight: bold;
             color: var(--main-color);
             min-width: 50px;
-            text-align: center;
+            text-align: left;
         }
 
         .stat-bar-container {
@@ -399,7 +405,7 @@
             display: flex;
             gap: 15px;
             margin-top: 30px;
-            justify-content: center;
+            justify-content: flex-start;
             flex-wrap: wrap;
         }
 
@@ -422,48 +428,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        /* Collapsible Terms Styles */
-        details.terms-details {
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            margin-bottom: 10px;
-        }
-
-        details.terms-details summary {
-            padding: 10px 15px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 1.2em;
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: transparent;
-            color: var(--main-color);
-            transition: background 0.3s;
-            gap: 15px;
-        }
-
-        details.terms-details summary::after {
-            content: '▼';
-            font-size: 0.6em;
-            transition: transform 0.3s;
-        }
-
-        details.terms-details[open] summary::after {
-            transform: rotate(180deg);
-        }
-
-        details.terms-details summary:hover {
-            background: #fdf8fb;
-        }
-
-        .terms-content {
-            padding: 20px;
         }
 
         /* Gallery and Pricing Styles */
@@ -494,7 +458,7 @@
         }
 
         .pricing-column .pricing-info-col {
-            text-align: center;
+            text-align: left;
             font-size: 0.95em;
         }
 
@@ -544,8 +508,8 @@
         .pricing-info-col {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            text-align: center;
+            justify-content: flex-start;
+            text-align: left;
         }
 
         .price-table {
@@ -556,7 +520,7 @@
 
         .price-table th, .price-table td {
             padding: 10px 5px;
-            text-align: center;
+            text-align: left;
             border-bottom: 1px solid var(--border-color);
             font-size: 0.95em;
         }
@@ -569,7 +533,7 @@
 
         .price-table td:first-child {
             font-weight: bold;
-            text-align: center;
+            text-align: left;
         }
 
         .gallery-container {
@@ -627,7 +591,7 @@
             z-index: 5;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             font-size: 20px;
             transition: background 0.3s, transform 0.2s;
             opacity: 0;
@@ -655,7 +619,7 @@
             background: rgba(0, 0, 0, 0.95);
             z-index: 2000;
             display: none;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             flex-direction: column;
             backdrop-filter: blur(10px);
@@ -697,7 +661,7 @@
             height: 80px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             transition: background 0.3s;
         }
 
@@ -714,8 +678,6 @@
             font-size: 1.4em;
             font-weight: 600;
         }
-
-        .stat-value { font-weight: bold; color: var(--accent-color); font-size: 1.1em; }
 
         /* Calculator Styles */
         .calculator-block {
@@ -801,7 +763,7 @@
         }
 
         .block-total {
-            text-align: right;
+            text-align: left;
             font-size: 1.1em;
             margin-top: 15px;
             font-weight: bold;
@@ -853,7 +815,7 @@
 
         .action-buttons {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             margin: 25px 0;
         }
 
@@ -876,17 +838,12 @@
             box-shadow: 0 6px 20px rgba(185, 119, 209, 0.4);
         }
 
-        .btn-action:active {
-            transform: translateY(1px);
-            filter: none;
-        }
-
         .final-summary {
             background: var(--main-color);
             color: white;
             border-radius: 15px;
             padding: 25px;
-            text-align: center;
+            text-align: left;
             font-size: 1.3em;
             box-shadow: 0 6px 15px rgba(114, 61, 147, 0.2);
         }
@@ -917,12 +874,12 @@
         }
 
         /* Generic Helper Classes */
-        .text-center { text-align: center; }
+        .text-center { text-align: left; }
         .mt-20 { margin-top: 20px; }
         .mb-20 { margin-bottom: 20px; }
 
         @media (max-width: 600px) {
-            .header-container { flex-direction: column; text-align: center; }
+            .header-container { flex-direction: column; text-align: left; }
             .block-card { padding: 20px; }
             .profile-name { font-size: 2.2em; }
             .lightbox-nav { width: 50px; height: 50px; font-size: 30px; }
@@ -949,7 +906,7 @@
             border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             cursor: pointer;
             opacity: 0;
             transition: opacity 0.3s, transform 0.3s;
@@ -1031,7 +988,7 @@
                                 <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.12 16.56l-5.12 2.31-5.12-2.31V7.44l5.12-2.31 5.12 2.31v9.12z"/></svg>
                             </a>
                             <a href="https://www.youtube.com/@РакельЭнелисс" class="social-btn" title="YouTube">
-                                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122-2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                             </a>
                         </div>
                     </div>
@@ -1227,261 +1184,234 @@
                 </section>
 
                 <section id="chibi" class="block-card">
-                    <details class="terms-details">
-                        <summary><h2 class="section-header" style="margin-bottom: 0;">ЧИБИ</h2></summary>
-                        <div class="terms-content">
-                            <div class="pricing-grid-3col">
-                                <div class="pricing-column">
-                                    <div class="gallery-container">
-                                        <button class="gallery-nav prev">&#10094;</button>
-                                        <div class="gallery-scroll">
-                                            <div class="gallery-item"><img src="https://picsum.photos/id/31/500/700" alt="Chibi 1"></div>
-                                            <div class="gallery-item"><img src="https://picsum.photos/id/32/500/700" alt="Chibi 2"></div>
-                                        </div>
-                                        <button class="gallery-nav next">&#10095;</button>
-                                    </div>
-                                    <div class="pricing-info-col">
-                                        <span class="pricing-title">Чб/Моно скетч</span>
-                                        <p>• Хэд: 300р</p>
-                                        <p>• Халф: 500р</p>
-                                        <p>• Фулл: 750р</p>
-                                    </div>
+                    <h2 class="section-header">ЧИБИ</h2>
+                    <div class="pricing-grid-3col">
+                        <div class="pricing-column">
+                            <div class="gallery-container">
+                                <button class="gallery-nav prev">&#10094;</button>
+                                <div class="gallery-scroll">
+                                    <div class="gallery-item"><img src="https://picsum.photos/id/31/500/700" alt="Chibi 1"></div>
+                                    <div class="gallery-item"><img src="https://picsum.photos/id/32/500/700" alt="Chibi 2"></div>
                                 </div>
-                                <div class="pricing-column">
-                                    <div class="gallery-container">
-                                        <button class="gallery-nav prev">&#10094;</button>
-                                        <div class="gallery-scroll">
-                                            <div class="gallery-item"><img src="https://picsum.photos/id/33/500/700" alt="Chibi 3"></div>
-                                            <div class="gallery-item"><img src="https://picsum.photos/id/34/500/700" alt="Chibi 4"></div>
-                                        </div>
-                                        <button class="gallery-nav next">&#10095;</button>
-                                    </div>
-                                    <div class="pricing-info-col">
-                                        <span class="pricing-title">Простой рендер</span>
-                                        <p>• Хэд: 450р</p>
-                                        <p>• Халф: 1050р</p>
-                                        <p>• Фулл: 1500р</p>
-                                    </div>
-                                </div>
-                                <div class="pricing-column">
-                                    <div class="gallery-container">
-                                        <button class="gallery-nav prev">&#10094;</button>
-                                        <div class="gallery-scroll">
-                                            <div class="gallery-item"><img src="https://picsum.photos/id/35/500/700" alt="Chibi 5"></div>
-                                            <div class="gallery-item"><img src="https://picsum.photos/id/36/500/700" alt="Chibi 6"></div>
-                                        </div>
-                                        <button class="gallery-nav next">&#10095;</button>
-                                    </div>
-                                    <div class="pricing-info-col">
-                                        <span class="pricing-title">Сложный рендер</span>
-                                        <p>• Хэд: 750р</p>
-                                        <p>• Халф: 1500р</p>
-                                        <p>• Фулл: 2250р</p>
-                                    </div>
-                                </div>
+                                <button class="gallery-nav next">&#10095;</button>
                             </div>
-                            <div class="pricing-info-col mt-20">
-                                <p class="mb-20"><strong>Чиби:</strong> Разделите цену за желаемый формат на 2. К чиби относятся рисунки по лпс.</p>
-                                <p class="mt-20"><strong>Другие виды:</strong> летучие мыши, драконоподобные, пернатые, млп, кроликоподобные, протогены, опоссумы, сурикаты, сахаши, львы, акулы, панды, и крысы, копытные: лошади, олени.</p>
-                                <p class="mt-20"><strong>Люди:</strong> Цены не те же, что и на антро. Рисую от аниме до семи-реализма и реализма.</p>
+                            <div class="pricing-info-col">
+                                <span class="pricing-title">Чб/Моно скетч</span>
+                                <p>• Хэд: 300р</p>
+                                <p>• Халф: 500р</p>
+                                <p>• Фулл: 750р</p>
                             </div>
                         </div>
-                    </details>
+                        <div class="pricing-column">
+                            <div class="gallery-container">
+                                <button class="gallery-nav prev">&#10094;</button>
+                                <div class="gallery-scroll">
+                                    <div class="gallery-item"><img src="https://picsum.photos/id/33/500/700" alt="Chibi 3"></div>
+                                    <div class="gallery-item"><img src="https://picsum.photos/id/34/500/700" alt="Chibi 4"></div>
+                                </div>
+                                <button class="gallery-nav next">&#10095;</button>
+                            </div>
+                            <div class="pricing-info-col">
+                                <span class="pricing-title">Простой рендер</span>
+                                <p>• Хэд: 450р</p>
+                                <p>• Халф: 1050р</p>
+                                <p>• Фулл: 1500р</p>
+                            </div>
+                        </div>
+                        <div class="pricing-column">
+                            <div class="gallery-container">
+                                <button class="gallery-nav prev">&#10094;</button>
+                                <div class="gallery-scroll">
+                                    <div class="gallery-item"><img src="https://picsum.photos/id/35/500/700" alt="Chibi 5"></div>
+                                    <div class="gallery-item"><img src="https://picsum.photos/id/36/500/700" alt="Chibi 6"></div>
+                                </div>
+                                <button class="gallery-nav next">&#10095;</button>
+                            </div>
+                            <div class="pricing-info-col">
+                                <span class="pricing-title">Сложный рендер</span>
+                                <p>• Хэд: 750р</p>
+                                <p>• Халф: 1500р</p>
+                                <p>• Фулл: 2250р</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pricing-info-col mt-20">
+                        <p class="mb-20"><strong>Чиби:</strong> Разделите цену за желаемый формат на 2. К чиби относятся рисунки по лпс.</p>
+                        <p class="mt-20"><strong>Другие виды:</strong> летучие мыши, драконоподобные, пернатые, млп, кроликоподобные, протогены, опоссумы, сурикаты, сахаши, львы, акулы, панды, и крысы, копытные: лошади, олени.</p>
+                        <p class="mt-20"><strong>Люди:</strong> Цены не те же, что и на антро. Рисую от аниме до семи-реализма и реализма.</p>
+                    </div>
                 </section>
 
                 <section id="references" class="block-card">
-                    <details class="terms-details">
-                        <summary><h2 class="section-header" style="margin-bottom: 0;">РЕФЕРЕНСЫ</h2></summary>
-                        <div class="terms-content">
-                            <ul class="mb-20" style="padding-left: 20px; list-style: none;">
-                                <li class="mb-10">• Суммируйте цены за желаемое наполнение из обычного прайса;</li>
-                                <li class="mb-10">• При заказе вида "спереди и сзади" на одной базе (отзеркалены), второй рисунок будет в половину цены (примеры 4 и 5);</li>
-                                <li class="mb-10">• При заказе "одетой версии" на одной и той же базе, второй рисунок будет в половину цены (пример 3);</li>
-                                <li class="mb-10">• Глазки, подушечки, язык и носик, текст, палитра - 200р за всё сразу;</li>
-                                <li>• Цены за все эти референсы ниже, это может вам помочь:</li>
-                            </ul>
+                    <h2 class="section-header">РЕФЕРЕНСЫ</h2>
+                    <ul class="mb-20" style="padding-left: 20px; list-style: none;">
+                        <li class="mb-10">• Суммируйте цены за желаемое наполнение из обычного прайса;</li>
+                        <li class="mb-10">• При заказе вида "спереди и сзади" на одной базе (отзеркалены), второй рисунок будет в половину цены (примеры 4 и 5);</li>
+                        <li class="mb-10">• При заказе "одетой версии" на одной и той же базе, второй рисунок будет в половину цены (пример 3);</li>
+                        <li class="mb-10">• Глазки, подушечки, язык и носик, текст, палитра - 200р за всё сразу;</li>
+                        <li>• Цены за все эти референсы ниже, это может вам помочь:</li>
+                    </ul>
 
-                            <div class="pricing-layout">
-                                <div class="pricing-info-col">
-                                    <ol style="padding-left: 0; list-style-position: inside; color: var(--text-color); text-align: center;">
-                                        <li class="mb-20">3000 * 2 + (3000 * 1,1) + 2100 + 200 = 11600 ₽ (есть NSFW версия одного полнороста)</li>
-                                        <li class="mb-20">3000 + 900 * 2 + (2800 : 2) + 200 = 6400 ₽</li>
-                                        <li class="mb-20">3000 + (3000 : 2) + 900 * 2 + (3000 : 2) + (3000 : 2 : 2) + 200 = 8 750 ₽</li>
-                                        <li class="mb-20">3000 + (3000 : 2) + 900 + 2800 + 200 = 8400 ₽</li>
-                                        <li class="mb-20">3000 + (3000 : 2) + 800 + 2800 + 200 = 8300 ₽</li>
-                                        <li class="mb-20">3000 * 2 + 2800 + 800 + 200 = 9800 ₽</li>
-                                    </ol>
-                                    <p class="mt-20"><i>• Если не понимаете, как посчитать цену за нужное вам наполнение, спросите, я обязательно отвечу!!</i></p>
-                                </div>
-                                <div class="gallery-container">
-                                    <button class="gallery-nav prev">&#10094;</button>
-                                    <div class="gallery-scroll">
-                                        <div class="gallery-item"><img src="https://picsum.photos/id/601/1000/1400" alt="Reference Example 1"></div>
-                                        <div class="gallery-item"><img src="https://picsum.photos/id/602/1000/1400" alt="Reference Example 2"></div>
-                                        <div class="gallery-item"><img src="https://picsum.photos/id/603/1000/1400" alt="Reference Example 3"></div>
-                                        <div class="gallery-item"><img src="https://picsum.photos/id/604/1000/1400" alt="Reference Example 4"></div>
-                                        <div class="gallery-item"><img src="https://picsum.photos/id/605/1000/1400" alt="Reference Example 5"></div>
-                                        <div class="gallery-item"><img src="https://picsum.photos/id/606/1000/1400" alt="Reference Example 6"></div>
-                                    </div>
-                                    <button class="gallery-nav next">&#10095;</button>
-                                </div>
-                            </div>
+                    <div class="pricing-layout">
+                        <div class="pricing-info-col">
+                            <ol style="padding-left: 20px; color: var(--text-color); text-align: left;">
+                                <li class="mb-20">3000 * 2 + (3000 * 1,1) + 2100 + 200 = 11600 ₽ (есть NSFW версия одного полнороста)</li>
+                                <li class="mb-20">3000 + 900 * 2 + (2800 : 2) + 200 = 6400 ₽</li>
+                                <li class="mb-20">3000 + (3000 : 2) + 900 * 2 + (3000 : 2) + (3000 : 2 : 2) + 200 = 8 750 ₽</li>
+                                <li class="mb-20">3000 + (3000 : 2) + 900 + 2800 + 200 = 8400 ₽</li>
+                                <li class="mb-20">3000 + (3000 : 2) + 800 + 2800 + 200 = 8300 ₽</li>
+                                <li class="mb-20">3000 * 2 + 2800 + 800 + 200 = 9800 ₽</li>
+                            </ol>
+                            <p class="mt-20"><i>• Если не понимаете, как посчитать цену за нужное вам наполнение, спросите, я обязательно отвечу!!</i></p>
                         </div>
-                    </details>
+                        <div class="gallery-container">
+                            <button class="gallery-nav prev">&#10094;</button>
+                            <div class="gallery-scroll">
+                                <div class="gallery-item"><img src="https://picsum.photos/id/601/1000/1400" alt="Reference Example 1"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/602/1000/1400" alt="Reference Example 2"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/603/1000/1400" alt="Reference Example 3"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/604/1000/1400" alt="Reference Example 4"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/605/1000/1400" alt="Reference Example 5"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/606/1000/1400" alt="Reference Example 6"></div>
+                            </div>
+                            <button class="gallery-nav next">&#10095;</button>
+                        </div>
+                    </div>
                 </section>
 
                 <section id="vtuber" class="block-card">
-                    <details class="terms-details">
-                        <summary><h2 class="section-header" style="margin-bottom: 0;">Vtube</h2></summary>
-                        <div class="terms-content">
-                            <div class="video-container">
-                                <iframe src="https://drive.google.com/file/d/1UVwtl8RUUf7ekDrKGFLurdLiGFIAucFX/preview" width="100%" height="100%" allow="autoplay" style="border:none;"></iframe>
-                            </div>
+                    <h2 class="section-header">Vtube</h2>
+                    <div class="grid-3col">
+                        <div class="video-container" style="margin: 0;">
+                            <iframe src="https://drive.google.com/file/d/1UVwtl8RUUf7ekDrKGFLurdLiGFIAucFX/preview" width="100%" height="100%" allow="autoplay" style="border:none;"></iframe>
+                        </div>
+                        <div class="pricing-info-col">
                             <p class="text-center mb-20">Примеры риггинга и моделей Live2D</p>
                             <p>• Модель в полный рост без одежды: 12000р + 5к за версию с одеждой</p>
                             <p>• Модель в полный рост с одеждой: 15000р (без раздетой версии)</p>
                             <p>• Доп. эмоция без анимации: 400р</p>
                             <p>• Доп. эмоция с анимацией: 500р</p>
-                            <div class="video-container">
-                                <iframe src="https://drive.google.com/file/d/19RkFvIZaloDl8nspn9Q33qfxq-p2EsYi/preview" width="100%" height="100%" allow="autoplay" style="border:none;"></iframe>
-                            </div>
                         </div>
-                    </details>
+                        <div class="video-container" style="margin: 0;">
+                            <iframe src="https://drive.google.com/file/d/19RkFvIZaloDl8nspn9Q33qfxq-p2EsYi/preview" width="100%" height="100%" allow="autoplay" style="border:none;"></iframe>
+                        </div>
+                    </div>
                 </section>
 
-                <section id="stickers" class="block-card">
-                    <details class="terms-details">
-                        <summary><h2 class="section-header" style="margin-bottom: 0;">Стикеры</h2></summary>
-                        <div class="terms-content">
-                            <div class="pricing-layout">
-                                <div class="pricing-info-col">
-                                    <table class="price-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Кол-во</th>
-                                                <th>Простой</th>
-                                                <th>Сложный</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr><td>3 шт</td><td>1650</td><td>2100</td></tr>
-                                            <tr><td>6 шт</td><td>3000</td><td>3900</td></tr>
-                                            <tr><td>12 шт</td><td>5400</td><td>7200</td></tr>
-                                            <tr><td>24 шт</td><td>9600</td><td>13200</td></tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="gallery-container">
-                                    <button class="gallery-nav prev">&#10094;</button>
-                                    <div class="gallery-scroll">
-                                        <div class="gallery-item"><img src="https://picsum.photos/id/401/1000/1000" alt="Stickers Showcase"></div>
-                                        <div class="gallery-item"><img src="https://picsum.photos/id/402/1000/1000" alt="Stickers Showcase 2"></div>
-                                    </div>
-                                    <button class="gallery-nav next">&#10095;</button>
-                                </div>
+                <div class="grid-3col">
+                    <section id="stickers" class="block-card">
+                        <h2 class="section-header">Стикеры</h2>
+                        <div class="pricing-info-col">
+                            <table class="price-table">
+                                <thead>
+                                    <tr>
+                                        <th>Кол-во</th>
+                                        <th>Простой</th>
+                                        <th>Сложный</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>3 шт</td><td>1650</td><td>2100</td></tr>
+                                    <tr><td>6 шт</td><td>3000</td><td>3900</td></tr>
+                                    <tr><td>12 шт</td><td>5400</td><td>7200</td></tr>
+                                    <tr><td>24 шт</td><td>9600</td><td>13200</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="gallery-container mt-20" style="height: 200px;">
+                            <button class="gallery-nav prev">&#10094;</button>
+                            <div class="gallery-scroll">
+                                <div class="gallery-item"><img src="https://picsum.photos/id/401/1000/1000" alt="Stickers Showcase"></div>
+                                <div class="gallery-item"><img src="https://picsum.photos/id/402/1000/1000" alt="Stickers Showcase 2"></div>
                             </div>
+                            <button class="gallery-nav next">&#10095;</button>
                         </div>
-                    </details>
-                </section>
+                    </section>
 
-                <section id="merch" class="block-card">
-                    <details class="terms-details">
-                        <summary><h2 class="section-header" style="margin-bottom: 0;">Мерч</h2></summary>
-                        <div class="terms-content">
-                            <div class="pricing-layout">
-                                <div class="gallery-container">
-                                    <button class="gallery-nav prev">&#10094;</button>
-                                    <div class="gallery-scroll">
-                                    <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAS44uod21rRF_5BWhPCU7KDXUjb0U5dApWCe9trqU1cflKI3iRAfTKPUdG6gk15Lpvm9E9ktfgtvudFzOXYEMR2adsufUUJQ16Ig2jW_h90V6gAeEfwnVWKiSoPpe0YZ1tFHMovofVUF8QBT9XrhlV104-gk0B9Ve0OAU4od2-L6VPAVA1qcsXjU9juW8Kv1uI69WGElchU4rD_YDTYwCwuQx4hoOJoe-tZIaSKgo=w1280" alt="Merch 1"></div>
-                                    <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUC2LXioCleDDT6LzNobZ46OOs0kU1Y8YFvfVlek8yEH0kYEVw7NFOZlioPBNFYkXhpAbDEvmaojD3AGsL2uad8HQ5yJWmPSi_wJrqOB3vdf0sFacymJkt2nRuJTdEjfBZqyRsN0y4hkzCqvLohUR5zYhG3DLhZxCqZyRrM_w3kt3navdpXSD2o1U8FIaF57EUbQmIHCeg3Hzkr7vGEvtlMfDBWWOuihSQWv_1Du=w1280" alt="Merch 2"></div>
-                                    <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAVuTEyAqBVniZFf6Xkm7ePle22dTINO98B-CpMCecP_YTh9L40h_KM5xdqSdsh37ElykKeOkYv5miw3o_T48ByGcP8hciyaXFwigShpOXmUxd9eaKnbuQ8PXnnPcmkQBnMQkq9wouFMtMwphfcMc0wq7rdaE3TCZhdV3LLsMj1MfBrleAhzQdV58ac-fNp1FHOtItpikSBdcwZi-J-XUOujchzIGot_pEySsh_3B4=w1280" alt="Merch 3"></div>
-                                    <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUCxQq0sdRGfSWhUmy1PsZ2uSef2ROaUHobV4OQThDYML-DzzNZsKDjcV8lQ2zLSXKMzSENPXCbok0_uZu3lacj2WXIqsXzhjPUu95q4MIMIcQhcXEg5HFK7g537pgpNXhKnSKiOC7wubrOU7Wa_cEzEvkV80LHmi3XB-j6oapOA63giwSh9GD7q7vJFu_xYZ4mC37BTC7_chZoUaeaYl5DcX2dPgZ9xxcbKonqKb5g=w1280" alt="Merch 4"></div>
-                                    <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAIAHudVNCEE1otJ0q1_qIEzBwtTXbBUPriFGGrR2QEAI4qPfb0SBNWQ2i28rJfQDHO4tOvhs7KwlMi35fXZ7RfHSIiZSJ-HxRFn9FvU6cQah9J5__P7DsmIyTijdgzTzUNg_l6qtqqmTc9L1j_uvdiPEc6_NypEv64yTDWtrMIN4YaELPOmYoQqzlXLkavgSd200cyEGpOh48rBKYdtkrPE0vCa5y34w0BLGkrkdM=w1280" alt="Merch 5"></div>
-                                    <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUCmK9Oaf8RoASM5xV5UMYXGZ_DJHSysKbanoA9kBos_sUhen6S6KfOa23TxgzJMXcHqzOBE9d0VL-JHVgZPdFctbRQKIt6BjFGvIB0pHzRmHcDXCS89Yq_K5gt6EG-_GQFfUfpmAfSOfn5APsii4MgacO-HDWhCNTX8L7iE0oecmRbHBU2OKRtBIrSIl5E=w1280" alt="Merch 6"></div>
-                                    <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUCLT8_p47NcEPl0hJqEA_0pX0KIhOF19iriaR558J2xzHVijY3O6dVFc94jeDOYcfvN6qKr51KwX834X_A0RjzqU1dshim7n9hdsmEQTNtmPXdgEmjcxZQw2vy-TftX4OFHbCk-p9WnlXnDNaCQBVDYusxXjVW-A0S9ahiueHjUTQ96na897VnduzW9jWdClJhJ0KmgQu1T32kvWs8aSeWTkyf3Ln-PNJdl3nDr=w1280" alt="Merch 7"></div>
-                                    </div>
-                                    <button class="gallery-nav next">&#10095;</button>
-                                </div>
-                                <div class="pricing-info-col">
-                                    <p>У меня есть мерч! Отправляю в день оформления любой удобной вам доставкой (озон, яндекс, почта России, СДЭК, авито) за ваш счёт либо личная встреча в Москве. Актуальное наличие уточняйте!</p>
-                                    <p class="mt-20"><strong>4 вида ламинации:</strong> звёзды, бисер, радуга, битое стекло</p>
-                                </div>
+                    <section id="merch" class="block-card">
+                        <h2 class="section-header">Мерч</h2>
+                        <div class="gallery-container" style="height: 200px;">
+                            <button class="gallery-nav prev">&#10094;</button>
+                            <div class="gallery-scroll">
+                            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAS44uod21rRF_5BWhPCU7KDXUjb0U5dApWCe9trqU1cflKI3iRAfTKPUdG6gk15Lpvm9E9ktfgtvudFzOXYEMR2adsufUUJQ16Ig2jW_h90V6gAeEfwnVWKiSoPpe0YZ1tFHMovofVUF8QBT9XrhlV104-gk0B9Ve0OAU4od2-L6VPAVA1qcsXjU9juW8Kv1uI69WGElchU4rD_YDTYwCwuQx4hoOJoe-tZIaSKgo=w1280" alt="Merch 1"></div>
+                            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUC2LXioCleDDT6LzNobZ46OOs0kU1Y8YFvfVlek8yEH0kYEVw7NFOZlioPBNFYkXhpAbDEvmaojD3AGsL2uad8HQ5yJWmPSi_wJrqOB3vdf0sFacymJkt2nRuJTdEjfBZqyRsN0y4hkzCqvLohUR5zYhG3DLhZxCqZyRrM_w3kt3navdpXSD2o1U8FIaF57EUbQmIHCeg3Hzkr7vGEvtlMfDBWWOuihSQWv_1Du=w1280" alt="Merch 2"></div>
+                            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAVuTEyAqBVniZFf6Xkm7ePle22dTINO98B-CpMCecP_YTh9L40h_KM5xdqSdsh37ElykKeOkYv5miw3o_T48ByGcP8hciyaXFwigShpOXmUxd9eaKnbuQ8PXnnPcmkQBnMQkq9wouFMtMwphfcMc0wq7rdaE3TCZhdV3LLsMj1MfBrleAhzQdV58ac-fNp1FHOtItpikSBdcwZi-J-XUOujchzIGot_pEySsh_3B4=w1280" alt="Merch 3"></div>
+                            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUCxQq0sdRGfSWhUmy1PsZ2uSef2ROaUHobV4OQThDYML-DzzNZsKDjcV8lQ2zLSXKMzSENPXCbok0_uZu3lacj2WXIqsXzhjPUu95q4MIMIcQhcXEg5HFK7g537pgpNXhKnSKiOC7wubrOU7Wa_cEzEvkV80LHmi3XB-j6oapOA63giwSh9GD7q7vJFu_xYZ4mC37BTC7_chZoUaeaYl5DcX2dPgZ9xxcbKonqKb5g=w1280" alt="Merch 4"></div>
+                            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAIAHudVNCEE1otJ0q1_qIEzBwtTXbBUPriFGGrR2QEAI4qPfb0SBNWQ2i28rJfQDHO4tOvhs7KwlMi35fXZ7RfHSIiZSJ-HxRFn9FvU6cQah9J5__P7DsmIyTijdgzTzUNg_l6qtqqmTc9L1j_uvdiPEc6_NypEv64yTDWtrMIN4YaELPOmYoQqzlXLkavgSd200cyEGpOh48rBKYdtkrPE0vCa5y34w0BLGkrkdM=w1280" alt="Merch 5"></div>
+                            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUCmK9Oaf8RoASM5xV5UMYXGZ_DJHSysKbanoA9kBos_sUhen6S6KfOa23TxgzJMXcHqzOBE9d0VL-JHVgZPdFctbRQKIt6BjFGvIB0pHzRmHcDXCS89Yq_K5gt6EG-_GQFfUfpmAfSOfn5APsii4MgacO-HDWhCNTX8L7iE0oecmRbHBU2OKRtBIrSIl5E=w1280" alt="Merch 6"></div>
+                            <div class="gallery-item"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUCLT8_p47NcEPl0hJqEA_0pX0KIhOF19iriaR558J2xzHVijY3O6dVFc94jeDOYcfvN6qKr51KwX834X_A0RjzqU1dshim7n9hdsmEQTNtmPXdgEmjcxZQw2vy-TftX4OFHbCk-p9WnlXnDNaCQBVDYusxXjVW-A0S9ahiueHjUTQ96na897VnduzW9jWdClJhJ0KmgQu1T32kvWs8aSeWTkyf3Ln-PNJdl3nDr=w1280" alt="Merch 7"></div>
                             </div>
+                            <button class="gallery-nav next">&#10095;</button>
                         </div>
-                    </details>
-                </section>
+                        <div class="pricing-info-col mt-20">
+                            <p>У меня есть мерч! Отправляю в день оформления любой удобной вам доставкой (озон, яндекс, почта России, СДЭК, авито) за ваш счёт либо личная встреча в Москве. Актуальное наличие уточняйте!</p>
+                            <p class="mt-20"><strong>4 вида ламинации:</strong> звёзды, бисер, радуга, битое стекло</p>
+                        </div>
+                    </section>
 
-                <section id="additional" class="block-card">
-                    <details class="terms-details">
-                        <summary><h2 class="section-header" style="margin-bottom: 0;">ДОПОЛНИТЕЛЬНО</h2></summary>
-                        <div class="terms-content">
-                            <p class="mb-20">Помимо этого, я:</p>
-                            <ul style="padding-left: 20px; list-style: none;">
-                                <li class="mb-10">• Оформляю баннеры для групп вк\бусти\ютуба и тд;</li>
-                                <li class="mb-10">• Создаю дизайны персонажей по вашим пожеланиям;</li>
-                                <li class="mb-10">• Рисую мемные картинки;</li>
-                                <li class="mb-10">• Рисую мордочку фурри поверх вашего селфи;</li>
-                                <li class="mb-10">• Обработываю photo + распечатываю на хосте, подбираю рамку и тд.;</li>
-                                <li class="mb-10">• Расписываю кружки, шкатулки и тд. акриловыми маркерами;</li>
-                                <li class="mb-10">• Леплю фигурки из лёгкого пластилина и самозатвердевающей/полимерной глины;</li>
-                                <li class="mb-10">• Отправляю традишные арты письмом любой службой доставки за ваш счёт;</li>
-                                <li>• Курирую начинающих художников. Пробные полчаса бесплатно, далее 1 час 500р либо недельное кураторство 1000р за 3 консультации.</li>
-                            </ul>
-                        </div>
-                    </details>
-                </section>
+                    <section id="additional" class="block-card">
+                        <h2 class="section-header">ДОПОЛНИТЕЛЬНО</h2>
+                        <ul style="padding-left: 0; list-style: none; font-size: 0.9em;">
+                            <li class="mb-10">• Оформляю баннеры для групп вк\бусти\ютуба и тд;</li>
+                            <li class="mb-10">• Создаю дизайны персонажей по вашим пожеланиям;</li>
+                            <li class="mb-10">• Рисую мемные картинки;</li>
+                            <li class="mb-10">• Рисую мордочку фурри поверх вашего селфи;</li>
+                            <li class="mb-10">• Обработываю photo + распечатываю на хосте, подбираю рамку и тд.;</li>
+                            <li class="mb-10">• Расписываю кружки, шкатулки и тд. акриловыми маркерами;</li>
+                            <li class="mb-10">• Леплю фигурки из лёгкого пластилина и самозатвердевающей/полимерной глины;</li>
+                            <li class="mb-10">• Отправляю традишные арты письмом любой службой доставки за ваш счёт;</li>
+                            <li>• Кураторство (1ч/500р).</li>
+                        </ul>
+                    </section>
+                </div>
 
                 <section id="dictionary" class="block-card">
-                    <details class="terms-details">
-                        <summary><h2 class="section-header" style="margin-bottom: 0;">СЛОВАРЬ И ПРАВИЛА</h2></summary>
-                        <div class="terms-content">
-                            <div class="dictionary-grid">
-                                <div class="dictionary-col">
-                                    <h2 class="mb-20">Словарь</h2>
-                                    <div class="terms-content" style="padding: 0;">
-                                        <p class="mb-20"><strong>Антро:</strong> очеловеченные, ходящие на двух ногах животные.</p>
-                                        <p class="mb-20"><strong>Ферал:</strong> очеловеченные животные, ходящие на 4х лапах.</p>
-                                        <p class="mb-20"><strong>Скетч:</strong> набросок, простая работа, выполненная в одном цвете с неровным контуром;</p>
-                                        <p class="mb-20"><strong>Простой рендер:</strong> более аккуратный цветной набросок (флэт колор, плоский цвет);</p>
-                                        <p class="mb-20"><strong>Сложный рендер:</strong> вылизанная картинка с светотенью и постабработкой (фулл колор);</p>
-                                        <p class="mb-20"><strong>Хэд/Халф/Фулл:</strong> голова / по пояс / в полный рост.</p>
-                                        <p class="mb-20"><strong>Чиби:</strong> анатомически упрощённый, мультяшный рисунок.</p>
-                                    </div>
-                                </div>
-
-                                <div class="dictionary-col">
-                                    <h2 class="mb-20">Я рисую</h2>
-                                    <div class="terms-content" style="padding: 0;">
-                                        <ul style="padding-left: 0; list-style: none;">
-                                            <li>• Любые виды фурри и ферал;</li>
-                                            <li>• Людей;</li>
-                                            <li>• Май литл пони (млп);</li>
-                                            <li>• Драконов;</li>
-                                            <li>• 18+ тематику;</li>
-                                            <li>• Тематику БДСМ;</li>
-                                            <li>• Тематику смерти, старости, младенчества без сексуализации;</li>
-                                            <li>• Арты в стиле Дисней;</li>
-                                            <li>• Арты в стиле LPS.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="dictionary-col">
-                                    <h2 class="mb-20">Я не рисую</h2>
-                                    <div class="terms-content" style="padding: 0;">
-                                        <ul style="padding-left: 0; list-style: none;">
-                                            <li>• Ферал п*рно;</li>
-                                            <li>• Воре (возможен только намёк);</li>
-                                            <li>• Гуро (разложение, гниение - нет);</li>
-                                            <li>• Тематику подгузников, фекалий, мочи и тд;</li>
-                                            <li>• Педо;</li>
-                                            <li>• Гипертрофированные половые признаки.</li>
-                                        </ul>
-                                    </div>
-                                </div>
+                    <h2 class="section-header">СЛОВАРЬ И ПРАВИЛА</h2>
+                    <div class="dictionary-grid">
+                        <div class="dictionary-col">
+                            <h2 class="mb-20">Словарь</h2>
+                            <div class="terms-content" style="padding: 0;">
+                                <p class="mb-20"><strong>Антро:</strong> очеловеченные, ходящие на двух ногах животные.</p>
+                                <p class="mb-20"><strong>Ферал:</strong> очеловеченные животные, ходящие на 4х лапах.</p>
+                                <p class="mb-20"><strong>Скетч:</strong> набросок, простая работа, выполненная в одном цвете с неровным контуром;</p>
+                                <p class="mb-20"><strong>Простой рендер:</strong> более аккуратный цветной набросок (флэт колор, плоский цвет);</p>
+                                <p class="mb-20"><strong>Сложный рендер:</strong> вылизанная картинка с светотенью и постабработкой (фулл колор);</p>
+                                <p class="mb-20"><strong>Хэд/Халф/Фулл:</strong> голова / по пояс / в полный рост.</p>
+                                <p class="mb-20"><strong>Чиби:</strong> анатомически упрощённый, мультяшный рисунок.</p>
                             </div>
                         </div>
-                    </details>
+
+                        <div class="dictionary-col">
+                            <h2 class="mb-20">Я рисую</h2>
+                            <div class="terms-content" style="padding: 0;">
+                                <ul style="padding-left: 0; list-style: none;">
+                                    <li>• Любые виды фурри и ферал;</li>
+                                    <li>• Людей;</li>
+                                    <li>• Май литл пони (млп);</li>
+                                    <li>• Драконов;</li>
+                                    <li>• 18+ тематику;</li>
+                                    <li>• Тематику БДСМ;</li>
+                                    <li>• Тематику смерти, старости, младенчества без сексуализации;</li>
+                                    <li>• Арты в стиле Дисней;</li>
+                                    <li>• Арты в стиле LPS.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="dictionary-col">
+                            <h2 class="mb-20">Я не рисую</h2>
+                            <div class="terms-content" style="padding: 0;">
+                                <ul style="padding-left: 0; list-style: none;">
+                                    <li>• Ферал п*рно;</li>
+                                    <li>• Воре (возможен только намёк);</li>
+                                    <li>• Гуро (разложение, гниение - нет);</li>
+                                    <li>• Тематику подгузников, фекалий, мочи и тд;</li>
+                                    <li>• Педо;</li>
+                                    <li>• Гипертрофированные половые признаки.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </section>
 
                 <section id="donates" class="block-card">
@@ -1496,7 +1426,7 @@
                             <p>Каждый месяц я выбираю одного из донов и рисую ему арт!</p>
                         </div>
                     </div>
-                    <div class="action-buttons" style="gap: 10px; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 10px; justify-content: center;">
+                    <div class="action-buttons" style="gap: 10px; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start;">
                         <a href="https://boosty.to/rakel_eneliss/purchase/3476976?ssource=DIRECT&share=subscription_link" class="nav-btn" target="_blank" style="white-space: nowrap;" title="Подписка на Бусти за 50 рублей">Бусти (50р)</a>
                         <a href="https://boosty.to/rakel_eneliss/purchase/3476980?ssource=DIRECT&share=subscription_link" class="nav-btn" target="_blank" style="white-space: nowrap;" title="Подписка на Бусти за 300 рублей">Бусти (300р)</a>
                         <a href="https://vk.com/donut/rakel_eneliss" class="nav-btn" target="_blank" style="white-space: nowrap;" title="Поддержка через ВК Донат">ВК донат</a>
@@ -1506,7 +1436,7 @@
                 </section>
 
                 <section id="calculator" class="block-card">
-                    <div class="calc-header centered">
+                    <div class="calc-header">
                         <div class="calc-icon-container">
                             <svg viewBox="0 0 24 24" width="24" height="24"><path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3M19 19H5V5H19V19M11 7H13V9H11V7M11 11H13V13H11V11M11 15H13V17H11V15M7 7H9V9H7V7M7 11H9V13H7V11M7 15H9V17H7V15M15 7H17V9H15V7M15 11H17V17H15V11"/></svg>
                         </div>
@@ -1529,7 +1459,7 @@
                             </div>
                         </div>
                         <div style="cursor: pointer; position: relative; padding: 10px;" id="copy-total" title="Нажмите, чтобы скопировать">
-                            <div id="total-display-wrapper" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <div id="total-display-wrapper" style="display: flex; align-items: center; justify-content: flex-start; gap: 10px;">
                                 <span id="total-label">Общая сумма:</span> <span id="grand-total">0</span> руб.
                                 <svg viewBox="0 0 24 24" width="20" height="20" fill="white" style="opacity: 0.8;"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
                             </div>
@@ -1540,31 +1470,32 @@
 
                 <section id="terms" class="block-card">
                     <h2 class="section-header">Условия</h2>
-                    <details class="terms-details">
-                        <summary style="justify-content: flex-start;">прочесть перед заказом</summary>
-                        <div class="terms-content">
-                            <ul style="padding-left: 20px; list-style: none;">
-                                <li class="mb-20">• Оплата сразу или же 50% до и 50% после предоставления скетча на ру карту/бусти/пейпал, возможна оплата частями;</li>
-                                <li class="mb-20">• Дополнительная плата взимается за крылья, сложный окрас персонажа и объекты помимо него;</li>
-                                <li class="mb-20">• Дополнительная плата за NSFW составит +10-20% от выбранного формата;</li>
-                                <li class="mb-20">• Случаи, когда вы хотите чтобы арт не был опубликован или будете использовать его в коммерческих целях, обговариваются отдельно до начала работы(!);</li>
-                                <li class="mb-20">• Если вы отказываетесь от заказа, деньги возвращаются только за непроделанную часть работы;</li>
-                                <li class="mb-20">• Если вы не выходите на связь более, чем 1 месяц, не предупредив заранее меня, заказ аннулируется (я не буду ждать бесконечно);</li>
-                                <li class="mb-20">• Если по вышеописанным причинам заказ аннулируется, я оставляю за собой право из рисунка сделать юч, предварительно убрав все детали, по которым можно было бы опознать персонажа;</li>
-                                <li class="mb-20">• Я рисую в разных направлениях и экспериментирую, так что не стесняйтесь спрашивать, если находите свою идею слишком необычной!;</li>
-                                <li class="mb-20">• Со мной можете общаться на «ты»;</li>
-                                <li class="mb-20">• Срок выполнения работы от 3х до 30 дней в зависимости от формата и очереди, возможно сокращение за доплату;</li>
-                                <li class="mb-20">• До начала работы укажите пожалуйта важные для вас детали вашего персонажа (которые например обычно путают);</li>
-                                <li class="mb-20">• Каждый этап рисунка я скидываю для утверждения, не бойтесь вносить правки, а главное делайте это вовремя!;</li>
-                                <li class="mb-20">• На этапе скетча 2 правки бесплатно, на этапе лайна - только 2 мелкие бесплатно;</li>
-                                <li class="mb-20">• Я всегда на связи и отвечаю либо в первые 15 минут, либо в течение дня;</li>
-                                <li class="mb-20">• Уважайте чужое время, не заваливайте меня идеями без возможности их оплатить в ближайшее время;</li>
-                                <li class="mb-20">• Доны имеют право на 30% СКИДКУ при условии что сумму скидки дон уже оплатил самой подпиской!</li>
-                                <li class="mb-20">• СКИДКА на второй заказ 20% при условии написания отзыва!</li>
-                                <li>• Для оформления заказа можете написать мне в любой социальной сети!</li>
-                            </ul>
-                        </div>
-                    </details>
+                    <div class="grid-3col">
+                        <ul style="padding-left: 0; list-style: none; font-size: 0.9em;">
+                            <li class="mb-15">• Оплата сразу или же 50% до и 50% после предоставления скетча на ру карту/бусти/пейпал, возможна оплата частями;</li>
+                            <li class="mb-15">• Дополнительная плата взимается за крылья, сложный окрас персонажа и объекты помимо него;</li>
+                            <li class="mb-15">• Дополнительная плата за NSFW составит +10-20% от выбранного формата;</li>
+                            <li class="mb-15">• Случаи, когда вы хотите чтобы арт не был опубликован или будете использовать его в коммерческих целях, обговариваются отдельно до начала работы(!);</li>
+                            <li class="mb-15">• Если вы отказываетесь от заказа, деньги возвращаются только за непроделанную часть работы;</li>
+                            <li class="mb-15">• Если вы не выходите на связь более, чем 1 месяц, не предупредив заранее меня, заказ аннулируется;</li>
+                        </ul>
+                        <ul style="padding-left: 0; list-style: none; font-size: 0.9em;">
+                            <li class="mb-15">• Если заказ аннулируется, я оставляю за собой право из рисунка сделать юч, убрав опознавательные детали;</li>
+                            <li class="mb-15">• Я экспериментирую, так что не стесняйтесь спрашивать, если ваша идея слишком необычная!;</li>
+                            <li class="mb-15">• Со мной можете общаться на «ты»;</li>
+                            <li class="mb-15">• Срок выполнения работы от 3х до 30 дней, возможно сокращение за доплату;</li>
+                            <li class="mb-15">• До начала работы укажите важные детали вашего персонажа;</li>
+                            <li class="mb-15">• Каждый этап рисунка я скидываю для утверждения, не бойтесь вносить правки вовремя!;</li>
+                        </ul>
+                        <ul style="padding-left: 0; list-style: none; font-size: 0.9em;">
+                            <li class="mb-15">• На этапе скетча 2 правки бесплатно, на этапе лайна - только 2 мелкие бесплатно;</li>
+                            <li class="mb-15">• Я всегда на связи и отвечаю либо в первые 15 минут, либо в течение дня;</li>
+                            <li class="mb-15">• Уважайте чужое время, не заваливайте идеями без возможности их оплатить в ближайшее время;</li>
+                            <li class="mb-15">• Доны имеют право на 30% СКИДКУ при условии оплаты подписки!;</li>
+                            <li class="mb-15">• СКИДКА на второй заказ 20% при условии написания отзыва!;</li>
+                            <li>• Для оформления заказа пишите мне в любой социальной сети!</li>
+                        </ul>
+                    </div>
                 </section>
 
             </main>
@@ -1627,19 +1558,11 @@
         const currentItem = currentGallery[currentIndex].querySelector('img');
         lightboxImg.style.opacity = 0;
 
-        // Dynamic background tint (best effort based on cross-origin constraints)
-        // Since we can't always get pixel data due to CORS, we'll use a CSS filter/backdrop hack
-        // or a simplified heuristic if it was a local asset.
-        // For now, let's just add a subtle transition to the backdrop blur.
-
         setTimeout(() => {
             lightboxImg.src = currentItem.src;
             lightboxCaption.textContent = currentItem.alt;
             lightboxImg.style.opacity = 1;
 
-            // Heuristic: if we wanted real color extraction, we'd need a canvas.
-            // But since these are from picsum.photos, CORS might block it.
-            // We'll use a CSS trick to "bleed" some color into the background using a hidden blurred copy
             let blurredBg = document.getElementById('lightbox-blur-bg');
             if (!blurredBg) {
                 blurredBg = document.createElement('div');
@@ -1874,31 +1797,22 @@
         basePrice *= (1 + ratingMod);
 
         // Deadline modifier
-        // 1 day = +100% (1.0), 31 days = +0% (0.0)
         let deadlineBonus = Math.round(((31 - deadline) / 30) * 100);
         block.querySelector('.deadline-val').textContent = deadline;
         block.querySelector('.deadline-bonus').textContent = deadlineBonus;
         basePrice *= (1 + (deadlineBonus / 100));
 
         let priceWithoutBg = basePrice;
-        if (chibi) {
-            priceWithoutBg /= 2;
-        }
-
-        if (design) {
-            priceWithoutBg += 200;
-        }
+        if (chibi) priceWithoutBg /= 2;
+        if (design) priceWithoutBg += 200;
 
         let priceDisplay = '';
-        if (background === 'simple') {
-            priceDisplay = Math.round(priceWithoutBg + 500);
-        } else if (background === 'hard') {
+        if (background === 'simple') priceDisplay = Math.round(priceWithoutBg + 500);
+        else if (background === 'hard') {
             const minPrice = Math.round(priceWithoutBg + 1500);
             const maxPrice = Math.round(priceWithoutBg + 4500);
             priceDisplay = minPrice + '-' + maxPrice;
-        } else {
-            priceDisplay = Math.round(priceWithoutBg);
-        }
+        } else priceDisplay = Math.round(priceWithoutBg);
 
         block.querySelector('.block-price').textContent = priceDisplay;
         updateGrandTotal();
@@ -1908,9 +1822,7 @@
         const grandTotalSpan = document.getElementById('grand-total');
         if (!grandTotalSpan) return;
 
-        let minTotal = 0;
-        let maxTotal = 0;
-        let hasRange = false;
+        let minTotal = 0, maxTotal = 0, hasRange = false;
 
         document.querySelectorAll('.block-price').forEach(el => {
             const text = el.textContent;
@@ -1921,8 +1833,7 @@
                 hasRange = true;
             } else {
                 const price = parseInt(text) || 0;
-                minTotal += price;
-                maxTotal += price;
+                minTotal += price; maxTotal += price;
             }
         });
 
@@ -1942,24 +1853,17 @@
 
     document.getElementById('discount-group').addEventListener('change', updateGrandTotal);
 
-    // Логика отжатия кнопок скидок
     let lastCheckedRadio = null;
     document.querySelectorAll('input[name="discount-option"]').forEach(radio => {
         radio.addEventListener('click', function() {
             if (lastCheckedRadio === this) {
-                this.checked = false;
-                lastCheckedRadio = null;
-                updateGrandTotal();
-            } else {
-                lastCheckedRadio = this;
-            }
+                this.checked = false; lastCheckedRadio = null; updateGrandTotal();
+            } else lastCheckedRadio = this;
         });
     });
 
     function updateSliderGradient(slider) {
-        const val = slider.value;
-        const min = slider.min ? slider.min : 1;
-        const max = slider.max ? slider.max : 31;
+        const val = slider.value, min = slider.min ? slider.min : 1, max = slider.max ? slider.max : 31;
         const percent = (val - min) / (max - min) * 100;
         slider.style.background = `linear-gradient(to right, #c787de ${percent}%, #e8d0e5 ${percent}%)`;
     }
@@ -1969,30 +1873,16 @@
     document.getElementById('copy-total').onclick = function() {
         const grandTotalSpan = document.getElementById('grand-total');
         if (!grandTotalSpan) return;
-
-        const totalText = grandTotalSpan.textContent;
-        const cleanTotal = totalText.split(' ')[0];
-
+        const cleanTotal = grandTotalSpan.textContent.split(' ')[0];
         const textArea = document.createElement("textarea");
-        textArea.value = cleanTotal;
-        document.body.appendChild(textArea);
+        textArea.value = cleanTotal; document.body.appendChild(textArea);
         textArea.select();
         try {
             document.execCommand('copy');
-
-            const wrapper = document.getElementById('total-display-wrapper');
-            const feedback = document.getElementById('copy-feedback');
-
-            wrapper.style.display = 'none';
-            feedback.style.display = 'block';
-
-            setTimeout(() => {
-                wrapper.style.display = 'flex';
-                feedback.style.display = 'none';
-            }, 2000);
-        } catch (err) {
-            console.error('Copy failed', err);
-        }
+            const wrapper = document.getElementById('total-display-wrapper'), feedback = document.getElementById('copy-feedback');
+            wrapper.style.display = 'none'; feedback.style.display = 'block';
+            setTimeout(() => { wrapper.style.display = 'flex'; feedback.style.display = 'none'; }, 2000);
+        } catch (err) { console.error('Copy failed', err); }
         document.body.removeChild(textArea);
     };
 
@@ -2002,15 +1892,11 @@
     document.querySelectorAll('.gallery-scroll').forEach(gallery => {
         let direction = 1;
         setInterval(() => {
-            if (lightbox.style.display === 'flex') return; // Pause if lightbox is open
+            if (lightbox.style.display === 'flex') return;
             const maxScroll = gallery.scrollWidth - gallery.clientWidth;
             if (gallery.scrollLeft >= maxScroll - 5) direction = -1;
             if (gallery.scrollLeft <= 5) direction = 1;
-
-            gallery.scrollBy({
-                left: direction * gallery.clientWidth,
-                behavior: 'smooth'
-            });
+            gallery.scrollBy({ left: direction * gallery.clientWidth, behavior: 'smooth' });
         }, 5000);
     });
 </script>
