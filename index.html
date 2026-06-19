@@ -263,6 +263,44 @@
             left: 0;
         }
 
+        /* Collapsible Sections */
+        .collapsible-section .section-header {
+            cursor: pointer;
+            user-select: none;
+            padding-right: 40px;
+            position: relative;
+        }
+
+        .collapsible-section .section-header .toggle-icon {
+            position: absolute;
+            right: 0;
+            top: 10px;
+            font-size: 0.6em;
+            transition: transform 0.3s;
+        }
+
+        .collapsible-section.collapsed .section-header .toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        .collapsible-content {
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, opacity 0.3s;
+            max-height: 5000px;
+            opacity: 1;
+        }
+
+        .collapsible-section.collapsed .collapsible-content {
+            max-height: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .collapsible-section.collapsed {
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
         /* Calculator Header Convention */
         .calc-header {
             display: flex;
@@ -1386,54 +1424,6 @@
                     </section>
                 </div>
 
-                <section id="dictionary" class="block-card">
-                    <h2 class="section-header">СЛОВАРЬ И ПРАВИЛА</h2>
-                    <div class="dictionary-grid">
-                        <div class="dictionary-col">
-                            <h2 class="mb-20">Словарь</h2>
-                            <div class="terms-content" style="padding: 0;">
-                                <p class="mb-20"><strong>Антро:</strong> очеловеченные, ходящие на двух ногах животные.</p>
-                                <p class="mb-20"><strong>Ферал:</strong> очеловеченные животные, ходящие на 4х лапах.</p>
-                                <p class="mb-20"><strong>Скетч:</strong> набросок, простая работа, выполненная в одном цвете с неровным контуром;</p>
-                                <p class="mb-20"><strong>Простой рендер:</strong> более аккуратный цветной набросок (флэт колор, плоский цвет);</p>
-                                <p class="mb-20"><strong>Сложный рендер:</strong> вылизанная картинка с светотенью и постабработкой (фулл колор);</p>
-                                <p class="mb-20"><strong>Хэд/Халф/Фулл:</strong> голова / по пояс / в полный рост.</p>
-                                <p class="mb-20"><strong>Чиби:</strong> анатомически упрощённый, мультяшный рисунок.</p>
-                            </div>
-                        </div>
-
-                        <div class="dictionary-col">
-                            <h2 class="mb-20">Я рисую</h2>
-                            <div class="terms-content" style="padding: 0;">
-                                <ul style="padding-left: 0; list-style: none;">
-                                    <li>• Любые виды фурри и ферал;</li>
-                                    <li>• Людей;</li>
-                                    <li>• Май литл пони (млп);</li>
-                                    <li>• Драконов;</li>
-                                    <li>• 18+ тематику;</li>
-                                    <li>• Тематику БДСМ;</li>
-                                    <li>• Тематику смерти, старости, младенчества без сексуализации;</li>
-                                    <li>• Арты в стиле Дисней;</li>
-                                    <li>• Арты в стиле LPS.</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="dictionary-col">
-                            <h2 class="mb-20">Я не рисую</h2>
-                            <div class="terms-content" style="padding: 0;">
-                                <ul style="padding-left: 0; list-style: none;">
-                                    <li>• Ферал п*рно;</li>
-                                    <li>• Воре (возможен только намёк);</li>
-                                    <li>• Гуро (разложение, гниение - нет);</li>
-                                    <li>• Тематику подгузников, фекалий, мочи и тд;</li>
-                                    <li>• Педо;</li>
-                                    <li>• Гипертрофированные половые признаки.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
 
                 <section id="donates" class="block-card">
                     <h2 class="section-header">Донаты</h2>
@@ -1489,33 +1479,85 @@
                     </div>
                 </section>
 
-                <section id="terms" class="block-card">
-                    <h2 class="section-header">Условия</h2>
-                    <div class="grid-3col">
-                        <ul style="padding-left: 0; list-style: none; font-size: 0.9em;">
-                            <li class="mb-15">• Оплата сразу или же 50% до и 50% после предоставления скетча на ру карту/бусти/пейпал, возможна оплата частями;</li>
-                            <li class="mb-15">• Дополнительная плата взимается за крылья, сложный окрас персонажа и объекты помимо него;</li>
-                            <li class="mb-15">• Дополнительная плата за NSFW составит +10-20% от выбранного формата;</li>
-                            <li class="mb-15">• Случаи, когда вы хотите чтобы арт не был опубликован или будете использовать его в коммерческих целях, обговариваются отдельно до начала работы(!);</li>
-                            <li class="mb-15">• Если вы отказываетесь от заказа, деньги возвращаются только за непроделанную часть работы;</li>
-                            <li class="mb-15">• Если вы не выходите на связь более, чем 1 месяц, не предупредив заранее меня, заказ аннулируется;</li>
-                        </ul>
-                        <ul style="padding-left: 0; list-style: none; font-size: 0.9em;">
-                            <li class="mb-15">• Если заказ аннулируется, я оставляю за собой право из рисунка сделать юч, убрав опознавательные детали;</li>
-                            <li class="mb-15">• Я экспериментирую, так что не стесняйтесь спрашивать, если ваша идея слишком необычная!;</li>
-                            <li class="mb-15">• Со мной можете общаться на «ты»;</li>
-                            <li class="mb-15">• Срок выполнения работы от 3х до 30 дней, возможно сокращение за доплату;</li>
-                            <li class="mb-15">• До начала работы укажите важные детали вашего персонажа;</li>
-                            <li class="mb-15">• Каждый этап рисунка я скидываю для утверждения, не бойтесь вносить правки вовремя!;</li>
-                        </ul>
-                        <ul style="padding-left: 0; list-style: none; font-size: 0.9em;">
-                            <li class="mb-15">• На этапе скетча 2 правки бесплатно, на этапе лайна - только 2 мелкие бесплатно;</li>
-                            <li class="mb-15">• Я всегда на связи и отвечаю либо в первые 15 минут, либо в течение дня;</li>
-                            <li class="mb-15">• Уважайте чужое время, не заваливайте идеями без возможности их оплатить в ближайшее время;</li>
-                            <li class="mb-15">• Доны имеют право на 30% СКИДКУ при условии оплаты подписки!;</li>
-                            <li class="mb-15">• СКИДКА на второй заказ 20% при условии написания отзыва!;</li>
-                            <li>• Для оформления заказа пишите мне в любой социальной сети!</li>
-                        </ul>
+                <section id="dictionary" class="block-card collapsible-section collapsed">
+                    <h2 class="section-header">СЛОВАРЬ И ПРАВИЛА <span class="toggle-icon">▼</span></h2>
+                    <div class="collapsible-content">
+                        <div class="dictionary-grid">
+                            <div class="dictionary-col">
+                                <h2 class="mb-20">Словарь</h2>
+                                <div class="terms-content" style="padding: 0;">
+                                    <p class="mb-20"><strong>Антро:</strong> очеловеченные, ходящие на двух ногах животные.</p>
+                                    <p class="mb-20"><strong>Ферал:</strong> очеловеченные животные, ходящие на 4х лапах.</p>
+                                    <p class="mb-20"><strong>Скетч:</strong> набросок, простая работа, выполненная в одном цвете с неровным контуром;</p>
+                                    <p class="mb-20"><strong>Простой рендер:</strong> более аккуратный цветной набросок (флэт колор, плоский цвет);</p>
+                                    <p class="mb-20"><strong>Сложный рендер:</strong> вылизанная картинка с светотенью и постабработкой (фулл колор);</p>
+                                    <p class="mb-20"><strong>Хэд/Халф/Фулл:</strong> голова / по пояс / в полный рост.</p>
+                                    <p class="mb-20"><strong>Чиби:</strong> анатомически упрощённый, мультяшный рисунок.</p>
+                                </div>
+                            </div>
+
+                            <div class="dictionary-col">
+                                <h2 class="mb-20">Я рисую</h2>
+                                <div class="terms-content" style="padding: 0;">
+                                    <ul style="padding-left: 0; list-style: none;">
+                                        <li>• Любые виды фурри и ферал;</li>
+                                        <li>• Людей;</li>
+                                        <li>• Май литл пони (млп);</li>
+                                        <li>• Драконов;</li>
+                                        <li>• 18+ тематику;</li>
+                                        <li>• Тематику БДСМ;</li>
+                                        <li>• Тематику смерти, старости, младенчества без сексуализации;</li>
+                                        <li>• Арты в стиле Дисней;</li>
+                                        <li>• Арты в стиле LPS.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="dictionary-col">
+                                <h2 class="mb-20">Я не рисую</h2>
+                                <div class="terms-content" style="padding: 0;">
+                                    <ul style="padding-left: 0; list-style: none;">
+                                        <li>• Ферал п*рно;</li>
+                                        <li>• Воре (возможен только намёк);</li>
+                                        <li>• Гуро (разложение, гниение - нет);</li>
+                                        <li>• Тематику подгузников, фекалий, мочи и тд;</li>
+                                        <li>• Педо;</li>
+                                        <li>• Гипертрофированные половые признаки.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="terms" class="block-card collapsible-section collapsed">
+                    <h2 class="section-header">Условия <span class="toggle-icon">▼</span></h2>
+                    <div class="collapsible-content">
+                        <div class="grid-3col">
+                            <ul style="padding-left: 0; list-style: none; font-size: 0.9em;">
+                                <li class="mb-15">• Оплата сразу или же 50% до и 50% после предоставления скетча на ру карту/бусти/пейпал, возможна оплата частями;</li>
+                                <li class="mb-15">• Дополнительная плата взимается за крылья, сложный окрас персонажа и объекты помимо него;</li>
+                                <li class="mb-15">• Дополнительная плата за NSFW составит +10-20% от выбранного формата;</li>
+                                <li class="mb-15">• Случаи, когда вы хотите чтобы арт не был опубликован или будете использовать его в коммерческих целях, обговариваются отдельно до начала работы(!);</li>
+                                <li class="mb-15">• Если вы отказываетесь от заказа, деньги возвращаются только за непроделанную часть работы;</li>
+                                <li class="mb-15">• Если вы не выходите на связь более, чем 1 месяц, не предупредив заранее меня, заказ аннулируется;</li>
+                            </ul>
+                            <ul style="padding-left: 0; list-style: none; font-size: 0.9em;">
+                                <li class="mb-15">• Если заказ аннулируется, я оставляю за собой право из рисунка сделать юч, убрав опознавательные детали;</li>
+                                <li class="mb-15">• Я экспериментирую, так что не стесняйтесь спрашивать, если ваша идея слишком необычная!;</li>
+                                <li class="mb-15">• Со мной можете общаться на «ты»;</li>
+                                <li class="mb-15">• Срок выполнения работы от 3х до 30 дней, возможно сокращение за доплату;</li>
+                                <li class="mb-15">• До начала работы укажите важные детали вашего персонажа;</li>
+                                <li class="mb-15">• Каждый этап рисунка я скидываю для утверждения, не бойтесь вносить правки вовремя!;</li>
+                            </ul>
+                            <ul style="padding-left: 0; list-style: none; font-size: 0.9em;">
+                                <li class="mb-15">• На этапе скетча 2 правки бесплатно, на этапе лайна - только 2 мелкие бесплатно;</li>
+                                <li class="mb-15">• Я всегда на связи и отвечаю либо в первые 15 минут, либо в течение дня;</li>
+                                <li class="mb-15">• Уважайте чужое время, не заваливайте идеями без возможности их оплатить в ближайшее время;</li>
+                                <li class="mb-15">• Доны имеют право на 30% СКИДКУ при условии оплаты подписки!;</li>
+                                <li class="mb-15">• СКИДКА на второй заказ 20% при условии написания отзыва!;</li>
+                                <li>• Для оформления заказа пишите мне в любой социальной сети!</li>
+                            </ul>
+                        </div>
                     </div>
                 </section>
 
@@ -1919,6 +1961,14 @@
             if (gallery.scrollLeft <= 5) direction = 1;
             gallery.scrollBy({ left: direction * gallery.clientWidth, behavior: 'smooth' });
         }, 5000);
+    });
+
+    // Collapsible Sections Toggle
+    document.querySelectorAll('.collapsible-section .section-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const section = header.closest('.collapsible-section');
+            section.classList.toggle('collapsed');
+        });
     });
 </script>
 
